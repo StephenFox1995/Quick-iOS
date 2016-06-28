@@ -19,7 +19,6 @@ class Network {
         print(response.response) // URL response
         print(response.data)     // server data
         print(response.result)   // result of response serialization
-        
         if let JSON = response.result.value {
           print("JSON: \(JSON)")
         }
