@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'Quick' do
     pod 'Alamofire', '~> 3.4'
+    pod 'SwiftyJSON'
 end

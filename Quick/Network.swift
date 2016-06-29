@@ -12,31 +12,36 @@ import Alamofire
 
 class Network {
   
-  func request(urlString: String) {
-    Alamofire.request(.GET, urlString, parameters: ["foo": "bar"])
-      .responseJSON { response in
-        print(response.request)  // original URL request
-        print(response.response) // URL response
-        print(response.data)     // server data
-        print(response.result)   // result of response serialization
-        if let JSON = response.result.value {
-          print("JSON: \(JSON)")
+  func requestJSON(urlString: String, response: (success: Bool, JSON: AnyObject) -> Void) {
+    Alamofire.request(.GET, urlString).validate().responseJSON { afResponse in
+      switch afResponse.result {
+      case .Success:
+        if let JSON = afResponse.result.value {
+          response(success: true, JSON: JSON)
         }
+      case .Failure:
+        response(success: false, JSON: NSNull())
+      }
     }
   }
   
   
   
   /**
-   Inner class to store constant values about backed urls.
+   Inner class to store constant values about backend urls.
    */
   class NetworkingDetails {
-    private static let baseURLStringDev = "http://192.168.1.78"
-    private static let baseURLStringProduction = "" // tbd
     
+    // Base URL
+    private static let baseURLStringDev = "http://192.168.1.78:3000"
+    private static let baseURLStringProduction = "" // TODO: to be decided.
+    
+    /**
+     * The base URL for all network requests.
+     */
     static var baseURLString: String {
-      get{
-        if (AppDelegate.devEnvironment) {
+      get {
+        if AppDelegate.devEnvironment {
           return baseURLStringDev
         } else {
           return baseURLStringProduction
@@ -44,5 +49,38 @@ class Network {
       }
     }
     
+    
+    // User URL
+    private static let userURLStringDev = "http://192.168.1.78:3000/user/id"
+    private static let userURLStringProduction = "" // TODO: to be decided.
+    
+    /**
+     * The base URL for all user requests.
+     */
+    static var userURLString: String {
+      get {
+        if AppDelegate.devEnvironment {
+          return userURLStringDev
+        } else {
+          return userURLStringProduction
+        }
+      }
+    }
+    
+    
+    // All products for business URL
+    private static let businessProductURLStringDev = "http://192.168.1.78:3000/business"
+    private static let businessProductURLStringProduction = "" // TODO: to be decided.
+    
+    /**
+     Creates a string url for business products.*/
+    static func createBusinessProductURLString(productID: String) -> String {
+      let ending = "/\(productID)/products"
+      if AppDelegate.devEnvironment {
+        return businessProductURLStringDev + ending
+      } else {
+        return businessProductURLStringProduction + ending
+      }
+    }
   }
 }

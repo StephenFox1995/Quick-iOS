@@ -9,19 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+  
+  var productTableView: ProductTableView!
+  var productTableViewDataSource: ProductTableViewDataSource!
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    let network = Network()
+    setupProductTableView()
     
-    network.request(Network.NetworkingDetails.baseURLString)
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  
+  
+  // Set up tableview to display products.
+  private func setupProductTableView() {
+    if self.productTableView == nil {
+      self.productTableView = ProductTableView(frame: CGRectMake(
+        0, 0, Screen.width, Screen.height), style: .Plain)
+      
+      self.productTableViewDataSource = ProductTableViewDataSource(tableView: self.productTableView)
+    }
+    
+    self.view.addSubview(self.productTableView)
   }
-
-
 }
 
