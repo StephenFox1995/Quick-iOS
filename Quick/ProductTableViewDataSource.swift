@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 
 class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   
-  var network: Network!
-  weak var tableView: UITableView!
+  private var network: Network!
+  private weak var tableView: UITableView!
+  private var products: [Product]?
   
   
   /**
@@ -31,9 +32,11 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   
   func fetchDataFromNetwork() {
     let productsURLString = Network.NetworkingDetails.createBusinessProductURLString("123123412")
-    self.network.requestJSON(productsURLString) { (success, JSON) in
+    self.network.requestJSON(productsURLString) { (success, data) in
       if (success) {
-        
+        let json = JSON(data)
+        self.products = self.createProductArray(json)
+        self.tableView.reloadData()
       } else {
         // TODO: Alert user unable to load.
       }
@@ -41,11 +44,33 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   }
   
   
+  private func createProductArray(json: JSON) -> Array<Product> {
+    // Array to hold all products
+    let productArray = NSMutableArray()
+    
+    for jsonObj in json {
+      let product = Product()
+      product.id =          jsonObj.1["id"].stringValue
+      product.name =        jsonObj.1["name"].stringValue
+      product.price =       jsonObj.1["price"].stringValue
+      product.description = jsonObj.1["description"].stringValue
+      productArray.addObject(product)
+    }
+    return productArray as AnyObject as! [Product]
+  }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    if self.products != nil {
+      return self.products!.count
+    } else {
+      return 0
+    }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    //let cell = tableView.dequeueReusableCellWithIdentifier("productCell")
+    let cell = UITableViewCell()
+    cell.textLabel!.text = products?[indexPath.row].name
+    return cell
   }
 }

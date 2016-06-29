@@ -8,20 +8,21 @@
 
 import UIKit
 import Alamofire
-
+import SwiftyJSON
 
 class Network {
   
   func requestJSON(urlString: String, response: (success: Bool, JSON: AnyObject) -> Void) {
-    Alamofire.request(.GET, urlString).validate().responseJSON { afResponse in
-      switch afResponse.result {
-      case .Success:
-        if let JSON = afResponse.result.value {
-          response(success: true, JSON: JSON)
+    Alamofire.request(.GET, urlString).validate()
+      .responseJSON { afResponse in
+        switch afResponse.result {
+        case .Success:
+          if let value = afResponse.result.value {
+            response(success: true, JSON: value)
+          }
+        case .Failure:
+          response(success: false, JSON: NSNull())
         }
-      case .Failure:
-        response(success: false, JSON: NSNull())
-      }
     }
   }
   

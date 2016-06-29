@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         0, 0, Screen.width, Screen.height), style: .Plain)
       
       self.productTableViewDataSource = ProductTableViewDataSource(tableView: self.productTableView)
+      
     }
     
     self.view.addSubview(self.productTableView)
