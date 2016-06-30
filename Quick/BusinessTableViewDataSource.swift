@@ -67,7 +67,7 @@ class BusinessTableViewDataSource: NSObject, UITableViewDataSource {
     let businessCell =
       tableView.dequeueReusableCellWithIdentifier(BusinessTableView.cellReuseIdentifier) as! BusinessTableViewCell
     let business = self.businesses![indexPath.row]
-    businessCell.businessDetails(business)
+    businessCell.setTextElements(business)
     return businessCell
   }
 

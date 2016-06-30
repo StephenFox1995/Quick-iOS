@@ -8,15 +8,11 @@
 
 import UIKit
 
-class Business {
-  var id: String?
-  var name: String?
-  var address: String?
-  var contactNumber: String?
-  var email: String?
-  
+class Business: QuickBusinessObject {
+
   
   init(id: String, name: String, address: String, contactNumber: String, email: String) {
+    super.init()
     self.id = id
     self.name = name
     self.address = address
@@ -24,5 +20,5 @@ class Business {
     self.email = email
   }
   
-  init() { }
+  override init() { }
 }

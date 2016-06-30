@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessTableViewCell: UITableViewCell {
+class BusinessTableViewCell: QuickTableViewCell {
   
   @IBOutlet weak var businessName: UILabel!
   
@@ -20,7 +20,7 @@ class BusinessTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  func businessDetails(business: Business) {
-    self.businessName.text = business.name
+  override func setTextElements(businessObject: QuickBusinessObject) {
+    self.businessName.text = businessObject.name
   }
 }

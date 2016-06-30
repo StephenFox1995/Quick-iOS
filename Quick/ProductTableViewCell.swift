@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductTableViewCell: UITableViewCell {
+class ProductTableViewCell: QuickTableViewCell {
   
   @IBOutlet weak var productPrice: UILabel!
   @IBOutlet weak var productName: UILabel!
@@ -21,9 +21,8 @@ class ProductTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  func productDetails(product: Product) {
-    self.productName.text = product.name
-    self.productPrice.text = product.price
+  override func setTextElements(businessObject: QuickBusinessObject) {
+    self.productName.text = businessObject.name
+    self.productPrice.text = businessObject.price
   }
-  
 }

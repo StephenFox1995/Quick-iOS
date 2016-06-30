@@ -74,7 +74,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let productCell = tableView.dequeueReusableCellWithIdentifier(self.reuseIdentifier) as! ProductTableViewCell
     let product = self.products![indexPath.row]
-    productCell.productDetails(product)
+    productCell.setTextElements(product)
     return productCell
   }
 

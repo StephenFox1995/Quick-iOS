@@ -34,5 +34,4 @@ class BusinessTableView: QuickTableView {
   func register() {
     self.registerNib(cellNibName, bundle: nil, reuseIdentifier: BusinessTableView.cellReuseIdentifier)
   }
-  
 }
