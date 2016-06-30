@@ -12,7 +12,7 @@ import UIKit
  ProductTableView is the default class used to display
  products in a table.
 */
-class ProductTableView: UITableView {
+class ProductTableView: QuickTableView {
   
   /**
    The reuse identifier used for table row cells.
@@ -20,7 +20,7 @@ class ProductTableView: UITableView {
   static let cellReuseIdentifier = "productCell"
   
   // NIB name for cells.
-  private let productCellNibName = "ProductTableViewCell"
+  private let cellNibName = "ProductTableViewCell"
   
   override init(frame: CGRect, style: UITableViewStyle) {
     super.init(frame: frame, style: style)
@@ -36,7 +36,6 @@ class ProductTableView: UITableView {
    Register all classes/ nibs for the UI of the tableview.
    */
   private func register() {
-    let productCell = UINib(nibName: self.productCellNibName, bundle:nil)
-    self.registerNib(productCell, forCellReuseIdentifier: ProductTableView.cellReuseIdentifier)
+    self.registerNib(cellNibName, bundle: nil, reuseIdentifier:ProductTableView.cellReuseIdentifier)
   }
 }

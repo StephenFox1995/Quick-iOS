@@ -8,6 +8,21 @@
 
 import UIKit
 
-class Business: NSObject {
+class Business {
+  var id: String?
+  var name: String?
+  var address: String?
+  var contactNumber: String?
+  var email: String?
   
+  
+  init(id: String, name: String, address: String, contactNumber: String, email: String) {
+    self.id = id
+    self.name = name
+    self.address = address
+    self.contactNumber = contactNumber
+    self.email = email
+  }
+  
+  init() { }
 }

@@ -12,7 +12,7 @@ import SwiftyJSON
 class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   
   private var network: Network!
-  private weak var tableView: UITableView!
+  private weak var tableView: QuickTableView!
   private var products: [Product]?
   private var reuseIdentifier: String!
   
@@ -33,9 +33,9 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   }
   
   
-  func fetchDataFromNetwork() {
-    let productsURLString = Network.NetworkingDetails.createBusinessProductEndPoint("123123412")
-    self.network.requestJSON(productsURLString) { (success, data) in
+  private func fetchDataFromNetwork() {
+    let productsEndPoint = Network.NetworkingDetails.createBusinessProductEndPoint("123123412")
+    self.network.requestJSON(productsEndPoint) { (success, data) in
       if (success) {
         let json = JSON(data)
         self.products = self.createProductArray(json)
@@ -74,7 +74,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let productCell = tableView.dequeueReusableCellWithIdentifier(self.reuseIdentifier) as! ProductTableViewCell
     let product = self.products![indexPath.row]
-    productCell.setProductDetails(product)
+    productCell.productDetails(product)
     return productCell
   }
 

@@ -12,16 +12,24 @@ import SwiftyJSON
 
 class Network {
   
-  func requestJSON(urlString: String, response: (success: Bool, JSON: AnyObject) -> Void) {
+  /**
+   Sends a http GET request to a url.
+   
+   - parameter urlString: The url string of the resource.
+   
+   - parameter response: A callback containing a success flag
+                         and the JSON.
+   */
+  func requestJSON(urlString: String, response: (success: Bool, data: AnyObject) -> Void) {
     Alamofire.request(.GET, urlString).validate()
       .responseJSON { afResponse in
         switch afResponse.result {
         case .Success:
           if let value = afResponse.result.value {
-            response(success: true, JSON: value)
+            response(success: true, data: value)
           }
         case .Failure:
-          response(success: false, JSON: NSNull())
+          response(success: false, data: NSNull())
         }
     }
   }
@@ -33,12 +41,12 @@ class Network {
    */
   class NetworkingDetails {
     
-    // Base URL
+    // Base end point
     private static let baseEndPointDev = "http://192.168.1.78:3000"
     private static let baseEndPointProduction = "" // TODO: to be decided.
     
     /**
-     * The base URL for all network requests.
+     * The base end point for all network requests.
      */
     static var baseURLString: String {
       get {
@@ -51,14 +59,14 @@ class Network {
     }
     
     
-    // User URL
+    // User end point
     private static let userEndPointDev = "http://192.168.1.78:3000/user/id"
     private static let userEndPointProduction = "" // TODO: to be decided.
     
     /**
-     * The base URL for all user requests.
+     * The base end point for all user requests.
      */
-    static var userURLString: String {
+    static var userEndPoint: String {
       get {
         if AppDelegate.devEnvironment {
           return userEndPointDev
@@ -69,7 +77,25 @@ class Network {
     }
     
     
-    // All products for business URL
+    // TODO: CHANGE THIS!!
+    private static let businessEndPointDev = "http://192.168.1.78:3000/business/all"
+    private static let businessEndPointProduction = "" // TODO: to be decided
+    
+    /**
+     The base end point for all businesses
+     */
+    static var businessEndPoint: String {
+      get {
+        if AppDelegate.devEnvironment {
+          return businessEndPointDev
+        } else {
+          return businessEndPointProduction
+        }
+      }
+    }
+    
+    
+    // All products for business endpoint
     private static let businessProductEndPointDev = "http://192.168.1.78:3000/business"
     private static let businessProductEndPointProduction = "" // TODO: to be decided.
     

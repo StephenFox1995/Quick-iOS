@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
   
-  var productTableView: ProductTableView!
-  var productTableViewDataSource: ProductTableViewDataSource!
+  var productTableView: BusinessTableView!
+  var productTableViewDataSource: BusinessTableViewDataSource!
   
   
   override func viewDidLoad() {
@@ -24,10 +24,10 @@ class ViewController: UIViewController, UITableViewDelegate {
   // Set up tableview to display products.
   private func setupProductTableView() {
     if self.productTableView == nil {
-      self.productTableView = ProductTableView(frame: CGRectMake(
+      self.productTableView = BusinessTableView(frame: CGRectMake(
         0, 0, Screen.width, Screen.height), style: .Plain)
       self.productTableView.delegate = self
-      self.productTableViewDataSource = ProductTableViewDataSource(tableView: self.productTableView)
+      self.productTableViewDataSource = BusinessTableViewDataSource(tableView: self.productTableView)
       
     }
     self.view.addSubview(self.productTableView)

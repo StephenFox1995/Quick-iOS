@@ -21,7 +21,7 @@ class ProductTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  func setProductDetails(product: Product) {
+  func productDetails(product: Product) {
     self.productName.text = product.name
     self.productPrice.text = product.price
   }
