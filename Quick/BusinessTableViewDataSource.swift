@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class BusinessTableViewDataSource: NSObject, UITableViewDataSource {
+class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
   
   private var network: Network!
   private weak var tableView: QuickTableView!
@@ -39,6 +39,14 @@ class BusinessTableViewDataSource: NSObject, UITableViewDataSource {
     }
   }
   
+  
+  override func itemForRowIndex(indexPath: NSIndexPath) -> AnyObject? {
+    if businesses != nil {
+      return businesses![indexPath.row]
+    } else {
+      return nil
+    }
+  }
   
   private func createBusinessArray(json: JSON) -> Array<Business>{
     let businessArray = NSMutableArray()

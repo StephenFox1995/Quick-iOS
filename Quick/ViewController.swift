@@ -10,29 +10,38 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
   
-  var productTableView: BusinessTableView!
-  var productTableViewDataSource: BusinessTableViewDataSource!
+  var businessTableView: BusinessTableView!
+  var businessTableViewDataSource: BusinessTableViewDataSource!
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupProductTableView()
-    
+    setupBusinessTableView()
   }
   
   
   // Set up tableview to display products.
-  private func setupProductTableView() {
-    if self.productTableView == nil {
-      self.productTableView = BusinessTableView(frame: CGRectMake(
+  private func setupBusinessTableView() {
+    if self.businessTableView == nil {
+      self.businessTableView = BusinessTableView(frame: CGRectMake(
         0, 0, Screen.width, Screen.height), style: .Plain)
-      self.productTableView.delegate = self
-      self.productTableViewDataSource = BusinessTableViewDataSource(tableView: self.productTableView)
-      
+      self.businessTableView.delegate = self
+      self.businessTableViewDataSource = BusinessTableViewDataSource(tableView: self.businessTableView)
     }
-    self.view.addSubview(self.productTableView)
+    self.view.addSubview(self.businessTableView)
   }
   
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let business = self.businessTableViewDataSource.itemForRowIndex(indexPath)
+    if let b = business as? Business {
+      print(b)
+    }
+    let productViewController = ProductViewController()
+    self.navigationController?.presentViewController(productViewController,
+                                                     animated: true, completion: {
+    })
+  }
   
 }
 
