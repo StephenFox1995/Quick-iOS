@@ -48,7 +48,6 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   
   
   private func createProductArray(json: JSON) -> Array<Product> {
-    // Array to hold all products
     let productArray = NSMutableArray()
     
     for jsonObj in json {
@@ -62,6 +61,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
     return productArray as AnyObject as! [Product]
   }
   
+  // MARK: UITableViewDataSource
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if self.products != nil {
       return self.products!.count
@@ -70,10 +70,12 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
     }
   }
   
+  
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let productCell = tableView.dequeueReusableCellWithIdentifier(self.reuseIdentifier) as! ProductTableViewCell
     let product = self.products![indexPath.row]
     productCell.setProductDetails(product)
     return productCell
   }
+
 }

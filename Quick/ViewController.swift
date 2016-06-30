@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate {
   
   var productTableView: ProductTableView!
   var productTableViewDataSource: ProductTableViewDataSource!
@@ -26,12 +26,13 @@ class ViewController: UIViewController {
     if self.productTableView == nil {
       self.productTableView = ProductTableView(frame: CGRectMake(
         0, 0, Screen.width, Screen.height), style: .Plain)
-      
+      self.productTableView.delegate = self
       self.productTableViewDataSource = ProductTableViewDataSource(tableView: self.productTableView)
       
     }
-    
     self.view.addSubview(self.productTableView)
   }
+  
+  
 }
 
