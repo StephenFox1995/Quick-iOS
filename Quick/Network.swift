@@ -34,8 +34,8 @@ class Network {
   class NetworkingDetails {
     
     // Base URL
-    private static let baseURLStringDev = "http://192.168.1.78:3000"
-    private static let baseURLStringProduction = "" // TODO: to be decided.
+    private static let baseEndPointDev = "http://192.168.1.78:3000"
+    private static let baseEndPointProduction = "" // TODO: to be decided.
     
     /**
      * The base URL for all network requests.
@@ -43,17 +43,17 @@ class Network {
     static var baseURLString: String {
       get {
         if AppDelegate.devEnvironment {
-          return baseURLStringDev
+          return baseEndPointDev
         } else {
-          return baseURLStringProduction
+          return baseEndPointProduction
         }
       }
     }
     
     
     // User URL
-    private static let userURLStringDev = "http://192.168.1.78:3000/user/id"
-    private static let userURLStringProduction = "" // TODO: to be decided.
+    private static let userEndPointDev = "http://192.168.1.78:3000/user/id"
+    private static let userEndPointProduction = "" // TODO: to be decided.
     
     /**
      * The base URL for all user requests.
@@ -61,26 +61,26 @@ class Network {
     static var userURLString: String {
       get {
         if AppDelegate.devEnvironment {
-          return userURLStringDev
+          return userEndPointDev
         } else {
-          return userURLStringProduction
+          return userEndPointProduction
         }
       }
     }
     
     
     // All products for business URL
-    private static let businessProductURLStringDev = "http://192.168.1.78:3000/business"
-    private static let businessProductURLStringProduction = "" // TODO: to be decided.
+    private static let businessProductEndPointDev = "http://192.168.1.78:3000/business"
+    private static let businessProductEndPointProduction = "" // TODO: to be decided.
     
     /**
      Creates a string url for business products.*/
-    static func createBusinessProductURLString(productID: String) -> String {
+    static func createBusinessProductEndPoint(productID: String) -> String {
       let ending = "/\(productID)/products"
       if AppDelegate.devEnvironment {
-        return businessProductURLStringDev + ending
+        return businessProductEndPointDev + ending
       } else {
-        return businessProductURLStringProduction + ending
+        return businessProductEndPointProduction + ending
       }
     }
   }

@@ -34,7 +34,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   
   
   func fetchDataFromNetwork() {
-    let productsURLString = Network.NetworkingDetails.createBusinessProductURLString("123123412")
+    let productsURLString = Network.NetworkingDetails.createBusinessProductEndPoint("123123412")
     self.network.requestJSON(productsURLString) { (success, data) in
       if (success) {
         let json = JSON(data)
