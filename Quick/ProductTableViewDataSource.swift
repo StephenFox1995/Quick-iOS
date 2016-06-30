@@ -14,6 +14,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   private var network: Network!
   private weak var tableView: UITableView!
   private var products: [Product]?
+  private var reuseIdentifier: String!
   
   
   /**
@@ -21,11 +22,13 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
    tableView this class will be 'datasourcing'
    - paramater tableView: The table to datasource.
    */
-  init(tableView: UITableView) {
+  init(tableView: ProductTableView) {
     super.init()
-    self.network = Network()
     self.tableView = tableView
     self.tableView.dataSource = self
+    
+    self.reuseIdentifier = ProductTableView.cellReuseIdentifier
+    self.network = Network()
     fetchDataFromNetwork()
   }
   
@@ -68,9 +71,9 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    //let cell = tableView.dequeueReusableCellWithIdentifier("productCell")
-    let cell = UITableViewCell()
-    cell.textLabel!.text = products?[indexPath.row].name
-    return cell
+    let productCell = tableView.dequeueReusableCellWithIdentifier(self.reuseIdentifier) as! ProductTableViewCell
+    let product = self.products![indexPath.row]
+    productCell.setProductDetails(product)
+    return productCell
   }
 }

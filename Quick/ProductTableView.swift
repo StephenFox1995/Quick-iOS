@@ -14,11 +14,29 @@ import UIKit
 */
 class ProductTableView: UITableView {
   
+  /**
+   The reuse identifier used for table row cells.
+   */
+  static let cellReuseIdentifier = "productCell"
+  
+  // NIB name for cells.
+  private let productCellNibName = "ProductTableViewCell"
+  
   override init(frame: CGRect, style: UITableViewStyle) {
     super.init(frame: frame, style: style)
+    self.register()
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  
+  /**
+   Register all classes/ nibs for the UI of the tableview.
+   */
+  private func register() {
+    let productCell = UINib(nibName: self.productCellNibName, bundle:nil)
+    self.registerNib(productCell, forCellReuseIdentifier: ProductTableView.cellReuseIdentifier)
   }
 }

@@ -9,13 +9,21 @@
 import UIKit
 
 class ProductTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
+  
+  @IBOutlet weak var productPrice: UILabel!
+  @IBOutlet weak var productName: UILabel!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
+  
+  func setProductDetails(product: Product) {
+    self.productName.text = product.name
+    self.productPrice.text = product.price
+  }
+  
 }
