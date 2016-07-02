@@ -52,15 +52,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bD-xc-GRP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5bD-xc-GRP">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="305"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fap-Qc-j9e" customClass="ProductTableView" customModule="Quick" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fap-Qc-j9e" customClass="ProductTableView" customModule="Quick" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="306" width="600" height="294"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="294" id="FH8-Ne-dv3"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5bD-xc-GRP" secondAttribute="trailing" id="5yS-FX-iXP"/>
+                            <constraint firstItem="Fap-Qc-j9e" firstAttribute="top" secondItem="5bD-xc-GRP" secondAttribute="bottom" constant="1" id="FA4-Hs-GSJ"/>
+                            <constraint firstItem="5bD-xc-GRP" firstAttribute="top" secondItem="W66-wZ-uIO" secondAttribute="top" id="Sfx-g6-BB3"/>
+                            <constraint firstItem="5bD-xc-GRP" firstAttribute="leading" secondItem="W66-wZ-uIO" secondAttribute="leading" id="ZiM-ma-oKh"/>
+                            <constraint firstItem="5bD-xc-GRP" firstAttribute="trailing" secondItem="Fap-Qc-j9e" secondAttribute="trailing" id="aU5-co-T0a"/>
+                            <constraint firstItem="5bD-xc-GRP" firstAttribute="leading" secondItem="Fap-Qc-j9e" secondAttribute="leading" id="duL-IQ-gqQ"/>
+                            <constraint firstItem="Fap-Qc-j9e" firstAttribute="bottom" secondItem="SMN-Ho-Apx" secondAttribute="top" id="ySa-oN-k3d"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="productTableView" destination="Fap-Qc-j9e" id="9ld-Ca-OUd"/>

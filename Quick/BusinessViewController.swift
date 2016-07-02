@@ -21,25 +21,24 @@ class BusinessViewController: QuickViewController, UITableViewDelegate {
     self.network = Network()
     
     self.setupProductTableView()
-    self.fetchProductsForBusiness()
   }
   
-  
-  private func fetchProductsForBusiness() {
-    let businessProductEndPoint = Network.NetworkingDetails.createBusinessProductEndPoint("rkcmX06B")
-    network.requestJSON(businessProductEndPoint) { (success, data) in
-      if (success) {
-        
-      } else {
-        // TODO: Alert user.
-      }
-    }
-  }
-  
+
   private func setupProductTableView() {
     if productTableViewDataSource == nil {
       self.productTableViewDataSource = ProductTableViewDataSource(tableView: self.productTableView)
     }
     self.productTableView.delegate = self
+    
+    guard let business = self.business else {
+      return
+    }
+    
+    guard let businessID = business.id else {
+      return
+    }
+    
+    let productsEndPoint = Network.NetworkingDetails.createBusinessProductEndPoint(businessID)
+    self.productTableViewDataSource.fetchDataFromNetwork(productsEndPoint)
   }
 }

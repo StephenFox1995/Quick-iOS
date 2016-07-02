@@ -29,13 +29,11 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
     
     self.reuseIdentifier = ProductTableView.cellReuseIdentifier
     self.network = Network()
-    fetchDataFromNetwork()
   }
   
   
-  private func fetchDataFromNetwork() {
-    let productsEndPoint = Network.NetworkingDetails.createBusinessProductEndPoint("123123412")
-    self.network.requestJSON(productsEndPoint) { (success, data) in
+  func fetchDataFromNetwork(productURL: String) {
+    self.network.requestJSON(productURL) { (success, data) in
       if (success) {
         let json = JSON(data)
         self.products = self.createProductArray(json)
