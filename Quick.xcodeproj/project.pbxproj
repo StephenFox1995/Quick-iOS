@@ -16,7 +16,7 @@
 		181D74611D25BBA00007DAFD /* BusinessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */; };
 		181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */; };
 		181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */; };
-		181D74691D25D0670007DAFD /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74681D25D0670007DAFD /* ProductViewController.swift */; };
+		181D74691D25D0670007DAFD /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74681D25D0670007DAFD /* BusinessViewController.swift */; };
 		181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D746A1D25D3560007DAFD /* QuickDataSource.swift */; };
 		1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D08F1D22F64900C9554C /* AppDelegate.swift */; };
 		1835D0921D22F64900C9554C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0911D22F64900C9554C /* ViewController.swift */; };
@@ -29,6 +29,8 @@
 		1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */; };
 		1835D0AB1D2465BC00C9554C /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AA1D2465BC00C9554C /* Screen.swift */; };
 		1835D0AD1D24664700C9554C /* ProductTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */; };
+		18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4001D2819C800CDE296 /* QuickViewController.swift */; };
+		18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */; };
 		DE01DD67AF12C406F23A7A82 /* Pods_Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3046EE7FA120C65328D837C /* Pods_Quick.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +44,7 @@
 		181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessTableViewCell.xib; sourceTree = "<group>"; };
 		181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickTableViewCell.swift; sourceTree = "<group>"; };
 		181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickBusinessObject.swift; sourceTree = "<group>"; };
-		181D74681D25D0670007DAFD /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		181D74681D25D0670007DAFD /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		181D746A1D25D3560007DAFD /* QuickDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDataSource.swift; sourceTree = "<group>"; };
 		1835D08C1D22F64900C9554C /* Quick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1835D08F1D22F64900C9554C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,8 @@
 		1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		1835D0AA1D2465BC00C9554C /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewDataSource.swift; sourceTree = "<group>"; };
+		18F3D4001D2819C800CDE296 /* QuickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickViewController.swift; sourceTree = "<group>"; };
+		18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.release.xcconfig"; sourceTree = "<group>"; };
 		A3046EE7FA120C65328D837C /* Pods_Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,12 +103,13 @@
 				1835D0981D22F64900C9554C /* LaunchScreen.storyboard */,
 				1835D0931D22F64900C9554C /* Main.storyboard */,
 				1835D0911D22F64900C9554C /* ViewController.swift */,
+				181D74681D25D0670007DAFD /* BusinessViewController.swift */,
 				181D74561D25B2280007DAFD /* BusinessTableView */,
 				1835D0A91D232B9200C9554C /* ProductTableView */,
 				181D745A1D25B3A90007DAFD /* QuickTableView.swift */,
 				181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */,
-				181D74681D25D0670007DAFD /* ProductViewController.swift */,
 				181D746A1D25D3560007DAFD /* QuickDataSource.swift */,
+				18F3D4001D2819C800CDE296 /* QuickViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				181D74521D25A61A0007DAFD /* UI */,
 				181D74511D25A5FC0007DAFD /* Network */,
 				181D74501D25A5EF0007DAFD /* Models */,
+				18F3D4021D281E3500CDE296 /* Extensions */,
 				1835D09B1D22F64900C9554C /* Info.plist */,
 				1835D0961D22F64900C9554C /* Assets.xcassets */,
 			);
@@ -160,6 +166,14 @@
 				1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */,
 			);
 			name = ProductTableView;
+			sourceTree = "<group>";
+		};
+		18F3D4021D281E3500CDE296 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		84143C46AE58A31F6AE293CD /* Frameworks */ = {
@@ -304,13 +318,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
 				1835D0921D22F64900C9554C /* ViewController.swift in Sources */,
 				181D744F1D2473910007DAFD /* Product.swift in Sources */,
 				1835D0A41D2328E700C9554C /* ProductTableView.swift in Sources */,
 				1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */,
+				18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */,
 				1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */,
 				181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */,
-				181D74691D25D0670007DAFD /* ProductViewController.swift in Sources */,
+				181D74691D25D0670007DAFD /* BusinessViewController.swift in Sources */,
 				181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */,
 				181D745D1D25B67B0007DAFD /* BusinessTableViewCell.swift in Sources */,
 				1835D0A21D22F73900C9554C /* Network.swift in Sources */,

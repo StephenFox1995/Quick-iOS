@@ -13,6 +13,9 @@ class ViewController: UIViewController, UITableViewDelegate {
   var businessTableView: BusinessTableView!
   var businessTableViewDataSource: BusinessTableViewDataSource!
   
+  override func viewWillAppear(animated: Bool) {
+    self.navigationController?.navigationBar.translucent = true
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,14 +37,17 @@ class ViewController: UIViewController, UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let business = self.businessTableViewDataSource.itemForRowIndex(indexPath)
-    if let b = business as? Business {
-      print(b)
+    
+    guard let b = business as? Business else {
+        // Error alert user.
+      return
     }
-    let productViewController = ProductViewController()
-    self.navigationController?.presentViewController(productViewController,
-                                                     animated: true, completion: {
-    })
+    
+    let businessViewController =
+      UIStoryboard.viewControllerFromStoryboard("BusinessViewController") as! BusinessViewController
+    businessViewController.business = b
+    self.navigationController?.pushViewController(businessViewController, animated: true);
   }
-  
 }
+
 
