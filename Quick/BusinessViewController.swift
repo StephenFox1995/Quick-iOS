@@ -65,7 +65,9 @@ class BusinessViewController: QuickViewController, UITableViewDelegate {
     }
     let productViewController =
       UIStoryboard.viewControllerFromStoryboard("ProductViewController") as! ProductViewController
-    productViewController.product = p
+    productViewController.shouldFetchProduct = true
+    productViewController.productId = p.id
+    //productViewController.product = p
     self.navigationController?.pushViewController(productViewController, animated: true);
   }
 }

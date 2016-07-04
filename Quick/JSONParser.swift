@@ -11,13 +11,20 @@ import SwiftyJSON
 
 class JSONParser {
   
+  /**
+   Parses JSON content from server side response.
+   
+   - parameter json: The json to parse.
+   */
   static func parseProduct(json: JSON) -> Product {
     let product = Product()
-    product.id =          json[0]["id"].stringValue
-    product.name =        json[0]["name"].stringValue
-    product.price =       json[0]["price"].stringValue
-    product.description = json[0]["description"].stringValue
-    product.businessID =  json[0]["business_id"].stringValue
+    if let pJSON = json.dictionary {
+      product.id =          pJSON["id"]?.stringValue
+      product.name =        pJSON["name"]?.stringValue
+      product.price =       pJSON["price"]?.stringValue
+      product.description = pJSON["description"]?.stringValue
+      product.businessID =  pJSON["business_id"]?.stringValue
+    }
     return product
   }
 }

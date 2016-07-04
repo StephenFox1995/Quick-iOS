@@ -11,9 +11,9 @@ import SwiftyJSON
 
 class ProductViewController: QuickViewController {
   
-  @IBOutlet weak var productPrice: UILabel!
-  @IBOutlet weak var productDescription: UILabel!
-  @IBOutlet weak var productName: UILabel!
+  @IBOutlet private weak var productPrice: UILabel!
+  @IBOutlet private weak var productDescription: UILabel!
+  @IBOutlet private weak var productName: UILabel!
   var product: Product?
   
   var productId: String?
@@ -26,11 +26,8 @@ class ProductViewController: QuickViewController {
     if shouldFetchProduct {
       fetchProductDetails()
     }
-    
-    if let p = self.product {
-      self.productName.text = p.name
-      self.productPrice.text = p.price
-      self.productDescription.text = p.description
+    else if let p = self.product { // Only try set if fetching from network is false.
+      self.setProductDetailsUI(p)
     }
   }
   
@@ -38,6 +35,7 @@ class ProductViewController: QuickViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
+  
   
   private func fetchProductDetails() {
     guard let id = self.productId else {
@@ -51,9 +49,18 @@ class ProductViewController: QuickViewController {
       if (success) {
         let json = JSON(data)
         self.product = JSONParser.parseProduct(json)
+        self.setProductDetailsUI(self.product)
       } else {
         // TODO: Alert user unable to load.
       }
+    }
+  }
+  
+  private func setProductDetailsUI(product: Product?) {
+    if let p = product {
+      self.productName.text = p.name
+      self.productPrice.text = p.price
+      self.productDescription.text = p.description
     }
   }
 }
