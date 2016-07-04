@@ -75,12 +75,65 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="businessImageView" destination="5bD-xc-GRP" id="csN-Xc-a8f"/>
                         <outlet property="productTableView" destination="Fap-Qc-j9e" id="9ld-Ca-OUd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gK5-Sj-NM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-522" y="1104"/>
+            <point key="canvasLocation" x="-388" y="1104"/>
+        </scene>
+        <!--Product View Controller-->
+        <scene sceneID="1Sz-Zz-jNU">
+            <objects>
+                <viewController storyboardIdentifier="ProductViewController" id="QJl-nA-ysg" customClass="ProductViewController" customModule="Quick" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lcc-MC-jxE"/>
+                        <viewControllerLayoutGuide type="bottom" id="cz5-0y-C9j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KzX-fL-5V4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7mj-OV-3qw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="305"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEv-IK-H73">
+                                <rect key="frame" x="20" y="313" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5B-bV-42A">
+                                <rect key="frame" x="20" y="342" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YK-aN-RyP">
+                                <rect key="frame" x="20" y="371" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7mj-OV-3qw" secondAttribute="trailing" id="JPk-I6-bNk"/>
+                            <constraint firstItem="7mj-OV-3qw" firstAttribute="top" secondItem="KzX-fL-5V4" secondAttribute="top" id="OFK-xg-Ov7"/>
+                            <constraint firstItem="7mj-OV-3qw" firstAttribute="leading" secondItem="KzX-fL-5V4" secondAttribute="leading" id="e8B-tp-aRU"/>
+                            <constraint firstItem="cz5-0y-C9j" firstAttribute="top" secondItem="7mj-OV-3qw" secondAttribute="bottom" constant="295" id="wLi-3f-zNj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="productDescription" destination="S5B-bV-42A" id="Pvj-wl-YxF"/>
+                        <outlet property="productName" destination="WEv-IK-H73" id="Y44-oc-MCT"/>
+                        <outlet property="productPrice" destination="8YK-aN-RyP" id="f9y-8S-UUg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ax-DX-F7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="222" y="1104"/>
         </scene>
     </scenes>
 </document>

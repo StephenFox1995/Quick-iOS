@@ -109,5 +109,20 @@ class Network {
         return businessProductEndPointProduction + ending
       }
     }
+    
+    
+    private static let productEndPointDev = "http://192.168.1.78:3000/product"
+    private static let productEndPointProduction = "" // TODO: to be decided
+    
+    /**
+     Creates a string url for products with the product id.
+     */
+    static func createProductEndPoint(productID: String) -> String {
+      if AppDelegate.devEnvironment {
+        return productEndPointDev + "/" + productID
+      } else {
+        return productEndPointProduction + "/" + productID
+      }
+    }
   }
 }

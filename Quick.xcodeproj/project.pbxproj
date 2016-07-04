@@ -31,6 +31,8 @@
 		1835D0AD1D24664700C9554C /* ProductTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */; };
 		18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4001D2819C800CDE296 /* QuickViewController.swift */; };
 		18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */; };
+		18F3D4061D2AFF0D00CDE296 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */; };
+		18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4071D2B071E00CDE296 /* JSONParser.swift */; };
 		DE01DD67AF12C406F23A7A82 /* Pods_Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3046EE7FA120C65328D837C /* Pods_Quick.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewDataSource.swift; sourceTree = "<group>"; };
 		18F3D4001D2819C800CDE296 /* QuickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickViewController.swift; sourceTree = "<group>"; };
 		18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
+		18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		18F3D4071D2B071E00CDE296 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.release.xcconfig"; sourceTree = "<group>"; };
 		A3046EE7FA120C65328D837C /* Pods_Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 				1835D0931D22F64900C9554C /* Main.storyboard */,
 				1835D0911D22F64900C9554C /* ViewController.swift */,
 				181D74681D25D0670007DAFD /* BusinessViewController.swift */,
+				18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */,
 				181D74561D25B2280007DAFD /* BusinessTableView */,
 				1835D0A91D232B9200C9554C /* ProductTableView */,
 				181D745A1D25B3A90007DAFD /* QuickTableView.swift */,
@@ -153,6 +158,7 @@
 				18F3D4021D281E3500CDE296 /* Extensions */,
 				1835D09B1D22F64900C9554C /* Info.plist */,
 				1835D0961D22F64900C9554C /* Assets.xcassets */,
+				18F3D4071D2B071E00CDE296 /* JSONParser.swift */,
 			);
 			path = Quick;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 			files = (
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
 				1835D0921D22F64900C9554C /* ViewController.swift in Sources */,
+				18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */,
 				181D744F1D2473910007DAFD /* Product.swift in Sources */,
 				1835D0A41D2328E700C9554C /* ProductTableView.swift in Sources */,
 				1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */,
@@ -336,6 +343,7 @@
 				181D74551D25AAAE0007DAFD /* Business.swift in Sources */,
 				181D74581D25B24E0007DAFD /* BusinessTableView.swift in Sources */,
 				1835D0AD1D24664700C9554C /* ProductTableViewDataSource.swift in Sources */,
+				18F3D4061D2AFF0D00CDE296 /* ProductViewController.swift in Sources */,
 				1835D0AB1D2465BC00C9554C /* Screen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

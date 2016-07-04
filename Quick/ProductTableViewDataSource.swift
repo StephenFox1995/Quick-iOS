@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class ProductTableViewDataSource: NSObject, UITableViewDataSource {
+class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   
   private var network: Network!
   private weak var tableView: QuickTableView!
@@ -57,6 +57,15 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
       productArray.addObject(product)
     }
     return productArray as AnyObject as! [Product]
+  }
+  
+  
+  override func itemForRowIndex(indexPath: NSIndexPath) -> AnyObject? {
+    if let p = self.products {
+      return p[indexPath.row]
+    } else {
+      return nil
+    }
   }
   
   // MARK: UITableViewDataSource
