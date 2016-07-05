@@ -15,6 +15,7 @@ class ProductViewController: QuickViewController {
   @IBOutlet private weak var productDescription: UILabel!
   @IBOutlet private weak var productName: UILabel!
   var product: Product?
+  private var network: Network!
   
   var productId: String?
   var shouldFetchProduct: Bool = false
@@ -22,6 +23,7 @@ class ProductViewController: QuickViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    self.network = Network()
     
     if shouldFetchProduct {
       fetchProductDetails()
@@ -42,7 +44,6 @@ class ProductViewController: QuickViewController {
       return
     }
     
-    let network = Network()
     let productEndPoint = Network.NetworkingDetails.createProductEndPoint(id)
     
     network.requestJSON(productEndPoint) { (success, data) in
@@ -61,6 +62,14 @@ class ProductViewController: QuickViewController {
       self.productName.text = p.name
       self.productPrice.text = p.price
       self.productDescription.text = p.description
+    }
+  }
+  
+  
+  @IBAction func beginPurchase(sender: AnyObject) {
+    let jsonParameters = JSONEncoder.encodePurchase(productID: "S1jzmCpr", businessID: "rkIeje2r", userID: "H1iQEkqB")
+    let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint
+    network.postJSON(purchaseEndPoint, jsonParameters: jsonParameters) { (success, data) in
     }
   }
 }

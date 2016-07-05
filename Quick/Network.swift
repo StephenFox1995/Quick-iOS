@@ -16,7 +16,6 @@ class Network {
    Sends a http GET request to a url.
    
    - parameter urlString: The url string of the resource.
-   
    - parameter response: A callback containing a success flag
                          and the JSON.
    */
@@ -31,6 +30,24 @@ class Network {
         case .Failure:
           response(success: false, data: NSNull())
         }
+    }
+  }
+  
+  
+  /**
+   Sends a http POST request to a url.
+   
+   - parameter urlString:       The url string of the resource.
+   - parameter jsonParameters:  A dictionary representation of the json to be sent
+                                as the body of the request.
+   - parameter response:        A callback containing the reponse.
+   */
+  func postJSON(urlString: String,
+                jsonParameters: Dictionary<String, AnyObject>,
+                response: (success: Bool, data: AnyObject) -> Void) {
+    Alamofire.request(.POST, urlString, parameters: jsonParameters, encoding: .JSON).validate()
+      .responseJSON { afResponse in
+        
     }
   }
   
@@ -122,6 +139,23 @@ class Network {
         return productEndPointDev + "/" + productID
       } else {
         return productEndPointProduction + "/" + productID
+      }
+    }
+    
+    
+    private static let purchaseEndPointDev = "http://192.168.1.78:3000/purchase"
+    private static let purchaseEndPointProduction = "" // TODO: to be decided.
+    
+    /**
+     String url for purchases.
+     */
+    static var purchaseEndPoint: String {
+      get {
+        if AppDelegate.devEnvironment {
+          return purchaseEndPointDev
+        } else {
+          return purchaseEndPointProduction
+        }
       }
     }
   }

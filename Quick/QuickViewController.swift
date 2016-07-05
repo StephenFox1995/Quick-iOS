@@ -20,4 +20,13 @@ class QuickViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
+  
+  /**
+   Displays an alert to the user.
+   
+   - parameter message: The message use in the alert.
+   */
+  internal func displayError(message: String) {
+    
+  }
 }

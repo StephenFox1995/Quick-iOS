@@ -34,6 +34,7 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
         self.businesses = self.createBusinessArray(json)
         self.tableView.reloadData()
       } else {
+        print("There was an error retrieving Businesses.")
         // TODO: Alert user unable to load.
       }
     }
@@ -48,7 +49,7 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
     }
   }
   
-  private func createBusinessArray(json: JSON) -> Array<Business>{
+  private func createBusinessArray(json: JSON) -> Array<Business> {
     let businessArray = NSMutableArray()
     
     for jsonObj in json {
