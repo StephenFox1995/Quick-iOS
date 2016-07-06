@@ -16,9 +16,9 @@ class BusinessViewController: QuickViewController, UITableViewDelegate {
   @IBOutlet weak var businessImageView: UIImageView!
   private var productTableViewDataSource: ProductTableViewDataSource!
   
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
+    
+  override func viewDidLoad() {
+    super.viewDidLoad()
     self.title = business?.name
     self.network = Network()
     

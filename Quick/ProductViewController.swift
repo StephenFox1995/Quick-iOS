@@ -21,8 +21,9 @@ class ProductViewController: QuickViewController {
   var shouldFetchProduct: Bool = false
   
   
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     self.network = Network()
     
     if shouldFetchProduct {
