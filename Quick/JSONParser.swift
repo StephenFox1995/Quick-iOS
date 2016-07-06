@@ -40,4 +40,9 @@ class JSONParser {
     }
     return business
   }
+  
+  
+  static func parsePurchaseID(json: JSON) -> String {
+    return json.dictionaryValue["purchaseID"]!.stringValue
+  }
 }

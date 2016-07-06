@@ -28,7 +28,7 @@ class ProductViewController: QuickViewController {
     if shouldFetchProduct {
       fetchProductDetails()
     }
-    else if let p = self.product { // Only try set if fetching from network is false.
+    else if let p = self.product { // Only try set, if fetching from network is false.
       self.setProductDetailsUI(p)
     }
   }
@@ -63,13 +63,17 @@ class ProductViewController: QuickViewController {
   
   
   @IBAction func beginPurchase(sender: AnyObject) {
-    let jsonParameters = JSONEncoder.encodePurchase(productID: "S1jzmCpr", businessID: "rkIeje2r", userID: "H1iQEkqB")
+    let jsonParameters = JSONEncoder.encodePurchase(productID: "S1jzmCpr",
+                                                    businessID: "rkIeje2r",
+                                                    userID: "H1iQEkqB")
     let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint
     network.postJSON(purchaseEndPoint, jsonParameters: jsonParameters) {
       (success, data) in
       if (success) {
+        let json = JSON(data)
+        let purchaseID = JSONParser.parsePurchaseID(json)
         super.displayMessage(title: StringConstants.successfulPurchaseTitleString,
-                             message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!))
+                             message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!, purchaseID: purchaseID))
       } else {
         super.displayMessage(title: StringConstants.networkErrorTitleString,
                            message: StringConstants.networkErrorMessageString)
