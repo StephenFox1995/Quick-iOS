@@ -64,15 +64,13 @@ class BusinessViewController: QuickViewController, UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let product = self.productTableViewDataSource.itemForRowIndex(indexPath)
     
-    guard let p = product as? Product else {
-      // Error alert user.
-      return
-    }
+    guard let p = product as? Product else { return }
+    guard let b = self.business else { return }
+    
     let productViewController =
       UIStoryboard.viewControllerFromStoryboard("ProductViewController") as! ProductViewController
-    productViewController.shouldFetchProduct = true
-    productViewController.productId = p.id
-    //productViewController.product = p
+    productViewController.product = p
+    productViewController.business = b
     self.navigationController?.pushViewController(productViewController, animated: true);
   }
 }

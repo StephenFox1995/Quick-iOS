@@ -16,4 +16,7 @@ class StringConstants: NSObject {
   static func createSuccessfulPurchaseMessageString(productName: String, purchaseID: String) -> String {
     return "Your purchase of " + productName + " was succesful. Your purchase code is: " + purchaseID
   }
+  
+  static let purchaseErrorTitleString = "Purchase Error"
+  static let purchaseErrorMessageString = "Purchase unavailable at this time, please try again later."
 }

@@ -15,11 +15,11 @@ class ProductViewController: QuickViewController {
   @IBOutlet private weak var productDescription: UILabel!
   @IBOutlet private weak var productName: UILabel!
   var product: Product?
+  var business: Business?
   private var network: Network!
   
   var productId: String?
   var shouldFetchProduct: Bool = false
-  
   
   
   override func viewDidLoad() {
@@ -35,11 +35,8 @@ class ProductViewController: QuickViewController {
   }
   
 
-  
   private func fetchProductDetails() {
-    guard let id = self.productId else {
-      return
-    }
+    guard let id = self.productId else { return }
     
     let productEndPoint = Network.NetworkingDetails.createProductEndPoint(id)
     network.requestJSON(productEndPoint) { (success, data) in
@@ -62,14 +59,23 @@ class ProductViewController: QuickViewController {
     }
   }
   
+  private func purchaseError() {
+    self.displayMessage(title: StringConstants.purchaseErrorTitleString ,
+                        message: StringConstants.purchaseErrorMessageString)
+  }
   
   @IBAction func beginPurchase(sender: AnyObject) {
-    guard let p = self.product else { return }
-    guard let pID = p.id else { return }
+    // Check product
+    guard let p = self.product else { return purchaseError() }
+    guard let pID = p.id else { return purchaseError() }
+    // Check business
+    guard let b = self.business else { return purchaseError() }
+    guard let bID = b.id else { return purchaseError() }
     
     let jsonParameters = JSONEncoder.encodePurchase(productID: pID,
-                                                    businessID: "rkIeje2r",
+                                                    businessID: bID,
                                                     userID: "H1iQEkqB")
+    
     let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint
     network.postJSON(purchaseEndPoint, jsonParameters: jsonParameters) {
       (success, data) in
