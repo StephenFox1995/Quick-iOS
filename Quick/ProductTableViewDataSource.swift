@@ -32,21 +32,23 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   }
   
   
-  func fetchDataFromNetwork(productURL: String) {
-    self.network.requestJSON(productURL) { (success, data) in
+  override func fetchData(url: String, completetionHandler: (success: Bool) -> Void) {
+    self.network.requestJSON(url) { (success, data) in
       if (success) {
         let json = JSON(data)
         self.products = self.createProductArray(json)
         self.tableView.reloadData()
+        completetionHandler(success: true)
       } else {
-        // TODO: Alert user unable to load.
+        fxprint("Could not load Products.")
+        completetionHandler(success: false)
       }
     }
   }
   
   
   private func createProductArray(json: JSON) -> Array<Product> {
-    let productArray = NSMutableArray()
+    var productArray = Array<Product>()
     
     for jsonObj in json {
       let product = Product()
@@ -54,9 +56,9 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
       product.name =        jsonObj.1["name"].stringValue
       product.price =       jsonObj.1["price"].stringValue
       product.description = jsonObj.1["description"].stringValue
-      productArray.addObject(product)
+      productArray.append(product)
     }
-    return productArray as AnyObject as! [Product]
+    return productArray
   }
   
   

@@ -27,8 +27,10 @@ class Network {
           if let value = afResponse.result.value {
             response(success: true, data: value)
           }
+          break
         case .Failure:
           response(success: false, data: NSNull())
+          break
         }
     }
   }
@@ -47,7 +49,15 @@ class Network {
                 response: (success: Bool, data: AnyObject) -> Void) {
     Alamofire.request(.POST, urlString, parameters: jsonParameters, encoding: .JSON).validate()
       .responseJSON { afResponse in
-        
+        switch afResponse.result {
+        case .Success:
+          if let value = afResponse.result.value {
+            response(success: true, data: value)
+          }
+        case .Failure:
+          response(success: false, data: NSNull())
+          break
+        }
     }
   }
   

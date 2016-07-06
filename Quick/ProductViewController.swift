@@ -52,7 +52,8 @@ class ProductViewController: QuickViewController {
         self.product = JSONParser.parseProduct(json)
         self.setProductDetailsUI(self.product)
       } else {
-        // TODO: Alert user unable to load.
+        super.displayError(title: StringConstants.networkErrorTitleString,
+                           message: StringConstants.networkErrorMessageString)
       }
     }
   }
@@ -69,7 +70,14 @@ class ProductViewController: QuickViewController {
   @IBAction func beginPurchase(sender: AnyObject) {
     let jsonParameters = JSONEncoder.encodePurchase(productID: "S1jzmCpr", businessID: "rkIeje2r", userID: "H1iQEkqB")
     let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint
-    network.postJSON(purchaseEndPoint, jsonParameters: jsonParameters) { (success, data) in
+    network.postJSON(purchaseEndPoint, jsonParameters: jsonParameters) {
+      (success, data) in
+      if (success) {
+        // TODO: Notify of success.
+      } else {
+        super.displayError(title: StringConstants.networkErrorTitleString,
+                           message: StringConstants.networkErrorMessageString)
+      }
     }
   }
 }

@@ -26,7 +26,13 @@ class QuickViewController: UIViewController {
    
    - parameter message: The message use in the alert.
    */
-  internal func displayError(message: String) {
-    
+  internal func displayError(title title: String, message: String) {
+    let alertController = UIAlertController(title: title,
+                                            message:message,
+                                            preferredStyle: UIAlertControllerStyle.Alert)
+    alertController.addAction(UIAlertAction(title: "Done",
+      style: UIAlertActionStyle.Default,
+      handler: nil))
+    self.presentViewController(alertController, animated: true, completion: nil)
   }
 }

@@ -27,4 +27,17 @@ class JSONParser {
     }
     return product
   }
+  
+  
+  
+  static func parseBusiness(json: JSON) -> Business {
+    let business = Business()
+    if let bJSON = json.dictionary {
+      business.id =             bJSON["id"]?.stringValue
+      business.name =           bJSON["name"]?.stringValue
+      business.address =        bJSON["address"]?.stringValue
+      business.contactNumber =  bJSON["contact_number"]?.stringValue
+    }
+    return business
+  }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate {
+class ViewController: QuickViewController, UITableViewDelegate {
   
   var businessTableView: BusinessTableView!
   var businessTableViewDataSource: BusinessTableViewDataSource!
@@ -30,6 +30,13 @@ class ViewController: UIViewController, UITableViewDelegate {
         0, 0, Screen.width, Screen.height), style: .Plain)
       self.businessTableView.delegate = self
       self.businessTableViewDataSource = BusinessTableViewDataSource(tableView: self.businessTableView)
+      self.businessTableViewDataSource.fetchData("", completetionHandler: {
+        (success) in
+        if !success {
+          super.displayError(title: StringConstants.networkErrorTitleString,
+            message: StringConstants.networkErrorMessageString)
+        }
+      })
     }
     self.view.addSubview(self.businessTableView)
   }

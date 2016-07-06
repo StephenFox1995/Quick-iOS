@@ -20,22 +20,22 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
     super.init()
     self.tableView = tableView
     self.tableView.dataSource = self
-    
     self.network = Network()
-    self.fetchDataFromNetwork()
   }
   
   
-  private func fetchDataFromNetwork() {
+  
+  override func fetchData(url: String, completetionHandler: (success: Bool) -> Void) {
     let businessEndPoint = Network.NetworkingDetails.businessEndPoint
     self.network.requestJSON(businessEndPoint) { (success, data) in
       if (success) {
         let json = JSON(data)
         self.businesses = self.createBusinessArray(json)
         self.tableView.reloadData()
+        completetionHandler(success: true)
       } else {
-        print("There was an error retrieving Businesses.")
-        // TODO: Alert user unable to load.
+        fxprint("There was an error retrieving Businesses.")
+        completetionHandler(success: false)
       }
     }
   }
@@ -50,7 +50,7 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
   }
   
   private func createBusinessArray(json: JSON) -> Array<Business> {
-    let businessArray = NSMutableArray()
+    var businessArray = Array<Business>()
     
     for jsonObj in json {
       let business = Business()
@@ -58,10 +58,11 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
       business.name =           jsonObj.1["name"].stringValue
       business.address =        jsonObj.1["address"].stringValue
       business.contactNumber =  jsonObj.1["contact_number"].stringValue
-      businessArray.addObject(business)
+      businessArray.append(business)
     }
-    return businessArray as AnyObject as! [Business]
+    return businessArray
   }
+  
   
   // MARK: UITableViewDataSource
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
