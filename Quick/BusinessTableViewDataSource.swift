@@ -42,12 +42,16 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
   
   
   override func itemForRowIndex(indexPath: NSIndexPath) -> AnyObject? {
-    if businesses != nil {
-      return businesses![indexPath.row]
-    } else {
+    if let b = self.businesses {
+      if b.indices.contains(indexPath.row) {
+        return b[indexPath.row]
+      }
       return nil
     }
+    return nil
   }
+  
+  
   
   private func createBusinessArray(json: JSON) -> Array<Business> {
     var businessArray = Array<Business>()
@@ -72,6 +76,7 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
       return 0;
     }
   }
+  
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let businessCell =

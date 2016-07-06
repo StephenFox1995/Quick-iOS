@@ -64,7 +64,10 @@ class ProductViewController: QuickViewController {
   
   
   @IBAction func beginPurchase(sender: AnyObject) {
-    let jsonParameters = JSONEncoder.encodePurchase(productID: "S1jzmCpr",
+    guard let p = self.product else { return }
+    guard let pID = p.id else { return }
+    
+    let jsonParameters = JSONEncoder.encodePurchase(productID: pID,
                                                     businessID: "rkIeje2r",
                                                     userID: "H1iQEkqB")
     let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint

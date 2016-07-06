@@ -64,10 +64,12 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   
   override func itemForRowIndex(indexPath: NSIndexPath) -> AnyObject? {
     if let p = self.products {
-      return p[indexPath.row]
-    } else {
+      if p.indices.contains(indexPath.row) {
+        return p[indexPath.row]
+      }
       return nil
     }
+    return nil
   }
   
   // MARK: UITableViewDataSource
