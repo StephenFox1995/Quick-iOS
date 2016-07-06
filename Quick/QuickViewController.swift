@@ -26,7 +26,7 @@ class QuickViewController: UIViewController {
    
    - parameter message: The message use in the alert.
    */
-  internal func displayError(title title: String, message: String) {
+  internal func displayMessage(title title: String, message: String) {
     let alertController = UIAlertController(title: title,
                                             message:message,
                                             preferredStyle: UIAlertControllerStyle.Alert)

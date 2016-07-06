@@ -11,4 +11,9 @@ import UIKit
 class StringConstants: NSObject {
   static let networkErrorTitleString = "Network Error"
   static let networkErrorMessageString = "A network error occurred, please try again."
+  
+  static let successfulPurchaseTitleString = "Success!"
+  static func createSuccessfulPurchaseMessageString(productName: String) -> String {
+    return "Your purchase of " + productName + " was succesful."
+  }
 }

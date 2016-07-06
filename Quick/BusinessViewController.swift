@@ -53,7 +53,7 @@ class BusinessViewController: QuickViewController, UITableViewDelegate {
     let productsEndPoint = Network.NetworkingDetails.createBusinessProductEndPoint(businessID)
     self.productTableViewDataSource.fetchData(productsEndPoint) { (success) in
       if !success {
-        super.displayError(title: StringConstants.networkErrorTitleString,
+        super.displayMessage(title: StringConstants.networkErrorTitleString,
                            message: StringConstants.networkErrorMessageString)
       }
     }

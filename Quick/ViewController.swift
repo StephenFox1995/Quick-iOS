@@ -33,7 +33,7 @@ class ViewController: QuickViewController, UITableViewDelegate {
       self.businessTableViewDataSource.fetchData("", completetionHandler: {
         (success) in
         if !success {
-          super.displayError(title: StringConstants.networkErrorTitleString,
+          super.displayMessage(title: StringConstants.networkErrorTitleString,
             message: StringConstants.networkErrorMessageString)
         }
       })

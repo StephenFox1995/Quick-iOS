@@ -33,11 +33,7 @@ class ProductViewController: QuickViewController {
     }
   }
   
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-  
+
   
   private func fetchProductDetails() {
     guard let id = self.productId else {
@@ -45,14 +41,13 @@ class ProductViewController: QuickViewController {
     }
     
     let productEndPoint = Network.NetworkingDetails.createProductEndPoint(id)
-    
     network.requestJSON(productEndPoint) { (success, data) in
       if (success) {
         let json = JSON(data)
         self.product = JSONParser.parseProduct(json)
         self.setProductDetailsUI(self.product)
       } else {
-        super.displayError(title: StringConstants.networkErrorTitleString,
+        super.displayMessage(title: StringConstants.networkErrorTitleString,
                            message: StringConstants.networkErrorMessageString)
       }
     }
@@ -73,9 +68,10 @@ class ProductViewController: QuickViewController {
     network.postJSON(purchaseEndPoint, jsonParameters: jsonParameters) {
       (success, data) in
       if (success) {
-        // TODO: Notify of success.
+        super.displayMessage(title: StringConstants.successfulPurchaseTitleString,
+                             message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!))
       } else {
-        super.displayError(title: StringConstants.networkErrorTitleString,
+        super.displayMessage(title: StringConstants.networkErrorTitleString,
                            message: StringConstants.networkErrorMessageString)
       }
     }
