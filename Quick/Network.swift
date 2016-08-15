@@ -67,9 +67,12 @@ class Network {
    Inner class to store constant values about backend urls.
    */
   class NetworkingDetails {
+    //"http://192.168.1.112"
+    private static let baseAddress = "http://192.168.1.78"
+    private static let port = "3000"
     
     // Base end point
-    private static let baseEndPointDev = "http://192.168.1.78:3000"
+    private static let baseEndPointDev = NetworkingDetails.baseAddress + ":" + NetworkingDetails.port
     private static let baseEndPointProduction = "" // TODO: to be decided.
     
     /**
@@ -86,8 +89,21 @@ class Network {
     }
     
     
+    // Create user end point
+    private static let createUserEndPointDev = NetworkingDetails.baseEndPointDev + "/user";
+    private static let createUserEndPointProduction = "" // TODO: tbd.
+    
+    /**
+     * The base end point for creating users requests.
+     */
+    static var createUserEndPoint: String {
+      get {
+        return AppDelegate.devEnvironment ? createUserEndPointDev: createUserEndPointProduction;
+      }
+    }
+    
     // User end point
-    private static let userEndPointDev = "http://192.168.1.78:3000/user/id"
+    private static let userEndPointDev = NetworkingDetails.baseEndPointDev + "/user/id"
     private static let userEndPointProduction = "" // TODO: to be decided.
     
     /**
@@ -95,17 +111,13 @@ class Network {
      */
     static var userEndPoint: String {
       get {
-        if AppDelegate.devEnvironment {
-          return userEndPointDev
-        } else {
-          return userEndPointProduction
-        }
+        return AppDelegate.devEnvironment ? userEndPointDev: userEndPointProduction
       }
     }
     
     
     // TODO: CHANGE THIS!!
-    private static let businessEndPointDev = "http://192.168.1.78:3000/business/all"
+    private static let businessEndPointDev = NetworkingDetails.baseEndPointDev + "/business/all"
     private static let businessEndPointProduction = "" // TODO: to be decided
     
     /**
@@ -113,47 +125,35 @@ class Network {
      */
     static var businessEndPoint: String {
       get {
-        if AppDelegate.devEnvironment {
-          return businessEndPointDev
-        } else {
-          return businessEndPointProduction
-        }
+        return AppDelegate.devEnvironment ? businessEndPointDev: businessEndPointProduction
       }
     }
     
     
     // All products for business endpoint
-    private static let businessProductEndPointDev = "http://192.168.1.78:3000/business"
+    private static let businessProductEndPointDev = NetworkingDetails.baseEndPointDev + "/business"
     private static let businessProductEndPointProduction = "" // TODO: to be decided.
     
     /**
      Creates a string url for business products.*/
     static func createBusinessProductEndPoint(productID: String) -> String {
-      let ending = "/\(productID)/products"
-      if AppDelegate.devEnvironment {
-        return businessProductEndPointDev + ending
-      } else {
-        return businessProductEndPointProduction + ending
-      }
+      let resource = "/\(productID)/products"
+      return (AppDelegate.devEnvironment ? businessEndPointDev: businessEndPointProduction) + resource
     }
     
     
-    private static let productEndPointDev = "http://192.168.1.78:3000/product"
+    private static let productEndPointDev = NetworkingDetails.baseEndPointDev + "/product"
     private static let productEndPointProduction = "" // TODO: to be decided
     
     /**
      Creates a string url for products with the product id.
      */
     static func createProductEndPoint(productID: String) -> String {
-      if AppDelegate.devEnvironment {
-        return productEndPointDev + "/" + productID
-      } else {
-        return productEndPointProduction + "/" + productID
-      }
+      return (AppDelegate.devEnvironment ? productEndPointDev: productEndPointProduction) + "/\(productID))"
     }
     
     
-    private static let purchaseEndPointDev = "http://192.168.1.78:3000/purchase"
+    private static let purchaseEndPointDev = NetworkingDetails.baseEndPointDev + "/purchase"
     private static let purchaseEndPointProduction = "" // TODO: to be decided.
     
     /**
@@ -161,11 +161,7 @@ class Network {
      */
     static var purchaseEndPoint: String {
       get {
-        if AppDelegate.devEnvironment {
-          return purchaseEndPointDev
-        } else {
-          return purchaseEndPointProduction
-        }
+        return AppDelegate.devEnvironment ? purchaseEndPointDev: purchaseEndPointProduction
       }
     }
   }

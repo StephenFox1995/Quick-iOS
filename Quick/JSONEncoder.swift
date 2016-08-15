@@ -22,6 +22,37 @@ class JSONEncoder {
   static func encodePurchase(productID productID: String,
                                        businessID: String,
                                        userID: String) -> Dictionary<String, String> {
-    return ["productID": productID, "businessID": businessID, "userID": userID]
+    return ["productID": productID,
+            "businessID": businessID,
+            "userID": userID]
+  }
+  
+  
+  
+  static func encodeUser(user: User) -> Dictionary<String, String> {
+    return ["firstname": user.firstname!,
+            "lastname": user.lastname!,
+            "email": user.email!,
+            "password": user.password!]
+  }
+  
+  /**
+   Creates a JSON representation of a user.
+   If successful the JSON will be constructed as below.
+   `{
+      "user": {
+        "firstname": "John",
+        "lastname": "smith",
+        "email": "johnsmith@email.com",
+        "password": "strong-password"
+      }
+   }`
+   
+   - parameter userJSON A JSON representation of a user.
+   - returns JSON user object
+
+   */
+  static func createUserJSONObject(userJSON: Dictionary<String, String>) -> Dictionary<String, Dictionary<String, String>> {
+    return ["user": userJSON];
   }
 }

@@ -16,10 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   // Indicates if we're in development environment.
   static let devEnvironment = true
+  private let sessionManager = SessionManager()
   var window: UIWindow?
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    // Check if there is an active session on the device.
+    // If there's no session ask the user to login/ signup.
+    if (!sessionManager.getActiveSession()) {
+      // Override point for customization after application launch.
+      let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+      
+      let rootViewController:UIViewController = storyboard.instantiateViewControllerWithIdentifier("SignUpViewController") as UIViewController
+      navigationController.viewControllers = [rootViewController]
+      self.window?.rootViewController = navigationController
+      return true
+    }
+    
     return true
   }
 

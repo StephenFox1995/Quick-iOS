@@ -35,4 +35,19 @@ class QuickViewController: UIViewController {
       handler: nil))
     self.presentViewController(alertController, animated: true, completion: nil)
   }
+  
+  
+  
+  internal func displayQRCodeDetailView(title title: String, message: String, qrCodeSeed: String) {
+    let alertController = UIAlertController(title: title,
+                                            message:message,
+                                            preferredStyle: UIAlertControllerStyle.Alert)
+    alertController.addAction(UIAlertAction(title: "Done",
+      style: UIAlertActionStyle.Default,
+      handler: nil))
+    let qrCodeImage = QRCode.generateFromString(qrCodeSeed)
+    let qrCodeImageView = UIImageView(image: qrCodeImage)
+    alertController.view.addSubview(qrCodeImageView)
+    self.presentViewController(alertController, animated: true, completion: nil)
+  }  
 }

@@ -82,12 +82,19 @@ class ProductViewController: QuickViewController {
       if (success) {
         let json = JSON(data)
         let purchaseID = JSONParser.parsePurchaseID(json)
-        super.displayMessage(title: StringConstants.successfulPurchaseTitleString,
-                             message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!, purchaseID: purchaseID))
+        self.displayPurchaseDetails(purchaseID)
+        
       } else {
         super.displayMessage(title: StringConstants.networkErrorTitleString,
                            message: StringConstants.networkErrorMessageString)
       }
     }
+  }
+  
+  
+  private func displayPurchaseDetails(purchaseID: String) {
+    super.displayQRCodeDetailView(title: StringConstants.successfulPurchaseTitleString,
+                                  message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!, purchaseID: purchaseID),
+                                  qrCodeSeed: purchaseID)
   }
 }

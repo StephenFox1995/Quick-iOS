@@ -18,6 +18,8 @@
 		181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */; };
 		181D74691D25D0670007DAFD /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74681D25D0670007DAFD /* BusinessViewController.swift */; };
 		181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D746A1D25D3560007DAFD /* QuickDataSource.swift */; };
+		182E68581D62433D006D43D9 /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68571D62433D006D43D9 /* SignUpManager.swift */; };
+		182E685A1D624434006D43D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68591D624434006D43D9 /* User.swift */; };
 		183389E41D2D27F1006C83AF /* FXPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183389E31D2D27F1006C83AF /* FXPrint.swift */; };
 		183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183389E51D2D5BBE006C83AF /* StringConstants.swift */; };
 		1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D08F1D22F64900C9554C /* AppDelegate.swift */; };
@@ -31,11 +33,17 @@
 		1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */; };
 		1835D0AB1D2465BC00C9554C /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AA1D2465BC00C9554C /* Screen.swift */; };
 		1835D0AD1D24664700C9554C /* ProductTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */; };
+		188D27761D3BEE4200A3F77B /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D27751D3BEE4200A3F77B /* QRCode.swift */; };
+		18E884DA1D6214DB00BBD573 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E884D91D6214DB00BBD573 /* LoginManager.swift */; };
 		18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4001D2819C800CDE296 /* QuickViewController.swift */; };
 		18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */; };
 		18F3D4061D2AFF0D00CDE296 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */; };
 		18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4071D2B071E00CDE296 /* JSONParser.swift */; };
 		18F3D40A1D2C6B8600CDE296 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4091D2C6B8600CDE296 /* JSONEncoder.swift */; };
+		18F631371D624F410008103C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631361D624F410008103C /* SessionManager.swift */; };
+		18F631391D624F920008103C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631381D624F920008103C /* Session.swift */; };
+		18F6313B1D6250340008103C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313A1D6250340008103C /* Account.swift */; };
+		18F6313D1D62657A0008103C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313C1D62657A0008103C /* SignUpViewController.swift */; };
 		DE01DD67AF12C406F23A7A82 /* Pods_Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3046EE7FA120C65328D837C /* Pods_Quick.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +59,8 @@
 		181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickBusinessObject.swift; sourceTree = "<group>"; };
 		181D74681D25D0670007DAFD /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		181D746A1D25D3560007DAFD /* QuickDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDataSource.swift; sourceTree = "<group>"; };
+		182E68571D62433D006D43D9 /* SignUpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
+		182E68591D624434006D43D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		183389E31D2D27F1006C83AF /* FXPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXPrint.swift; sourceTree = "<group>"; };
 		183389E51D2D5BBE006C83AF /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		1835D08C1D22F64900C9554C /* Quick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quick.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,11 +76,17 @@
 		1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		1835D0AA1D2465BC00C9554C /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewDataSource.swift; sourceTree = "<group>"; };
+		188D27751D3BEE4200A3F77B /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		18E884D91D6214DB00BBD573 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		18F3D4001D2819C800CDE296 /* QuickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickViewController.swift; sourceTree = "<group>"; };
 		18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		18F3D4071D2B071E00CDE296 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		18F3D4091D2C6B8600CDE296 /* JSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
+		18F631361D624F410008103C /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		18F631381D624F920008103C /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		18F6313A1D6250340008103C /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		18F6313C1D62657A0008103C /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.release.xcconfig"; sourceTree = "<group>"; };
 		A3046EE7FA120C65328D837C /* Pods_Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +110,10 @@
 				181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */,
 				181D744E1D2473910007DAFD /* Product.swift */,
 				181D74541D25AAAE0007DAFD /* Business.swift */,
+				182E68591D624434006D43D9 /* User.swift */,
+				18F631361D624F410008103C /* SessionManager.swift */,
+				18F631381D624F920008103C /* Session.swift */,
+				18F6313A1D6250340008103C /* Account.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -102,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				1835D0A11D22F73900C9554C /* Network.swift */,
+				18E884D91D6214DB00BBD573 /* LoginManager.swift */,
+				182E68571D62433D006D43D9 /* SignUpManager.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -109,9 +131,10 @@
 		181D74521D25A61A0007DAFD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				1835D0AA1D2465BC00C9554C /* Screen.swift */,
-				1835D0981D22F64900C9554C /* LaunchScreen.storyboard */,
 				1835D0931D22F64900C9554C /* Main.storyboard */,
+				1835D0981D22F64900C9554C /* LaunchScreen.storyboard */,
+				1835D0AA1D2465BC00C9554C /* Screen.swift */,
+				18F6313C1D62657A0008103C /* SignUpViewController.swift */,
 				1835D0911D22F64900C9554C /* ViewController.swift */,
 				181D74681D25D0670007DAFD /* BusinessViewController.swift */,
 				18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */,
@@ -195,6 +218,7 @@
 			children = (
 				18F3D4071D2B071E00CDE296 /* JSONParser.swift */,
 				18F3D4091D2C6B8600CDE296 /* JSONEncoder.swift */,
+				188D27751D3BEE4200A3F77B /* QRCode.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -346,20 +370,28 @@
 				1835D0921D22F64900C9554C /* ViewController.swift in Sources */,
 				18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */,
 				181D744F1D2473910007DAFD /* Product.swift in Sources */,
+				18F631371D624F410008103C /* SessionManager.swift in Sources */,
+				18E884DA1D6214DB00BBD573 /* LoginManager.swift in Sources */,
+				182E68581D62433D006D43D9 /* SignUpManager.swift in Sources */,
 				1835D0A41D2328E700C9554C /* ProductTableView.swift in Sources */,
 				1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */,
+				18F6313D1D62657A0008103C /* SignUpViewController.swift in Sources */,
 				18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */,
 				1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */,
 				181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */,
 				181D74691D25D0670007DAFD /* BusinessViewController.swift in Sources */,
+				18F6313B1D6250340008103C /* Account.swift in Sources */,
 				181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */,
 				181D745D1D25B67B0007DAFD /* BusinessTableViewCell.swift in Sources */,
 				1835D0A21D22F73900C9554C /* Network.swift in Sources */,
 				181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */,
 				18F3D40A1D2C6B8600CDE296 /* JSONEncoder.swift in Sources */,
 				183389E41D2D27F1006C83AF /* FXPrint.swift in Sources */,
+				18F631391D624F920008103C /* Session.swift in Sources */,
 				181D745F1D25B69D0007DAFD /* BusinessTableViewDataSource.swift in Sources */,
+				182E685A1D624434006D43D9 /* User.swift in Sources */,
 				181D745B1D25B3A90007DAFD /* QuickTableView.swift in Sources */,
+				188D27761D3BEE4200A3F77B /* QRCode.swift in Sources */,
 				181D74551D25AAAE0007DAFD /* Business.swift in Sources */,
 				181D74581D25B24E0007DAFD /* BusinessTableView.swift in Sources */,
 				1835D0AD1D24664700C9554C /* ProductTableViewDataSource.swift in Sources */,
@@ -480,6 +512,7 @@
 			baseConfigurationReference = A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Quick/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -493,6 +526,7 @@
 			baseConfigurationReference = 2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Quick/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
