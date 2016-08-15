@@ -36,8 +36,8 @@ class SignUpViewController: QuickViewController {
     let signUpManager = SignUpManager.sharedInstace
     let user = User(email: self.emailTextField.text!,
                     firstname: self.firstnameTextField.text!,
-                    lastname: self.passwordTextField.text!,
-                    password: self.lastnameTextField.text!)
+                    lastname: self.lastnameTextField.text!,
+                    password: self.passwordTextField.text!)
     
     signUpManager.createUserAccount(user) { (success) in
       return super.displayMessage(title: "Success", message: "Account created")
@@ -47,10 +47,10 @@ class SignUpViewController: QuickViewController {
   
   
   private func validInputFields() -> Bool {
-    if (self.emailTextField.text!.isEmpty ||
+    if  self.emailTextField.text!.isEmpty ||
         self.firstnameTextField.text!.isEmpty ||
         self.passwordTextField.text!.isEmpty ||
-        self.lastnameTextField.text!.isEmpty) {
+        self.lastnameTextField.text!.isEmpty {
       return false
     } else {
       return true
