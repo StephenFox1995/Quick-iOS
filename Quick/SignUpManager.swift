@@ -27,7 +27,9 @@ class SignUpManager {
     network.postJSON(Network.NetworkingDetails.createUserEndPoint,
                      jsonParameters: userJSONObject)
     { (success, data) in
-      
+      fxprint(data)
+      let s = Session()
+      s.sessionWithJWT()
     }
   }
 }

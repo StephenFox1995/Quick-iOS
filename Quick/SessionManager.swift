@@ -21,4 +21,11 @@ class SessionManager {
     // again and get a new token they can use.
     return false
   }
+  
+  /**
+   Creates a new session on a user's device.
+   */
+  func registerSession(session: Session) {
+    
+  }
 }

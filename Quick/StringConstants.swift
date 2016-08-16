@@ -19,4 +19,7 @@ class StringConstants: NSObject {
   
   static let purchaseErrorTitleString = "Purchase Error"
   static let purchaseErrorMessageString = "Purchase unavailable at this time, please try again later."
+  
+  
+  static let unfoundJWTClaim = "Unable to find claim: "
 }
