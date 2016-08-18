@@ -45,6 +45,7 @@
 		18F6313B1D6250340008103C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313A1D6250340008103C /* Account.swift */; };
 		18F6313D1D62657A0008103C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313C1D62657A0008103C /* SignUpViewController.swift */; };
 		18F6313F1D63C6AC0008103C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313E1D63C6AB0008103C /* NetworkResponse.swift */; };
+		18F631411D6655540008103C /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631401D6655540008103C /* SessionStore.swift */; };
 		DE01DD67AF12C406F23A7A82 /* Pods_Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3046EE7FA120C65328D837C /* Pods_Quick.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		18F6313A1D6250340008103C /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		18F6313C1D62657A0008103C /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		18F6313E1D63C6AB0008103C /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		18F631401D6655540008103C /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.release.xcconfig"; sourceTree = "<group>"; };
 		A3046EE7FA120C65328D837C /* Pods_Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		181D74501D25A5EF0007DAFD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				18F631401D6655540008103C /* SessionStore.swift */,
 				18E884D91D6214DB00BBD573 /* LoginManager.swift */,
 				182E68571D62433D006D43D9 /* SignUpManager.swift */,
 				181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */,
@@ -380,6 +383,7 @@
 				1835D0A41D2328E700C9554C /* ProductTableView.swift in Sources */,
 				1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */,
 				18F6313D1D62657A0008103C /* SignUpViewController.swift in Sources */,
+				18F631411D6655540008103C /* SessionStore.swift in Sources */,
 				18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */,
 				1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */,
 				181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */,

@@ -15,8 +15,8 @@ class SignUpManager {
   
   /**
    Attempts to create a user account.
-   - parameter user A user object with information on the user for account creation
-   - parameter completion Completion handler.
+   - parameter user: A user object with information on the user for account creation
+   - parameter completion: Completion handler.
    */
   func createUserAccount(user: User,
                          completion: NetworkResponse.SignUpCompletion) {
@@ -29,24 +29,28 @@ class SignUpManager {
       if success {
         // Pass control to network reponse to handle and parse the response.
         let networkReponse = NetworkResponse()
-        networkReponse.handleUserSignUpResponse(data, completion: {
-          (success, signUpResponse) in
-          if success {
-            // Once the data has been handled and parsed, begin a new session.
-            let sessionManager = SessionManager.sharedInstance
-            
-            do {
-              try sessionManager.registerSessionFromSignUpResponse(signUpResponse!)
-              sessionManager.begin()
-            } catch {
-              
-            }
-          }
-        })
+        networkReponse.handleUserSignUpResponse(data, completion: self.sessionSetUpClosure)
       } else {
         // An error occurred during account creation.
         completion(success: false, signUpResponse: nil)
       }
     }
   }
+  
+  /// Closure constant to handle setting up sessions after sign up.
+  private let sessionSetUpClosure : NetworkResponse.SignUpCompletion = {
+    success, signUpResponse in
+    if success {
+      // Once the data has been handled and parsed, begin a new session.
+      let sessionManager = SessionManager.sharedInstance
+      
+      do {
+        try sessionManager.registerSessionFromSignUpResponse(signUpResponse!)
+        sessionManager.begin()
+      } catch {
+        
+      }
+    }
+  }
+  
 }

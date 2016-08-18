@@ -9,8 +9,8 @@
 import UIKit
 import JWTDecode
 
-
 class Session {
+  
   var token: UserJWT?
   var account: Account?
   
@@ -20,8 +20,9 @@ class Session {
    This method will attempt to retrieve all info for needed to
    created a `Session` object.
    
-   - parameter token The JWT token used to create the session.
-   - returns `Session` object.
+   - parameter token: The JWT token used to create the session.
+   - returns: `Session` object.
+   - throws: `UserJWTDecodeError.UnfoundClaim` when a JWT claim cannot be found.
    
    */
   static func sessionWithJWT(token: String) throws -> Session {
@@ -34,8 +35,12 @@ class Session {
                            firstname: session.token!.firstname!,
                            lastname: session.token!.lastname!,
                            password: nil)
+    session.account!.id = session.token!.id
     return session
   }
+  
+  
+  
   
   
   /**
@@ -53,6 +58,7 @@ class Session {
     var id: String?
     /// A reference to the token that was used to created the struct.
     var token: JWT?
+    var tokenString: String?
     
     /**
      Attempts to decode a JSON Web Token and retrieve all
@@ -66,6 +72,7 @@ class Session {
       let jwt = try decode(token)
       
       var userJWT = UserJWT()
+      userJWT.tokenString = token
       userJWT.token = jwt
       
       userJWT.id = jwt.claim("id")

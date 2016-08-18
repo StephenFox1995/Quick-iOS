@@ -5,5 +5,6 @@ use_frameworks!
 target 'Quick' do
     pod 'Alamofire', '~> 3.4'
     pod 'SwiftyJSON'
-	pod "JWTDecode", '~> 1.0'
+    pod "JWTDecode", '~> 1.0'
+    pod 'Locksmith'
 end

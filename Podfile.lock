@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (3.4.1)
   - JWTDecode (1.0.0)
+  - Locksmith (2.0.8)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - JWTDecode (~> 1.0)
+  - Locksmith
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   JWTDecode: d172edcb1607cc15aed85d58eceedcbb675a4534
+  Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: f1eec0196f0a6c051637b3c9d9d25cfd5d4149cf
+PODFILE CHECKSUM: 03c8cc9f48bb950659f0b212640de2e8fb2388d4
 
 COCOAPODS: 1.0.1

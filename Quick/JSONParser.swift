@@ -51,6 +51,12 @@ class JSONParser {
   }
   
   
+  /**
+   Parses a JSON object from a sign up response received from the server.
+   - parameter json: The JSON recieved from the server.
+   - returns: A `NetworkResponse.UserSignUpResponse` object upon successful parsing of JSON.
+   - throws: Throws `JSONParserError.UnfoundAttribute` when a JSON attribute cannot be found.
+   */
   static func userSignUpReponse(json: JSON) throws -> NetworkResponse.UserSignUpResponse {
     var userSignUpResponse = NetworkResponse.UserSignUpResponse()
     if let responseJSON = json.dictionary {

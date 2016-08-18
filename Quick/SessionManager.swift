@@ -15,13 +15,8 @@ class SessionManager {
   private var pendingSession: Session!
   
   func getActiveSession() -> Bool {
-    // TODO: Look somewhere for a session.
-    // Somewhere in an enrypted store.
-    // Check if the token is still valid.
-    // If token valid, then we have active session
-    // otherwise we dont have active session
-    // and we need to request the user to login
-    // again and get a new token they can use.
+    let sessionStore = SessionStore.sharedInstance
+    
     return false
   }
   
@@ -36,7 +31,10 @@ class SessionManager {
     self.pendingSession = session
   }
   
-  
+  /**
+   Begins the session. Once a session has begun, this session will be used for all network requests etc.
+   This is the equivalent of logging a user in to the app.
+   */
   func begin() {
     guard pendingSession != nil else {
       return
@@ -44,5 +42,12 @@ class SessionManager {
   }
   
   
-
+  private func storeSession(session: Session) {
+    let sessionStore = SessionStore.sharedInstance
+    do {
+      try sessionStore.store(self.pendingSession)
+    } catch {
+      
+    }
+  }
 }

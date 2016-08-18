@@ -27,9 +27,9 @@ class NetworkResponse {
    Handles a response from sign up.
    Attempts to parse the user details from the response.
    
-   - parameter success    If the network reponse was successful.
-   - parameter data       The data contained in the reponse.
-   - parameter response   A callback once the response has been handled.
+   - parameter success:    If the network reponse was successful.
+   - parameter data:       The data contained in the reponse.
+   - parameter response:   A callback once the response has been handled.
    */
   func handleUserSignUpResponse(data: AnyObject,
                                 completion: SignUpCompletion) {
