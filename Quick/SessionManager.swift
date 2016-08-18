@@ -13,11 +13,27 @@ class SessionManager {
   
   /// Session object that has not yet been activated.
   private var pendingSession: Session!
+  var activeSession: Session?
   
-  func getActiveSession() -> Session? {
+  
+  /**
+   Checks to see if there is an active session available on the device.
+   - returns: True if an active session has been found in keychain.
+              False if not active session was found.
+   */
+  func activeSessionAvailable() -> Bool {
+    // TODO: Remove the old session if it is has expired.
     let sessionStore = SessionStore.sharedInstance
-    let session = sessionStore.storedSession()
-    return session
+    if let session = sessionStore.storedSession() {
+      self.activeSession = session
+      // Now check if the token is still valid.
+      if self.activeSession!.isExpired {
+        return false // Session is no longer available
+      }
+      return true
+    } else {
+      return false
+    }
   }
   
   
@@ -51,5 +67,10 @@ class SessionManager {
     } catch {
       
     }
+  }
+  
+  
+  private func removeInactiveSession() {
+    
   }
 }

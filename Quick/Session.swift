@@ -14,6 +14,16 @@ class Session {
   var token: UserJWT?
   var account: Account?
   
+  /// Checks if the token for this session has expired.
+  /// If there is not token then true is returned and the session is assumed to be expired.
+  var isExpired: Bool {
+    if let selfToken = self.token {
+      if let token = selfToken.token {
+        return token.expired
+      }
+    }
+    return true
+  }
   
   /**
    Creates a session object from a JSON Web Token.
@@ -38,8 +48,6 @@ class Session {
     session.account!.id = session.token!.id
     return session
   }
-  
-  
   
   
   
