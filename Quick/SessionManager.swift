@@ -14,10 +14,10 @@ class SessionManager {
   /// Session object that has not yet been activated.
   private var pendingSession: Session!
   
-  func getActiveSession() -> Bool {
+  func getActiveSession() -> Session? {
     let sessionStore = SessionStore.sharedInstance
-    
-    return false
+    let session = sessionStore.storedSession()
+    return session
   }
   
   
@@ -39,13 +39,15 @@ class SessionManager {
     guard pendingSession != nil else {
       return
     }
+    // Store the pending session.
+    self.storeSession(self.pendingSession)
   }
   
   
   private func storeSession(session: Session) {
     let sessionStore = SessionStore.sharedInstance
     do {
-      try sessionStore.store(self.pendingSession)
+      try sessionStore.store(session)
     } catch {
       
     }
