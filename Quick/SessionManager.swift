@@ -11,6 +11,9 @@ import UIKit
 class SessionManager {
   static let sharedInstance = SessionManager()
   
+  /// Session object that has not yet been activated.
+  private var pendingSession: Session!
+  
   func getActiveSession() -> Bool {
     // TODO: Look somewhere for a session.
     // Somewhere in an enrypted store.
@@ -22,10 +25,24 @@ class SessionManager {
     return false
   }
   
+  
   /**
-   Creates a new session on a user's device.
+   Attempts to register a session from a `NetworkResponse.UserSignUpResponse`.
+   - parameter signUpResponse A sign up response.
    */
-  func registerSession(session: Session) {
-    
+  func registerSessionFromSignUpResponse(signUpResponse: NetworkResponse.UserSignUpResponse) throws {
+    // Create session object.
+    let session = try Session.sessionWithJWT(signUpResponse.token!)
+    self.pendingSession = session
   }
+  
+  
+  func begin() {
+    guard pendingSession != nil else {
+      return
+    }
+  }
+  
+  
+
 }

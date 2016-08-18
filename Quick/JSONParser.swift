@@ -11,6 +11,10 @@ import SwiftyJSON
 
 class JSONParser {
   
+  enum JSONParserError: ErrorType {
+    case UnfoundAttribute
+  }
+  
   /**
    Parses JSON content from server side response.
    
@@ -44,5 +48,21 @@ class JSONParser {
   
   static func parsePurchaseID(json: JSON) -> String {
     return json.dictionaryValue["purchaseID"]!.stringValue
+  }
+  
+  
+  static func userSignUpReponse(json: JSON) throws -> NetworkResponse.UserSignUpResponse {
+    var userSignUpResponse = NetworkResponse.UserSignUpResponse()
+    if let responseJSON = json.dictionary {
+      userSignUpResponse.expires          = responseJSON["expires"]?.stringValue
+      userSignUpResponse.responseMessage  = responseJSON["responseMessage"]?.stringValue
+      userSignUpResponse.success          = responseJSON["success"]?.boolValue
+      userSignUpResponse.token            = responseJSON["token"]?.stringValue
+    }
+    // Make sure object is valid.
+    guard userSignUpResponse.isValid() else {
+      throw JSONParserError.UnfoundAttribute
+    }
+    return userSignUpResponse
   }
 }
