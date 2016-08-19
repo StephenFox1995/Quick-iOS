@@ -71,4 +71,19 @@ class JSONParser {
     }
     return userSignUpResponse
   }
+  
+  static func userAuthenticate(json: JSON) throws -> NetworkResponse.UserAuthenticateResponse {
+    var userAuthResponse = NetworkResponse.UserAuthenticateResponse()
+    if let responseJSON = json.dictionary {
+      userAuthResponse.expires          = responseJSON["expires"]?.stringValue
+      userAuthResponse.responseMessage  = responseJSON["responseMessage"]?.stringValue
+      userAuthResponse.success          = responseJSON["success"]?.boolValue
+      userAuthResponse.token            = responseJSON["token"]?.stringValue
+    }
+    // Make sure object is valid
+    guard userAuthResponse.isValid() else {
+      throw JSONParserError.UnfoundAttribute
+    }
+    return userAuthResponse
+  }
 }

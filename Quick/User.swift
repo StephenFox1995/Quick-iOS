@@ -9,6 +9,10 @@
 import UIKit
 
 class User: Account {
+  override init() {
+    super.init()
+  }
+  
   init(email: String,
        firstname: String,
        lastname: String,

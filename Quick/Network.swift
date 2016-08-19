@@ -90,7 +90,7 @@ class Network {
     
     
     // Create user end point
-    private static let createUserEndPointDev = NetworkingDetails.baseEndPointDev + "/user";
+    private static let createUserEndPointDev = NetworkingDetails.baseEndPointDev + "/user"
     private static let createUserEndPointProduction = "" // TODO: tbd.
     
     /**
@@ -99,6 +99,20 @@ class Network {
     static var createUserEndPoint: String {
       get {
         return AppDelegate.devEnvironment ? createUserEndPointDev: createUserEndPointProduction;
+      }
+    }
+    
+    
+    // Authenticate EndPoint
+    private static let authenticateEndPointDev = NetworkingDetails.baseEndPointDev + "/authenticate"
+    private static let authenticateEndPointProduction = "" // TODO: tbd.
+    
+    /**
+     The base end point for autheticating.
+     */
+    static var authenticateEndPoint: String {
+      get {
+        return AppDelegate.devEnvironment ? authenticateEndPointDev: authenticateEndPointProduction
       }
     }
     

@@ -22,14 +22,9 @@ class SignUpViewController: QuickViewController {
     
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-  
   
   @IBAction func signUp(sender: AnyObject) {
-    guard validInputFields() else {
+    guard self.validInputFields() else {
       return super.displayMessage(title: "Error", message: "Please fill in all fields")
     }
     
@@ -39,18 +34,24 @@ class SignUpViewController: QuickViewController {
                     lastname: self.lastnameTextField.text!,
                     password: self.passwordTextField.text!)
     
-    signUpManager.createUserAccount(user) { (success) in
-      return super.displayMessage(title: "Success", message: "Account created")
+    signUpManager.createUserAccount(user) { (success, session) in
+      if success {
+        // Present home viewcontroller to log user in.
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = sb.instantiateViewControllerWithIdentifier("HomeViewController")
+        self.navigationController?.pushViewController(homeViewController, animated: true)
+      } else {
+        return super.displayMessage(title: "Error", message: "An error occurred trying to sign up.")
+      }
     }
-    
   }
   
   
   private func validInputFields() -> Bool {
-    if  self.emailTextField.text!.isEmpty ||
-        self.firstnameTextField.text!.isEmpty ||
-        self.passwordTextField.text!.isEmpty ||
-        self.lastnameTextField.text!.isEmpty {
+    if self.emailTextField.text!.isEmpty ||
+       self.firstnameTextField.text!.isEmpty ||
+       self.passwordTextField.text!.isEmpty ||
+       self.lastnameTextField.text!.isEmpty {
       return false
     } else {
       return true

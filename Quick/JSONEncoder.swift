@@ -29,11 +29,32 @@ class JSONEncoder {
   
   
   
-  static func encodeUser(user: User) -> Dictionary<String, String> {
+  static func encodeUser(user: User) -> [String: String] {
     return ["firstname": user.firstname!,
             "lastname": user.lastname!,
             "email": user.email!,
             "password": user.password!]
+  }
+  
+  
+  /**
+   {
+      "authType": "business",
+      "user": {
+        "email": "someemail@email.com",
+        "password": "password"
+      }
+   }
+ */
+  static func jsonifyUserForAuthentication(user: User) -> [String: String]{
+    return ["email": user.email!,
+            "password": user.password!]
+  }
+  
+  
+  static func jsonifyUserObjectForAuthentication(user: [String: String]) -> [String: AnyObject] {
+    let authType = "user"
+    return ["authType": authType, "user": user]
   }
   
   /**
@@ -52,7 +73,7 @@ class JSONEncoder {
    - returns JSON user object
 
    */
-  static func createUserJSONObject(userJSON: Dictionary<String, String>) -> Dictionary<String, Dictionary<String, String>> {
+  static func createUserJSONObject(userJSON: Dictionary<String, String>) -> [String:[String: String]] {
     return ["user": userJSON];
   }
 }

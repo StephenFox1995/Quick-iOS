@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Quick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Quick" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -163,6 +163,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ax-DX-F7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="222" y="1104"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="OOm-bB-nr1">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="N0r-1u-cJQ" customClass="LoginViewController" customModule="Quick" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Czt-DZ-nj1"/>
+                        <viewControllerLayoutGuide type="bottom" id="0au-KY-aJq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z2m-Ed-hcn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAK-Gu-dG1">
+                                <rect key="frame" x="199" y="116" width="202" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="gIU-b6-TKz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="utJ-Gl-qzj">
+                                <rect key="frame" x="199" y="154" width="202" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsH-UK-Lh8">
+                                <rect key="frame" x="250" y="192" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="nVR-l5-iGm"/>
+                                </constraints>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login:" destination="N0r-1u-cJQ" eventType="touchUpInside" id="18i-ZK-eEJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="utJ-Gl-qzj" firstAttribute="centerX" secondItem="MsH-UK-Lh8" secondAttribute="centerX" id="6x5-ww-UBv"/>
+                            <constraint firstItem="TAK-Gu-dG1" firstAttribute="centerX" secondItem="z2m-Ed-hcn" secondAttribute="centerX" id="PES-RG-RDc"/>
+                            <constraint firstItem="TAK-Gu-dG1" firstAttribute="top" secondItem="Czt-DZ-nj1" secondAttribute="bottom" constant="96" id="Vtf-7R-DSA"/>
+                            <constraint firstItem="MsH-UK-Lh8" firstAttribute="top" secondItem="utJ-Gl-qzj" secondAttribute="bottom" constant="8" symbolic="YES" id="cSf-PL-DS5"/>
+                            <constraint firstItem="TAK-Gu-dG1" firstAttribute="leading" secondItem="utJ-Gl-qzj" secondAttribute="leading" id="gHk-0z-zpu"/>
+                            <constraint firstItem="TAK-Gu-dG1" firstAttribute="trailing" secondItem="utJ-Gl-qzj" secondAttribute="trailing" id="ix4-u2-umG"/>
+                            <constraint firstItem="utJ-Gl-qzj" firstAttribute="top" secondItem="TAK-Gu-dG1" secondAttribute="bottom" constant="8" symbolic="YES" id="wbp-2k-3Jq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="TAK-Gu-dG1" id="Tji-HB-sd2"/>
+                        <outlet property="passwordTextField" destination="utJ-Gl-qzj" id="KHf-aO-0GI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xg1-4H-dOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="-316"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="qCQ-XK-mrJ">

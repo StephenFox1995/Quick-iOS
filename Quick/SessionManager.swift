@@ -26,7 +26,7 @@ class SessionManager {
     if let session = self.sessionStore.storedSession() {
       // Now check if the token is still valid.
       if session.isExpired {
-        self.removeInactiveSession() // Remove that session as it has expired.
+        self.removeExpiredSession() // Remove that session as it has expired.
         return false // Session is has expired.
       } else {
         self.activeSession = session
@@ -40,7 +40,7 @@ class SessionManager {
   
   /**
    Attempts to register a session from a `NetworkResponse.UserSignUpResponse`.
-   - parameter signUpResponse A sign up response.
+   - parameter signUpResponse: A sign up response.
    */
   func registerSessionFromSignUpResponse(signUpResponse: NetworkResponse.UserSignUpResponse) throws {
     // Create session object.
@@ -49,28 +49,44 @@ class SessionManager {
   }
   
   /**
+   Attempts ot register a session from a `NetworkResponse.UserAuthenticateResponse`.
+   - parameter authResponse: The authentication response.
+   */
+  func registerSessionFromAuthenticationResponse(authResponse: NetworkResponse.UserAuthenticateResponse) throws {
+    // Create session object
+    let session = try Session.sessionWithJWT(authResponse.token!)
+    self.pendingSession = session
+  }
+  
+  /**
    Begins the session. Once a session has begun, this session will be used for all network requests etc.
    This is the equivalent of logging a user in to the app.
    */
-  func begin() {
+  func begin() throws {
     guard pendingSession != nil else {
       return
     }
-    // Store the pending session.
-    self.storeSession(self.pendingSession)
+    // Attempt to store the pending session.
+    try self.storeSession(self.pendingSession)
   }
   
   
-  private func storeSession(session: Session) {
-    do {
-      try self.sessionStore.store(session)
-    } catch {
-      
-    }
+  /**
+   Attempts to store the session withing `SessionStore`
+   - paramter session: The session to store.
+   */
+  private func storeSession(session: Session) throws {
+    try self.sessionStore.store(session)
   }
   
   
-  private func removeInactiveSession() {
-    self.sessionStore.removeInactiveSession()
+  /**
+   Removes any expired sessions on the device.
+   - returns: True - successfully removed inactive session.
+              False - Either could not find session to delete of
+                      session was not inactive.
+   */
+  private func removeExpiredSession() -> Bool {
+    return self.sessionStore.removeExpiredSession()
   }
 }

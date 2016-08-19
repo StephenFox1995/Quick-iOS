@@ -23,7 +23,7 @@
 		183389E41D2D27F1006C83AF /* FXPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183389E31D2D27F1006C83AF /* FXPrint.swift */; };
 		183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183389E51D2D5BBE006C83AF /* StringConstants.swift */; };
 		1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D08F1D22F64900C9554C /* AppDelegate.swift */; };
-		1835D0921D22F64900C9554C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0911D22F64900C9554C /* ViewController.swift */; };
+		1835D0921D22F64900C9554C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0911D22F64900C9554C /* HomeViewController.swift */; };
 		1835D0951D22F64900C9554C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1835D0931D22F64900C9554C /* Main.storyboard */; };
 		1835D0971D22F64900C9554C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1835D0961D22F64900C9554C /* Assets.xcassets */; };
 		1835D09A1D22F64900C9554C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1835D0981D22F64900C9554C /* LaunchScreen.storyboard */; };
@@ -46,6 +46,7 @@
 		18F6313D1D62657A0008103C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313C1D62657A0008103C /* SignUpViewController.swift */; };
 		18F6313F1D63C6AC0008103C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313E1D63C6AB0008103C /* NetworkResponse.swift */; };
 		18F631411D6655540008103C /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631401D6655540008103C /* SessionStore.swift */; };
+		18F631431D6775D40008103C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631421D6775D40008103C /* LoginViewController.swift */; };
 		DE01DD67AF12C406F23A7A82 /* Pods_Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3046EE7FA120C65328D837C /* Pods_Quick.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +68,7 @@
 		183389E51D2D5BBE006C83AF /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		1835D08C1D22F64900C9554C /* Quick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1835D08F1D22F64900C9554C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1835D0911D22F64900C9554C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1835D0911D22F64900C9554C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1835D0941D22F64900C9554C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1835D0961D22F64900C9554C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1835D0991D22F64900C9554C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		18F6313C1D62657A0008103C /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		18F6313E1D63C6AB0008103C /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		18F631401D6655540008103C /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		18F631421D6775D40008103C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.release.xcconfig"; sourceTree = "<group>"; };
 		A3046EE7FA120C65328D837C /* Pods_Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,15 +143,16 @@
 				1835D0981D22F64900C9554C /* LaunchScreen.storyboard */,
 				1835D0AA1D2465BC00C9554C /* Screen.swift */,
 				18F6313C1D62657A0008103C /* SignUpViewController.swift */,
-				1835D0911D22F64900C9554C /* ViewController.swift */,
+				1835D0911D22F64900C9554C /* HomeViewController.swift */,
 				181D74681D25D0670007DAFD /* BusinessViewController.swift */,
 				18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */,
+				18F631421D6775D40008103C /* LoginViewController.swift */,
+				18F3D4001D2819C800CDE296 /* QuickViewController.swift */,
 				181D74561D25B2280007DAFD /* BusinessTableView */,
 				1835D0A91D232B9200C9554C /* ProductTableView */,
 				181D745A1D25B3A90007DAFD /* QuickTableView.swift */,
 				181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */,
 				181D746A1D25D3560007DAFD /* QuickDataSource.swift */,
-				18F3D4001D2819C800CDE296 /* QuickViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -373,7 +376,7 @@
 			files = (
 				183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */,
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
-				1835D0921D22F64900C9554C /* ViewController.swift in Sources */,
+				1835D0921D22F64900C9554C /* HomeViewController.swift in Sources */,
 				18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */,
 				181D744F1D2473910007DAFD /* Product.swift in Sources */,
 				18F631371D624F410008103C /* SessionManager.swift in Sources */,
@@ -399,6 +402,7 @@
 				181D745F1D25B69D0007DAFD /* BusinessTableViewDataSource.swift in Sources */,
 				182E685A1D624434006D43D9 /* User.swift in Sources */,
 				181D745B1D25B3A90007DAFD /* QuickTableView.swift in Sources */,
+				18F631431D6775D40008103C /* LoginViewController.swift in Sources */,
 				188D27761D3BEE4200A3F77B /* QRCode.swift in Sources */,
 				181D74551D25AAAE0007DAFD /* Business.swift in Sources */,
 				181D74581D25B24E0007DAFD /* BusinessTableView.swift in Sources */,

@@ -32,7 +32,7 @@ class SessionStore {
   /**
    Checks if there is a stored session within keychain.
    - returns: `Session` object if there is a session stored in keychain, otherwise
-                        return nil.
+   return nil.
    */
   func storedSession() -> Session? {
     var sessionKeys: (String, String)!
@@ -60,27 +60,46 @@ class SessionStore {
   }
   
   /**
-   Removes */
-  func removeInactiveSession() {
+   Removes the session iff expired.
+   - returns: True: if the session was expired and successfully removed.
+              False: The session was not expired so was not removed or there
+                     was no session found.*/
+  func removeExpiredSession() -> Bool {
     do {
       let sessionKeys = try self.sessionDictionaryKeys();
       let userEmail = sessionKeys.0
+      let userID = sessionKeys.1
+      var session: Session!
+      
+      if let tokenDict = self.read(userEmail) {
+        // Read token string and make sure it has actually expired.
+        if let tokenString = self.readTokenString(userEmail, userID: userID, dict: tokenDict) {
+          // Create a session object so we can check if it has expired.
+          session = try Session.sessionWithJWT(tokenString)
+        }
+      }
+      
+      // Only delete if expired.
+      guard session.isExpired else {
+        return false
+      }
       // Delete session from keychain.
       try Locksmith.deleteDataForUserAccount(userEmail)
       // Remove user email and id from `NSUserDefaults`
       let userDefaults = NSUserDefaults.standardUserDefaults()
       userDefaults.removeObjectForKey(self.SESSION_USER_EMAIL)
       userDefaults.removeObjectForKey(self.SESSION_USER_ID)
+      return true
     } catch {
-      return // No keys available.
+      return false // No keys available.
     }
   }
   
   
   /**
    Trys to read the dictionary keys for accessing session info from keychain.
-    - returns: Tuple containing `(UserEmailKey?, UserIdKey?)`
-    - throws: `SessionStoreError.MissingKeys` if no keys can be found.
+   - returns: Tuple containing `(UserEmailKey?, UserIdKey?)`
+   - throws: `SessionStoreError.MissingKeys` if no keys can be found.
    */
   private func sessionDictionaryKeys() throws -> (String, String) {
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -108,5 +127,29 @@ class SessionStore {
    */
   private func read(userEmail: String) -> [String: AnyObject]? {
     return Locksmith.loadDataForUserAccount(userEmail)
+  }
+  
+  /**
+   Attempts to read the dictionary object returned from `read(_: String)`
+   to extract the token string.
+   - parameter userEmail: The email associated with the token.
+   - paremeter userID: The id of the user.
+   - parameter dict: The dictionary object that contains the token.
+   - returns: If the token was found it will be returned, otherwise nil.
+   */
+  private func readTokenString(userEmail: String,
+                               userID: String,
+                               dict: [String: AnyObject]?) -> String? {
+    if let tokenDict = self.read(userEmail) { // Read using the user's email
+      if let token = tokenDict[userID] as? String { // Get the token using the user's id.
+        do {
+          // Create a session from the token.
+          return try Session.sessionWithJWT(token).token?.tokenString
+        } catch {
+          return nil
+        }
+      }
+    }
+    return nil
   }
 }

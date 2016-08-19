@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // If there's no session ask the user to login/ signup.
     if (!sessionManager.activeSessionAvailable()) {
       // Override point for customization after application launch.
-      let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-      let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+      let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let navigationController: UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
       
-      let rootViewController:UIViewController = storyboard.instantiateViewControllerWithIdentifier("SignUpViewController") as UIViewController
+      let rootViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
       navigationController.viewControllers = [rootViewController]
       self.window?.rootViewController = navigationController
       return true

@@ -21,28 +21,11 @@ protocol NetworkReponseProtocol {
 
 class NetworkResponse {
   
-  /// Closure type for a sign up response
+  /// Closure type for a sign up response.
   typealias SignUpCompletion = (success: Bool, signUpResponse: UserSignUpResponse?) -> Void
-  /**
-   Handles a response from sign up.
-   Attempts to parse the user details from the response.
-   
-   - parameter success:    If the network reponse was successful.
-   - parameter data:       The data contained in the reponse.
-   - parameter response:   A callback once the response has been handled.
-   */
-  func handleUserSignUpResponse(data: AnyObject,
-                                completion: SignUpCompletion) {
-    // Attempt to parse the JSON response.
-    let json = JSON(data)
-    do {
-      let response = try JSONParser.userSignUpReponse(json)
-      completion(success: true, signUpResponse: response)
-    } catch {
-      completion(success: false, signUpResponse: nil)
-    }
-  }
   
+  /// Closure type for user authentication response.
+  typealias UserAuthenticateCompletion = (success: Bool, authResponse: UserAuthenticateResponse?) -> Void
   
   /**
    A user sign up response type. Attempts to represent a response
@@ -65,5 +48,54 @@ class NetworkResponse {
         return false
       }
     }
+    
+    /**
+     Handles a response from sign up.
+     Attempts to parse the user details from the response.
+     
+     - parameter data:       The data contained in the reponse.
+     - parameter response:   A callback once the response has been handled.
+     */
+    func handleUserSignUpResponse(data: AnyObject,
+                                  completion: SignUpCompletion) {
+      // Attempt to parse the JSON response.
+      let json = JSON(data)
+      do {
+        let response = try JSONParser.userSignUpReponse(json)
+        completion(success: true, signUpResponse: response)
+      } catch {
+        completion(success: false, signUpResponse: nil)
+      }
+    }
   }
+  
+  struct UserAuthenticateResponse: NetworkReponseProtocol {
+    var expires: String?
+    var responseMessage: String?
+    var success: Bool?
+    var token: String?
+    
+    func isValid() -> Bool {
+      if let s = success {
+        if (!s) { return false }
+      }
+      if (self.token != nil) {
+        return true
+      } else {
+        return false
+      }
+    }
+    
+    func handleResponse(data: AnyObject, completion: UserAuthenticateCompletion) {
+      let json = JSON(data)
+      do {
+        let response = try JSONParser.userAuthenticate(json)
+        completion(success: true, authResponse: response)
+      } catch {
+        completion(success: false, authResponse: nil)
+      }
+    }
+  }
+  
+  
 }
