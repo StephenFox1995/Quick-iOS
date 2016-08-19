@@ -14,6 +14,7 @@ class SessionManager {
   /// Session object that has not yet been activated.
   private var pendingSession: Session!
   var activeSession: Session?
+  private let sessionStore = SessionStore.sharedInstance
   
   
   /**
@@ -22,15 +23,15 @@ class SessionManager {
               False if not active session was found.
    */
   func activeSessionAvailable() -> Bool {
-    // TODO: Remove the old session if it is has expired.
-    let sessionStore = SessionStore.sharedInstance
-    if let session = sessionStore.storedSession() {
-      self.activeSession = session
+    if let session = self.sessionStore.storedSession() {
       // Now check if the token is still valid.
-      if self.activeSession!.isExpired {
-        return false // Session is no longer available
+      if session.isExpired {
+        self.removeInactiveSession() // Remove that session as it has expired.
+        return false // Session is has expired.
+      } else {
+        self.activeSession = session
+        return true
       }
-      return true
     } else {
       return false
     }
@@ -61,9 +62,8 @@ class SessionManager {
   
   
   private func storeSession(session: Session) {
-    let sessionStore = SessionStore.sharedInstance
     do {
-      try sessionStore.store(session)
+      try self.sessionStore.store(session)
     } catch {
       
     }
@@ -71,6 +71,6 @@ class SessionManager {
   
   
   private func removeInactiveSession() {
-    
+    self.sessionStore.removeInactiveSession()
   }
 }

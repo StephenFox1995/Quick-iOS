@@ -15,7 +15,7 @@ class Session {
   var account: Account?
   
   /// Checks if the token for this session has expired.
-  /// If there is not token then true is returned and the session is assumed to be expired.
+  /// If there is no token then the session is assumed to be expired.
   var isExpired: Bool {
     if let selfToken = self.token {
       if let token = selfToken.token {
