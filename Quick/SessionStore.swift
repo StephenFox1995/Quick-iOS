@@ -95,6 +95,21 @@ class SessionStore {
     }
   }
   
+  /**
+   Removes any session that is currently stored on the device,
+   regardless of whether it has expired or not.
+   - returns: True - Succesful removal of session.
+   False - Could not remove session, or could not find session.
+   */
+  func removeSession() -> Bool {
+    do {
+      try Locksmith.deleteDataForUserAccount("ss@gmail.com")
+      return true
+    } catch {
+      return false
+    }
+  }
+  
   
   /**
    Trys to read the dictionary keys for accessing session info from keychain.

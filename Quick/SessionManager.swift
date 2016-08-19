@@ -58,6 +58,7 @@ class SessionManager {
     self.pendingSession = session
   }
   
+  
   /**
    Begins the session. Once a session has begun, this session will be used for all network requests etc.
    This is the equivalent of logging a user in to the app.
@@ -68,6 +69,7 @@ class SessionManager {
     }
     // Attempt to store the pending session.
     try self.storeSession(self.pendingSession)
+    self.activeSession = self.pendingSession
   }
   
   
@@ -89,4 +91,14 @@ class SessionManager {
   private func removeExpiredSession() -> Bool {
     return self.sessionStore.removeExpiredSession()
   }
+  
+  /**
+   Removes any session that is currently stored on the device,
+   regardless of whether it has expired or not.
+   - returns: True - Succesful removal of session.
+              False - Could not remove session, or could not find session.
+   */
+//  func removeSession() -> Bool {
+//    return self.sessionStore.removeSession()
+//  }
 }

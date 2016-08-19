@@ -32,14 +32,14 @@ class LoginManager {
               try sessionManager.registerSessionFromAuthenticationResponse(authResponse!)
               try sessionManager.begin()
               let session = SessionManager.sharedInstance.activeSession
-              completion(success: true, session: session!)
+              completion(success: true, session: session)
             }
             catch {
-              completion(success: true, session: nil)
+              completion(success: false, session: nil)
             }
           }
           else {
-            completion(success: true, session: nil)
+            completion(success: false, session: nil)
           }
         })
       } else {
