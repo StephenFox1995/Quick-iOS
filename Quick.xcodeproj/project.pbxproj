@@ -113,15 +113,10 @@
 		181D74501D25A5EF0007DAFD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				18F631401D6655540008103C /* SessionStore.swift */,
-				18E884D91D6214DB00BBD573 /* LoginManager.swift */,
-				182E68571D62433D006D43D9 /* SignUpManager.swift */,
 				181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */,
 				181D744E1D2473910007DAFD /* Product.swift */,
 				181D74541D25AAAE0007DAFD /* Business.swift */,
 				182E68591D624434006D43D9 /* User.swift */,
-				18F631361D624F410008103C /* SessionManager.swift */,
-				18F631381D624F920008103C /* Session.swift */,
 				18F6313A1D6250340008103C /* Account.swift */,
 			);
 			name = Models;
@@ -172,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				1835D08E1D22F64900C9554C /* Quick */,
+				18F631441D67BC690008103C /* QuickTests */,
 				1835D08D1D22F64900C9554C /* Products */,
 				C2B5942652FEF93BD641B301 /* Pods */,
 				84143C46AE58A31F6AE293CD /* Frameworks */,
@@ -192,13 +188,13 @@
 				1835D08F1D22F64900C9554C /* AppDelegate.swift */,
 				181D74521D25A61A0007DAFD /* UI */,
 				181D74511D25A5FC0007DAFD /* Network */,
+				18F631451D67BC970008103C /* Session */,
 				181D74501D25A5EF0007DAFD /* Models */,
+				18F3D40B1D2C6B8D00CDE296 /* Util */,
+				18F631461D67BCD00008103C /* Helpers */,
 				18F3D4021D281E3500CDE296 /* Extensions */,
 				1835D09B1D22F64900C9554C /* Info.plist */,
 				1835D0961D22F64900C9554C /* Assets.xcassets */,
-				18F3D40B1D2C6B8D00CDE296 /* Util */,
-				183389E31D2D27F1006C83AF /* FXPrint.swift */,
-				183389E51D2D5BBE006C83AF /* StringConstants.swift */,
 			);
 			path = Quick;
 			sourceTree = "<group>";
@@ -230,6 +226,34 @@
 				188D27751D3BEE4200A3F77B /* QRCode.swift */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		18F631441D67BC690008103C /* QuickTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = QuickTests;
+			sourceTree = "<group>";
+		};
+		18F631451D67BC970008103C /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				18F631361D624F410008103C /* SessionManager.swift */,
+				18F631401D6655540008103C /* SessionStore.swift */,
+				18F631381D624F920008103C /* Session.swift */,
+				182E68571D62433D006D43D9 /* SignUpManager.swift */,
+				18E884D91D6214DB00BBD573 /* LoginManager.swift */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		18F631461D67BCD00008103C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				183389E31D2D27F1006C83AF /* FXPrint.swift */,
+				183389E51D2D5BBE006C83AF /* StringConstants.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		84143C46AE58A31F6AE293CD /* Frameworks */ = {

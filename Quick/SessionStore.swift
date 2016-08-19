@@ -66,7 +66,7 @@ class SessionStore {
                      was no session found.*/
   func removeExpiredSession() -> Bool {
     do {
-      let sessionKeys = try self.sessionDictionaryKeys();
+      let sessionKeys = try self.sessionDictionaryKeys()
       let userEmail = sessionKeys.0
       let userID = sessionKeys.1
       var session: Session!
@@ -86,9 +86,7 @@ class SessionStore {
       // Delete session from keychain.
       try Locksmith.deleteDataForUserAccount(userEmail)
       // Remove user email and id from `NSUserDefaults`
-      let userDefaults = NSUserDefaults.standardUserDefaults()
-      userDefaults.removeObjectForKey(self.SESSION_USER_EMAIL)
-      userDefaults.removeObjectForKey(self.SESSION_USER_ID)
+      self.removeSessionDictionaryKeys()
       return true
     } catch {
       return false // No keys available.
@@ -99,15 +97,29 @@ class SessionStore {
    Removes any session that is currently stored on the device,
    regardless of whether it has expired or not.
    - returns: True - Succesful removal of session.
-   False - Could not remove session, or could not find session.
+              False - Could not remove session, or could not find session.
    */
   func removeSession() -> Bool {
     do {
-      try Locksmith.deleteDataForUserAccount("ss@gmail.com")
+      let sessionKeys = try self.sessionDictionaryKeys()
+      let userEmail = sessionKeys.0
+      try Locksmith.deleteDataForUserAccount(userEmail)
+      self.removeSessionDictionaryKeys()
       return true
     } catch {
       return false
     }
+  }
+  
+  
+
+  ///Removes dictionary keys used to access sessions on the device.
+  private func removeSessionDictionaryKeys() {
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    // Remove Email
+    userDefaults.removeObjectForKey(self.SESSION_USER_EMAIL)
+    // Remove ID
+    userDefaults.removeObjectForKey(self.SESSION_USER_ID)
   }
   
   

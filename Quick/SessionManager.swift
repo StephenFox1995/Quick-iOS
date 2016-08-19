@@ -98,7 +98,8 @@ class SessionManager {
    - returns: True - Succesful removal of session.
               False - Could not remove session, or could not find session.
    */
-//  func removeSession() -> Bool {
-//    return self.sessionStore.removeSession()
-//  }
+  
+  func removeSession() -> Bool {
+    return self.sessionStore.removeSession()
+  }
 }
