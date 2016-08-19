@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: QuickViewController, UITableViewDelegate {
+class HomeViewController: QuickViewController, UITableViewDelegate {
   
   var businessTableView: BusinessTableView!
   var businessTableViewDataSource: BusinessTableViewDataSource!
