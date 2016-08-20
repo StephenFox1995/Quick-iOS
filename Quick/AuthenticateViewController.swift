@@ -56,12 +56,9 @@ class AuthenticateViewController: QuickViewController {
     
     signUpManager.createUserAccount(user) { (success, session) in
       if success {
-        // Present home viewcontroller to log user in.
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController = sb.instantiateViewControllerWithIdentifier("HomeViewController")
-        self.navigationController?.pushViewController(homeViewController, animated: true)
+        self.presentHomeViewController()
       } else {
-        return super.displayMessage(title: "Error", message: "Account with email already exists.")
+        return super.displayMessage(title: StringConstants.error, message: StringConstants.accountTaken)
       }
     }
   }
@@ -69,7 +66,7 @@ class AuthenticateViewController: QuickViewController {
   /// Log user in to app.
   @IBAction func login() {
     guard self.validInputFields() else {
-      return super.displayMessage(title: "Error", message: "Please fill in all fields")
+      return super.displayMessage(title: StringConstants.error, message: StringConstants.fillInFields)
     }
     
     // Create user object.
@@ -81,14 +78,19 @@ class AuthenticateViewController: QuickViewController {
     let loginManager = LoginManager.sharedInstance
     loginManager.login(user) { (success, session) in
       if success {
-        // Present home viewcontroller to log user in.
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController = sb.instantiateViewControllerWithIdentifier("HomeViewController")
-        self.navigationController?.pushViewController(homeViewController, animated: true)
+        self.presentHomeViewController()
       } else {
-        return super.displayMessage(title: "Error", message: "Invalid Credentials")
+        return super.displayMessage(title: StringConstants.error, message: StringConstants.invalidCredential)
       }
     }
+  }
+  
+  
+  private func presentHomeViewController() {
+    // Present home viewcontroller to log user in.
+    let sb = UIStoryboard(name: "Main", bundle: nil)
+    let homeViewController = sb.instantiateViewControllerWithIdentifier(StringConstants.homeViewController)
+    self.navigationController?.pushViewController(homeViewController, animated: false)
   }
   
   private func validInputFields() -> Bool {

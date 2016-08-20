@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
       let navigationController: UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
       
-      let rootViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("AuthenticateViewController") as UIViewController
+      let rootViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StringConstants.authenticateViewController) as UIViewController
       navigationController.viewControllers = [rootViewController]
       self.window?.rootViewController = navigationController
       return true

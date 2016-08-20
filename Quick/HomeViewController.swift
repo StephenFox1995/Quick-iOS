@@ -15,6 +15,7 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   
   override func viewWillAppear(animated: Bool) {
     self.navigationController?.navigationBar.translucent = true
+    self.navigationItem.setHidesBackButton(true, animated:false);
   }
   
   override func viewDidLoad() {
@@ -44,17 +45,17 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let business = self.businessTableViewDataSource.itemForRowIndex(indexPath)
-    
     guard let b = business as? Business else {
         // Error alert user.
       return
     }
-    
     let businessViewController =
       UIStoryboard.viewControllerFromStoryboard("BusinessViewController") as! BusinessViewController
     businessViewController.business = b
     self.navigationController?.pushViewController(businessViewController, animated: true);
   }
+  
+  
   @IBAction func signOut(sender: AnyObject) {
     let sessionManager = SessionManager.sharedInstance
     if sessionManager.removeSession() {

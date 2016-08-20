@@ -20,6 +20,15 @@ class StringConstants: NSObject {
   static let purchaseErrorTitleString = "Purchase Error"
   static let purchaseErrorMessageString = "Purchase unavailable at this time, please try again later."
   
-  
   static let unfoundJWTClaim = "Unable to find claim: "
+  
+  static let error = "Error"
+  static let fillInFields = "Please fill in all fields."
+  static let invalidCredential = "Ivalid Credentials."
+  static let accountTaken = "Email already taken."
+  
+  /// ViewController Identifiers
+  static let homeViewController = "HomeViewController"
+  static let authenticateViewController = "AuthenticateViewController"
+  
 }
