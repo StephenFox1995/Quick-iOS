@@ -55,6 +55,12 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
     businessViewController.business = b
     self.navigationController?.pushViewController(businessViewController, animated: true);
   }
+  @IBAction func signOut(sender: AnyObject) {
+    let sessionManager = SessionManager.sharedInstance
+    if sessionManager.removeSession() {
+      sessionManager.removeSession()
+    }
+  }
 }
 
 
