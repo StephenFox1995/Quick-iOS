@@ -47,10 +47,23 @@
 		18F6313F1D63C6AC0008103C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313E1D63C6AB0008103C /* NetworkResponse.swift */; };
 		18F631411D6655540008103C /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631401D6655540008103C /* SessionStore.swift */; };
 		18F631431D6775D40008103C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631421D6775D40008103C /* LoginViewController.swift */; };
-		DE01DD67AF12C406F23A7A82 /* Pods_Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3046EE7FA120C65328D837C /* Pods_Quick.framework */; };
+		18F631621D67D1600008103C /* QuickAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631611D67D1600008103C /* QuickAppTests.swift */; };
+		522AE8F9B1BF6F5BF4C9C097 /* Pods_QuickApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E860B54F40CCBF07FDE7744 /* Pods_QuickApp.framework */; };
+		6D865AEE2EC145C9723C2C21 /* Pods_QuickAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D4B9BD789B4EE296042D30 /* Pods_QuickAppTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		18F631641D67D1600008103C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1835D0841D22F64800C9554C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1835D08B1D22F64900C9554C;
+			remoteInfo = QuickApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0BCF0E5FF1B47D6EE89027A7 /* Pods-QuickAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickAppTests/Pods-QuickAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		181D744E1D2473910007DAFD /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		181D74541D25AAAE0007DAFD /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		181D74571D25B24E0007DAFD /* BusinessTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTableView.swift; sourceTree = "<group>"; };
@@ -66,7 +79,7 @@
 		182E68591D624434006D43D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		183389E31D2D27F1006C83AF /* FXPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXPrint.swift; sourceTree = "<group>"; };
 		183389E51D2D5BBE006C83AF /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
-		1835D08C1D22F64900C9554C /* Quick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1835D08C1D22F64900C9554C /* QuickApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1835D08F1D22F64900C9554C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1835D0911D22F64900C9554C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1835D0941D22F64900C9554C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,9 +106,17 @@
 		18F6313E1D63C6AB0008103C /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		18F631401D6655540008103C /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		18F631421D6775D40008103C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		18F6315F1D67D1600008103C /* QuickAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F631611D67D1600008103C /* QuickAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAppTests.swift; sourceTree = "<group>"; };
+		18F631631D67D1600008103C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.release.xcconfig"; sourceTree = "<group>"; };
+		41589BE5CBBB6CE62E0EDB0A /* Pods-QuickApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickApp/Pods-QuickApp.debug.xcconfig"; sourceTree = "<group>"; };
+		44D4B9BD789B4EE296042D30 /* Pods_QuickAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E860B54F40CCBF07FDE7744 /* Pods_QuickApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3046EE7FA120C65328D837C /* Pods_Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.debug.xcconfig"; sourceTree = "<group>"; };
+		D1466A5BCE9A3C50990DF7E8 /* Pods-QuickApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickApp/Pods-QuickApp.release.xcconfig"; sourceTree = "<group>"; };
+		E36BF126CDF6919323D7D226 /* Pods-QuickAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickAppTests/Pods-QuickAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +124,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE01DD67AF12C406F23A7A82 /* Pods_Quick.framework in Frameworks */,
+				522AE8F9B1BF6F5BF4C9C097 /* Pods_QuickApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F6315C1D67D1600008103C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D865AEE2EC145C9723C2C21 /* Pods_QuickAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,8 +195,8 @@
 		1835D0831D22F64800C9554C = {
 			isa = PBXGroup;
 			children = (
-				1835D08E1D22F64900C9554C /* Quick */,
-				18F631441D67BC690008103C /* QuickTests */,
+				1835D08E1D22F64900C9554C /* QuickApp */,
+				18F631601D67D1600008103C /* QuickAppTests */,
 				1835D08D1D22F64900C9554C /* Products */,
 				C2B5942652FEF93BD641B301 /* Pods */,
 				84143C46AE58A31F6AE293CD /* Frameworks */,
@@ -177,12 +206,13 @@
 		1835D08D1D22F64900C9554C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1835D08C1D22F64900C9554C /* Quick.app */,
+				1835D08C1D22F64900C9554C /* QuickApp.app */,
+				18F6315F1D67D1600008103C /* QuickAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1835D08E1D22F64900C9554C /* Quick */ = {
+		1835D08E1D22F64900C9554C /* QuickApp */ = {
 			isa = PBXGroup;
 			children = (
 				1835D08F1D22F64900C9554C /* AppDelegate.swift */,
@@ -196,6 +226,7 @@
 				1835D09B1D22F64900C9554C /* Info.plist */,
 				1835D0961D22F64900C9554C /* Assets.xcassets */,
 			);
+			name = QuickApp;
 			path = Quick;
 			sourceTree = "<group>";
 		};
@@ -228,13 +259,6 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
-		18F631441D67BC690008103C /* QuickTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = QuickTests;
-			sourceTree = "<group>";
-		};
 		18F631451D67BC970008103C /* Session */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,10 +280,21 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		18F631601D67D1600008103C /* QuickAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				18F631611D67D1600008103C /* QuickAppTests.swift */,
+				18F631631D67D1600008103C /* Info.plist */,
+			);
+			path = QuickAppTests;
+			sourceTree = "<group>";
+		};
 		84143C46AE58A31F6AE293CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				A3046EE7FA120C65328D837C /* Pods_Quick.framework */,
+				9E860B54F40CCBF07FDE7744 /* Pods_QuickApp.framework */,
+				44D4B9BD789B4EE296042D30 /* Pods_QuickAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -269,6 +304,10 @@
 			children = (
 				A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */,
 				2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */,
+				41589BE5CBBB6CE62E0EDB0A /* Pods-QuickApp.debug.xcconfig */,
+				D1466A5BCE9A3C50990DF7E8 /* Pods-QuickApp.release.xcconfig */,
+				0BCF0E5FF1B47D6EE89027A7 /* Pods-QuickAppTests.debug.xcconfig */,
+				E36BF126CDF6919323D7D226 /* Pods-QuickAppTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -276,9 +315,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1835D08B1D22F64900C9554C /* Quick */ = {
+		1835D08B1D22F64900C9554C /* QuickApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1835D09E1D22F64900C9554C /* Build configuration list for PBXNativeTarget "Quick" */;
+			buildConfigurationList = 1835D09E1D22F64900C9554C /* Build configuration list for PBXNativeTarget "QuickApp" */;
 			buildPhases = (
 				495EE86E7804C19403330660 /* [CP] Check Pods Manifest.lock */,
 				1835D0881D22F64900C9554C /* Sources */,
@@ -291,10 +330,31 @@
 			);
 			dependencies = (
 			);
-			name = Quick;
+			name = QuickApp;
 			productName = Quick;
-			productReference = 1835D08C1D22F64900C9554C /* Quick.app */;
+			productReference = 1835D08C1D22F64900C9554C /* QuickApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		18F6315E1D67D1600008103C /* QuickAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F631681D67D1600008103C /* Build configuration list for PBXNativeTarget "QuickAppTests" */;
+			buildPhases = (
+				C2E0F1A360F1B11461355F80 /* [CP] Check Pods Manifest.lock */,
+				18F6315B1D67D1600008103C /* Sources */,
+				18F6315C1D67D1600008103C /* Frameworks */,
+				18F6315D1D67D1600008103C /* Resources */,
+				99FF1FF566926DE4849526D6 /* [CP] Embed Pods Frameworks */,
+				D9A65055D7865D37281DA4E3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18F631651D67D1600008103C /* PBXTargetDependency */,
+			);
+			name = QuickAppTests;
+			productName = QuickAppTests;
+			productReference = 18F6315F1D67D1600008103C /* QuickAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -310,9 +370,14 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = EBZ9ESQDZH;
 					};
+					18F6315E1D67D1600008103C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EBZ9ESQDZH;
+						TestTargetID = 1835D08B1D22F64900C9554C;
+					};
 				};
 			};
-			buildConfigurationList = 1835D0871D22F64900C9554C /* Build configuration list for PBXProject "Quick" */;
+			buildConfigurationList = 1835D0871D22F64900C9554C /* Build configuration list for PBXProject "QuickApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -325,7 +390,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1835D08B1D22F64900C9554C /* Quick */,
+				1835D08B1D22F64900C9554C /* QuickApp */,
+				18F6315E1D67D1600008103C /* QuickAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -343,10 +409,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18F6315D1D67D1600008103C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		495EE86E7804C19403330660 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		99FF1FF566926DE4849526D6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickAppTests/Pods-QuickAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2E0F1A360F1B11461355F80 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,7 +476,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Quick/Pods-Quick-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickApp/Pods-QuickApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9A65055D7865D37281DA4E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickAppTests/Pods-QuickAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF5C2DF476BA9240366880A1 /* [CP] Embed Pods Frameworks */ = {
@@ -388,7 +506,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Quick/Pods-Quick-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickApp/Pods-QuickApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -436,7 +554,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18F6315B1D67D1600008103C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F631621D67D1600008103C /* QuickAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18F631651D67D1600008103C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1835D08B1D22F64900C9554C /* QuickApp */;
+			targetProxy = 18F631641D67D1600008103C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1835D0931D22F64900C9554C /* Main.storyboard */ = {
@@ -545,36 +679,64 @@
 		};
 		1835D09F1D22F64900C9554C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8F793CA61FD105E836E06CE /* Pods-Quick.debug.xcconfig */;
+			baseConfigurationReference = 41589BE5CBBB6CE62E0EDB0A /* Pods-QuickApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Quick/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.stephen.Quick;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.stephen.QuickApp;
+				PRODUCT_NAME = QuickApp;
 			};
 			name = Debug;
 		};
 		1835D0A01D22F64900C9554C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */;
+			baseConfigurationReference = D1466A5BCE9A3C50990DF7E8 /* Pods-QuickApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Quick/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.stephen.Quick;
+				PRODUCT_BUNDLE_IDENTIFIER = org.stephen.QuickApp;
+				PRODUCT_NAME = QuickApp;
+			};
+			name = Release;
+		};
+		18F631661D67D1600008103C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BCF0E5FF1B47D6EE89027A7 /* Pods-QuickAppTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QuickAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.stephen.QuickAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickApp.app/QuickApp";
+			};
+			name = Debug;
+		};
+		18F631671D67D1600008103C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E36BF126CDF6919323D7D226 /* Pods-QuickAppTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QuickAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.stephen.QuickAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickApp.app/QuickApp";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1835D0871D22F64900C9554C /* Build configuration list for PBXProject "Quick" */ = {
+		1835D0871D22F64900C9554C /* Build configuration list for PBXProject "QuickApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1835D09C1D22F64900C9554C /* Debug */,
@@ -583,11 +745,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1835D09E1D22F64900C9554C /* Build configuration list for PBXNativeTarget "Quick" */ = {
+		1835D09E1D22F64900C9554C /* Build configuration list for PBXNativeTarget "QuickApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1835D09F1D22F64900C9554C /* Debug */,
 				1835D0A01D22F64900C9554C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18F631681D67D1600008103C /* Build configuration list for PBXNativeTarget "QuickAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F631661D67D1600008103C /* Debug */,
+				18F631671D67D1600008103C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

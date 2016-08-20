@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1835D08B1D22F64900C9554C"
-               BuildableName = "Quick.app"
-               BlueprintName = "Quick"
-               ReferencedContainer = "container:Quick.xcodeproj">
+               BuildableName = "QuickApp.app"
+               BlueprintName = "QuickApp"
+               ReferencedContainer = "container:QuickApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,14 +28,24 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "18F6315E1D67D1600008103C"
+               BuildableName = "QuickAppTests.xctest"
+               BlueprintName = "QuickAppTests"
+               ReferencedContainer = "container:QuickApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1835D08B1D22F64900C9554C"
-            BuildableName = "Quick.app"
-            BlueprintName = "Quick"
-            ReferencedContainer = "container:Quick.xcodeproj">
+            BuildableName = "QuickApp.app"
+            BlueprintName = "QuickApp"
+            ReferencedContainer = "container:QuickApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1835D08B1D22F64900C9554C"
-            BuildableName = "Quick.app"
-            BlueprintName = "Quick"
-            ReferencedContainer = "container:Quick.xcodeproj">
+            BuildableName = "QuickApp.app"
+            BlueprintName = "QuickApp"
+            ReferencedContainer = "container:QuickApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1835D08B1D22F64900C9554C"
-            BuildableName = "Quick.app"
-            BlueprintName = "Quick"
-            ReferencedContainer = "container:Quick.xcodeproj">
+            BuildableName = "QuickApp.app"
+            BlueprintName = "QuickApp"
+            ReferencedContainer = "container:QuickApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
