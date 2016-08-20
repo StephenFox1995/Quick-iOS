@@ -83,22 +83,22 @@ class Session {
       userJWT.tokenString = token
       userJWT.token = jwt
       
-      userJWT.id = jwt.claim("id")
+      userJWT.id = jwt.claim(name: "id").string
       guard userJWT.id != nil else {
         fxprint(StringConstants.unfoundJWTClaim + "id")
         throw UserJWTDecodeError.UnfoundClaim
       }
-      userJWT.firstname = jwt.claim("firstname")
+      userJWT.firstname = jwt.claim(name: "firstname").string
       guard userJWT.firstname != nil else {
         fxprint(StringConstants.unfoundJWTClaim + "firstname")
         throw UserJWTDecodeError.UnfoundClaim
       }
-      userJWT.lastname = jwt.claim("lastname")
+      userJWT.lastname = jwt.claim(name: "lastname").string
       guard userJWT.lastname != nil else {
         fxprint(StringConstants.unfoundJWTClaim + "lastname")
         throw UserJWTDecodeError.UnfoundClaim
       }
-      userJWT.email = jwt.claim("email")
+      userJWT.email = jwt.claim(name: "email").string
       guard userJWT.email != nil else {
         fxprint(StringConstants.unfoundJWTClaim + "email")
         throw UserJWTDecodeError.UnfoundClaim
