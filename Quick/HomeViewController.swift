@@ -50,7 +50,7 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
       return
     }
     let businessViewController =
-      UIStoryboard.viewControllerFromStoryboard("BusinessViewController") as! BusinessViewController
+      UIStoryboard.viewControllerFromStoryboard(StringConstants.businessViewController) as! BusinessViewController
     businessViewController.business = b
     self.navigationController?.pushViewController(businessViewController, animated: true);
   }

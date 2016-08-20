@@ -68,7 +68,7 @@ class BusinessViewController: QuickViewController, UITableViewDelegate {
     guard let b = self.business else { return }
     
     let productViewController =
-      UIStoryboard.viewControllerFromStoryboard("ProductViewController") as! ProductViewController
+      UIStoryboard.viewControllerFromStoryboard(StringConstants.productViewController) as! ProductViewController
     productViewController.product = p
     productViewController.business = b
     self.navigationController?.pushViewController(productViewController, animated: true);

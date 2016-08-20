@@ -32,6 +32,21 @@ class JSONParser {
     return product
   }
   
+  static func parseProducts(json: JSON) -> [Product] {
+    var productArray = [Product]()
+    if let products = json["products"].array {
+      for productJSON in products {
+        let product = Product()
+        product.id =          productJSON["id"].stringValue
+        product.name =        productJSON["name"].stringValue
+        product.price =       productJSON["price"].stringValue
+        product.description = productJSON["description"].stringValue
+        productArray.append(product)
+      }
+    }
+    return productArray
+  }
+  
   
   
   static func parseBusiness(json: JSON) -> Business {

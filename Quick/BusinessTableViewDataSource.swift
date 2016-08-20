@@ -61,7 +61,7 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
       business.id =             jsonObj.1["id"].stringValue
       business.name =           jsonObj.1["name"].stringValue
       business.address =        jsonObj.1["address"].stringValue
-      business.contactNumber =  jsonObj.1["contact_number"].stringValue
+      business.contactNumber =  jsonObj.1["contactNumber"].stringValue
       businessArray.append(business)
     }
     return businessArray

@@ -47,18 +47,8 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   }
   
   
-  private func createProductArray(json: JSON) -> Array<Product> {
-    var productArray = Array<Product>()
-    
-    for jsonObj in json {
-      let product = Product()
-      product.id =          jsonObj.1["id"].stringValue
-      product.name =        jsonObj.1["name"].stringValue
-      product.price =       jsonObj.1["price"].stringValue
-      product.description = jsonObj.1["description"].stringValue
-      productArray.append(product)
-    }
-    return productArray
+  private func createProductArray(json: JSON) -> [Product] {
+    return JSONParser.parseProducts(json)
   }
   
   

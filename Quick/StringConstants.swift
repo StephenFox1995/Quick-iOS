@@ -30,5 +30,6 @@ class StringConstants: NSObject {
   /// ViewController Identifiers
   static let homeViewController = "HomeViewController"
   static let authenticateViewController = "AuthenticateViewController"
-  
+  static let businessViewController = "BusinessViewController"
+  static let productViewController = "ProductViewController"
 }

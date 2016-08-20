@@ -130,7 +130,6 @@ class Network {
     }
     
     
-    // TODO: CHANGE THIS!!
     private static let businessEndPointDev = NetworkingDetails.baseEndPointDev + "/business/all"
     private static let businessEndPointProduction = "" // TODO: to be decided
     
@@ -152,7 +151,7 @@ class Network {
      Creates a string url for business products.*/
     static func createBusinessProductEndPoint(productID: String) -> String {
       let resource = "/\(productID)/products"
-      return (AppDelegate.devEnvironment ? businessEndPointDev: businessEndPointProduction) + resource
+      return (AppDelegate.devEnvironment ? businessProductEndPointDev: businessProductEndPointProduction) + resource
     }
     
     
