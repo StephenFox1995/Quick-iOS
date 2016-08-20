@@ -7,11 +7,11 @@
 //
 
 import XCTest
+
 import Quick
 import Nimble
 
 class QuickAppTests: QuickSpec {
-  
 
   
 }

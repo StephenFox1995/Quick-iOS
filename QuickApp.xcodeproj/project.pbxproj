@@ -48,6 +48,9 @@
 		18F631411D6655540008103C /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631401D6655540008103C /* SessionStore.swift */; };
 		18F631431D6775D40008103C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631421D6775D40008103C /* LoginViewController.swift */; };
 		18F631621D67D1600008103C /* QuickAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631611D67D1600008103C /* QuickAppTests.swift */; };
+		18F6316B1D6868830008103C /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6316A1D6868830008103C /* SessionManagerTests.swift */; };
+		18F6316F1D686BB60008103C /* NetworkResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6316E1D686BB60008103C /* NetworkResponseTests.swift */; };
+		18F631711D686C3B0008103C /* JSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631701D686C3B0008103C /* JSONParserTests.swift */; };
 		522AE8F9B1BF6F5BF4C9C097 /* Pods_QuickApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E860B54F40CCBF07FDE7744 /* Pods_QuickApp.framework */; };
 		6D865AEE2EC145C9723C2C21 /* Pods_QuickAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D4B9BD789B4EE296042D30 /* Pods_QuickAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -109,6 +112,9 @@
 		18F6315F1D67D1600008103C /* QuickAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F631611D67D1600008103C /* QuickAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAppTests.swift; sourceTree = "<group>"; };
 		18F631631D67D1600008103C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F6316A1D6868830008103C /* SessionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
+		18F6316E1D686BB60008103C /* NetworkResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponseTests.swift; sourceTree = "<group>"; };
+		18F631701D686C3B0008103C /* JSONParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParserTests.swift; sourceTree = "<group>"; };
 		2E472150DF07F2388306F612 /* Pods-Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick/Pods-Quick.release.xcconfig"; sourceTree = "<group>"; };
 		41589BE5CBBB6CE62E0EDB0A /* Pods-QuickApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickApp/Pods-QuickApp.debug.xcconfig"; sourceTree = "<group>"; };
 		44D4B9BD789B4EE296042D30 /* Pods_QuickAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,6 +290,9 @@
 			isa = PBXGroup;
 			children = (
 				18F631611D67D1600008103C /* QuickAppTests.swift */,
+				18F6316A1D6868830008103C /* SessionManagerTests.swift */,
+				18F6316E1D686BB60008103C /* NetworkResponseTests.swift */,
+				18F631701D686C3B0008103C /* JSONParserTests.swift */,
 				18F631631D67D1600008103C /* Info.plist */,
 			);
 			path = QuickAppTests;
@@ -558,6 +567,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F6316B1D6868830008103C /* SessionManagerTests.swift in Sources */,
+				18F6316F1D686BB60008103C /* NetworkResponseTests.swift in Sources */,
+				18F631711D686C3B0008103C /* JSONParserTests.swift in Sources */,
 				18F631621D67D1600008103C /* QuickAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

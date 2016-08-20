@@ -5,6 +5,7 @@ use_frameworks!
 def testing_pods
   pod 'Quick'
   pod 'Nimble'
+  pod 'SwiftyJSON'
 end
 
 target 'QuickAppTests' do
