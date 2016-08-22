@@ -72,9 +72,7 @@ class ProductViewController: QuickViewController {
     guard let b = self.business else { return purchaseError() }
     guard let bID = b.id else { return purchaseError() }
     
-    let jsonParameters = JSONEncoder.encodePurchase(productID: pID,
-                                                    businessID: bID,
-                                                    userID: "H1iQEkqB")
+    let jsonParameters = JSONEncoder.jsonifyPurchase(productID: pID, businessID: bID)
     
     let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint
     network.postJSON(purchaseEndPoint, jsonParameters: jsonParameters) {

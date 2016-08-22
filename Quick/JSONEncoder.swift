@@ -11,21 +11,17 @@ import SwiftyJSON
 
 class JSONEncoder {
   
-  /**
-   Encodes the parameters in a appropriate format that 
-   can be represented as JSON by the networking api.
-   
-   - parameter productID:   The id of the product for the purchase.
-   - parameter businessID:  The id of the business the product belongs to.
-   - parameter userID:      The id of the user requesting the purchase.
-   */
-  static func encodePurchase(productID productID: String,
-                                       businessID: String,
-                                       userID: String) -> Dictionary<String, String> {
-    return ["productID": productID,
-            "businessID": businessID,
-            "userID": userID]
+  static func jsonifyPurchase(productID productID: String,
+                                        businessID: String) -> [String: AnyObject]{
+    return
+      ["purchase":
+        [
+          "productID": productID,
+          "businessID": businessID
+        ]
+      ]
   }
+  
   
   
   

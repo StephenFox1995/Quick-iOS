@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   // Indicates if we're in development environment.
   static let devEnvironment = true
-  private let sessionManager = SessionManager()
+  private let sessionManager = SessionManager.sharedInstance
   var window: UIWindow?
 
 

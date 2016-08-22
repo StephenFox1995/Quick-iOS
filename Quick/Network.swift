@@ -47,7 +47,12 @@ class Network {
   func postJSON(urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
                 response: (success: Bool, data: AnyObject) -> Void) {
-    Alamofire.request(.POST, urlString, parameters: jsonParameters, encoding: .JSON).validate()
+    let headers = self.httpHeaders()
+    Alamofire.request(.POST,
+      urlString,
+      parameters: jsonParameters,
+      encoding: .JSON,
+      headers: headers).validate()
       .responseJSON { afResponse in
         switch afResponse.result {
         case .Success:
@@ -58,6 +63,19 @@ class Network {
           response(success: false, data: NSNull())
           break
         }
+    }
+  }
+  
+  private func httpHeaders() -> [String: String] {
+    if let sessionToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
+      return [
+        "Authorization": "Bearer \(sessionToken)",
+        "Content-Type": "application/json"
+      ]
+    } else {
+      return [
+        "Content-Type": "application/json"
+      ]
     }
   }
   

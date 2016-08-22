@@ -78,5 +78,4 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
     productCell.setTextElements(product)
     return productCell
   }
-
 }

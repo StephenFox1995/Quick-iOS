@@ -16,6 +16,7 @@ class SessionManager {
   var activeSession: Session?
   private let sessionStore = SessionStore.sharedInstance
   
+  private init() {}
   
   /**
    Checks to see if there is an active session available on the device.
