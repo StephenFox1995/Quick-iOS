@@ -47,6 +47,28 @@ class Network {
   func postJSON(urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
                 response: (success: Bool, data: AnyObject) -> Void) {
+    
+    Alamofire.request(.POST,
+      urlString,
+      parameters: jsonParameters,
+      encoding: .JSON).validate()
+      .responseJSON { afResponse in
+        switch afResponse.result {
+        case .Success:
+          if let value = afResponse.result.value {
+            response(success: true, data: value)
+          }
+        case .Failure:
+          response(success: false, data: NSNull())
+          break
+        }
+    }
+  }
+  
+  
+  func postJSONAuthenticated(urlString: String,
+                             jsonParameters: [String: AnyObject],
+                             response:(success: Bool, data: AnyObject) -> Void) {
     let headers = self.httpHeaders()
     Alamofire.request(.POST,
       urlString,
@@ -78,6 +100,8 @@ class Network {
       ]
     }
   }
+  
+  
   
   
   
