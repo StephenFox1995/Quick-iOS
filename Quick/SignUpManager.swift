@@ -30,10 +30,8 @@ class SignUpManager {
                      jsonParameters: userJSONObject)
     { (success, data) in
       if success {
-        
         // Pass control to network reponse to handle and parse the response.
-        let userSignUpNetworkReponse = NetworkResponse.UserSignUpResponse()
-        userSignUpNetworkReponse.handleUserSignUpResponse(data, completion:
+        NetworkResponse.UserSignUpResponse.handleUserSignUpResponse(data, completion:
           { (success, signUpResponse) in
             if success {
               // Once the data has been handled and parsed, begin a new session.

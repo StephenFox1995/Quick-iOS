@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180DBC181D6CD7FC001AD560 /* NetworkResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DBC171D6CD7FB001AD560 /* NetworkResponseTests.swift */; };
 		181D744F1D2473910007DAFD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D744E1D2473910007DAFD /* Product.swift */; };
 		181D74551D25AAAE0007DAFD /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74541D25AAAE0007DAFD /* Business.swift */; };
 		181D74581D25B24E0007DAFD /* BusinessTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74571D25B24E0007DAFD /* BusinessTableView.swift */; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		0BCF0E5FF1B47D6EE89027A7 /* Pods-QuickAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickAppTests/Pods-QuickAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		180DBC171D6CD7FB001AD560 /* NetworkResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponseTests.swift; sourceTree = "<group>"; };
 		181D744E1D2473910007DAFD /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		181D74541D25AAAE0007DAFD /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		181D74571D25B24E0007DAFD /* BusinessTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTableView.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				18F631611D67D1600008103C /* QuickAppTests.swift */,
 				18F631701D686C3B0008103C /* JSONParserTests.swift */,
+				180DBC171D6CD7FB001AD560 /* NetworkResponseTests.swift */,
 				18F631631D67D1600008103C /* Info.plist */,
 			);
 			path = QuickAppTests;
@@ -558,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F631711D686C3B0008103C /* JSONParserTests.swift in Sources */,
+				180DBC181D6CD7FC001AD560 /* NetworkResponseTests.swift in Sources */,
 				18F631621D67D1600008103C /* QuickAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

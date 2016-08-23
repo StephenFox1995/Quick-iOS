@@ -23,8 +23,7 @@ class LoginManager {
     network.postJSON(Network.NetworkingDetails.authenticateEndPoint, jsonParameters: loginJSON) {
       (success, data) in
       if success {
-        let authNetworkResponse = NetworkResponse.UserAuthenticateResponse()
-        authNetworkResponse.handleResponse(data, completion: {
+        NetworkResponse.UserAuthenticateResponse.handleResponse(data, completion: {
           (success, authResponse) in
           if success {
             let sessionManager = SessionManager.sharedInstance

@@ -56,7 +56,7 @@ class NetworkResponse {
      - parameter data:       The data contained in the reponse.
      - parameter response:   A callback once the response has been handled.
      */
-    func handleUserSignUpResponse(data: AnyObject,
+    static func handleUserSignUpResponse(data: AnyObject,
                                   completion: SignUpCompletion) {
       // Attempt to parse the JSON response.
       let json = JSON(data)
@@ -86,7 +86,7 @@ class NetworkResponse {
       }
     }
     
-    func handleResponse(data: AnyObject, completion: UserAuthenticateCompletion) {
+    static func handleResponse(data: AnyObject, completion: UserAuthenticateCompletion) {
       let json = JSON(data)
       do {
         let response = try JSONParser.userAuthenticate(json)
