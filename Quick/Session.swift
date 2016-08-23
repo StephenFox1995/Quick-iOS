@@ -106,7 +106,4 @@ class Session {
       return userJWT
     }
   }
-  
-  
-  
 }

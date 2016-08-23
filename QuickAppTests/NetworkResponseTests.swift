@@ -6,7 +6,7 @@
 //  Copyright © 2016 Stephen Fox. All rights reserved.
 //
 
-import XCTest
+
 import Quick
 import Nimble
 @testable import QuickApp
