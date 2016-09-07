@@ -11,7 +11,7 @@ import UIKit
 
 class QuickViewController: UIViewController {
   
-  
+  var index: NSInteger?
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     self.view.backgroundColor = UIColor.whiteColor()

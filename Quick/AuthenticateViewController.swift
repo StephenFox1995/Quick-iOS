@@ -1,148 +1,103 @@
-//
-//  SignUpViewController.swift
-//  Quick
-//
-//  Created by Stephen Fox on 15/08/2016.
-//  Copyright © 2016 Stephen Fox. All rights reserved.
-//
 
 import UIKit
 
-/**
- Use this view controller to register users or log users into the app.
- */
-class AuthenticateViewController: QuickViewController {
+protocol AuthenticateViewControllerDelegate: class {
+  func authenticateViewControllerSignUpDetailsEntered (viewController: AuthenticateViewController,
+                                                      email: String,
+                                                      fullname: String,
+                                                      password: String)
+  func authenticateViewControllerLoginDetailsEntered (viewController: AuthenticateViewController,
+                                                     email: String,
+                                                     password: String)
+}
+
+class AuthenticateViewController: UIPageViewController,
+  UIPageViewControllerDataSource,
+LoginViewControllerDelegate,
+SignUpViewControllerDelegate {
   
-  /// Authenticate mode of this viewcontroller
-  private enum AuthMode {
-    case SignUp
-    case Login
-  }
-  
-  @IBOutlet private weak var emailTextField: UITextField!
-  @IBOutlet private weak var firstnameTextField: UITextField!
-  @IBOutlet private weak var passwordTextField: UITextField!
-  @IBOutlet private weak var lastnameTextField: UITextField!
-  @IBOutlet weak var authButton: UIButton!
-  private var authMode: AuthMode = .Login
+  weak var authDelegate: AuthenticateViewControllerDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.determineAuthMode()
-  }
-  
-  
-  private func determineAuthMode() {
-    if self.authMode == .Login {
-      self.firstnameTextField.hidden = true
-      self.lastnameTextField.hidden = true
-    } else {
-      self.firstnameTextField.hidden = false
-      self.lastnameTextField.hidden = false
-    }
-  }
-  
-  /// Sign user up to app.
-  @IBAction func signUp() {
-    guard self.validInputFields() else {
-      return super.displayMessage(title: "Error", message: "Please fill in all fields")
-    }
+    self.view.backgroundColor = UIColor.whiteColor()
+    self.dataSource = self
     
-    let signUpManager = SignUpManager.sharedInstace
-    let user = User(email: self.emailTextField.text!,
-                    firstname: self.firstnameTextField.text!,
-                    lastname: self.lastnameTextField.text!,
-                    password: self.passwordTextField.text!)
-    
-    signUpManager.createUserAccount(user) { (success, session) in
-      if success {
-        self.presentHomeViewController()
-      } else {
-        return super.displayMessage(title: StringConstants.error, message: StringConstants.accountTaken)
-      }
+    let initialViewController = self.viewControllerAtIndex(0)
+    let viewControllers = [initialViewController]
+    self.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+  }
+  
+  /// Determines the view controller to show based on its index.
+  private func viewControllerAtIndex(index: NSInteger) -> UIViewController {
+    switch index {
+    case 0:
+      let loginViewController = LoginViewController()
+      loginViewController.index = index
+      loginViewController.delegate = self
+      return loginViewController
+    case 1:
+      let signUpViewController = SignUpViewController()
+      signUpViewController.index = index
+      signUpViewController.delegate = self
+      return signUpViewController
+    default:
+      return LoginViewController()
     }
   }
-  
-  /// Log user in to app.
-  @IBAction func login() {
-    guard self.validInputFields() else {
-      return super.displayMessage(title: StringConstants.error, message: StringConstants.fillInFields)
-    }
-    
-    // Create user object.
-    let user = User()
-    user.email = self.emailTextField.text!
-    user.password = self.passwordTextField.text!
-    
-    // Attempt to login.
-    let loginManager = LoginManager.sharedInstance
-    loginManager.login(user) { (success, session) in
-      if success {
-        self.presentHomeViewController()
-      } else {
-        return super.displayMessage(title: StringConstants.error, message: StringConstants.invalidCredential)
-      }
-    }
-  }
-  
-  
-  private func presentHomeViewController() {
-    // Present home viewcontroller to log user in.
-    let sb = UIStoryboard(name: "Main", bundle: nil)
-    let homeViewController = sb.instantiateViewControllerWithIdentifier(StringConstants.homeViewController)
-    self.navigationController?.pushViewController(homeViewController, animated: false)
-  }
-  
-  private func validInputFields() -> Bool {
-    if self.authMode == .Login {
-      if self.emailTextField.text!.isEmpty ||
-        self.passwordTextField.text!.isEmpty {
-        return false
-      } else {
-        return true
-      }
-    } else {
-      if self.emailTextField.text!.isEmpty ||
-        self.firstnameTextField.text!.isEmpty ||
-        self.passwordTextField.text!.isEmpty ||
-        self.lastnameTextField.text!.isEmpty {
-        return false
-      } else {
-        return true
-      }
-    }
-  }
-  
-  @IBAction func authButtonPress(sender: AnyObject) {
-    if self.authMode == .Login {
-      self.login()
-    } else {
-      self.signUp()
-    }
-  }
-  // Changes the auth button action from
-  // sign up to login
-  private func changeAuthButtonAction(authMode: AuthMode) {
-    switch authMode {
-    case .SignUp:
-      self.authButton.titleLabel?.text = "Sign Up"
-    case .Login:
-      self.authButton.titleLabel?.text = "Login"
-    }
-    self.authMode = authMode
-  }
-  
-  @IBAction func signUpMode(sender: AnyObject) {
-    self.changeAuthButtonAction(.SignUp)
-    self.authMode = .SignUp
-    self.determineAuthMode()
-  }
-  
-  
-  @IBAction func loginMode(sender: AnyObject) {
-    self.changeAuthButtonAction(.Login)
-    self.authMode = .Login
-    self.determineAuthMode()
-  }
-
 }
+
+
+
+// MARK: LoginViewControllerDelegate
+extension AuthenticateViewController {
+  func loginDetailsEntered(viewController: LoginViewController, email: String, password: String) {
+    if let delegate = self.authDelegate {
+      delegate.authenticateViewControllerLoginDetailsEntered(self, email: email, password: password)
+    }
+  }
+}
+// MARK: SignUpViewControllerDelegate
+extension AuthenticateViewController {
+  func signUpDetailsEntered(viewController: SignUpViewController,
+                            email: String,
+                            fullname: String,
+                            password: String) {
+    if let delegate = self.authDelegate {
+      delegate.authenticateViewControllerSignUpDetailsEntered(self, email: email, fullname: fullname, password: password)
+    }
+  }
+}
+
+// MARK: UIPageViewControllerDataSource
+extension AuthenticateViewController {
+  func pageViewController(pageViewController: UIPageViewController,
+                          viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    var index = (viewController as! QuickViewController).index
+    if (index == 1) {
+      return nil
+    }
+    index = index! + 1
+    return self.viewControllerAtIndex(index!)
+  }
+  
+  func pageViewController(pageViewController: UIPageViewController,
+                          viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    var index = (viewController as! QuickViewController).index
+    if (index == 0) {
+      return nil
+    }
+    index = index! + 1
+    return self.viewControllerAtIndex(index!)
+  }
+  
+  func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    return 2
+  }
+  func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    return 0
+  }
+}
+
+
+

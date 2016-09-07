@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "194D6A27BAECABFA49A3775FBF4A93EA082CA3DD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "194D6A27BAECABFA49A3775FBF4A93EA082CA3DD" : 0,
+    "FE5E8C891800C91391F8E51DD56C633A860BCB13" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DDCE6E68-21DA-446A-A41E-B9D644E12584",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "194D6A27BAECABFA49A3775FBF4A93EA082CA3DD" : "Quick-iOS\/",
+    "FE5E8C891800C91391F8E51DD56C633A860BCB13" : "QuickLoginViewController\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "QuickApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "QuickApp.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/StephenFox1995\/Quick-iOS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "194D6A27BAECABFA49A3775FBF4A93EA082CA3DD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/StephenFox1995\/Quick-Login-SignUp-ViewController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FE5E8C891800C91391F8E51DD56C633A860BCB13"
+    }
+  ]
+}
