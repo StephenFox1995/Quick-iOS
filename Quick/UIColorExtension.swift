@@ -7,78 +7,86 @@
 //
 
 import UIKit
+/**
+ * When adding new colors use two decimal places for all components.
+ * e.g.
+ *  red:   0.36
+ *  green: 0.52
+ *  blue:  0.89
+ */
+
 
 /// BusinessViewController
 extension UIColor {
   static func businessViewControllerBackgroundGray() -> UIColor {
-    return UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+    return UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
   }
 }
 
 /// BusinessHoursView
 extension UIColor {
   static func businessHoursViewGreen() -> UIColor {
-    return UIColor(red: 123/255, green: 193/255, blue: 45/255, alpha: 1.0)
+    return UIColor(red: 0.48, green: 0.75, blue: 0.17, alpha: 1.00)
   }
   static func businessHoursViewRed() -> UIColor {
-    return UIColor(red: 254/255, green: 104/255, blue: 104/255, alpha: 1.0)
+    return UIColor(red: 0.99, green: 0.40, blue: 0.40, alpha: 1.00)
   }
 }
 
 /// BusinessInfoStrip
 extension UIColor {
   static func businessInfoStripShadowColor() -> UIColor {
-    return UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 0.5)
+    return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
   }
   static func businessInfoStripSeparatorColor() -> UIColor {
-    return UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 0.5)
+    return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
   }
 }
 
 /// BusinessSeeProductsButton
 extension UIColor {
   static func businessSeeProductsShadowColor() -> UIColor {
-    return UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 0.5)
+    return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
   }
   static func businessSeeProductsTitleNormalColor() -> UIColor {
-    return UIColor(red: 114/255, green: 114/255, blue: 114/255, alpha: 1)
+    return UIColor(red: 0.44, green: 0.44, blue: 0.44, alpha: 1.00)
   }
   static func businessSeeProductsTitleHighlightedColor() -> UIColor {
-    return UIColor(red: 143/255, green: 143/255, blue: 143/255, alpha: 1)
+    return UIColor(red: 0.56, green: 0.56, blue: 0.56, alpha: 1.00)
   }
 }
 
 /// BusinessWaitingTimeView
 extension UIColor {
   static func businessWaitingTimeViewGrayColor() -> UIColor {
-    return UIColor(red: 114/255, green: 114/255, blue: 114/255, alpha: 1)
+    return UIColor(red: 0.44, green: 0.44, blue: 0.44, alpha: 1.00)
   }
 }
 
 /// FavouriteButton
 extension UIColor {
   static func favouriteButtonNormalRedColor() -> UIColor {
-    return UIColor(red: 254/104, green: 104/255, blue: 104/255, alpha: 1.0)
+    return UIColor(red: 0.40, green: 0.40, blue: 0.40, alpha: 1.00)
   }
   static func favouriteButtonHighlightedRedColor() -> UIColor {
-    return UIColor(red: 251/104, green: 57/255, blue: 57/255, alpha: 1.0)
+    return UIColor(red: 0.98, green: 0.22, blue: 0.22, alpha: 1.00)
   }
 }
 
 /// QButton
 extension UIColor {
   static func qButtonBlueColor() -> UIColor {
-    return UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1.0)
+    return UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.00)
   }
 }
 
 /// QTextField
 extension UIColor {
   static func qTextFieldBlueColor() -> UIColor {
-    return UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1.0)
+    return UIColor(red: 0.56, green: 0.56, blue: 0.56, alpha: 1.00)
   }
   static func qTextFieldGrayColor() -> UIColor {
-    return UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1.0)
+    return UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.00)
   }
 }
 
