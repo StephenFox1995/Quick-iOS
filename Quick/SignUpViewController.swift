@@ -60,18 +60,17 @@ class SignUpViewController: QuickViewController {
     
     constrain(self.view, self.emailTextField, self.fullnameTextField, self.passwordTextField) {
       (superView, emailTextField, fullnameTextField, passwordTextField) in
-      let padding: CGFloat = 20.0
-      emailTextField.leading == superView.leading + padding
+      emailTextField.centerX == superView.centerX
       emailTextField.top == superView.top + 200
       emailTextField.width == 300
       emailTextField.height == 50
       
-      fullnameTextField.leading == superView.leading + padding
+      fullnameTextField.centerX == superView.centerX
       fullnameTextField.top == superView.top + 270
       fullnameTextField.width == 300
       fullnameTextField.height == 50
       
-      passwordTextField.leading == superView.leading + padding
+      passwordTextField.centerX == superView.centerX
       passwordTextField.top == superView.top + 340
       passwordTextField.width == 300
       passwordTextField.height == 50

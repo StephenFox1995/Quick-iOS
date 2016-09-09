@@ -48,18 +48,17 @@ class LoginViewController: QuickViewController {
     
     constrain(self.view, self.emailTextField, self.passwordTextField, self.signInButton) {
       (superView, emailTextField, passwordTextField, signInButton) in
-      let padding: CGFloat = 20
-      emailTextField.leading == superView.leading + padding
+      emailTextField.centerX == superView.centerX
       emailTextField.top == superView.top + 200
       emailTextField.width == 300
       emailTextField.height == 50
       
-      passwordTextField.leading == superView.leading + padding
+      passwordTextField.centerX == superView.centerX
       passwordTextField.top == superView.top + 270
       passwordTextField.width == 300
       passwordTextField.height == 50
       
-      signInButton.leading == superView.leading + padding
+      signInButton.centerX == superView.centerX
       signInButton.top == superView.top + 350
       signInButton.width == 300
       signInButton.height == 50
