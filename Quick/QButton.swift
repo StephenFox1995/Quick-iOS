@@ -14,7 +14,7 @@ class QButton: UIButton {
     super.init(frame: frame)
     self.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 16)
 
-    self.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1.0)
+    self.backgroundColor = UIColor.qButtonBlueColor()
     self.layer.cornerRadius = 25.0
     self.clipsToBounds = true
   }

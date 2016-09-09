@@ -18,4 +18,5 @@ target 'QuickApp' do
     pod 'JWTDecode', '~> 1.0'
     pod 'Locksmith'
     pod 'FontAwesome.swift'
+    pod 'Cartography', '~> 0.6'
 end

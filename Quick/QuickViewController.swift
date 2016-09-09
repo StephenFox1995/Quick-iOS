@@ -12,14 +12,27 @@ import UIKit
 class QuickViewController: UIViewController {
   
   var index: NSInteger?
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    self.view.backgroundColor = UIColor.whiteColor()
+  
+  /// Sets the navigationController's navigation bar to completely translucent
+  internal var translucentNavigationBar: Bool {
+    get {
+      return self.navigationController!.navigationBar.hidden
+    }
+    set {
+      if (newValue) {
+        self.navigationController?.navigationBar.hidden = true
+      } else {
+        self.navigationController?.navigationBar.hidden = false
+      }
+    }
   }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = UIColor.whiteColor()
   }
+  
   
   /**
    Displays an alert to the user.
@@ -49,5 +62,5 @@ class QuickViewController: UIViewController {
     let qrCodeImageView = UIImageView(image: qrCodeImage)
     alertController.view.addSubview(qrCodeImageView)
     self.presentViewController(alertController, animated: true, completion: nil)
-  }  
+  }
 }

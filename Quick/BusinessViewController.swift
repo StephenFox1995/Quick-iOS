@@ -16,7 +16,8 @@ class BusinessViewController: QuickViewController, UITableViewDelegate {
   @IBOutlet weak var businessImageView: UIImageView!
   private var productTableViewDataSource: ProductTableViewDataSource!
   
-    
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = business?.name

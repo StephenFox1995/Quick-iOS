@@ -10,17 +10,19 @@ import UIKit
 
 class HomeViewController: QuickViewController, UITableViewDelegate {
   
-  var businessTableView: BusinessTableView!
-  var businessTableViewDataSource: BusinessTableViewDataSource!
+  private var businessTableView: BusinessTableView!
+  private var businessTableViewDataSource: BusinessTableViewDataSource!
   
   override func viewWillAppear(animated: Bool) {
     self.navigationController?.navigationBar.translucent = true
     self.navigationItem.setHidesBackButton(true, animated:false);
+    self.translucentNavigationBar = false
   }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupBusinessTableView()
+    self.setupBusinessTableView()
   }
   
   
@@ -45,13 +47,13 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let business = self.businessTableViewDataSource.itemForRowIndex(indexPath)
-    guard let b = business as? Business else {
+    guard ((business as? Business) != nil) else {
         // Error alert user.
       return
     }
-    let businessViewController =
-      UIStoryboard.viewControllerFromStoryboard(StringConstants.businessViewController) as! BusinessViewController
-    businessViewController.business = b
+    
+    let businessViewController = BViewController()
+    //businessViewController.business = b
     self.navigationController?.pushViewController(businessViewController, animated: true);
   }
   

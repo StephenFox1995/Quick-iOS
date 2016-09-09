@@ -21,11 +21,7 @@ class LoginViewController: QuickViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-//    let logoImageView = UIImageView(frame: CGRectMake(130.00, 55.00, 80, 80))
-//    logoImageView.image = UIImage(named: "Logo")
-//    
-//    self.view.addSubview(logoImageView)
+
     
     let qButton = QButton(frame: CGRectMake(20.0, 350.0, 300.0, 50.0))
     qButton.setTitle("LOGIN", forState: .Normal)
@@ -35,14 +31,17 @@ class LoginViewController: QuickViewController {
     
     self.emailTextField = QTextField(frame: CGRectMake(20.00, 200.00, 300.0, 50.0),
                                     fontAwesome: String.fontAwesomeIconWithCode("fa-envelope")!)
-    emailTextField.field?.placeholder = "Email"
-    self.view.addSubview(emailTextField)
+    self.emailTextField.field?.placeholder = "Email"
+    self.emailTextField.field?.autocorrectionType = .No
+    self.emailTextField.field?.autocapitalizationType = .None
+    self.view.addSubview(self.emailTextField)
     
     self.passwordTextField = QTextField(frame: CGRectMake(20.00, 270.00, 300.0, 50.0),
                                         fontAwesome: String.fontAwesomeIconWithCode("fa-lock")!);
-    passwordTextField.field?.placeholder = "Password"
-    passwordTextField.field?.secureTextEntry = true
-    self.view.addSubview(passwordTextField)
+    self.passwordTextField.field?.placeholder = "Password"
+    self.passwordTextField.field?.secureTextEntry = true
+    
+    self.view.addSubview(self.passwordTextField)
   }
   
   /// Notify delegate of details entered by user.

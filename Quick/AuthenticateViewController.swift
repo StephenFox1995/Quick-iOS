@@ -12,7 +12,7 @@ protocol AuthenticateViewControllerDelegate: class {
 }
 
 class AuthenticateViewController: UIPageViewController,
-  UIPageViewControllerDataSource,
+UIPageViewControllerDataSource,
 LoginViewControllerDelegate,
 SignUpViewControllerDelegate {
   
