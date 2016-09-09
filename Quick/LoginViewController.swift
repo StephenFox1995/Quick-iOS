@@ -8,6 +8,7 @@
 
 import UIKit
 import FontAwesome_swift
+import Cartography
 
 protocol LoginViewControllerDelegate: class {
   func loginDetailsEntered(viewController: LoginViewController, email: String, password: String)
@@ -17,31 +18,53 @@ class LoginViewController: QuickViewController {
   
   private var emailTextField: QTextField!
   private var passwordTextField: QTextField!
+  private var signInButton : QButton!
   weak var delegate: LoginViewControllerDelegate? 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    
-    let qButton = QButton(frame: CGRectMake(20.0, 350.0, 300.0, 50.0))
-    qButton.setTitle("LOGIN", forState: .Normal)
-    qButton.addTextSpacing(2.0)
-    qButton.addTarget(self, action: #selector(LoginViewController.notifyDelegate), forControlEvents: .TouchUpInside)
-    self.view.addSubview(qButton)
-    
-    self.emailTextField = QTextField(frame: CGRectMake(20.00, 200.00, 300.0, 50.0),
-                                    fontAwesome: String.fontAwesomeIconWithCode("fa-envelope")!)
+    self.setUpViews()
+  }
+  
+  private func setUpViews() {    
+    self.emailTextField = QTextField(fontAwesome: String.fontAwesomeIconWithCode("fa-envelope")!)
     self.emailTextField.field?.placeholder = "Email"
     self.emailTextField.field?.autocorrectionType = .No
     self.emailTextField.field?.autocapitalizationType = .None
     self.view.addSubview(self.emailTextField)
     
-    self.passwordTextField = QTextField(frame: CGRectMake(20.00, 270.00, 300.0, 50.0),
-                                        fontAwesome: String.fontAwesomeIconWithCode("fa-lock")!);
+    self.passwordTextField = QTextField(fontAwesome: String.fontAwesomeIconWithCode("fa-lock")!);
     self.passwordTextField.field?.placeholder = "Password"
     self.passwordTextField.field?.secureTextEntry = true
-    
     self.view.addSubview(self.passwordTextField)
+    
+    self.signInButton = QButton()
+    self.signInButton.setTitle("LOGIN", forState: .Normal)
+    self.signInButton.addTextSpacing(2.0)
+    self.signInButton.addTarget(self,
+                                action: #selector(LoginViewController.notifyDelegate),
+                                forControlEvents: .TouchUpInside)
+    self.view.addSubview(self.signInButton)
+    
+    constrain(self.view, self.emailTextField, self.passwordTextField, self.signInButton) {
+      (superView, emailTextField, passwordTextField, signInButton) in
+      let padding: CGFloat = 20
+      emailTextField.leading == superView.leading + padding
+      emailTextField.top == superView.top + 200
+      emailTextField.width == 300
+      emailTextField.height == 50
+      
+      passwordTextField.leading == superView.leading + padding
+      passwordTextField.top == superView.top + 270
+      passwordTextField.width == 300
+      passwordTextField.height == 50
+      
+      signInButton.leading == superView.leading + padding
+      signInButton.top == superView.top + 350
+      signInButton.width == 300
+      signInButton.height == 50
+      
+    }
   }
   
   /// Notify delegate of details entered by user.

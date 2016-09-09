@@ -8,6 +8,7 @@
 
 import UIKit
 import FontAwesome_swift
+import Cartography
 
 protocol SignUpViewControllerDelegate: class {
   func signUpDetailsEntered(viewController: SignUpViewController,
@@ -15,6 +16,8 @@ protocol SignUpViewControllerDelegate: class {
                             fullname: String,
                             password: String)
 }
+
+
 class SignUpViewController: QuickViewController {
   
   weak var delegate: SignUpViewControllerDelegate?
@@ -24,26 +27,27 @@ class SignUpViewController: QuickViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.setUpViews()
+  }
+  
+  
+  private func setUpViews() {  
     // Add email textfield
-    self.emailTextField = QTextField(frame: CGRectMake(20.00, 200.00, 300.0, 50.0),
-                                     fontAwesome: String.fontAwesomeIconWithCode("fa-envelope")!)
+    self.emailTextField = QTextField(fontAwesome: String.fontAwesomeIconWithCode("fa-envelope")!)
     self.emailTextField.field?.placeholder = "Email"
     self.emailTextField.field?.autocorrectionType = .No
     self.emailTextField.field?.autocapitalizationType = .None
     self.view.addSubview(self.emailTextField)
     
     // Add fullname textfield
-    self.fullnameTextField = QTextField(frame: CGRectMake(20.00, 270.00, 300.0, 50.0),
-                                        fontAwesome: String.fontAwesomeIconWithCode("fa-user")!);
+    self.fullnameTextField = QTextField(fontAwesome: String.fontAwesomeIconWithCode("fa-user")!);
     self.fullnameTextField.field?.placeholder = "Full Name"
     self.fullnameTextField.field?.autocorrectionType = .No
     self.fullnameTextField.field?.autocapitalizationType = .None
     self.view.addSubview(self.fullnameTextField)
     
     // Add password textfield
-    self.passwordTextField = QTextField(frame: CGRectMake(20.00, 340.00, 300.0, 50.0),
-                                        fontAwesome: String.fontAwesomeIconWithCode("fa-lock")!);
+    self.passwordTextField = QTextField(fontAwesome: String.fontAwesomeIconWithCode("fa-lock")!);
     passwordTextField.field?.placeholder = "Password"
     passwordTextField.field?.secureTextEntry = true
     self.view.addSubview(self.passwordTextField)
@@ -53,8 +57,26 @@ class SignUpViewController: QuickViewController {
     qButton.setTitle("SIGN UP", forState: .Normal)
     qButton.addTextSpacing(2.0)
     self.view.addSubview(qButton)
+    
+    constrain(self.view, self.emailTextField, self.fullnameTextField, self.passwordTextField) {
+      (superView, emailTextField, fullnameTextField, passwordTextField) in
+      let padding: CGFloat = 20.0
+      emailTextField.leading == superView.leading + padding
+      emailTextField.top == superView.top + 200
+      emailTextField.width == 300
+      emailTextField.height == 50
+      
+      fullnameTextField.leading == superView.leading + padding
+      fullnameTextField.top == superView.top + 270
+      fullnameTextField.width == 300
+      fullnameTextField.height == 50
+      
+      passwordTextField.leading == superView.leading + padding
+      passwordTextField.top == superView.top + 340
+      passwordTextField.width == 300
+      passwordTextField.height == 50
+    }
   }
-  
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     self.view.endEditing(true)
   }
