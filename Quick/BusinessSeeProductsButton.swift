@@ -22,7 +22,7 @@ class BusinessSeeProductsButton: UIButton {
     self.layer.shadowRadius = 1;
     self.layer.shadowColor = UIColor.businessSeeProductsShadowColor().CGColor
     self.layer.shadowOpacity = 0.5;
-    self.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 25)
+    self.titleLabel?.font = UIFont.qFontDemiBold(25)
     self.setTitle("SEE PRODUCTS", forState: .Normal)
     self.setTitleColor(UIColor.businessSeeProductsTitleNormalColor(), forState: .Normal)
     self.setTitleColor(UIColor.businessSeeProductsTitleHighlightedColor(), forState: .Highlighted)

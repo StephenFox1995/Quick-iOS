@@ -15,7 +15,7 @@ extension UILabel {
     if let font = self.font {
       labelFont = font
     } else {
-      labelFont = UIFont(name: "HelveticaNeue-Light", size: 20)!
+      labelFont = UIFont.qFontRegular(20)
     }
     var labelText: String!
     if let text = self.text {

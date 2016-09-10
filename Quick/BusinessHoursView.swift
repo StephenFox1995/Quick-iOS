@@ -23,7 +23,7 @@ class BusinessHoursView: UIView {
     self.hoursLabel = UILabel()
     self.hoursLabel.textColor = UIColor.whiteColor()
     self.hoursLabel.textAlignment = .Center
-    self.hoursLabel.font = UIFont(name: "AvenerNext-DemiBold", size: 14)
+    self.hoursLabel.font = UIFont.qFontDemiBold(14)
     self.hoursLabel.minimumScaleFactor = 0.5
     self.hoursLabel.numberOfLines = 1
     self.hoursLabel.adjustsFontSizeToFitWidth = true

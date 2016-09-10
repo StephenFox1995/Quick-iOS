@@ -69,7 +69,7 @@ extension ProductsTableViewController {
     guard let p = product as? Product else { return }
     guard let b = self.business else { return }
     
-    let productViewController = PViewController()
+    let productViewController = ProductViewController()
     productViewController.product = p
     productViewController.business = b
     self.navigationController?.pushViewController(productViewController, animated: true);

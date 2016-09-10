@@ -12,7 +12,7 @@ class QButton: UIButton {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 16)
+    self.titleLabel?.font = UIFont.qFontDemiBold(16)
     self.backgroundColor = UIColor.qButtonBlueColor()
     self.layer.cornerRadius = 25.0
     self.clipsToBounds = true

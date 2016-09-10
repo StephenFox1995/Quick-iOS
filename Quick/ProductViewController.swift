@@ -13,12 +13,13 @@ import SwiftyJSON
 /**
  Class that display info about a Product and allows a user to purchase the Product
  */
-class PViewController: QuickViewController {
+class ProductViewController: QuickViewController {
   
   /// Product property, this needs to be set for the view to load product info
   var product: Product!
   var business: Business?
   
+  private var productImageView: ProductImageView!
   private var productPricingStripView: ProductPricingStripView!
   private var purchaseButton = QButton()
   private var network = Network()
@@ -30,19 +31,36 @@ class PViewController: QuickViewController {
   }
   
   private func setupViews() {
+    
+    self.productImageView = ProductImageView()
+    self.view.addSubview(self.productImageView)
+    dispatch_async(dispatch_get_global_queue(0, 0)) {
+      let url = NSURL(string: "http://img.bbystatic.com/BestBuy_US/images/products/4357/4357800_sd.jpg")
+      let nsdata = NSData.init(contentsOfURL: url!)
+      dispatch_async(dispatch_get_main_queue(), {
+        let uiImage = UIImage(data: nsdata!)
+        self.productImageView.image = uiImage
+      })
+    }
+    
     self.productPricingStripView = ProductPricingStripView(product: self.product!)
     self.view.addSubview(self.productPricingStripView)
     
     self.purchaseButton.setTitle("PURCHASE", forState: .Normal)
     self.purchaseButton.titleLabel?.setKernAmount(2.0)
-    self.purchaseButton.addTarget(self, action: #selector(PViewController.beginPurchase), forControlEvents: .TouchUpInside)
+    self.purchaseButton.addTarget(self, action: #selector(ProductViewController.beginPurchase), forControlEvents: .TouchUpInside)
     self.purchaseButton.layer.cornerRadius = 0
     self.view.addSubview(self.purchaseButton)
     
-    constrain(self.view, self.productPricingStripView, self.purchaseButton) {
-      (superView, pricingView, purchaseButton) in
+    constrain(self.view, self.productImageView, self.productPricingStripView, self.purchaseButton) {
+      (superView, productImageView, pricingView, purchaseButton) in
+      productImageView.leading == superView.leading
+      productImageView.trailing == superView.trailing
+      productImageView.height == superView.height * 0.4
+      productImageView.top == superView.top
+      
       pricingView.width == superView.width
-      pricingView.center == superView.center
+      pricingView.top == productImageView.bottom
       pricingView.height == superView.height * 0.1
       
       purchaseButton.bottom == superView.bottom

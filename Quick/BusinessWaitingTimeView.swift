@@ -25,7 +25,7 @@ class BusinessWaitingTimeView: UIView {
   
   private func setupViews() {
     self.timeLabel = UILabel()
-    self.timeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 25)
+    self.timeLabel.font = UIFont.qFontDemiBold(25)
     self.timeLabel.textColor = UIColor.businessWaitingTimeViewGrayColor()
     self.timeLabel.minimumScaleFactor = 0.5
     self.timeLabel.numberOfLines = 1
@@ -39,7 +39,7 @@ class BusinessWaitingTimeView: UIView {
     self.addSubview(self.timeIcon)
     
     self.averageTimeLabel.text = "AVERAGE TIME (MINS)"
-    self.averageTimeLabel.font = UIFont(name: "AvenirNext-Regular", size: 13)
+    self.averageTimeLabel.font = UIFont.qFontRegular(13)
     self.averageTimeLabel.textColor = UIColor.businessWaitingTimeViewGrayColor()
     self.averageTimeLabel.minimumScaleFactor = 0.5
     self.averageTimeLabel.numberOfLines = 1

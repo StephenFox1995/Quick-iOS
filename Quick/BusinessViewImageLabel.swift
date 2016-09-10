@@ -14,12 +14,7 @@ class BusinessViewImageLabel: UIView {
   private var businessNameLabel: UILabel!
   private var businessLocationLabel: UILabel!
   
-  
-  struct ImageTitleFont {
-    static let nameFont = UIFont(name: "AvenirNext-DemiBold", size: 40.0)
-    static let locationFont = UIFont(name: "AvenirNext-Medium", size: 18.0)
-  }
-  
+
   init(businessName: String, businessLocation: String) {
     super.init(frame: CGRectZero)
     self.backgroundColor = UIColor.clearColor()
@@ -27,25 +22,23 @@ class BusinessViewImageLabel: UIView {
     self.clipsToBounds = true
     
     self.businessNameLabel = UILabel()
-    self.businessNameLabel.font = ImageTitleFont.nameFont
+    self.businessNameLabel.font = UIFont.qFontDemiBold(40)
     self.businessNameLabel.minimumScaleFactor = 0.4
     self.businessNameLabel.numberOfLines = 1
     self.businessNameLabel.adjustsFontSizeToFitWidth = true
     self.businessNameLabel.textColor = UIColor.whiteColor()
     self.businessNameLabel.textAlignment = .Left
     self.businessNameLabel.text = businessName.uppercaseStringWithLocale(nil)
-//    self.businessNameLabel.backgroundColor = UIColor.orangeColor()
     self.addSubview(self.businessNameLabel)
     
     self.businessLocationLabel = UILabel()
-    self.businessLocationLabel.font = ImageTitleFont.locationFont
+    self.businessLocationLabel.font = UIFont.qFontMedium(18)
     self.businessLocationLabel.minimumScaleFactor = 0.4
     self.businessLocationLabel.numberOfLines = 1
     self.businessLocationLabel.adjustsFontSizeToFitWidth = true
     self.businessLocationLabel.textColor = UIColor.whiteColor()
     self.businessLocationLabel.textAlignment = .Left
     self.businessLocationLabel.text = businessLocation
-//    self.businessLocationLabel.backgroundColor = UIColor.blueColor()
     self.businessLocationLabel.setKernAmount(2.0)
     self.addSubview(self.businessLocationLabel)
     

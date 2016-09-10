@@ -40,7 +40,7 @@ class QTextField: UIView, UITextFieldDelegate {
     
     // Add TextField
     self.field = UITextField()
-    self.field?.font = UIFont(name: "AvenirNext-DemiBold", size: 16)
+    self.field?.font = UIFont.qFontDemiBold(16)
     self.field?.delegate = self
     self.field?.textColor = UIColor.qTextFieldGrayColor()
     self.addSubview(self.field!)
