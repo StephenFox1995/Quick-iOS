@@ -34,6 +34,7 @@ class PViewController: QuickViewController {
     self.view.addSubview(self.productPricingStripView)
     
     self.purchaseButton.setTitle("PURCHASE", forState: .Normal)
+    self.purchaseButton.titleLabel?.setKernAmount(2.0)
     self.purchaseButton.addTarget(self, action: #selector(PViewController.beginPurchase), forControlEvents: .TouchUpInside)
     self.purchaseButton.layer.cornerRadius = 0
     self.view.addSubview(self.purchaseButton)
