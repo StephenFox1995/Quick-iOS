@@ -1,71 +1,61 @@
 //
-//  ProductViewController.swift
-//  Quick
+//  PViewController.swift
+//  QuickApp
 //
-//  Created by Stephen Fox on 04/07/2016.
+//  Created by Stephen Fox on 10/09/2016.
 //  Copyright © 2016 Stephen Fox. All rights reserved.
 //
 
 import UIKit
+import Cartography
 import SwiftyJSON
 
-class ProductViewController: QuickViewController {
+/**
+ Class that display info about a Product and allows a user to purchase the Product
+ */
+class PViewController: QuickViewController {
   
-  @IBOutlet private weak var productPrice: UILabel!
-  @IBOutlet private weak var productDescription: UILabel!
-  @IBOutlet private weak var productName: UILabel!
-  
-  var product: Product?
+  /// Product property, this needs to be set for the view to load product info
+  var product: Product!
   var business: Business?
-  private var network: Network!
   
-  var productId: String?
-  var shouldFetchProduct: Bool = false
-  
+  private var productPricingStripView: ProductPricingStripView!
+  private var purchaseButton = QButton()
+  private var network = Network()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.network = Network()
+    self.view.backgroundColor = UIColor.whiteColor()
+    self.setupViews()
+  }
+  
+  private func setupViews() {
+    self.productPricingStripView = ProductPricingStripView(product: self.product!)
+    self.view.addSubview(self.productPricingStripView)
     
-    if shouldFetchProduct {
-      fetchProductDetails()
-    }
-    else if let p = self.product { // Only try set, if fetching from network is false.
-      self.setProductDetailsUI(p)
-    }
-  }
-  
-
-  private func fetchProductDetails() {
-    guard let id = self.productId else { return }
+    self.purchaseButton.setTitle("PURCHASE", forState: .Normal)
+    self.purchaseButton.titleLabel?.setKernAmount(2.0)
+    self.purchaseButton.addTarget(self, action: #selector(PViewController.beginPurchase), forControlEvents: .TouchUpInside)
+    self.purchaseButton.layer.cornerRadius = 0
+    self.view.addSubview(self.purchaseButton)
     
-    let productEndPoint = Network.NetworkingDetails.createProductEndPoint(id)
-    network.requestJSON(productEndPoint) { (success, data) in
-      if (success) {
-        let json = JSON(data)
-        self.product = JSONParser.parseProduct(json)
-        self.setProductDetailsUI(self.product)
-      } else {
-        super.displayMessage(title: StringConstants.networkErrorTitleString,
-                           message: StringConstants.networkErrorMessageString)
-      }
+    constrain(self.view, self.productPricingStripView, self.purchaseButton) {
+      (superView, pricingView, purchaseButton) in
+      pricingView.width == superView.width
+      pricingView.center == superView.center
+      pricingView.height == superView.height * 0.1
+      
+      purchaseButton.bottom == superView.bottom
+      purchaseButton.leading == superView.leading
+      purchaseButton.trailing == superView.trailing
+      purchaseButton.height == superView.height * 0.1
     }
   }
   
-  private func setProductDetailsUI(product: Product?) {
-    if let p = product {
-      self.productName.text = p.name
-      self.productPrice.text = p.price
-      self.productDescription.text = p.description
-    }
-  }
   
-  private func purchaseError() {
-    self.displayMessage(title: StringConstants.purchaseErrorTitleString ,
-                        message: StringConstants.purchaseErrorMessageString)
-  }
-  
-  @IBAction func beginPurchase(sender: AnyObject) {
+  // Attempts to make a purchase.
+  @objc private func beginPurchase() {
+    let network = Network()
     // Check product
     guard let p = self.product else { return purchaseError() }
     guard let pID = p.id else { return purchaseError() }
@@ -85,12 +75,18 @@ class ProductViewController: QuickViewController {
         
       } else {
         super.displayMessage(title: StringConstants.networkErrorTitleString,
-                           message: StringConstants.networkErrorMessageString)
+                             message: StringConstants.networkErrorMessageString)
       }
     }
   }
   
+  // Purchase error alert.
+  private func purchaseError() {
+    self.displayMessage(title: StringConstants.purchaseErrorTitleString ,
+                        message: StringConstants.purchaseErrorMessageString)
+  }
   
+  // Display the details of a successful purchase.
   private func displayPurchaseDetails(purchaseID: String) {
     super.displayQRCodeDetailView(title: StringConstants.successfulPurchaseTitleString,
                                   message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!, purchaseID: purchaseID),
