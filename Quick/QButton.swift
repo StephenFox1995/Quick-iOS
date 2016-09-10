@@ -25,12 +25,3 @@ class QButton: UIButton {
 }
 
 
-extension UIButton {
-  func addTextSpacing(spacing: CGFloat) {
-    let attributedString = NSMutableAttributedString(string: self.currentTitle!)
-    attributedString.addAttribute(NSKernAttributeName,
-                                  value: spacing,
-                                  range: NSRange(location: 0, length: self.currentTitle!.characters.count))
-    self.titleLabel?.attributedText = attributedString
-  }
-}
