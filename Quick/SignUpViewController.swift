@@ -24,9 +24,11 @@ class SignUpViewController: QuickViewController {
   private var emailTextField: QTextField!
   private var fullnameTextField: QTextField!
   private var passwordTextField: QTextField!
+  private var signUpButton: QButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = UIColor.clearColor()
     self.setUpViews()
   }
   
@@ -52,14 +54,14 @@ class SignUpViewController: QuickViewController {
     passwordTextField.field?.secureTextEntry = true
     self.view.addSubview(self.passwordTextField)
     
-    let qButton = QButton(frame: CGRectMake(20.0, 410.0, 300.0, 50.0))
-    qButton.addTarget(self, action: #selector(SignUpViewController.notifyDelegate), forControlEvents: .TouchUpInside)
-    qButton.setTitle("SIGN UP", forState: .Normal)
-    qButton.addTextSpacing(2.0)
-    self.view.addSubview(qButton)
+    self.signUpButton = QButton()
+    self.signUpButton.addTarget(self, action: #selector(SignUpViewController.notifyDelegate), forControlEvents: .TouchUpInside)
+    self.signUpButton.setTitle("SIGN UP", forState: .Normal)
+    self.signUpButton.addTextSpacing(2.0)
+    self.view.addSubview(self.signUpButton)
     
-    constrain(self.view, self.emailTextField, self.fullnameTextField, self.passwordTextField) {
-      (superView, emailTextField, fullnameTextField, passwordTextField) in
+    constrain(self.view, self.emailTextField, self.fullnameTextField, self.passwordTextField, self.signUpButton) {
+      (superView, emailTextField, fullnameTextField, passwordTextField, signUpButton) in
       emailTextField.centerX == superView.centerX
       emailTextField.top == superView.top + 200
       emailTextField.width == 300
@@ -74,6 +76,11 @@ class SignUpViewController: QuickViewController {
       passwordTextField.top == superView.top + 340
       passwordTextField.width == 300
       passwordTextField.height == 50
+      
+      signUpButton.centerX == superView.centerX
+      signUpButton.top == superView.top + 410
+      signUpButton.width == 300
+      signUpButton.height == 50
     }
   }
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

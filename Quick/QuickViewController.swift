@@ -14,7 +14,7 @@ class QuickViewController: UIViewController {
   var index: NSInteger?
   
   /// Sets the navigationController's navigation bar to completely translucent
-  internal var translucentNavigationBar: Bool {
+  internal var hideNavigationBar: Bool {
     get {
       return self.navigationController!.navigationBar.hidden
     }
@@ -36,7 +36,7 @@ class QuickViewController: UIViewController {
   
   /**
    Displays an alert to the user.
-   
+   - parameter title: The title of the alert.
    - parameter message: The message use in the alert.
    */
   internal func displayMessage(title title: String, message: String) {

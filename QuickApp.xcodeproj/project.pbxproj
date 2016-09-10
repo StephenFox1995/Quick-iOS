@@ -18,7 +18,7 @@
 		181D74611D25BBA00007DAFD /* BusinessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */; };
 		181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */; };
 		181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */; };
-		181D74691D25D0670007DAFD /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74681D25D0670007DAFD /* BusinessViewController.swift */; };
+		181D74691D25D0670007DAFD /* B.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74681D25D0670007DAFD /* B.swift */; };
 		181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D746A1D25D3560007DAFD /* QuickDataSource.swift */; };
 		182E68581D62433D006D43D9 /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68571D62433D006D43D9 /* SignUpManager.swift */; };
 		182E685A1D624434006D43D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68591D624434006D43D9 /* User.swift */; };
@@ -35,7 +35,9 @@
 		1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */; };
 		1835D0AB1D2465BC00C9554C /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AA1D2465BC00C9554C /* Screen.swift */; };
 		1835D0AD1D24664700C9554C /* ProductTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */; };
-		1854EECE1D82E00C00BF6277 /* BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EEC61D82E00C00BF6277 /* BViewController.swift */; };
+		18477C341D8375E10055CC79 /* UIPageControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18477C331D8375E10055CC79 /* UIPageControlExtensions.swift */; };
+		18477C371D844E7B0055CC79 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18477C361D844E7B0055CC79 /* ProductsTableViewController.swift */; };
+		1854EECE1D82E00C00BF6277 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EEC61D82E00C00BF6277 /* BusinessViewController.swift */; };
 		1854EECF1D82E00C00BF6277 /* BusinessViewImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EEC71D82E00C00BF6277 /* BusinessViewImageLabel.swift */; };
 		1854EED01D82E00C00BF6277 /* BusinessImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EEC81D82E00C00BF6277 /* BusinessImageView.swift */; };
 		1854EED11D82E00C00BF6277 /* BusinessInfoStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EEC91D82E00C00BF6277 /* BusinessInfoStripView.swift */; };
@@ -90,7 +92,7 @@
 		181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessTableViewCell.xib; sourceTree = "<group>"; };
 		181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickTableViewCell.swift; sourceTree = "<group>"; };
 		181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickBusinessObject.swift; sourceTree = "<group>"; };
-		181D74681D25D0670007DAFD /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		181D74681D25D0670007DAFD /* B.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = B.swift; sourceTree = "<group>"; };
 		181D746A1D25D3560007DAFD /* QuickDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDataSource.swift; sourceTree = "<group>"; };
 		182E68571D62433D006D43D9 /* SignUpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
 		182E68591D624434006D43D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -109,7 +111,9 @@
 		1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		1835D0AA1D2465BC00C9554C /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewDataSource.swift; sourceTree = "<group>"; };
-		1854EEC61D82E00C00BF6277 /* BViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BViewController.swift; sourceTree = "<group>"; };
+		18477C331D8375E10055CC79 /* UIPageControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPageControlExtensions.swift; sourceTree = "<group>"; };
+		18477C361D844E7B0055CC79 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
+		1854EEC61D82E00C00BF6277 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		1854EEC71D82E00C00BF6277 /* BusinessViewImageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewImageLabel.swift; sourceTree = "<group>"; };
 		1854EEC81D82E00C00BF6277 /* BusinessImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessImageView.swift; sourceTree = "<group>"; };
 		1854EEC91D82E00C00BF6277 /* BusinessInfoStripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessInfoStripView.swift; sourceTree = "<group>"; };
@@ -193,13 +197,14 @@
 		181D74521D25A61A0007DAFD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				189018261D82DE61003277A9 /* BusinessViewController */,
-				18F7CF741D8059A70042CF38 /* SignUpLoginViewController */,
 				1835D0931D22F64900C9554C /* Main.storyboard */,
 				1835D0981D22F64900C9554C /* LaunchScreen.storyboard */,
+				189018261D82DE61003277A9 /* BusinessViewController */,
+				18F7CF741D8059A70042CF38 /* SignUpLoginViewController */,
 				1835D0AA1D2465BC00C9554C /* Screen.swift */,
 				1835D0911D22F64900C9554C /* HomeViewController.swift */,
-				181D74681D25D0670007DAFD /* BusinessViewController.swift */,
+				181D74681D25D0670007DAFD /* B.swift */,
+				18477C361D844E7B0055CC79 /* ProductsTableViewController.swift */,
 				18F3D4051D2AFF0D00CDE296 /* ProductViewController.swift */,
 				18F3D4001D2819C800CDE296 /* QuickViewController.swift */,
 				181D74561D25B2280007DAFD /* BusinessTableView */,
@@ -207,7 +212,7 @@
 				181D745A1D25B3A90007DAFD /* QuickTableView.swift */,
 				181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */,
 				181D746A1D25D3560007DAFD /* QuickDataSource.swift */,
-				189EE1211D8325E8007389B3 /* UIColorExtension.swift */,
+				18477C351D8375F20055CC79 /* Extensions */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -272,6 +277,15 @@
 			name = ProductTableView;
 			sourceTree = "<group>";
 		};
+		18477C351D8375F20055CC79 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				189EE1211D8325E8007389B3 /* UIColorExtension.swift */,
+				18477C331D8375E10055CC79 /* UIPageControlExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		187717B21D805D4A00750E10 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,7 +298,7 @@
 		189018261D82DE61003277A9 /* BusinessViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1854EEC61D82E00C00BF6277 /* BViewController.swift */,
+				1854EEC61D82E00C00BF6277 /* BusinessViewController.swift */,
 				1854EEC71D82E00C00BF6277 /* BusinessViewImageLabel.swift */,
 				1854EEC81D82E00C00BF6277 /* BusinessImageView.swift */,
 				1854EEC91D82E00C00BF6277 /* BusinessInfoStripView.swift */,
@@ -589,6 +603,7 @@
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
 				1835D0921D22F64900C9554C /* HomeViewController.swift in Sources */,
 				18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */,
+				18477C341D8375E10055CC79 /* UIPageControlExtensions.swift in Sources */,
 				181D744F1D2473910007DAFD /* Product.swift in Sources */,
 				18F631371D624F410008103C /* SessionManager.swift in Sources */,
 				18E884DA1D6214DB00BBD573 /* LoginManager.swift in Sources */,
@@ -607,13 +622,14 @@
 				1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */,
 				181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */,
 				1854EED21D82E00C00BF6277 /* BusinessHoursView.swift in Sources */,
-				181D74691D25D0670007DAFD /* BusinessViewController.swift in Sources */,
+				181D74691D25D0670007DAFD /* B.swift in Sources */,
 				1854EECF1D82E00C00BF6277 /* BusinessViewImageLabel.swift in Sources */,
 				187717AE1D805B0400750E10 /* QButton.swift in Sources */,
+				18477C371D844E7B0055CC79 /* ProductsTableViewController.swift in Sources */,
 				18F6313B1D6250340008103C /* Account.swift in Sources */,
 				181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */,
 				181D745D1D25B67B0007DAFD /* BusinessTableViewCell.swift in Sources */,
-				1854EECE1D82E00C00BF6277 /* BViewController.swift in Sources */,
+				1854EECE1D82E00C00BF6277 /* BusinessViewController.swift in Sources */,
 				1835D0A21D22F73900C9554C /* Network.swift in Sources */,
 				181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */,
 				187717B11D805B0400750E10 /* SignUpViewController.swift in Sources */,

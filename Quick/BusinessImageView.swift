@@ -25,10 +25,10 @@ class BusinessImageView: UIImageView {
     
     constrain(self, self.imageLabel) {
       (superView, imageLabel) in
-      imageLabel.leading == superView.leading + 5
+      imageLabel.leading == superView.leading
       imageLabel.height == superView.height * 0.3
-      imageLabel.width == superView.width * 0.6
-      imageLabel.bottom == superView.bottom
+      imageLabel.width == superView.width * 0.95
+      imageLabel.bottom == superView.bottom - 20
     }
   }
   

@@ -1,5 +1,6 @@
 
 import UIKit
+import Cartography
 
 protocol AuthenticateViewControllerDelegate: class {
   func authenticateViewControllerSignUpDetailsEntered (viewController: AuthenticateViewController,
@@ -20,12 +21,34 @@ SignUpViewControllerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.setupViews()
     self.view.backgroundColor = UIColor.whiteColor()
+    self.navigationController?.navigationBarHidden = true
     self.dataSource = self
     
     let initialViewController = self.viewControllerAtIndex(0)
     let viewControllers = [initialViewController]
     self.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillAppear(animated)
+    self.navigationController?.navigationBarHidden = false
+  }
+  
+  private func setupViews() {
+    UIPageControl.changePageIndicator(UIColor.pageControlGrayColor(),
+                                      indicatorCurrentPage: UIColor.pageControlCurrentPageGrayColor())
+    
+    let imageView = UIImageView(image: UIImage(named: "QuickLogo"))
+    self.view.addSubview(imageView)
+    constrain(self.view, imageView) {
+      (superView, imageView) in
+      imageView.centerX == superView.centerX
+      imageView.width == superView.width * 0.3
+      imageView.height == superView.width * 0.3
+      imageView.top == superView.top + 40
+    }
   }
   
   /// Determines the view controller to show based on its index.

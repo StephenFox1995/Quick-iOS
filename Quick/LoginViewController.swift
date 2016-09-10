@@ -23,6 +23,7 @@ class LoginViewController: QuickViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = UIColor.clearColor()
     self.setUpViews()
   }
   

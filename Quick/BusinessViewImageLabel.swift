@@ -16,8 +16,8 @@ class BusinessViewImageLabel: UIView {
   
   
   struct ImageTitleFont {
-    static let nameFont = UIFont(name: "AvenirNext-DemiBold", size: 25.0)
-    static let locationFont = UIFont(name: "AvenirNext-Medium", size: 14.0)
+    static let nameFont = UIFont(name: "AvenirNext-DemiBold", size: 40.0)
+    static let locationFont = UIFont(name: "AvenirNext-Medium", size: 18.0)
   }
   
   init(businessName: String, businessLocation: String) {
@@ -33,7 +33,8 @@ class BusinessViewImageLabel: UIView {
     self.businessNameLabel.adjustsFontSizeToFitWidth = true
     self.businessNameLabel.textColor = UIColor.whiteColor()
     self.businessNameLabel.textAlignment = .Left
-    self.businessNameLabel.text = businessName
+    self.businessNameLabel.text = businessName.uppercaseStringWithLocale(nil)
+//    self.businessNameLabel.backgroundColor = UIColor.orangeColor()
     self.addSubview(self.businessNameLabel)
     
     self.businessLocationLabel = UILabel()
@@ -42,22 +43,21 @@ class BusinessViewImageLabel: UIView {
     self.businessLocationLabel.numberOfLines = 1
     self.businessLocationLabel.adjustsFontSizeToFitWidth = true
     self.businessLocationLabel.textColor = UIColor.whiteColor()
-    self.businessNameLabel.textAlignment = .Left
+    self.businessLocationLabel.textAlignment = .Left
     self.businessLocationLabel.text = businessLocation
+//    self.businessLocationLabel.backgroundColor = UIColor.blueColor()
     self.businessLocationLabel.setKernAmount(2.0)
     self.addSubview(self.businessLocationLabel)
     
     constrain(self, self.businessNameLabel, self.businessLocationLabel) {
       (superView, businessNameLabel, businessLocationLabel) in
       businessNameLabel.trailing == superView.trailing
-      businessNameLabel.top == superView.top + 5
       businessNameLabel.width == superView.width * 0.9
-      businessNameLabel.height == superView.height * 0.4
-      
+      businessNameLabel.bottom == businessLocationLabel.top
+     
       businessLocationLabel.trailing == superView.trailing
-      businessLocationLabel.top == businessNameLabel.bottom
       businessLocationLabel.width == superView.width * 0.9
-      businessLocationLabel.height == superView.height * 0.2
+      businessLocationLabel.bottom == superView.bottom
     }
   }
   

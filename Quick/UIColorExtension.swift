@@ -83,10 +83,21 @@ extension UIColor {
 /// QTextField
 extension UIColor {
   static func qTextFieldBlueColor() -> UIColor {
-    return UIColor(red: 0.56, green: 0.56, blue: 0.56, alpha: 1.00)
-  }
-  static func qTextFieldGrayColor() -> UIColor {
     return UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.00)
   }
+  static func qTextFieldGrayColor() -> UIColor {
+    return UIColor(red: 0.56, green: 0.56, blue: 0.56, alpha: 1.00)
+  }
 }
+
+/// UIPageControlExtensions
+extension UIColor {
+  static func pageControlGrayColor() -> UIColor {
+    return UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.50)
+  }
+  static func pageControlCurrentPageGrayColor() -> UIColor {
+    return UIColor(red: 0.50, green: 0.50, blue: 0.50, alpha: 1.00)
+  }
+}
+
 
