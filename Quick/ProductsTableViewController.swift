@@ -61,3 +61,18 @@ class ProductsTableViewController: QuickViewController, UITableViewDelegate {
     super.didReceiveMemoryWarning()
   }
 }
+
+extension ProductsTableViewController {
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let product = self.productTableViewDataSource.itemForRowIndex(indexPath)
+    
+    guard let p = product as? Product else { return }
+    guard let b = self.business else { return }
+    
+    let productViewController =
+      UIStoryboard.viewControllerFromStoryboard(StringConstants.productViewController) as! ProductViewController
+    productViewController.product = p
+    productViewController.business = b
+    self.navigationController?.pushViewController(productViewController, animated: true);
+  }
+}

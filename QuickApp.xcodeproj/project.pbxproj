@@ -18,7 +18,6 @@
 		181D74611D25BBA00007DAFD /* BusinessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */; };
 		181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */; };
 		181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */; };
-		181D74691D25D0670007DAFD /* B.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74681D25D0670007DAFD /* B.swift */; };
 		181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D746A1D25D3560007DAFD /* QuickDataSource.swift */; };
 		182E68581D62433D006D43D9 /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68571D62433D006D43D9 /* SignUpManager.swift */; };
 		182E685A1D624434006D43D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68591D624434006D43D9 /* User.swift */; };
@@ -92,7 +91,6 @@
 		181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessTableViewCell.xib; sourceTree = "<group>"; };
 		181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickTableViewCell.swift; sourceTree = "<group>"; };
 		181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickBusinessObject.swift; sourceTree = "<group>"; };
-		181D74681D25D0670007DAFD /* B.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = B.swift; sourceTree = "<group>"; };
 		181D746A1D25D3560007DAFD /* QuickDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDataSource.swift; sourceTree = "<group>"; };
 		182E68571D62433D006D43D9 /* SignUpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
 		182E68591D624434006D43D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 				18F7CF741D8059A70042CF38 /* SignUpLoginViewController */,
 				1835D0AA1D2465BC00C9554C /* Screen.swift */,
 				1835D0911D22F64900C9554C /* HomeViewController.swift */,
-				181D74681D25D0670007DAFD /* B.swift */,
 				18477C351D8375F20055CC79 /* Extensions */,
 			);
 			name = UI;
@@ -638,7 +635,6 @@
 				1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */,
 				181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */,
 				1854EED21D82E00C00BF6277 /* BusinessHoursView.swift in Sources */,
-				181D74691D25D0670007DAFD /* B.swift in Sources */,
 				1854EECF1D82E00C00BF6277 /* BusinessViewImageLabel.swift in Sources */,
 				187717AE1D805B0400750E10 /* QButton.swift in Sources */,
 				18477C371D844E7B0055CC79 /* ProductsTableViewController.swift in Sources */,
