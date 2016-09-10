@@ -35,14 +35,17 @@ extension UIColor {
 
 /// BusinessInfoStrip
 extension UIColor {
-  static func businessInfoStripShadowColor() -> UIColor {
-    return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
-  }
   static func businessInfoStripSeparatorColor() -> UIColor {
     return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
   }
 }
 
+/// StripView
+extension UIColor {
+  static func stripViewShadowColor() -> UIColor {
+    return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
+  }
+}
 /// BusinessSeeProductsButton
 extension UIColor {
   static func businessSeeProductsShadowColor() -> UIColor {
@@ -76,14 +79,14 @@ extension UIColor {
 /// QButton
 extension UIColor {
   static func qButtonBlueColor() -> UIColor {
-    return UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.00)
+    return UIColor.quickBlue()
   }
 }
 
 /// QTextField
 extension UIColor {
   static func qTextFieldBlueColor() -> UIColor {
-    return UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.00)
+    return UIColor.quickBlue()
   }
   static func qTextFieldGrayColor() -> UIColor {
     return UIColor(red: 0.56, green: 0.56, blue: 0.56, alpha: 1.00)
@@ -100,4 +103,10 @@ extension UIColor {
   }
 }
 
+/// Core
+extension UIColor {
+  static func quickBlue() -> UIColor {
+    return UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.00)
+  }
+}
 

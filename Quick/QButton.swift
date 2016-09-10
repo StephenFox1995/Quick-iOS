@@ -13,11 +13,11 @@ class QButton: UIButton {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 16)
-
     self.backgroundColor = UIColor.qButtonBlueColor()
     self.layer.cornerRadius = 25.0
     self.clipsToBounds = true
   }
+  
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")

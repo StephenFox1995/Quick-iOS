@@ -9,26 +9,15 @@
 import UIKit
 import Cartography
 
-class BusinessInfoStripView: UIView {
+class BusinessInfoStripView: StripView {
   
   private var businessHoursView: BusinessHoursView!
   private var businessWaitingTimeView: BusinessWaitingTimeView!
   private var favouriteButton: FavouriteButton!
   
-  enum BusinessInfoStripViewPosition {
-    case Left, Middle, Right
-  }
   
-  
-  init() {
-    super.init(frame: CGRectZero)
-    self.backgroundColor = UIColor.whiteColor()
-    self.clipsToBounds = false
-    self.layer.shadowOffset = CGSizeMake(0, 2)
-    self.layer.shadowRadius = 1;
-    self.layer.shadowColor = UIColor.businessInfoStripShadowColor().CGColor
-    self.layer.shadowOpacity = 0.5
-    
+  override init() {
+    super.init()
     self.addSeparators()
     
     self.businessHoursView = BusinessHoursView(availability: .Open)

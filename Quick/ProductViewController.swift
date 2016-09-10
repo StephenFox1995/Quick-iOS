@@ -14,6 +14,7 @@ class ProductViewController: QuickViewController {
   @IBOutlet private weak var productPrice: UILabel!
   @IBOutlet private weak var productDescription: UILabel!
   @IBOutlet private weak var productName: UILabel!
+  
   var product: Product?
   var business: Business?
   private var network: Network!
