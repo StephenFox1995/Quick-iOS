@@ -23,6 +23,11 @@ class ProductsTableViewController: QuickViewController, UITableViewDelegate {
     self.fillTableView()
   }
   
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.hideNavigationBar = true
+  }
+  
   
   private func fillTableView() {
     if self.productTableViewDataSource == nil {
