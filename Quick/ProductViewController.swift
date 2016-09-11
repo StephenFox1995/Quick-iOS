@@ -19,7 +19,7 @@ class ProductViewController: QuickViewController {
   var product: Product!
   var business: Business?
   
-  private var productImageView: ProductImageView!
+  private var productImage: ProductImage!
   private var productPricingStripView: ProductPricingStripView!
   private var purchaseButton = QButton()
   private var network = Network()
@@ -32,14 +32,14 @@ class ProductViewController: QuickViewController {
   
   private func setupViews() {
     
-    self.productImageView = ProductImageView()
-    self.view.addSubview(self.productImageView)
+    self.productImage = ProductImage()
+    self.view.addSubview(self.productImage)
     dispatch_async(dispatch_get_global_queue(0, 0)) {
       let url = NSURL(string: "http://img.bbystatic.com/BestBuy_US/images/products/4357/4357800_sd.jpg")
       let nsdata = NSData.init(contentsOfURL: url!)
       dispatch_async(dispatch_get_main_queue(), {
         let uiImage = UIImage(data: nsdata!)
-        self.productImageView.image = uiImage
+        self.productImage.imageView.image = uiImage
       })
     }
     
@@ -52,15 +52,15 @@ class ProductViewController: QuickViewController {
     self.purchaseButton.layer.cornerRadius = 0
     self.view.addSubview(self.purchaseButton)
     
-    constrain(self.view, self.productImageView, self.productPricingStripView, self.purchaseButton) {
-      (superView, productImageView, pricingView, purchaseButton) in
-      productImageView.leading == superView.leading
-      productImageView.trailing == superView.trailing
-      productImageView.height == superView.height * 0.4
-      productImageView.top == superView.top
+    constrain(self.view, self.productImage, self.productPricingStripView, self.purchaseButton) {
+      (superView, productImage, pricingView, purchaseButton) in
+      productImage.width == superView.width
+      productImage.centerX == superView.centerX
+      productImage.height == superView.height * 0.4
+      productImage.top == superView.top
       
       pricingView.width == superView.width
-      pricingView.top == productImageView.bottom
+      pricingView.top == productImage.bottom
       pricingView.height == superView.height * 0.2
       
       purchaseButton.bottom == superView.bottom

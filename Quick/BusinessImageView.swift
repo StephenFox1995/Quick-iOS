@@ -22,7 +22,6 @@ class BusinessImageView: UIImageView {
     self.addSubview(self.imageLabel)
     self.bringSubviewToFront(self.imageLabel)
     
-    
     constrain(self, self.imageLabel) {
       (superView, imageLabel) in
       imageLabel.leading == superView.leading

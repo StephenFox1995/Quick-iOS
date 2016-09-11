@@ -13,22 +13,31 @@ class BusinessViewImageLabel: UIView {
   
   private var businessNameLabel: UILabel!
   private var businessLocationLabel: UILabel!
-  
+  private var businessName: String?
+  private var businessLocation: String?
 
   init(businessName: String, businessLocation: String) {
     super.init(frame: CGRectZero)
+    self.businessName = businessName
+    self.businessLocation = businessLocation
+    self.setupViews()
+  }
+  
+  private func setupViews() {
     self.backgroundColor = UIColor.clearColor()
     self.layer.cornerRadius = 5.0
     self.clipsToBounds = true
-    
+  
     self.businessNameLabel = UILabel()
     self.businessNameLabel.font = UIFont.qFontDemiBold(40)
     self.businessNameLabel.minimumScaleFactor = 0.4
     self.businessNameLabel.numberOfLines = 1
     self.businessNameLabel.adjustsFontSizeToFitWidth = true
     self.businessNameLabel.textColor = UIColor.whiteColor()
-    self.businessNameLabel.textAlignment = .Left
-    self.businessNameLabel.text = businessName.uppercaseStringWithLocale(nil)
+    self.businessNameLabel.textAlignment = .Left 
+    if let bName = self.businessName {
+      self.businessNameLabel.text = bName.uppercaseString
+    }
     self.addSubview(self.businessNameLabel)
     
     self.businessLocationLabel = UILabel()
@@ -38,7 +47,7 @@ class BusinessViewImageLabel: UIView {
     self.businessLocationLabel.adjustsFontSizeToFitWidth = true
     self.businessLocationLabel.textColor = UIColor.whiteColor()
     self.businessLocationLabel.textAlignment = .Left
-    self.businessLocationLabel.text = businessLocation
+    self.businessLocationLabel.text = self.businessLocation
     self.businessLocationLabel.setKernAmount(2.0)
     self.addSubview(self.businessLocationLabel)
     
@@ -47,7 +56,7 @@ class BusinessViewImageLabel: UIView {
       businessNameLabel.trailing == superView.trailing
       businessNameLabel.width == superView.width * 0.9
       businessNameLabel.bottom == businessLocationLabel.top
-     
+      
       businessLocationLabel.trailing == superView.trailing
       businessLocationLabel.width == superView.width * 0.9
       businessLocationLabel.bottom == superView.bottom
@@ -58,7 +67,6 @@ class BusinessViewImageLabel: UIView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
 }
 
 
