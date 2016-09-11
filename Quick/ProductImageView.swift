@@ -14,6 +14,7 @@ class ProductImageView: UIImageView {
     super.init(frame: CGRectZero)
     self.clipsToBounds = true
     self.contentMode = .ScaleAspectFit
+    self.backgroundColor = UIColor.whiteColor()
   }
   
   required init?(coder aDecoder: NSCoder) {

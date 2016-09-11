@@ -16,9 +16,9 @@ import UIKit
  */
 
 
-/// BusinessViewController
+
 extension UIColor {
-  static func businessViewControllerBackgroundGray() -> UIColor {
+  static func viewControllerBackgroundGray() -> UIColor {
     return UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
   }
 }
@@ -107,6 +107,9 @@ extension UIColor {
 extension UIColor {
   static func quickBlue() -> UIColor {
     return UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.00)
+  }
+  static func quickGray() -> UIColor {
+    return UIColor(red: 0.56, green: 0.56, blue: 0.56, alpha: 1.00)
   }
 }
 

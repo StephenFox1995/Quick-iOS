@@ -21,7 +21,7 @@ class BusinessViewController: QuickViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.businessViewControllerBackgroundGray()
+    self.view.backgroundColor = UIColor.viewControllerBackgroundGray()
     self.setupViews()
     self.hideNavigationBar = true
   }

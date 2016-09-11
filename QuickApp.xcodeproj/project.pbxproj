@@ -58,6 +58,7 @@
 		18D3E29E1D84B4130089EEF5 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E29D1D84B4130089EEF5 /* UIButtonExtensions.swift */; };
 		18D3E2A01D84B48E0089EEF5 /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E29F1D84B48E0089EEF5 /* ProductImageView.swift */; };
 		18D3E2A21D84CDF40089EEF5 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E2A11D84CDF40089EEF5 /* UIFontExtensions.swift */; };
+		18D3E2A41D84D3F30089EEF5 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E2A31D84D3F30089EEF5 /* PriceView.swift */; };
 		18E884DA1D6214DB00BBD573 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E884D91D6214DB00BBD573 /* LoginManager.swift */; };
 		18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4001D2819C800CDE296 /* QuickViewController.swift */; };
 		18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */; };
@@ -139,6 +140,7 @@
 		18D3E29D1D84B4130089EEF5 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		18D3E29F1D84B48E0089EEF5 /* ProductImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
 		18D3E2A11D84CDF40089EEF5 /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
+		18D3E2A31D84D3F30089EEF5 /* PriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		18E884D91D6214DB00BBD573 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		18F3D4001D2819C800CDE296 /* QuickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickViewController.swift; sourceTree = "<group>"; };
 		18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				18D3E2991D84A4340089EEF5 /* ProductViewController.swift */,
 				18D3E29F1D84B48E0089EEF5 /* ProductImageView.swift */,
 				1835D0A91D232B9200C9554C /* ProductTableView */,
+				18D3E2A31D84D3F30089EEF5 /* PriceView.swift */,
 			);
 			name = ProductUI;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				1854EED31D82E00C00BF6277 /* BusinessWaitingTimeView.swift in Sources */,
 				187717B01D805B0400750E10 /* AuthenticateViewController.swift in Sources */,
 				1835D0A41D2328E700C9554C /* ProductTableView.swift in Sources */,
+				18D3E2A41D84D3F30089EEF5 /* PriceView.swift in Sources */,
 				1854EED11D82E00C00BF6277 /* BusinessInfoStripView.swift in Sources */,
 				1854EED01D82E00C00BF6277 /* BusinessImageView.swift in Sources */,
 				1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */,

@@ -26,7 +26,7 @@ class ProductViewController: QuickViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.viewControllerBackgroundGray()
     self.setupViews()
   }
   
@@ -61,7 +61,7 @@ class ProductViewController: QuickViewController {
       
       pricingView.width == superView.width
       pricingView.top == productImageView.bottom
-      pricingView.height == superView.height * 0.1
+      pricingView.height == superView.height * 0.2
       
       purchaseButton.bottom == superView.bottom
       purchaseButton.leading == superView.leading
