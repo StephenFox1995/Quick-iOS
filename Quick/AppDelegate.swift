@@ -58,7 +58,9 @@ AuthenticateViewControllerDelegate {
 // MARK: SignUpLoginViewControllerDelegate
 extension AppDelegate {
   /// Login
-  func authenticateViewControllerLoginDetailsEntered(viewController: AuthenticateViewController, email: String, password: String) {
+  func authenticateViewControllerLoginDetailsEntered(viewController: AuthenticateViewController,
+                                                     email: String,
+                                                     password: String) {
     let loginManager = LoginManager.sharedInstance
     
     let user = User()
@@ -75,7 +77,9 @@ extension AppDelegate {
     }
   }
   /// SignUp
-  func authenticateViewControllerSignUpDetailsEntered(viewController: AuthenticateViewController, email: String, fullname: String, password: String) {
+  func authenticateViewControllerSignUpDetailsEntered(viewController: AuthenticateViewController,
+                                                      email: String, fullname: String,
+                                                      password: String) {
     let signUpManager = SignUpManager.sharedInstace
     let user = User(email: email, firstname: fullname, lastname: fullname, password: password)
     

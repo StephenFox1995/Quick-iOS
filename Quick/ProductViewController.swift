@@ -35,7 +35,7 @@ class ProductViewController: QuickViewController {
     self.productImage = ProductImage()
     self.view.addSubview(self.productImage)
     dispatch_async(dispatch_get_global_queue(0, 0)) {
-      let url = NSURL(string: "http://img.bbystatic.com/BestBuy_US/images/products/4357/4357800_sd.jpg")
+      let url = NSURL(string: "http://blog.stridekick.com/wp-content/uploads/2015/10/starbucks-cup-of-coffee-to-go.png")
       let nsdata = NSData.init(contentsOfURL: url!)
       dispatch_async(dispatch_get_main_queue(), {
         let uiImage = UIImage(data: nsdata!)
