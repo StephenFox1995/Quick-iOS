@@ -41,21 +41,21 @@ class JSONParserTests: QuickSpec {
   
   
   /// Mock JSON
-  private struct MockJSON {
+  fileprivate struct MockJSON {
     
     let mockToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNzQGdtYWlsLmNvbSIsImlkIjoiSDFFckFoVmMiLCJmaXJzdG5hbWUiOiJTdGVwaGVuIiwibGFzdG5hbWUiOiJGb3giLCJpYXQiOjE0NzE2Mzc1NDUsImV4cCI6MTQ3MTY3MzU0NX0.a7zDlPAbpglZYEzd-qxDjJhk4bUPh0M-RD73Bl_iSlI"
     
     func validMockUserSignUpResponse() -> [String: AnyObject] {
-      return ["expires": "10h",
-              "responseMessage": "Successful Sign Up",
-              "success": true,
-              "token": self.mockToken]
+      return ["expires": "10h" as AnyObject,
+              "responseMessage": "Successful Sign Up" as AnyObject,
+              "success": true as AnyObject,
+              "token": self.mockToken as AnyObject]
     }
     func validMockUserAuthReponse() -> [String: AnyObject] {
-      return ["expires": "10h",
-              "responseMessage": "Successful Sign Up",
-              "success": true,
-              "token": self.mockToken]
+      return ["expires": "10h" as AnyObject,
+              "responseMessage": "Successful Sign Up" as AnyObject,
+              "success": true as AnyObject,
+              "token": self.mockToken as AnyObject]
     }
     
   }

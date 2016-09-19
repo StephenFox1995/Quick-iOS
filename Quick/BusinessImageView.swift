@@ -10,17 +10,17 @@ import UIKit
 import Cartography
 
 class BusinessImageView: UIImageView {
-  private var imageLabel: BusinessViewImageLabel!
+  fileprivate var imageLabel: BusinessViewImageLabel!
 
   
   init(businessName: String, businessLocation: String) {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.clipsToBounds = true
-    self.contentMode = .ScaleAspectFill
+    self.contentMode = .scaleAspectFill
     
     self.imageLabel = BusinessViewImageLabel(businessName: businessName, businessLocation: businessLocation)
     self.addSubview(self.imageLabel)
-    self.bringSubviewToFront(self.imageLabel)
+    self.bringSubview(toFront: self.imageLabel)
     
     constrain(self, self.imageLabel) {
       (superView, imageLabel) in

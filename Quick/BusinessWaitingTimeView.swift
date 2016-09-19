@@ -11,19 +11,19 @@ import FontAwesome_swift
 import Cartography
 
 class BusinessWaitingTimeView: UIView {
-  private var timeLabel: UILabel!
-  private var averageTimeLabel = UILabel()
-  private var timeIcon = UILabel()
-  private var time: Int!
+  fileprivate var timeLabel: UILabel!
+  fileprivate var averageTimeLabel = UILabel()
+  fileprivate var timeIcon = UILabel()
+  fileprivate var time: Int!
   
   init(minutes: Int) {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.time = minutes
     self.setupViews()
   }
   
   
-  private func setupViews() {
+  fileprivate func setupViews() {
     self.timeLabel = UILabel()
     self.timeLabel.font = UIFont.qFontDemiBold(25)
     self.timeLabel.textColor = UIColor.businessWaitingTimeViewGrayColor()

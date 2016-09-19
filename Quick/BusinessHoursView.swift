@@ -11,18 +11,18 @@ import Cartography
 
 class BusinessHoursView: UIView {
   
-  private var hoursLabel: UILabel!
+  fileprivate var hoursLabel: UILabel!
   enum BusinessHours {
-    case Open, Closed
+    case open, closed
   }
 
   
   init(availability: BusinessHours) {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.layer.cornerRadius = 20.0
     self.hoursLabel = UILabel()
-    self.hoursLabel.textColor = UIColor.whiteColor()
-    self.hoursLabel.textAlignment = .Center
+    self.hoursLabel.textColor = UIColor.white
+    self.hoursLabel.textAlignment = .center
     self.hoursLabel.font = UIFont.qFontDemiBold(14)
     self.hoursLabel.minimumScaleFactor = 0.5
     self.hoursLabel.numberOfLines = 1
@@ -38,10 +38,10 @@ class BusinessHoursView: UIView {
     }
     
     switch availability {
-    case .Open:
+    case .open:
       self.hoursLabel.text = "OPEN"
       self.backgroundColor = UIColor.businessHoursViewGreen()
-    case .Closed:
+    case .closed:
       self.hoursLabel.text = "CLOSED"
       self.backgroundColor = UIColor.businessHoursViewRed()
     }

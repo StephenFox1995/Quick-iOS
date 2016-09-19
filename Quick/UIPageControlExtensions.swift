@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIPageControl {
-  static func changePageIndicator(indicator: UIColor, indicatorCurrentPage: UIColor) {
+  static func changePageIndicator(_ indicator: UIColor, indicatorCurrentPage: UIColor) {
     let pageControl = UIPageControl.appearance()
     pageControl.pageIndicatorTintColor = indicator
     pageControl.currentPageIndicatorTintColor = indicatorCurrentPage

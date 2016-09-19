@@ -9,6 +9,6 @@
 import UIKit
 
 class Screen: NSObject {
-  static let width = UIScreen.mainScreen().bounds.size.width
-  static let height = UIScreen.mainScreen().bounds.size.height
+  static let width = UIScreen.main.bounds.size.width
+  static let height = UIScreen.main.bounds.size.height
 }

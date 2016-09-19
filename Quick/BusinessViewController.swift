@@ -16,7 +16,7 @@ class BusinessViewController: QuickViewController {
   
   var business: Business?
   // Shows products for the business.
-  private var productsTableViewController: ProductsTableViewController!
+  fileprivate var productsTableViewController: ProductsTableViewController!
   
   
   override func viewDidLoad() {
@@ -26,23 +26,23 @@ class BusinessViewController: QuickViewController {
     self.hideNavigationBar = true
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     self.hideNavigationBar = false
   }
   
   // Sets up the UI
-  private func setupViews() {
+  fileprivate func setupViews() {
     // TODO: Make sure image can be still retrieved even if business was nil
     var businessImageView: BusinessImageView!
     if let business = self.business {
       businessImageView = BusinessImageView(businessName: business.name!,
                                                 businessLocation: business.address!)
       self.view.addSubview(businessImageView)
-      dispatch_async(dispatch_get_global_queue(0, 0)) {
-        let url = NSURL(string: "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/85/db/front-door.jpg")
-        let nsdata = NSData.init(contentsOfURL: url!)
-        dispatch_async(dispatch_get_main_queue(), {
+      DispatchQueue.global(priority: 0).async {
+        let url = URL(string: "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/85/db/front-door.jpg")
+        let nsdata = try? Data.init(contentsOf: url!)
+        DispatchQueue.main.async(execute: {
           let uiImage = UIImage(data: nsdata!)
           businessImageView.image = uiImage
         })
@@ -53,7 +53,7 @@ class BusinessViewController: QuickViewController {
     self.view.addSubview(stripView)
     
     let seeProductsButton = BusinessSeeProductsButton()
-    seeProductsButton.addTarget(self, action: #selector(showProductsViewController), forControlEvents: .TouchUpInside)
+    seeProductsButton.addTarget(self, action: #selector(showProductsViewController), for: .touchUpInside)
     self.view.addSubview(seeProductsButton)
     
     constrain(self.view, stripView, businessImageView, seeProductsButton) {
@@ -77,7 +77,7 @@ class BusinessViewController: QuickViewController {
     }
   }
   
-  @objc private func showProductsViewController() {
+  @objc fileprivate func showProductsViewController() {
     if self.productsTableViewController == nil {
       self.productsTableViewController = ProductsTableViewController()
     }

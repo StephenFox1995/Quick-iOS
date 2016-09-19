@@ -16,11 +16,11 @@ class BusinessTableViewCell: QuickTableViewCell {
     super.awakeFromNib()
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
-  override func setTextElements(businessObject: QuickBusinessObject) {
+  override func setTextElements(_ businessObject: QuickBusinessObject) {
     self.businessName.text = businessObject.name
   }
 }

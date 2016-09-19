@@ -17,9 +17,9 @@ class QuickTableView: UITableView {
    Register all Nibs/ classes that are needed to
    display ui elements of the table view.
    */
-  func registerNib(nibName: String, bundle: NSBundle?, reuseIdentifier: String) {
+  func registerNib(_ nibName: String, bundle: Bundle?, reuseIdentifier: String) {
     let cell = UINib(nibName: nibName, bundle: bundle)
-    self.registerNib(cell, forCellReuseIdentifier: reuseIdentifier)
+    self.register(cell, forCellReuseIdentifier: reuseIdentifier)
   }
   
   

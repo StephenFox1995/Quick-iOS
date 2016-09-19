@@ -11,5 +11,5 @@ import UIKit
 class QuickTableViewCell: UITableViewCell {
   
   
-  func setTextElements(businessObject: QuickBusinessObject) { }
+  func setTextElements(_ businessObject: QuickBusinessObject) { }
 }

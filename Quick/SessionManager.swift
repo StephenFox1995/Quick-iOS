@@ -12,11 +12,11 @@ class SessionManager {
   static let sharedInstance = SessionManager()
   
   /// Session object that has not yet been activated.
-  private var pendingSession: Session!
+  fileprivate var pendingSession: Session!
   var activeSession: Session?
-  private let sessionStore = SessionStore.sharedInstance
+  fileprivate let sessionStore = SessionStore.sharedInstance
   
-  private init() {}
+  fileprivate init() {}
   
   /**
    Checks to see if there is an active session available on the device.
@@ -43,7 +43,7 @@ class SessionManager {
    Attempts to register a session from a `NetworkResponse.UserSignUpResponse`.
    - parameter signUpResponse: A sign up response.
    */
-  func registerSessionFromSignUpResponse(signUpResponse: NetworkResponse.UserSignUpResponse) throws {
+  func registerSessionFromSignUpResponse(_ signUpResponse: NetworkResponse.UserSignUpResponse) throws {
     // Create session object.
     let session = try Session.sessionWithJWT(signUpResponse.token!)
     self.pendingSession = session
@@ -53,7 +53,7 @@ class SessionManager {
    Attempts ot register a session from a `NetworkResponse.UserAuthenticateResponse`.
    - parameter authResponse: The authentication response.
    */
-  func registerSessionFromAuthenticationResponse(authResponse: NetworkResponse.UserAuthenticateResponse) throws {
+  func registerSessionFromAuthenticationResponse(_ authResponse: NetworkResponse.UserAuthenticateResponse) throws {
     // Create session object
     let session = try Session.sessionWithJWT(authResponse.token!)
     self.pendingSession = session
@@ -78,7 +78,7 @@ class SessionManager {
    Attempts to store the session withing `SessionStore`
    - paramter session: The session to store.
    */
-  private func storeSession(session: Session) throws {
+  fileprivate func storeSession(_ session: Session) throws {
     try self.sessionStore.store(session)
   }
   
@@ -89,7 +89,7 @@ class SessionManager {
               False - Either could not find session to delete of
                       session was not inactive.
    */
-  private func removeExpiredSession() -> Bool {
+  fileprivate func removeExpiredSession() -> Bool {
     return self.sessionStore.removeExpiredSession()
   }
   

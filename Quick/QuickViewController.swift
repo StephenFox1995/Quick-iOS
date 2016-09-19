@@ -16,13 +16,13 @@ class QuickViewController: UIViewController {
   /// Sets the navigationController's navigation bar to completely translucent
   internal var hideNavigationBar: Bool {
     get {
-      return self.navigationController!.navigationBar.hidden
+      return self.navigationController!.navigationBar.isHidden
     }
     set {
       if (newValue) {
-        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.navigationBar.isHidden = true
       } else {
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
       }
     }
   }
@@ -30,7 +30,7 @@ class QuickViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
   }
   
   
@@ -39,28 +39,28 @@ class QuickViewController: UIViewController {
    - parameter title: The title of the alert.
    - parameter message: The message use in the alert.
    */
-  internal func displayMessage(title title: String, message: String) {
+  internal func displayMessage(title: String, message: String) {
     let alertController = UIAlertController(title: title,
                                             message:message,
-                                            preferredStyle: UIAlertControllerStyle.Alert)
+                                            preferredStyle: UIAlertControllerStyle.alert)
     alertController.addAction(UIAlertAction(title: "Done",
-      style: UIAlertActionStyle.Default,
+      style: UIAlertActionStyle.default,
       handler: nil))
-    self.presentViewController(alertController, animated: true, completion: nil)
+    self.present(alertController, animated: true, completion: nil)
   }
   
   
   
-  internal func displayQRCodeDetailView(title title: String, message: String, qrCodeSeed: String) {
+  internal func displayQRCodeDetailView(title: String, message: String, qrCodeSeed: String) {
     let alertController = UIAlertController(title: title,
                                             message:message,
-                                            preferredStyle: UIAlertControllerStyle.Alert)
+                                            preferredStyle: UIAlertControllerStyle.alert)
     alertController.addAction(UIAlertAction(title: "Done",
-      style: UIAlertActionStyle.Default,
+      style: UIAlertActionStyle.default,
       handler: nil))
     let qrCodeImage = QRCode.generateFromString(qrCodeSeed)
     let qrCodeImageView = UIImageView(image: qrCodeImage)
     alertController.view.addSubview(qrCodeImageView)
-    self.presentViewController(alertController, animated: true, completion: nil)
+    self.present(alertController, animated: true, completion: nil)
   }
 }

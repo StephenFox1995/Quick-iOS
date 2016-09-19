@@ -10,19 +10,19 @@ import UIKit
 
 class SignUpManager {
   
-  private let network = Network()
+  fileprivate let network = Network()
   static let sharedInstace = SignUpManager()
   
   /// Closure type for a sign up response
-  typealias SignUpCompletion = (success: Bool, session: Session?) -> Void
+  typealias SignUpCompletion = (_ success: Bool, _ session: Session?) -> Void
   
   /**
    Attempts to create a user account.
    - parameter user: A user object with information on the user for account creation
    - parameter completion: Completion handler.
    */
-  func createUserAccount(user: User,
-                         completion: SignUpCompletion) {
+  func createUserAccount(_ user: User,
+                         completion: @escaping SignUpCompletion) {
     let userJSON = JSONEncoder.encodeUser(user)
     let userJSONObject = JSONEncoder.createUserJSONObject(userJSON);
     

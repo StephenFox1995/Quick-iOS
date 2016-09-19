@@ -11,7 +11,7 @@ import UIKit
 class StripView: UIView {
   
   init() {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.setup()
   }
   
@@ -26,12 +26,12 @@ class StripView: UIView {
     self.setup()
   }
   
-  private func setup() {
-    self.backgroundColor = UIColor.whiteColor()
+  fileprivate func setup() {
+    self.backgroundColor = UIColor.white
     self.clipsToBounds = false
-    self.layer.shadowOffset = CGSizeMake(0, 2)
+    self.layer.shadowOffset = CGSize(width: 0, height: 2)
     self.layer.shadowRadius = 1;
-    self.layer.shadowColor = UIColor.stripViewShadowColor().CGColor
+    self.layer.shadowColor = UIColor.stripViewShadowColor().cgColor
     self.layer.shadowOpacity = 0.5
   }
 }

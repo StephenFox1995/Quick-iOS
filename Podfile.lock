@@ -1,33 +1,54 @@
 PODS:
-  - Alamofire (3.4.1)
-  - Cartography (0.6.0)
-  - FontAwesome.swift (0.8.0)
-  - JWTDecode (1.1.0)
-  - Locksmith (2.0.8)
-  - Nimble (4.1.0)
+  - Alamofire (4.0.0)
+  - Cartography (0.5.0)
+  - FontAwesome.swift (0.11.1)
+  - JWTDecode (2.0.0)
+  - Locksmith (3.0.0)
+  - Nimble (4.0.1)
   - Quick (0.9.3)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.4)
-  - Cartography (~> 0.6)
-  - FontAwesome.swift
-  - JWTDecode (~> 1.0)
+  - Alamofire (~> 4.0)
+  - Cartography (from `https://github.com/robb/Cartography`, branch `orta-swift3`)
+  - FontAwesome.swift (from `https://github.com/thii/FontAwesome.swift`)
+  - JWTDecode (~> 2.0)
   - Locksmith
-  - Nimble
+  - Nimble (~> 4.0.0)
   - Quick
-  - SwiftyJSON
+  - SwiftyJSON (from `https://github.com/jeneumeier/SwiftyJSON`, branch `swift3-gm`)
+
+EXTERNAL SOURCES:
+  Cartography:
+    :branch: orta-swift3
+    :git: https://github.com/robb/Cartography
+  FontAwesome.swift:
+    :git: https://github.com/thii/FontAwesome.swift
+  SwiftyJSON:
+    :branch: swift3-gm
+    :git: https://github.com/jeneumeier/SwiftyJSON
+
+CHECKOUT OPTIONS:
+  Cartography:
+    :commit: 037b966331d883d39eb1d1da5b518c84fac7dda4
+    :git: https://github.com/robb/Cartography
+  FontAwesome.swift:
+    :commit: fd641b95728e566e5b4f2d37ed94486162ea5a65
+    :git: https://github.com/thii/FontAwesome.swift
+  SwiftyJSON:
+    :commit: cf657820fad3656df022d8ebf32f9cdd99e1247a
+    :git: https://github.com/jeneumeier/SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
-  FontAwesome.swift: f8c6cc5c42cbe93bdc04371363bc7b371fb3d3a1
-  JWTDecode: a6b91ad0bc798c723e9a29a368a6ead70edf7213
-  Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
-  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Cartography: de3e85d2fc2d7288a2e7c89e1ac6cad08599d75e
+  FontAwesome.swift: 9879cd6a1462bf160662d519f7b7474d73bdd1c3
+  JWTDecode: 178e47e5d28d3abcff778bacced8342858cd6cb5
+  Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
+  Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: ef312d97878026440cdc736b84179ca40e637823
+PODFILE CHECKSUM: 2f57171f38a7bc2a99ae20c68ae01fd9f851cf65
 
 COCOAPODS: 1.0.1

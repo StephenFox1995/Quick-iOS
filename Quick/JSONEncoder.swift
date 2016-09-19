@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class JSONEncoder {
   
-  static func jsonifyPurchase(productID productID: String,
+  static func jsonifyPurchase(productID: String,
                                         businessID: String) -> [String: AnyObject]{
     return
       ["purchase":
@@ -25,7 +25,7 @@ class JSONEncoder {
   
   
   
-  static func encodeUser(user: User) -> [String: String] {
+  static func encodeUser(_ user: User) -> [String: String] {
     return ["firstname": user.firstname!,
             "lastname": user.lastname!,
             "email": user.email!,
@@ -42,15 +42,15 @@ class JSONEncoder {
       }
    }
  */
-  static func jsonifyUserForAuthentication(user: User) -> [String: String]{
+  static func jsonifyUserForAuthentication(_ user: User) -> [String: String]{
     return ["email": user.email!,
             "password": user.password!]
   }
   
   
-  static func jsonifyUserObjectForAuthentication(user: [String: String]) -> [String: AnyObject] {
+  static func jsonifyUserObjectForAuthentication(_ user: [String: String]) -> [String: AnyObject] {
     let authType = "user"
-    return ["authType": authType, "user": user]
+    return ["authType": authType as AnyObject, "user": user as AnyObject]
   }
   
   /**
@@ -69,7 +69,7 @@ class JSONEncoder {
    - returns JSON user object
 
    */
-  static func createUserJSONObject(userJSON: Dictionary<String, String>) -> [String:[String: String]] {
+  static func createUserJSONObject(_ userJSON: Dictionary<String, String>) -> [String:[String: String]] {
     return ["user": userJSON];
   }
 }

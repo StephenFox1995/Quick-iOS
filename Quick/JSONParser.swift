@@ -11,8 +11,8 @@ import SwiftyJSON
 
 class JSONParser {
   
-  enum JSONParserError: ErrorType {
-    case UnfoundAttribute
+  enum JSONParserError: Error {
+    case unfoundAttribute
   }
   
   /**
@@ -20,7 +20,7 @@ class JSONParser {
    
    - parameter json: The json to parse.
    */
-  static func parseProduct(json: JSON) -> Product {
+  static func parseProduct(_ json: JSON) -> Product {
     let product = Product()
     if let pJSON = json.dictionary {
       product.id =          pJSON["id"]?.stringValue
@@ -32,7 +32,7 @@ class JSONParser {
     return product
   }
   
-  static func parseProducts(json: JSON) -> [Product] {
+  static func parseProducts(_ json: JSON) -> [Product] {
     var productArray = [Product]()
     if let products = json["products"].array {
       for productJSON in products {
@@ -49,7 +49,7 @@ class JSONParser {
   
   
   
-  static func parseBusiness(json: JSON) -> Business {
+  static func parseBusiness(_ json: JSON) -> Business {
     let business = Business()
     if let bJSON = json.dictionary {
       business.id =             bJSON["id"]?.stringValue
@@ -61,7 +61,7 @@ class JSONParser {
   }
   
   
-  static func parsePurchaseID(json: JSON) -> String {
+  static func parsePurchaseID(_ json: JSON) -> String {
     return json.dictionaryValue["purchaseID"]!.stringValue
   }
   
@@ -72,7 +72,7 @@ class JSONParser {
    - returns: A `NetworkResponse.UserSignUpResponse` object upon successful parsing of JSON.
    - throws: Throws `JSONParserError.UnfoundAttribute` when a JSON attribute cannot be found.
    */
-  static func userSignUpReponse(json: JSON) throws -> NetworkResponse.UserSignUpResponse {
+  static func userSignUpReponse(_ json: JSON) throws -> NetworkResponse.UserSignUpResponse {
     var userSignUpResponse = NetworkResponse.UserSignUpResponse()
     if let responseJSON = json.dictionary {
       userSignUpResponse.expires          = responseJSON["expires"]?.stringValue
@@ -82,12 +82,12 @@ class JSONParser {
     }
     // Make sure object is valid.
     guard userSignUpResponse.isValid() else {
-      throw JSONParserError.UnfoundAttribute
+      throw JSONParserError.unfoundAttribute
     }
     return userSignUpResponse
   }
   
-  static func userAuthenticate(json: JSON) throws -> NetworkResponse.UserAuthenticateResponse {
+  static func userAuthenticate(_ json: JSON) throws -> NetworkResponse.UserAuthenticateResponse {
     var userAuthResponse = NetworkResponse.UserAuthenticateResponse()
     if let responseJSON = json.dictionary {
       userAuthResponse.expires          = responseJSON["expires"]?.stringValue
@@ -97,7 +97,7 @@ class JSONParser {
     }
     // Make sure object is valid
     guard userAuthResponse.isValid() else {
-      throw JSONParserError.UnfoundAttribute
+      throw JSONParserError.unfoundAttribute
     }
     return userAuthResponse
   }

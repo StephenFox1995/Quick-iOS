@@ -10,10 +10,10 @@ import UIKit
 
 class HomeViewController: QuickViewController, UITableViewDelegate {
   
-  private var businessTableView: BusinessTableView!
-  private var businessTableViewDataSource: BusinessTableViewDataSource!
+  fileprivate var businessTableView: BusinessTableView!
+  fileprivate var businessTableViewDataSource: BusinessTableViewDataSource!
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     self.navigationItem.setHidesBackButton(true, animated:false);
   }
   
@@ -23,10 +23,10 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   }
   
   // Set up tableview to display products.
-  private func setupBusinessTableView() {
+  fileprivate func setupBusinessTableView() {
     if self.businessTableView == nil {
-      self.businessTableView = BusinessTableView(frame: CGRectMake(
-        0, 0, Screen.width, Screen.height), style: .Plain)
+      self.businessTableView = BusinessTableView(frame: CGRect(
+        x: 0, y: 0, width: Screen.width, height: Screen.height), style: .plain)
       self.businessTableView.delegate = self
       self.businessTableViewDataSource = BusinessTableViewDataSource(tableView: self.businessTableView)
       self.businessTableViewDataSource.fetchData("", completetionHandler: {
@@ -41,7 +41,7 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   }
   
   
-  @IBAction func signOut(sender: AnyObject) {
+  @IBAction func signOut(_ sender: AnyObject) {
     let sessionManager = SessionManager.sharedInstance
     if sessionManager.removeSession() {
       sessionManager.removeSession()
@@ -51,7 +51,7 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
 
 /// UITableViewDelegate
 extension HomeViewController {
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let business = self.businessTableViewDataSource.itemForRowIndex(indexPath)
     guard let b = business as? Business else {
       return // Error alert user.

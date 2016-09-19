@@ -10,13 +10,13 @@ import UIKit
 
 class LoginManager {
   
-  private let network = Network()
+  fileprivate let network = Network()
   static let sharedInstance = LoginManager()
   
   /// Closure type for a auth response
-  typealias AuthenticationCompletion = (success: Bool, session: Session?) -> Void
+  typealias AuthenticationCompletion = (_ success: Bool, _ session: Session?) -> Void
   
-  func login(user: User, completion: AuthenticationCompletion) {
+  func login(_ user: User, completion: @escaping AuthenticationCompletion) {
     let userJSON = JSONEncoder.jsonifyUserForAuthentication(user)
     let loginJSON = JSONEncoder.jsonifyUserObjectForAuthentication(userJSON)
     

@@ -12,11 +12,11 @@ import Cartography
 class FavouriteButton: UIButton {
   
   init() {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.titleLabel?.font = UIFont.fontAwesomeOfSize(40)
-    self.setTitleColor(UIColor.favouriteButtonNormalRedColor(), forState: .Normal)
-    self.setTitleColor(UIColor.favouriteButtonHighlightedRedColor(), forState: .Highlighted)
-    self.setTitle(String.fontAwesomeIconWithCode("fa-heart-o"), forState: .Normal)
+    self.setTitleColor(UIColor.favouriteButtonNormalRedColor(), for: UIControlState())
+    self.setTitleColor(UIColor.favouriteButtonHighlightedRedColor(), for: .highlighted)
+    self.setTitle(String.fontAwesomeIconWithCode("fa-heart-o"), for: .Normal)
   }
   
   required init?(coder aDecoder: NSCoder) {

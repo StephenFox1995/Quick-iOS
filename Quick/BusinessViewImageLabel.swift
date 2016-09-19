@@ -11,20 +11,20 @@ import Cartography
 
 class BusinessViewImageLabel: UIView {
   
-  private var businessNameLabel: UILabel!
-  private var businessLocationLabel: UILabel!
-  private var businessName: String?
-  private var businessLocation: String?
+  fileprivate var businessNameLabel: UILabel!
+  fileprivate var businessLocationLabel: UILabel!
+  fileprivate var businessName: String?
+  fileprivate var businessLocation: String?
 
   init(businessName: String, businessLocation: String) {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.businessName = businessName
     self.businessLocation = businessLocation
     self.setupViews()
   }
   
-  private func setupViews() {
-    self.backgroundColor = UIColor.clearColor()
+  fileprivate func setupViews() {
+    self.backgroundColor = UIColor.clear
     self.layer.cornerRadius = 5.0
     self.clipsToBounds = true
   
@@ -33,10 +33,10 @@ class BusinessViewImageLabel: UIView {
     self.businessNameLabel.minimumScaleFactor = 0.4
     self.businessNameLabel.numberOfLines = 1
     self.businessNameLabel.adjustsFontSizeToFitWidth = true
-    self.businessNameLabel.textColor = UIColor.whiteColor()
-    self.businessNameLabel.textAlignment = .Left 
+    self.businessNameLabel.textColor = UIColor.white
+    self.businessNameLabel.textAlignment = .left 
     if let bName = self.businessName {
-      self.businessNameLabel.text = bName.uppercaseString
+      self.businessNameLabel.text = bName.uppercased()
     }
     self.addSubview(self.businessNameLabel)
     
@@ -45,8 +45,8 @@ class BusinessViewImageLabel: UIView {
     self.businessLocationLabel.minimumScaleFactor = 0.4
     self.businessLocationLabel.numberOfLines = 1
     self.businessLocationLabel.adjustsFontSizeToFitWidth = true
-    self.businessLocationLabel.textColor = UIColor.whiteColor()
-    self.businessLocationLabel.textAlignment = .Left
+    self.businessLocationLabel.textColor = UIColor.white
+    self.businessLocationLabel.textAlignment = .left
     self.businessLocationLabel.text = self.businessLocation
     self.businessLocationLabel.setKernAmount(2.0)
     self.addSubview(self.businessLocationLabel)
