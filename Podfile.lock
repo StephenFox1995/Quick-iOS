@@ -4,7 +4,7 @@ PODS:
   - FontAwesome.swift (0.11.1)
   - JWTDecode (2.0.0)
   - Locksmith (3.0.0)
-  - Nimble (4.0.1)
+  - Nimble (5.0.0)
   - Quick (0.9.3)
   - SwiftyJSON (2.3.2)
 
@@ -14,7 +14,7 @@ DEPENDENCIES:
   - FontAwesome.swift (from `https://github.com/thii/FontAwesome.swift`)
   - JWTDecode (~> 2.0)
   - Locksmith
-  - Nimble (~> 4.0.0)
+  - Nimble (~> 5.0.0)
   - Quick
   - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON`)
 
@@ -44,10 +44,10 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 9879cd6a1462bf160662d519f7b7474d73bdd1c3
   JWTDecode: 178e47e5d28d3abcff778bacced8342858cd6cb5
   Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
-  Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
+  Nimble: 56fc9f5020effa2206de22c3dd910f4fb011b92f
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 46d7873a49e95eb3d41913543e8b97304a15b50e
+PODFILE CHECKSUM: d6a875d406963e96552ad9970822532010f2b0d1
 
 COCOAPODS: 1.0.1
