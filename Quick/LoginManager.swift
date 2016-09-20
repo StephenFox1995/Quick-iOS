@@ -31,19 +31,19 @@ class LoginManager {
               try sessionManager.registerSessionFromAuthenticationResponse(authResponse!)
               try sessionManager.begin()
               let session = SessionManager.sharedInstance.activeSession
-              completion(success: true, session: session)
+              completion(true, session)
             }
             catch {
-              completion(success: false, session: nil)
+              completion(false, nil)
             }
           }
           else {
-            completion(success: false, session: nil)
+            completion(false, nil)
           }
         })
       } else {
         // An error occurred during authentication.
-        completion(success: false, session: nil)
+        completion(false, nil)
       }
     }
   }

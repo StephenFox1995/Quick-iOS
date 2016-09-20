@@ -63,7 +63,7 @@ class ProductsTableViewController: QuickViewController, UITableViewDelegate {
 }
 
 extension ProductsTableViewController {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let product = self.productTableViewDataSource.itemForRowIndex(indexPath)
     
     guard let p = product as? Product else { return }

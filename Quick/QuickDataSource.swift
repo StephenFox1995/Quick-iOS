@@ -24,7 +24,7 @@ class QuickDataSource: NSObject {
    Invokes the datasource to load its data.
    - parameter completionHandler:  A callback on completion.
    */
-  func fetchData(_ url: String, completetionHandler:(_ success: Bool) -> Void) { }
+  func fetchData(_ url: String, completetionHandler:@escaping (_ success: Bool) -> Void) { }
   
   func itemForRowIndex(_ indexPath: IndexPath) -> AnyObject? { return nil }
 }

@@ -22,7 +22,7 @@ class SessionStore {
    Store session details within key chain so they can be used throughout the app.
    - parameter session: The session object to store.*/
   func store(_ session: Session) throws {
-    try Locksmith.saveData([session.account!.id!: session.token!.tokenString!], forUserAccount: session.account!.email!)
+    try Locksmith.saveData(data: [session.account!.id!: session.token!.tokenString!], forUserAccount: session.account!.email!)
     // MARK: Check security with this.
     let defaults = UserDefaults.standard
     defaults.set(session.account!.email!, forKey: SESSION_USER_EMAIL)
@@ -84,7 +84,7 @@ class SessionStore {
         return false
       }
       // Delete session from keychain.
-      try Locksmith.deleteDataForUserAccount(userEmail)
+      try Locksmith.deleteDataForUserAccount(userAccount: userEmail)
       // Remove user email and id from `NSUserDefaults`
       self.removeSessionDictionaryKeys()
       return true
@@ -103,7 +103,7 @@ class SessionStore {
     do {
       let sessionKeys = try self.sessionDictionaryKeys()
       let userEmail = sessionKeys.0
-      try Locksmith.deleteDataForUserAccount(userEmail)
+      try Locksmith.deleteDataForUserAccount(userAccount: userEmail)
       self.removeSessionDictionaryKeys()
       return true
     } catch {
@@ -153,7 +153,7 @@ class SessionStore {
    - returns: A dictionary object containing the session token as the value.
    */
   fileprivate func read(_ userEmail: String) -> [String: AnyObject]? {
-    return Locksmith.loadDataForUserAccount(userEmail)
+    return Locksmith.loadDataForUserAccount(userAccount: userEmail) as [String : AnyObject]?
   }
   
   /**

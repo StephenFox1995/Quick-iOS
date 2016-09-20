@@ -44,6 +44,7 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   @IBAction func signOut(_ sender: AnyObject) {
     let sessionManager = SessionManager.sharedInstance
     if sessionManager.removeSession() {
+      // FIXME: Dafuq is this
       sessionManager.removeSession()
     }
   }
@@ -51,7 +52,8 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
 
 /// UITableViewDelegate
 extension HomeViewController {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  
+  @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let business = self.businessTableViewDataSource.itemForRowIndex(indexPath)
     guard let b = business as? Business else {
       return // Error alert user.
@@ -60,6 +62,7 @@ extension HomeViewController {
     businessViewController.business = b
     self.navigationController?.pushViewController(businessViewController, animated: true);
   }
+  
 }
 
 

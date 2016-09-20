@@ -77,7 +77,7 @@ class Session {
      
      */
     static func decodeToken(_ token: String) throws -> UserJWT? {
-      let jwt = try decode(token)
+      let jwt = try decode(jwt: token)
       
       var userJWT = UserJWT()
       userJWT.tokenString = token

@@ -94,7 +94,7 @@ extension AuthenticateViewController {
 
 // MARK: UIPageViewControllerDataSource
 extension AuthenticateViewController {
-  func pageViewController(_ pageViewController: UIPageViewController,
+  @objc(pageViewController:viewControllerAfterViewController:) func pageViewController(_ pageViewController: UIPageViewController,
                           viewControllerAfter viewController: UIViewController) -> UIViewController? {
     var index = (viewController as! QuickViewController).index
     if (index == 1) {
@@ -104,7 +104,7 @@ extension AuthenticateViewController {
     return self.viewControllerAtIndex(index!)
   }
   
-  func pageViewController(_ pageViewController: UIPageViewController,
+  @objc(pageViewController:viewControllerBeforeViewController:) func pageViewController(_ pageViewController: UIPageViewController,
                           viewControllerBefore viewController: UIViewController) -> UIViewController? {
     var index = (viewController as! QuickViewController).index
     if (index == 0) {
@@ -114,10 +114,10 @@ extension AuthenticateViewController {
     return self.viewControllerAtIndex(index!)
   }
   
-  func presentationCount(for pageViewController: UIPageViewController) -> Int {
+  @objc(presentationCountForPageViewController:) func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return 2
   }
-  func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+  @objc(presentationIndexForPageViewController:) func presentationIndex(for pageViewController: UIPageViewController) -> Int {
     return 0
   }
 }

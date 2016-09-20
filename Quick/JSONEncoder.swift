@@ -12,12 +12,10 @@ import SwiftyJSON
 class JSONEncoder {
   
   static func jsonifyPurchase(productID: String,
-                                        businessID: String) -> [String: AnyObject]{
+                              businessID: String) -> [String: [String: String]]{
     return
-      ["purchase":
-        [
-          "productID": productID,
-          "businessID": businessID
+      ["purchase": [ "productID": productID,
+                     "businessID": businessID
         ]
       ]
   }

@@ -20,18 +20,20 @@ class Network {
                          and the JSON.
    */
   func requestJSON(_ urlString: String, response: @escaping (_ success: Bool, _ data: AnyObject) -> Void) {
-    Alamofire.request(.GET, urlString).validate()
+    Alamofire.request(urlString,
+                      method: .get)
+      .validate()
       .responseJSON { afResponse in
-        switch afResponse.result {
-        case .Success:
-          if let value = afResponse.result.value {
-            response(success: true, data: value)
-          }
-          break
-        case .Failure:
-          response(success: false, data: NSNull())
-          break
+      switch afResponse.result {
+      case .success:
+        if let value = afResponse.result.value {
+          response(true, value as AnyObject)
         }
+        break
+      case .failure:
+        response(false, NSNull())
+        break
+      }
     }
   }
   
@@ -47,48 +49,48 @@ class Network {
   func postJSON(_ urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
                 response: @escaping (_ success: Bool, _ data: AnyObject) -> Void) {
-    
-    Alamofire.request(.POST,
-      urlString,
-      parameters: jsonParameters,
-      encoding: .JSON).validate()
-      .responseJSON { afResponse in
-        switch afResponse.result {
-        case .Success:
-          if let value = afResponse.result.value {
-            response(success: true, data: value)
-          }
-        case .Failure:
-          response(success: false, data: NSNull())
-          break
+    Alamofire.request(urlString,
+                      method: .post,
+                      parameters: jsonParameters)
+      .validate()
+      .responseJSON {
+        (afResponse) in
+      switch afResponse.result {
+      case .success:
+        if let value = afResponse.result.value {
+            response(true, value as AnyObject)
         }
+      case .failure:
+        response(false, NSNull())
+        break
+      }
     }
   }
-  
+    
   
   func postJSONAuthenticated(_ urlString: String,
                              jsonParameters: [String: AnyObject],
                              response:@escaping (_ success: Bool, _ data: AnyObject) -> Void) {
     let headers = self.httpHeaders()
-    Alamofire.request(.POST,
-      urlString,
-      parameters: jsonParameters,
-      encoding: .JSON,
-      headers: headers).validate()
-      .responseJSON { afResponse in
+    Alamofire.request(urlString,
+                      method: .post,
+                      parameters: jsonParameters,
+                      headers: headers)
+      .validate()
+      .responseJSON { (afResponse) in
         switch afResponse.result {
-        case .Success:
+        case .success:
           if let value = afResponse.result.value {
-            response(success: true, data: value)
+            response(true, value as AnyObject)
           }
-        case .Failure:
-          response(success: false, data: NSNull())
+        case .failure:
+          response(false, NSNull())
           break
         }
     }
   }
   
-  fileprivate func httpHeaders() -> [String: String] {
+  private func httpHeaders() -> [String: String] {
     if let sessionToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
       return [
         "Authorization": "Bearer \(sessionToken)",
@@ -102,13 +104,12 @@ class Network {
   }
   
   
-  
-  
-  
+
   /**
    Inner class to store constant values about backend urls.
    */
   class NetworkingDetails {
+    
     //"http://192.168.1.112"
     fileprivate static let baseAddress = "http://192.168.1.78"
     fileprivate static let port = "3000"
@@ -221,3 +222,5 @@ class Network {
     }
   }
 }
+
+

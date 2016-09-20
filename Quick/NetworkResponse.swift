@@ -62,7 +62,7 @@ class NetworkResponse {
       let json = JSON(data)
       do {
         let response = try JSONParser.userSignUpReponse(json)
-        completion(success: true, signUpResponse: response)
+        completion(true, response)
       } catch {
         completion(false, nil)
       }
@@ -90,7 +90,7 @@ class NetworkResponse {
       let json = JSON(data)
       do {
         let response = try JSONParser.userAuthenticate(json)
-        completion(success: true, authResponse: response)
+        completion(true, response)
       } catch {
         completion(false, nil)
       }

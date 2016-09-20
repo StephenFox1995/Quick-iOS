@@ -34,7 +34,7 @@ class ProductViewController: QuickViewController {
     
     self.productImage = ProductImage()
     self.view.addSubview(self.productImage)
-    DispatchQueue.global(priority: 0).async {
+    DispatchQueue.global().async {
       let url = URL(string: "http://blog.stridekick.com/wp-content/uploads/2015/10/starbucks-cup-of-coffee-to-go.png")
       let nsdata = try? Data.init(contentsOf: url!)
       DispatchQueue.main.async(execute: {
@@ -84,7 +84,7 @@ class ProductViewController: QuickViewController {
     let jsonParameters = JSONEncoder.jsonifyPurchase(productID: pID, businessID: bID)
     
     let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint
-    network.postJSONAuthenticated(purchaseEndPoint, jsonParameters: jsonParameters) {
+    network.postJSONAuthenticated(purchaseEndPoint, jsonParameters: jsonParameters as [String : AnyObject]) {
       (success, data) in
       if (success) {
         let json = JSON(data)

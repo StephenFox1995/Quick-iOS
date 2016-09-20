@@ -27,7 +27,7 @@ class SignUpManager {
     let userJSONObject = JSONEncoder.createUserJSONObject(userJSON);
     
     network.postJSON(Network.NetworkingDetails.createUserEndPoint,
-                     jsonParameters: userJSONObject)
+                     jsonParameters: userJSONObject as Dictionary<String, AnyObject>)
     { (success, data) in
       if success {
         // Pass control to network reponse to handle and parse the response.
@@ -40,20 +40,20 @@ class SignUpManager {
                 try sessionManager.registerSessionFromSignUpResponse(signUpResponse!)
                 try sessionManager.begin()
                 let session = SessionManager.sharedInstance.activeSession
-                completion(success: true, session: session)
+                completion(true, session)
               }
               catch {
-                completion(success: false, session: nil)
+                completion(false, nil)
               }
             }
             else {
-              completion(success: false, session: nil)
+              completion(false, nil)
             }
         })
       }
       else {
         // An error occurred during account creation.
-        completion(success: false, session: nil)
+        completion(false, nil)
       }
     }
   }

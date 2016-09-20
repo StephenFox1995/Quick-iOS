@@ -1,3 +1,4 @@
+
 //
 //  ProducTableViewDelegate.swift
 //  Quick
@@ -38,10 +39,10 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
         let json = JSON(data)
         self.products = self.createProductArray(json)
         self.tableView.reloadData()
-        completetionHandler(success: true)
+        completetionHandler(true)
       } else {
         fxprint("Could not load Products.")
-        completetionHandler(success: false)
+        completetionHandler(false)
       }
     }
   }

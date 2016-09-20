@@ -39,7 +39,8 @@ class BusinessViewController: QuickViewController {
       businessImageView = BusinessImageView(businessName: business.name!,
                                                 businessLocation: business.address!)
       self.view.addSubview(businessImageView)
-      DispatchQueue.global(priority: 0).async {
+      
+      DispatchQueue.global().async {
         let url = URL(string: "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/85/db/front-door.jpg")
         let nsdata = try? Data.init(contentsOf: url!)
         DispatchQueue.main.async(execute: {

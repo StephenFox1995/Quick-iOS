@@ -16,7 +16,7 @@ class FavouriteButton: UIButton {
     self.titleLabel?.font = UIFont.fontAwesomeOfSize(40)
     self.setTitleColor(UIColor.favouriteButtonNormalRedColor(), for: UIControlState())
     self.setTitleColor(UIColor.favouriteButtonHighlightedRedColor(), for: .highlighted)
-    self.setTitle(String.fontAwesomeIconWithCode("fa-heart-o"), for: .Normal)
+    self.setTitle(String.fontAwesomeIconWithCode("fa-heart-o"), for: .normal)
   }
   
   required init?(coder aDecoder: NSCoder) {
