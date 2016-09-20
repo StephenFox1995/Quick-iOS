@@ -79,6 +79,7 @@ class Network {
     Alamofire.request(urlString,
                       method: .post,
                       parameters: jsonParameters,
+                      encoding: JSONEncoding.default,
                       headers: headers)
       .validate()
       .responseJSON { (afResponse) in
