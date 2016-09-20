@@ -67,7 +67,7 @@ extension AppDelegate {
     user.email = email
     user.password = password
     
-    loginManager.login(user) { (success, session) in
+    loginManager.login(user: user) { (success, session) in
       if success {
         self.displayHomeViewController()
       } else {
@@ -78,12 +78,13 @@ extension AppDelegate {
   }
   /// SignUp
   func authenticateViewControllerSignUpDetailsEntered(_ viewController: AuthenticateViewController,
-                                                      email: String, fullname: String,
+                                                      email: String,
+                                                      fullname: String,
                                                       password: String) {
     let signUpManager = SignUpManager.sharedInstace
     let user = User(email: email, firstname: fullname, lastname: fullname, password: password)
     
-    signUpManager.createUserAccount(user) { (success, session) in
+    signUpManager.createUserAccount(user: user) { (success, session) in
       if success {
         self.displayHomeViewController()
       } else {

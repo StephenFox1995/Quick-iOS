@@ -21,15 +21,13 @@ class SignUpManager {
    - parameter user: A user object with information on the user for account creation
    - parameter completion: Completion handler.
    */
-  func createUserAccount(_ user: User,
+  func createUserAccount(user: User,
                          completion: @escaping SignUpCompletion) {
     let userJSON = JSONEncoder.encodeUser(user)
     let userJSONObject = JSONEncoder.createUserJSONObject(userJSON);
     
-    
     network.postJSON(urlString: Network.NetworkingDetails.createUserEndPoint,
-                     jsonParameters: userJSONObject as Dictionary<String, AnyObject>)
-    { (success, data) in
+                     jsonParameters: userJSONObject) { (success, data) in
       if success {
         // Pass control to network reponse to handle and parse the response.
         NetworkResponse.UserSignUpResponse.handleUserSignUpResponse(data!, completion:

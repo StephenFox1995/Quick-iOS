@@ -16,7 +16,7 @@ DEPENDENCIES:
   - Locksmith
   - Nimble (~> 4.0.0)
   - Quick
-  - SwiftyJSON (from `https://github.com/jeneumeier/SwiftyJSON`, branch `swift3-gm`)
+  - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON`)
 
 EXTERNAL SOURCES:
   Cartography:
@@ -25,8 +25,7 @@ EXTERNAL SOURCES:
   FontAwesome.swift:
     :git: https://github.com/thii/FontAwesome.swift
   SwiftyJSON:
-    :branch: swift3-gm
-    :git: https://github.com/jeneumeier/SwiftyJSON
+    :git: https://github.com/IBM-Swift/SwiftyJSON
 
 CHECKOUT OPTIONS:
   Cartography:
@@ -36,8 +35,8 @@ CHECKOUT OPTIONS:
     :commit: fd641b95728e566e5b4f2d37ed94486162ea5a65
     :git: https://github.com/thii/FontAwesome.swift
   SwiftyJSON:
-    :commit: cf657820fad3656df022d8ebf32f9cdd99e1247a
-    :git: https://github.com/jeneumeier/SwiftyJSON
+    :commit: 73b523a107b798021ca9af74b5f7c20e435c8809
+    :git: https://github.com/IBM-Swift/SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
@@ -49,6 +48,6 @@ SPEC CHECKSUMS:
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 2f57171f38a7bc2a99ae20c68ae01fd9f851cf65
+PODFILE CHECKSUM: 46d7873a49e95eb3d41913543e8b97304a15b50e
 
 COCOAPODS: 1.0.1

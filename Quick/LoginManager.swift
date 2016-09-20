@@ -16,7 +16,7 @@ class LoginManager {
   /// Closure type for a auth response
   typealias AuthenticationCompletion = (_ success: Bool, _ session: Session?) -> Void
   
-  func login(_ user: User, completion: @escaping AuthenticationCompletion) {
+  func login(user: User, completion: @escaping AuthenticationCompletion) {
     let userJSON = JSONEncoder.jsonifyUserForAuthentication(user)
     let loginJSON = JSONEncoder.jsonifyUserObjectForAuthentication(userJSON)
     

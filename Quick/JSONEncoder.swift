@@ -13,11 +13,7 @@ class JSONEncoder {
   
   static func jsonifyPurchase(productID: String,
                               businessID: String) -> [String: [String: String]]{
-    return
-      ["purchase": [ "productID": productID,
-                     "businessID": businessID
-        ]
-      ]
+    return ["purchase": [ "productID": productID, "businessID": businessID ]]
   }
   
   
@@ -41,8 +37,7 @@ class JSONEncoder {
    }
  */
   static func jsonifyUserForAuthentication(_ user: User) -> [String: String] {
-    return ["email": user.email!,
-            "password": user.password!]
+    return ["email": user.email!, "password": user.password!]
   }
   
   
@@ -67,7 +62,7 @@ class JSONEncoder {
    - returns JSON user object
 
    */
-  static func createUserJSONObject(_ userJSON: Dictionary<String, String>) -> [String:[String: String]] {
-    return ["user": userJSON];
+  static func createUserJSONObject(_ userJSON: [String: String]) -> [String: AnyObject] {
+    return ["user": userJSON as AnyObject]
   }
 }

@@ -21,6 +21,7 @@ class Network {
    */
   func requestJSON(_ urlString: String,
                    response: @escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
+    
     Alamofire.request(urlString,
                       method: .get)
       .validate()
@@ -50,9 +51,12 @@ class Network {
   func postJSON(urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
                 response: @escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
+    //convert the JSON to a raw String
+    print(jsonParameters)
     Alamofire.request(urlString,
                       method: .post,
-                      parameters: jsonParameters)
+                      parameters: jsonParameters,
+                      encoding: JSONEncoding.default)
       .validate()
       .responseJSON {
         (afResponse) in
@@ -67,12 +71,11 @@ class Network {
       }
     }
   }
-    
   
   func postJSONAuthenticated(_ urlString: String,
                              jsonParameters: [String: AnyObject],
                              response:@escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
-    let headers = self.httpHeaders()
+    let headers = self.authHeaders()
     Alamofire.request(urlString,
                       method: .post,
                       parameters: jsonParameters,
@@ -91,16 +94,19 @@ class Network {
     }
   }
   
-  private func httpHeaders() -> [String: String] {
+  
+  private func jsonContentTypeHTTPHeaders() -> [String: String] {
+    return [ "Content-Type": "application/json" ]
+  }
+  
+  private func authHeaders() -> [String: String] {
     if let sessionToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
       return [
         "Authorization": "Bearer \(sessionToken)",
         "Content-Type": "application/json"
       ]
     } else {
-      return [
-        "Content-Type": "application/json"
-      ]
+      return [ "Content-Type": "application/json" ]
     }
   }
   

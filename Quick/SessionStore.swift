@@ -20,7 +20,8 @@ class SessionStore {
   
   /**
    Store session details within key chain so they can be used throughout the app.
-   - parameter session: The session object to store.*/
+   - parameter session: The session object to store.
+   */
   func store(_ session: Session) throws {
     try Locksmith.saveData(data: [session.account!.id!: session.token!.tokenString!], forUserAccount: session.account!.email!)
     // MARK: Check security with this.
