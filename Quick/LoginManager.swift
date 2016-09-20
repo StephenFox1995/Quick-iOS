@@ -28,8 +28,9 @@ class LoginManager {
           if success {
             let sessionManager = SessionManager.sharedInstance
             do {
-              try sessionManager.registerSessionFromAuthenticationResponse(authResponse!)
-              try sessionManager.begin()
+              try sessionManager
+                .registerSessionFromAuthenticationResponse(authResponse!)
+                .begin()
               let session = SessionManager.sharedInstance.activeSession
               completion(true, session)
             }

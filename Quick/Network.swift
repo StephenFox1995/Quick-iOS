@@ -53,8 +53,6 @@ class Network {
   func postJSON(urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
                 response: @escaping NetworkPOSTResponse) {
-    //convert the JSON to a raw String
-    print(jsonParameters)
     Alamofire.request(urlString,
                       method: .post,
                       parameters: jsonParameters,

@@ -42,20 +42,22 @@ class SessionManager {
    Attempts to register a session from a `NetworkResponse.UserSignUpResponse`.
    - parameter signUpResponse: A sign up response.
    */
-  func registerSessionFromSignUpResponse(_ signUpResponse: NetworkResponse.UserSignUpResponse) throws {
+  func registerSessionFromSignUpResponse(_ signUpResponse: NetworkResponse.UserSignUpResponse) throws -> SessionManager {
     // Create session object.
     let session = try Session.sessionWithJWT(signUpResponse.token!)
     self.pendingSession = session
+    return self
   }
   
   /**
    Attempts ot register a session from a `NetworkResponse.UserAuthenticateResponse`.
    - parameter authResponse: The authentication response.
    */
-  func registerSessionFromAuthenticationResponse(_ authResponse: NetworkResponse.UserAuthenticateResponse) throws {
+  func registerSessionFromAuthenticationResponse(_ authResponse: NetworkResponse.UserAuthenticateResponse) throws -> SessionManager {
     // Create session object
     let session = try Session.sessionWithJWT(authResponse.token!)
     self.pendingSession = session
+    return self
   }
   
   

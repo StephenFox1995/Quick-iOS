@@ -36,8 +36,9 @@ class SignUpManager {
               // Once the data has been handled and parsed, begin a new session.
               let sessionManager = SessionManager.sharedInstance
               do {
-                try sessionManager.registerSessionFromSignUpResponse(signUpResponse!)
-                try sessionManager.begin()
+                try sessionManager
+                  .registerSessionFromSignUpResponse(signUpResponse!)
+                  .begin()
                 let session = SessionManager.sharedInstance.activeSession
                 completion(true, session)
               }
