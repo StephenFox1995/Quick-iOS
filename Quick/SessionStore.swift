@@ -11,22 +11,22 @@ import Locksmith
 
 class SessionStore {
   static let sharedInstance = SessionStore()
-  private let SESSION_USER_EMAIL = "Q_SESSION_EMAIL"
-  private let SESSION_USER_ID = "Q_SESSION_ID"
+  fileprivate let SESSION_USER_EMAIL = "Q_SESSION_EMAIL"
+  fileprivate let SESSION_USER_ID = "Q_SESSION_ID"
   
-  enum SessionStoreError: ErrorType {
-    case MissingKeys
+  enum SessionStoreError: Error {
+    case missingKeys
   }
   
   /**
    Store session details within key chain so they can be used throughout the app.
    - parameter session: The session object to store.*/
-  func store(session: Session) throws {
-    try Locksmith.saveData([session.account!.id!: session.token!.tokenString!], forUserAccount: session.account!.email!)
+  func store(_ session: Session) throws {
+    try Locksmith.saveData(data: [session.account!.id!: session.token!.tokenString!], forUserAccount: session.account!.email!)
     // MARK: Check security with this.
-    let defaults = NSUserDefaults.standardUserDefaults()
-    defaults.setObject(session.account!.email!, forKey: SESSION_USER_EMAIL)
-    defaults.setObject(session.account!.id!, forKey: SESSION_USER_ID)
+    let defaults = UserDefaults.standard
+    defaults.set(session.account!.email!, forKey: SESSION_USER_EMAIL)
+    defaults.set(session.account!.id!, forKey: SESSION_USER_ID)
   }
   
   /**
@@ -84,7 +84,7 @@ class SessionStore {
         return false
       }
       // Delete session from keychain.
-      try Locksmith.deleteDataForUserAccount(userEmail)
+      try Locksmith.deleteDataForUserAccount(userAccount: userEmail)
       // Remove user email and id from `NSUserDefaults`
       self.removeSessionDictionaryKeys()
       return true
@@ -103,7 +103,7 @@ class SessionStore {
     do {
       let sessionKeys = try self.sessionDictionaryKeys()
       let userEmail = sessionKeys.0
-      try Locksmith.deleteDataForUserAccount(userEmail)
+      try Locksmith.deleteDataForUserAccount(userAccount: userEmail)
       self.removeSessionDictionaryKeys()
       return true
     } catch {
@@ -114,12 +114,12 @@ class SessionStore {
   
 
   ///Removes dictionary keys used to access sessions on the device.
-  private func removeSessionDictionaryKeys() {
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+  fileprivate func removeSessionDictionaryKeys() {
+    let userDefaults = UserDefaults.standard
     // Remove Email
-    userDefaults.removeObjectForKey(self.SESSION_USER_EMAIL)
+    userDefaults.removeObject(forKey: self.SESSION_USER_EMAIL)
     // Remove ID
-    userDefaults.removeObjectForKey(self.SESSION_USER_ID)
+    userDefaults.removeObject(forKey: self.SESSION_USER_ID)
   }
   
   
@@ -128,19 +128,19 @@ class SessionStore {
    - returns: Tuple containing `(UserEmailKey?, UserIdKey?)`
    - throws: `SessionStoreError.MissingKeys` if no keys can be found.
    */
-  private func sessionDictionaryKeys() throws -> (String, String) {
-    let defaults = NSUserDefaults.standardUserDefaults()
+  fileprivate func sessionDictionaryKeys() throws -> (String, String) {
+    let defaults = UserDefaults.standard
     var email: String
     var id: String
-    if let userEmail = defaults.objectForKey(self.SESSION_USER_EMAIL) as? String {
+    if let userEmail = defaults.object(forKey: self.SESSION_USER_EMAIL) as? String {
       email = userEmail
     } else {
-      throw SessionStoreError.MissingKeys
+      throw SessionStoreError.missingKeys
     }
-    if let userID = defaults.objectForKey(self.SESSION_USER_ID) as? String {
+    if let userID = defaults.object(forKey: self.SESSION_USER_ID) as? String {
       id = userID
     } else {
-      throw SessionStoreError.MissingKeys
+      throw SessionStoreError.missingKeys
     }
     return (email, id)
   }
@@ -152,8 +152,8 @@ class SessionStore {
    - parameter userEmail: The email of the users that owns the session.
    - returns: A dictionary object containing the session token as the value.
    */
-  private func read(userEmail: String) -> [String: AnyObject]? {
-    return Locksmith.loadDataForUserAccount(userEmail)
+  fileprivate func read(_ userEmail: String) -> [String: AnyObject]? {
+    return Locksmith.loadDataForUserAccount(userAccount: userEmail) as [String : AnyObject]?
   }
   
   /**
@@ -164,7 +164,7 @@ class SessionStore {
    - parameter dict: The dictionary object that contains the token.
    - returns: If the token was found it will be returned, otherwise nil.
    */
-  private func readTokenString(userEmail: String,
+  fileprivate func readTokenString(_ userEmail: String,
                                userID: String,
                                dict: [String: AnyObject]?) -> String? {
     if let tokenDict = self.read(userEmail) { // Read using the user's email

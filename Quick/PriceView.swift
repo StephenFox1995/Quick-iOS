@@ -11,29 +11,29 @@ import Cartography
 
 class PriceView: UIView {
   
-  private var price: String = ""
-  private var amountLabel = UILabel()
-  private var priceTextLabel = UILabel()
+  fileprivate var price: String = ""
+  fileprivate var amountLabel = UILabel()
+  fileprivate var priceTextLabel = UILabel()
   
   init(price: String) {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.price = price
     self.setupViews()
   }
   
-  private func setupViews() {
+  fileprivate func setupViews() {
     // PriceTextLabel setup
     self.priceTextLabel.text = "PRICE"
     self.priceTextLabel.textColor = UIColor.quickGray()
     self.priceTextLabel.font = UIFont.qFontBold(10)
-    self.priceTextLabel.textAlignment = .Center
+    self.priceTextLabel.textAlignment = .center
     self.addSubview(self.priceTextLabel)
     
     // TODO: Figure otu correct currency
     self.amountLabel.text = "€" + self.price
     self.amountLabel.font = UIFont.qFontRegular(25)
     self.amountLabel.textColor = UIColor.quickGray()
-    self.amountLabel.textAlignment = .Center
+    self.amountLabel.textAlignment = .center
     self.addSubview(self.amountLabel)
     
     constrain(self, self.amountLabel, self.priceTextLabel) {

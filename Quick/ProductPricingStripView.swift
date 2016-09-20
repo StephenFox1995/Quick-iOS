@@ -12,21 +12,21 @@ import Cartography
 class ProductPricingStripView: StripView {
   
   
-  private var product: Product!
-  private var productNameLabel = UILabel()
-  private var productPriceView: PriceView!
+  fileprivate var product: Product!
+  fileprivate var productNameLabel = UILabel()
+  fileprivate var productPriceView: PriceView!
   
   init(product: Product) {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.product = product
     self.setupViews()
   }
   
-  private func setupViews() {
+  fileprivate func setupViews() {
     self.productNameLabel.text = self.product.name
     self.productNameLabel.font = UIFont.qFontDemiBold(20)
     self.productNameLabel.textColor = UIColor.quickGray()
-    self.productNameLabel.textAlignment = .Center
+    self.productNameLabel.textAlignment = .center
     self.addSubview(self.productNameLabel)
     
     // TODO: Fix this, if the price is actually nil

@@ -1,3 +1,4 @@
+
 //
 //  ProducTableViewDelegate.swift
 //  Quick
@@ -11,10 +12,10 @@ import SwiftyJSON
 
 class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   
-  private var network: Network!
-  private weak var tableView: QuickTableView!
-  private var products: [Product]?
-  private var reuseIdentifier: String!
+  fileprivate var network: Network!
+  fileprivate weak var tableView: QuickTableView!
+  fileprivate var products: [Product]?
+  fileprivate var reuseIdentifier: String!
   
   
   /**
@@ -32,30 +33,30 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   }
   
   
-  override func fetchData(url: String, completetionHandler: (success: Bool) -> Void) {
+  override func fetchData(_ url: String, completetionHandler: @escaping (_ success: Bool) -> Void) {
     self.network.requestJSON(url) { (success, data) in
       if (success) {
         let json = JSON(data)
         self.products = self.createProductArray(json)
         self.tableView.reloadData()
-        completetionHandler(success: true)
+        completetionHandler(true)
       } else {
         fxprint("Could not load Products.")
-        completetionHandler(success: false)
+        completetionHandler(false)
       }
     }
   }
   
   
-  private func createProductArray(json: JSON) -> [Product] {
+  fileprivate func createProductArray(_ json: JSON) -> [Product] {
     return JSONParser.parseProducts(json)
   }
   
   
-  override func itemForRowIndex(indexPath: NSIndexPath) -> AnyObject? {
+  override func itemForRowIndex(_ indexPath: IndexPath) -> AnyObject? {
     if let p = self.products {
-      if p.indices.contains(indexPath.row) {
-        return p[indexPath.row]
+      if p.indices.contains((indexPath as NSIndexPath).row) {
+        return p[(indexPath as NSIndexPath).row]
       }
       return nil
     }
@@ -63,7 +64,7 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   }
   
   // MARK: UITableViewDataSource
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if self.products != nil {
       return self.products!.count
     } else {
@@ -72,9 +73,9 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   }
   
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let productCell = tableView.dequeueReusableCellWithIdentifier(self.reuseIdentifier) as! ProductTableViewCell
-    let product = self.products![indexPath.row]
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let productCell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as! ProductTableViewCell
+    let product = self.products![(indexPath as NSIndexPath).row]
     productCell.setTextElements(product)
     return productCell
   }

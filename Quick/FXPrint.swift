@@ -12,7 +12,7 @@ import UIKit
  Use this function to print output to the console
  only when the app's in development enviroment.
  */
-func fxprint(content: AnyObject) {
+func fxprint(_ content: String) {
   if AppDelegate.devEnvironment {
     print(content)
   }

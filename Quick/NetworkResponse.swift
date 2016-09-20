@@ -22,10 +22,10 @@ protocol NetworkReponseProtocol {
 class NetworkResponse {
   
   /// Closure type for a sign up response.
-  typealias SignUpCompletion = (success: Bool, signUpResponse: UserSignUpResponse?) -> Void
+  typealias SignUpCompletion = (_ success: Bool, _ signUpResponse: UserSignUpResponse?) -> Void
   
   /// Closure type for user authentication response.
-  typealias UserAuthenticateCompletion = (success: Bool, authResponse: UserAuthenticateResponse?) -> Void
+  typealias UserAuthenticateCompletion = (_ success: Bool, _ authResponse: UserAuthenticateResponse?) -> Void
   
   /**
    A user sign up response type. Attempts to represent a response
@@ -56,15 +56,15 @@ class NetworkResponse {
      - parameter data:       The data contained in the reponse.
      - parameter response:   A callback once the response has been handled.
      */
-    static func handleUserSignUpResponse(data: AnyObject,
+    static func handleUserSignUpResponse(_ data: AnyObject,
                                   completion: SignUpCompletion) {
       // Attempt to parse the JSON response.
       let json = JSON(data)
       do {
         let response = try JSONParser.userSignUpReponse(json)
-        completion(success: true, signUpResponse: response)
+        completion(true, response)
       } catch {
-        completion(success: false, signUpResponse: nil)
+        completion(false, nil)
       }
     }
   }
@@ -86,13 +86,13 @@ class NetworkResponse {
       }
     }
     
-    static func handleResponse(data: AnyObject, completion: UserAuthenticateCompletion) {
+    static func handleResponse(_ data: AnyObject, completion: UserAuthenticateCompletion) {
       let json = JSON(data)
       do {
         let response = try JSONParser.userAuthenticate(json)
-        completion(success: true, authResponse: response)
+        completion(true, response)
       } catch {
-        completion(success: false, authResponse: nil)
+        completion(false, nil)
       }
     }
   }

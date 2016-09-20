@@ -3,11 +3,11 @@ import UIKit
 import Cartography
 
 protocol AuthenticateViewControllerDelegate: class {
-  func authenticateViewControllerSignUpDetailsEntered (viewController: AuthenticateViewController,
+  func authenticateViewControllerSignUpDetailsEntered (_ viewController: AuthenticateViewController,
                                                       email: String,
                                                       fullname: String,
                                                       password: String)
-  func authenticateViewControllerLoginDetailsEntered (viewController: AuthenticateViewController,
+  func authenticateViewControllerLoginDetailsEntered (_ viewController: AuthenticateViewController,
                                                      email: String,
                                                      password: String)
 }
@@ -22,21 +22,21 @@ SignUpViewControllerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupViews()
-    self.view.backgroundColor = UIColor.whiteColor()
-    self.navigationController?.navigationBarHidden = true
+    self.view.backgroundColor = UIColor.white
+    self.navigationController?.isNavigationBarHidden = true
     self.dataSource = self
     
     let initialViewController = self.viewControllerAtIndex(0)
     let viewControllers = [initialViewController]
-    self.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+    self.setViewControllers(viewControllers, direction: .forward, animated: false, completion: nil)
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.navigationController?.navigationBarHidden = false
+    self.navigationController?.isNavigationBarHidden = false
   }
   
-  private func setupViews() {
+  fileprivate func setupViews() {
     UIPageControl.changePageIndicator(UIColor.pageControlGrayColor(),
                                       indicatorCurrentPage: UIColor.pageControlCurrentPageGrayColor())
     
@@ -47,12 +47,12 @@ SignUpViewControllerDelegate {
       imageView.centerX == superView.centerX
       imageView.width == superView.width * 0.3
       imageView.height == superView.width * 0.3
-      imageView.top == superView.top + 40
+      imageView.top == superView.top + 60
     }
   }
   
   /// Determines the view controller to show based on its index.
-  private func viewControllerAtIndex(index: NSInteger) -> UIViewController {
+  fileprivate func viewControllerAtIndex(_ index: NSInteger) -> UIViewController {
     switch index {
     case 0:
       let loginViewController = LoginViewController()
@@ -74,7 +74,7 @@ SignUpViewControllerDelegate {
 
 // MARK: LoginViewControllerDelegate
 extension AuthenticateViewController {
-  func loginDetailsEntered(viewController: LoginViewController, email: String, password: String) {
+  func loginDetailsEntered(_ viewController: LoginViewController, email: String, password: String) {
     if let delegate = self.authDelegate {
       delegate.authenticateViewControllerLoginDetailsEntered(self, email: email, password: password)
     }
@@ -82,7 +82,7 @@ extension AuthenticateViewController {
 }
 // MARK: SignUpViewControllerDelegate
 extension AuthenticateViewController {
-  func signUpDetailsEntered(viewController: SignUpViewController,
+  func signUpDetailsEntered(_ viewController: SignUpViewController,
                             email: String,
                             fullname: String,
                             password: String) {
@@ -94,8 +94,8 @@ extension AuthenticateViewController {
 
 // MARK: UIPageViewControllerDataSource
 extension AuthenticateViewController {
-  func pageViewController(pageViewController: UIPageViewController,
-                          viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+  @objc(pageViewController:viewControllerAfterViewController:) func pageViewController(_ pageViewController: UIPageViewController,
+                          viewControllerAfter viewController: UIViewController) -> UIViewController? {
     var index = (viewController as! QuickViewController).index
     if (index == 1) {
       return nil
@@ -104,8 +104,8 @@ extension AuthenticateViewController {
     return self.viewControllerAtIndex(index!)
   }
   
-  func pageViewController(pageViewController: UIPageViewController,
-                          viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+  @objc(pageViewController:viewControllerBeforeViewController:) func pageViewController(_ pageViewController: UIPageViewController,
+                          viewControllerBefore viewController: UIViewController) -> UIViewController? {
     var index = (viewController as! QuickViewController).index
     if (index == 0) {
       return nil
@@ -114,10 +114,10 @@ extension AuthenticateViewController {
     return self.viewControllerAtIndex(index!)
   }
   
-  func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+  @objc(presentationCountForPageViewController:) func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return 2
   }
-  func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+  @objc(presentationIndexForPageViewController:) func presentationIndex(for pageViewController: UIPageViewController) -> Int {
     return 0
   }
 }

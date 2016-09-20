@@ -10,7 +10,7 @@ import UIKit
 
 extension UILabel {
   ///Sets the kerning amount for the views `titleLabel` property
-  func setKernAmount(kernAmount: CGFloat) {
+  func setKernAmount(_ kernAmount: CGFloat) {
     var labelFont: UIFont!
     if let font = self.font {
       labelFont = font
@@ -26,7 +26,7 @@ extension UILabel {
     
     let attributes: NSDictionary = [
       NSFontAttributeName:labelFont,
-      NSForegroundColorAttributeName:UIColor.whiteColor(),
+      NSForegroundColorAttributeName:UIColor.white,
       NSKernAttributeName:CGFloat(kernAmount)
     ]
     let attributedText = NSAttributedString(string: labelText, attributes: attributes as? [String : AnyObject])

@@ -13,7 +13,7 @@ class StringConstants: NSObject {
   static let networkErrorMessageString = "A network error occurred, please try again."
   
   static let successfulPurchaseTitleString = "Success!"
-  static func createSuccessfulPurchaseMessageString(productName: String, purchaseID: String) -> String {
+  static func createSuccessfulPurchaseMessageString(_ productName: String, purchaseID: String) -> String {
     return "Your purchase of " + productName + " was succesful. Your purchase code is: " + purchaseID
   }
   

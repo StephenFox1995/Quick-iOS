@@ -19,10 +19,10 @@ class ProductViewController: QuickViewController {
   var product: Product!
   var business: Business?
   
-  private var productImage: ProductImage!
-  private var productPricingStripView: ProductPricingStripView!
-  private var purchaseButton = QButton()
-  private var network = Network()
+  fileprivate var productImage: ProductImage!
+  fileprivate var productPricingStripView: ProductPricingStripView!
+  fileprivate var purchaseButton = QButton()
+  fileprivate var network = Network()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,14 +30,14 @@ class ProductViewController: QuickViewController {
     self.setupViews()
   }
   
-  private func setupViews() {
+  fileprivate func setupViews() {
     
     self.productImage = ProductImage()
     self.view.addSubview(self.productImage)
-    dispatch_async(dispatch_get_global_queue(0, 0)) {
-      let url = NSURL(string: "http://blog.stridekick.com/wp-content/uploads/2015/10/starbucks-cup-of-coffee-to-go.png")
-      let nsdata = NSData.init(contentsOfURL: url!)
-      dispatch_async(dispatch_get_main_queue(), {
+    DispatchQueue.global().async {
+      let url = URL(string: "http://blog.stridekick.com/wp-content/uploads/2015/10/starbucks-cup-of-coffee-to-go.png")
+      let nsdata = try? Data.init(contentsOf: url!)
+      DispatchQueue.main.async(execute: {
         let uiImage = UIImage(data: nsdata!)
         self.productImage.imageView.image = uiImage
       })
@@ -46,9 +46,9 @@ class ProductViewController: QuickViewController {
     self.productPricingStripView = ProductPricingStripView(product: self.product!)
     self.view.addSubview(self.productPricingStripView)
     
-    self.purchaseButton.setTitle("PURCHASE", forState: .Normal)
+    self.purchaseButton.setTitle("PURCHASE", for: UIControlState())
     self.purchaseButton.titleLabel?.setKernAmount(2.0)
-    self.purchaseButton.addTarget(self, action: #selector(ProductViewController.beginPurchase), forControlEvents: .TouchUpInside)
+    self.purchaseButton.addTarget(self, action: #selector(ProductViewController.beginPurchase), for: .touchUpInside)
     self.purchaseButton.layer.cornerRadius = 0
     self.view.addSubview(self.purchaseButton)
     
@@ -72,7 +72,7 @@ class ProductViewController: QuickViewController {
   
   
   // Attempts to make a purchase.
-  @objc private func beginPurchase() {
+  @objc fileprivate func beginPurchase() {
     let network = Network()
     // Check product
     guard let p = self.product else { return purchaseError() }
@@ -84,7 +84,7 @@ class ProductViewController: QuickViewController {
     let jsonParameters = JSONEncoder.jsonifyPurchase(productID: pID, businessID: bID)
     
     let purchaseEndPoint = Network.NetworkingDetails.purchaseEndPoint
-    network.postJSONAuthenticated(purchaseEndPoint, jsonParameters: jsonParameters) {
+    network.postJSONAuthenticated(purchaseEndPoint, jsonParameters: jsonParameters as [String : AnyObject]) {
       (success, data) in
       if (success) {
         let json = JSON(data)
@@ -99,13 +99,13 @@ class ProductViewController: QuickViewController {
   }
   
   // Purchase error alert.
-  private func purchaseError() {
+  fileprivate func purchaseError() {
     self.displayMessage(title: StringConstants.purchaseErrorTitleString ,
                         message: StringConstants.purchaseErrorMessageString)
   }
   
   // Display the details of a successful purchase.
-  private func displayPurchaseDetails(purchaseID: String) {
+  fileprivate func displayPurchaseDetails(_ purchaseID: String) {
     super.displayQRCodeDetailView(title: StringConstants.successfulPurchaseTitleString,
                                   message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!, purchaseID: purchaseID),
                                   qrCodeSeed: purchaseID)

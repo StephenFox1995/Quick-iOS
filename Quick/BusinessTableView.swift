@@ -19,7 +19,7 @@ class BusinessTableView: QuickTableView {
    */
   static let cellReuseIdentifier = "businessCell"
   
-  private let cellNibName = "BusinessTableViewCell"
+  fileprivate let cellNibName = "BusinessTableViewCell"
   
   override init(frame: CGRect, style: UITableViewStyle) {
     super.init(frame: frame, style: style)

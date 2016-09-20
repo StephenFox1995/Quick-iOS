@@ -12,24 +12,24 @@ import Cartography
 
 class QTextField: UIView, UITextFieldDelegate {
   
-  private var icon: UILabel!
-  private var fontAwesomeString: String?
+  fileprivate var icon: UILabel!
+  fileprivate var fontAwesomeString: String?
   /// TextField property of the view
   var field: UITextField!
   
   
   init(fontAwesome: String) {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.fontAwesomeString = fontAwesome
     self.setupViews()
   }
   
   
-  private func setupViews() {
+  fileprivate func setupViews() {
     self.layer.cornerRadius = 25.0
     self.layer.borderWidth = 0.0
-    self.backgroundColor = UIColor.whiteColor()
-    self.layer.borderColor = UIColor.qTextFieldGrayColor().CGColor
+    self.backgroundColor = UIColor.white
+    self.layer.borderColor = UIColor.qTextFieldGrayColor().cgColor
     
     // Add Icon
     self.icon = UILabel()
@@ -68,16 +68,16 @@ class QTextField: UIView, UITextFieldDelegate {
   
   
   // MARK: UITextFieldDelegate
-  func textFieldDidBeginEditing(textField: UITextField) {
+  func textFieldDidBeginEditing(_ textField: UITextField) {
     let shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 25.0)
     self.layer.masksToBounds = false
-    self.layer.shadowColor = UIColor.qTextFieldBlueColor().CGColor
-    self.layer.shadowOffset = CGSizeMake(0.0, 3.0)
+    self.layer.shadowColor = UIColor.qTextFieldBlueColor().cgColor
+    self.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
     self.layer.shadowOpacity = 0.5
-    self.layer.shadowPath = shadowPath.CGPath
+    self.layer.shadowPath = shadowPath.cgPath
   }
 
-  func textFieldDidEndEditing(textField: UITextField) {
+  func textFieldDidEndEditing(_ textField: UITextField) {
     self.layer.shadowOpacity = 0.0
   }
 }

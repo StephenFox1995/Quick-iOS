@@ -1,7 +1,6 @@
 .DS_Store
 Pods/*
 build/*
-
 DerivedData/
 
 ## Various settings

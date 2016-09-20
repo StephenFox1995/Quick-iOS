@@ -10,28 +10,29 @@ import UIKit
 
 class SignUpManager {
   
-  private let network = Network()
+  fileprivate let network = Network()
   static let sharedInstace = SignUpManager()
   
   /// Closure type for a sign up response
-  typealias SignUpCompletion = (success: Bool, session: Session?) -> Void
+  typealias SignUpCompletion = (_ success: Bool, _ session: Session?) -> Void
   
   /**
    Attempts to create a user account.
    - parameter user: A user object with information on the user for account creation
    - parameter completion: Completion handler.
    */
-  func createUserAccount(user: User,
-                         completion: SignUpCompletion) {
+  func createUserAccount(_ user: User,
+                         completion: @escaping SignUpCompletion) {
     let userJSON = JSONEncoder.encodeUser(user)
     let userJSONObject = JSONEncoder.createUserJSONObject(userJSON);
     
-    network.postJSON(Network.NetworkingDetails.createUserEndPoint,
-                     jsonParameters: userJSONObject)
+    
+    network.postJSON(urlString: Network.NetworkingDetails.createUserEndPoint,
+                     jsonParameters: userJSONObject as Dictionary<String, AnyObject>)
     { (success, data) in
       if success {
         // Pass control to network reponse to handle and parse the response.
-        NetworkResponse.UserSignUpResponse.handleUserSignUpResponse(data, completion:
+        NetworkResponse.UserSignUpResponse.handleUserSignUpResponse(data!, completion:
           { (success, signUpResponse) in
             if success {
               // Once the data has been handled and parsed, begin a new session.
@@ -40,20 +41,20 @@ class SignUpManager {
                 try sessionManager.registerSessionFromSignUpResponse(signUpResponse!)
                 try sessionManager.begin()
                 let session = SessionManager.sharedInstance.activeSession
-                completion(success: true, session: session)
+                completion(true, session)
               }
               catch {
-                completion(success: false, session: nil)
+                completion(false, nil)
               }
             }
             else {
-              completion(success: false, session: nil)
+              completion(false, nil)
             }
         })
       }
       else {
         // An error occurred during account creation.
-        completion(success: false, session: nil)
+        completion(false, nil)
       }
     }
   }

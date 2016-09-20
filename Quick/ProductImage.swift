@@ -13,16 +13,16 @@ class ProductImage: UIView {
   var imageView: UIImageView!
   
   init() {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.setupViews()
   }
   
-  private func setupViews() {
-    self.backgroundColor = UIColor.whiteColor()
+  fileprivate func setupViews() {
+    self.backgroundColor = UIColor.white
     
     self.imageView = UIImageView()
     self.imageView.clipsToBounds = true
-    self.imageView.contentMode = .ScaleAspectFit
+    self.imageView.contentMode = .scaleAspectFit
     self.addSubview(self.imageView)
     
     constrain(self, self.imageView) {

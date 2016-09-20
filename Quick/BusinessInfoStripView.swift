@@ -11,16 +11,16 @@ import Cartography
 
 class BusinessInfoStripView: StripView {
   
-  private var businessHoursView: BusinessHoursView!
-  private var businessWaitingTimeView: BusinessWaitingTimeView!
-  private var favouriteButton: FavouriteButton!
+  fileprivate var businessHoursView: BusinessHoursView!
+  fileprivate var businessWaitingTimeView: BusinessWaitingTimeView!
+  fileprivate var favouriteButton: FavouriteButton!
   
   
   override init() {
     super.init()
     self.addSeparators()
     
-    self.businessHoursView = BusinessHoursView(availability: .Open)
+    self.businessHoursView = BusinessHoursView(availability: .open)
     self.businessWaitingTimeView = BusinessWaitingTimeView(minutes: 10)
     self.favouriteButton = FavouriteButton()
     self.addSubview(self.businessHoursView)
@@ -45,18 +45,18 @@ class BusinessInfoStripView: StripView {
     }
   }
   
-  private func addSeparators() {
+  fileprivate func addSeparators() {
     let sepOne = UIView()
     sepOne.layer.cornerRadius = 3
     sepOne.backgroundColor = UIColor.businessInfoStripSeparatorColor()
     self.addSubview(sepOne)
-    self.bringSubviewToFront(sepOne)
+    self.bringSubview(toFront: sepOne)
     
     let sepTwo = UIView()
     sepTwo.layer.cornerRadius = 3
     sepTwo.backgroundColor = UIColor.businessInfoStripSeparatorColor()
     self.addSubview(sepTwo)
-    self.bringSubviewToFront(sepTwo)
+    self.bringSubview(toFront: sepTwo)
     
     constrain(self, sepOne, sepTwo) {
       (superView, sepOne, sepTwo) in

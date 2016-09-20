@@ -10,20 +10,20 @@ import UIKit
 
 class LoginManager {
   
-  private let network = Network()
+  fileprivate let network = Network()
   static let sharedInstance = LoginManager()
   
   /// Closure type for a auth response
-  typealias AuthenticationCompletion = (success: Bool, session: Session?) -> Void
+  typealias AuthenticationCompletion = (_ success: Bool, _ session: Session?) -> Void
   
-  func login(user: User, completion: AuthenticationCompletion) {
+  func login(_ user: User, completion: @escaping AuthenticationCompletion) {
     let userJSON = JSONEncoder.jsonifyUserForAuthentication(user)
     let loginJSON = JSONEncoder.jsonifyUserObjectForAuthentication(userJSON)
     
-    network.postJSON(Network.NetworkingDetails.authenticateEndPoint, jsonParameters: loginJSON) {
+    network.postJSON(urlString: Network.NetworkingDetails.authenticateEndPoint, jsonParameters: loginJSON) {
       (success, data) in
       if success {
-        NetworkResponse.UserAuthenticateResponse.handleResponse(data, completion: {
+        NetworkResponse.UserAuthenticateResponse.handleResponse(data!, completion: {
           (success, authResponse) in
           if success {
             let sessionManager = SessionManager.sharedInstance
@@ -31,19 +31,19 @@ class LoginManager {
               try sessionManager.registerSessionFromAuthenticationResponse(authResponse!)
               try sessionManager.begin()
               let session = SessionManager.sharedInstance.activeSession
-              completion(success: true, session: session)
+              completion(true, session)
             }
             catch {
-              completion(success: false, session: nil)
+              completion(false, nil)
             }
           }
           else {
-            completion(success: false, session: nil)
+            completion(false, nil)
           }
         })
       } else {
         // An error occurred during authentication.
-        completion(success: false, session: nil)
+        completion(false, nil)
       }
     }
   }

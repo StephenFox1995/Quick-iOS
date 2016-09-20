@@ -11,40 +11,40 @@ import FontAwesome_swift
 import Cartography
 
 protocol LoginViewControllerDelegate: class {
-  func loginDetailsEntered(viewController: LoginViewController, email: String, password: String)
+  func loginDetailsEntered(_ viewController: LoginViewController, email: String, password: String)
 }
 
 class LoginViewController: QuickViewController {
   
-  private var emailTextField: QTextField!
-  private var passwordTextField: QTextField!
-  private var signInButton : QButton!
+  fileprivate var emailTextField: QTextField!
+  fileprivate var passwordTextField: QTextField!
+  fileprivate var signInButton : QButton!
   weak var delegate: LoginViewControllerDelegate? 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.clearColor()
+    self.view.backgroundColor = UIColor.clear
     self.setUpViews()
   }
   
-  private func setUpViews() {    
+  fileprivate func setUpViews() {    
     self.emailTextField = QTextField(fontAwesome: String.fontAwesomeIconWithCode("fa-envelope")!)
     self.emailTextField.field?.placeholder = "Email"
-    self.emailTextField.field?.autocorrectionType = .No
-    self.emailTextField.field?.autocapitalizationType = .None
+    self.emailTextField.field?.autocorrectionType = .no
+    self.emailTextField.field?.autocapitalizationType = .none
     self.view.addSubview(self.emailTextField)
     
     self.passwordTextField = QTextField(fontAwesome: String.fontAwesomeIconWithCode("fa-lock")!);
     self.passwordTextField.field?.placeholder = "Password"
-    self.passwordTextField.field?.secureTextEntry = true
+    self.passwordTextField.field?.isSecureTextEntry = true
     self.view.addSubview(self.passwordTextField)
     
     self.signInButton = QButton()
-    self.signInButton.setTitle("LOGIN", forState: .Normal)
+    self.signInButton.setTitle("LOGIN", for: UIControlState())
     self.signInButton.addTextSpacing(2.0)
     self.signInButton.addTarget(self,
                                 action: #selector(LoginViewController.notifyDelegate),
-                                forControlEvents: .TouchUpInside)
+                                for: .touchUpInside)
     self.view.addSubview(self.signInButton)
     
     constrain(self.view, self.emailTextField, self.passwordTextField, self.signInButton) {
@@ -68,7 +68,7 @@ class LoginViewController: QuickViewController {
   }
   
   /// Notify delegate of details entered by user.
-  @objc private func notifyDelegate() {
+  @objc fileprivate func notifyDelegate() {
     var email: String?
     var password: String?
     if let efield = self.emailTextField.field { // Check email value
@@ -89,7 +89,7 @@ class LoginViewController: QuickViewController {
     }
   }
   
-  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
 }

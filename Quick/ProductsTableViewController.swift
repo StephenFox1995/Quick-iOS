@@ -13,8 +13,8 @@ import UIKit
  */
 class ProductsTableViewController: QuickViewController, UITableViewDelegate {
   
-  private var productTableView: ProductTableView!
-  private var productTableViewDataSource: ProductTableViewDataSource!
+  fileprivate var productTableView: ProductTableView!
+  fileprivate var productTableViewDataSource: ProductTableViewDataSource!
   var business: Business?
   
   override func viewDidLoad() {
@@ -23,16 +23,16 @@ class ProductsTableViewController: QuickViewController, UITableViewDelegate {
     self.fillTableView()
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     self.hideNavigationBar = true
   }
   
   
-  private func fillTableView() {
+  fileprivate func fillTableView() {
     if self.productTableViewDataSource == nil {
       let rect = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
-      self.productTableView = ProductTableView(frame: rect, style: .Plain)
+      self.productTableView = ProductTableView(frame: rect, style: .plain)
       self.productTableView.delegate = self
       self.view.addSubview(self.productTableView)
     }
@@ -63,7 +63,7 @@ class ProductsTableViewController: QuickViewController, UITableViewDelegate {
 }
 
 extension ProductsTableViewController {
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let product = self.productTableViewDataSource.itemForRowIndex(indexPath)
     
     guard let p = product as? Product else { return }

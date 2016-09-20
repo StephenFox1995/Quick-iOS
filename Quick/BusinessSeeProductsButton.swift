@@ -11,21 +11,21 @@ import UIKit
 class BusinessSeeProductsButton: UIButton {
 
   init() {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     self.setupViews()
   }
   
-  private func setupViews() {
-    self.backgroundColor = UIColor.whiteColor()
+  fileprivate func setupViews() {
+    self.backgroundColor = UIColor.white
     self.clipsToBounds = false
-    self.layer.shadowOffset = CGSizeMake(0, 2);
+    self.layer.shadowOffset = CGSize(width: 0, height: 2);
     self.layer.shadowRadius = 1;
-    self.layer.shadowColor = UIColor.businessSeeProductsShadowColor().CGColor
+    self.layer.shadowColor = UIColor.businessSeeProductsShadowColor().cgColor
     self.layer.shadowOpacity = 0.5;
     self.titleLabel?.font = UIFont.qFontDemiBold(25)
-    self.setTitle("SEE PRODUCTS", forState: .Normal)
-    self.setTitleColor(UIColor.businessSeeProductsTitleNormalColor(), forState: .Normal)
-    self.setTitleColor(UIColor.businessSeeProductsTitleHighlightedColor(), forState: .Highlighted)
+    self.setTitle("SEE PRODUCTS", for: UIControlState())
+    self.setTitleColor(UIColor.businessSeeProductsTitleNormalColor(), for: UIControlState())
+    self.setTitleColor(UIColor.businessSeeProductsTitleHighlightedColor(), for: .highlighted)
     self.titleLabel?.setKernAmount(2.0)
   }
   

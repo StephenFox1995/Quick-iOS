@@ -10,7 +10,7 @@ import UIKit
 
 
 extension UIButton {
-  func addTextSpacing(spacing: CGFloat) {
+  func addTextSpacing(_ spacing: CGFloat) {
     let attributedString = NSMutableAttributedString(string: self.currentTitle!)
     attributedString.addAttribute(NSKernAttributeName,
                                   value: spacing,

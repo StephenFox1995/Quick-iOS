@@ -15,11 +15,11 @@ AuthenticateViewControllerDelegate {
   
   // Indicates if we're in development environment.
   static let devEnvironment = true
-  private let sessionManager = SessionManager.sharedInstance
+  fileprivate let sessionManager = SessionManager.sharedInstance
   var window: UIWindow?
 
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     /* 
      * Check if there is an active session on the device.
      * If there's no session ask the user to login/ signup.
@@ -27,8 +27,8 @@ AuthenticateViewControllerDelegate {
     if (!sessionManager.activeSessionAvailable()) {
       let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
       let navigationController: UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-      let rootViewController = AuthenticateViewController(transitionStyle: .Scroll,
-                                                          navigationOrientation: .Horizontal, options: nil)
+      let rootViewController = AuthenticateViewController(transitionStyle: .scroll,
+                                                          navigationOrientation: .horizontal, options: nil)
       rootViewController.authDelegate = self
       navigationController.viewControllers = [rootViewController]
       self.window?.rootViewController = navigationController
@@ -37,19 +37,19 @@ AuthenticateViewControllerDelegate {
     return true
   }
   
-  func applicationWillResignActive(application: UIApplication) {
+  func applicationWillResignActive(_ application: UIApplication) {
   }
 
-  func applicationDidEnterBackground(application: UIApplication) {
+  func applicationDidEnterBackground(_ application: UIApplication) {
   }
 
-  func applicationWillEnterForeground(application: UIApplication) {
+  func applicationWillEnterForeground(_ application: UIApplication) {
   }
 
-  func applicationDidBecomeActive(application: UIApplication) {
+  func applicationDidBecomeActive(_ application: UIApplication) {
   }
 
-  func applicationWillTerminate(application: UIApplication) {
+  func applicationWillTerminate(_ application: UIApplication) {
   }
 
 
@@ -58,7 +58,7 @@ AuthenticateViewControllerDelegate {
 // MARK: SignUpLoginViewControllerDelegate
 extension AppDelegate {
   /// Login
-  func authenticateViewControllerLoginDetailsEntered(viewController: AuthenticateViewController,
+  func authenticateViewControllerLoginDetailsEntered(_ viewController: AuthenticateViewController,
                                                      email: String,
                                                      password: String) {
     let loginManager = LoginManager.sharedInstance
@@ -77,7 +77,7 @@ extension AppDelegate {
     }
   }
   /// SignUp
-  func authenticateViewControllerSignUpDetailsEntered(viewController: AuthenticateViewController,
+  func authenticateViewControllerSignUpDetailsEntered(_ viewController: AuthenticateViewController,
                                                       email: String, fullname: String,
                                                       password: String) {
     let signUpManager = SignUpManager.sharedInstace
@@ -95,22 +95,22 @@ extension AppDelegate {
 }
 
 extension AppDelegate {
-  private func displayHomeViewController() {
+  fileprivate func displayHomeViewController() {
     let sb = UIStoryboard(name: "Main", bundle: nil)
     let rootViewController = self.window?.rootViewController as! UINavigationController
-    let homeViewController = sb.instantiateViewControllerWithIdentifier(StringConstants.homeViewController)
+    let homeViewController = sb.instantiateViewController(withIdentifier: StringConstants.homeViewController)
     rootViewController.pushViewController(homeViewController, animated: false)
   }
   
-  private func displayMessage(title title: String, message: String) {
+  fileprivate func displayMessage(title: String, message: String) {
     let alertController = UIAlertController(title: title,
                                             message:message,
-                                            preferredStyle: UIAlertControllerStyle.Alert)
+                                            preferredStyle: UIAlertControllerStyle.alert)
     alertController.addAction(UIAlertAction(title: "Done",
-      style: UIAlertActionStyle.Default,
+      style: UIAlertActionStyle.default,
       handler: nil))
     let rootViewController = self.window?.rootViewController as! UINavigationController
-    rootViewController.presentViewController(alertController, animated: true, completion: nil)
+    rootViewController.present(alertController, animated: true, completion: nil)
   }
 }
 

@@ -19,19 +19,22 @@ class Network {
    - parameter response: A callback containing a success flag
                          and the JSON.
    */
-  func requestJSON(urlString: String, response: (success: Bool, data: AnyObject) -> Void) {
-    Alamofire.request(.GET, urlString).validate()
+  func requestJSON(_ urlString: String,
+                   response: @escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
+    Alamofire.request(urlString,
+                      method: .get)
+      .validate()
       .responseJSON { afResponse in
-        switch afResponse.result {
-        case .Success:
-          if let value = afResponse.result.value {
-            response(success: true, data: value)
-          }
-          break
-        case .Failure:
-          response(success: false, data: NSNull())
-          break
+      switch afResponse.result {
+      case .success:
+        if let value = afResponse.result.value {
+          response(true, value as AnyObject)
         }
+        break
+      case .failure:
+        response(false, nil)
+        break
+      }
     }
   }
   
@@ -46,43 +49,43 @@ class Network {
    */
   func postJSON(urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
-                response: (success: Bool, data: AnyObject) -> Void) {
-    
-    Alamofire.request(.POST,
-      urlString,
-      parameters: jsonParameters,
-      encoding: .JSON).validate()
-      .responseJSON { afResponse in
-        switch afResponse.result {
-        case .Success:
-          if let value = afResponse.result.value {
-            response(success: true, data: value)
-          }
-        case .Failure:
-          response(success: false, data: NSNull())
-          break
+                response: @escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
+    Alamofire.request(urlString,
+                      method: .post,
+                      parameters: jsonParameters)
+      .validate()
+      .responseJSON {
+        (afResponse) in
+      switch afResponse.result {
+      case .success:
+        if let value = afResponse.result.value {
+            response(true, value as AnyObject)
         }
+      case .failure:
+        response(false, nil)
+        break
+      }
     }
   }
+    
   
-  
-  func postJSONAuthenticated(urlString: String,
+  func postJSONAuthenticated(_ urlString: String,
                              jsonParameters: [String: AnyObject],
-                             response:(success: Bool, data: AnyObject) -> Void) {
+                             response:@escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
     let headers = self.httpHeaders()
-    Alamofire.request(.POST,
-      urlString,
-      parameters: jsonParameters,
-      encoding: .JSON,
-      headers: headers).validate()
-      .responseJSON { afResponse in
+    Alamofire.request(urlString,
+                      method: .post,
+                      parameters: jsonParameters,
+                      headers: headers)
+      .validate()
+      .responseJSON { (afResponse) in
         switch afResponse.result {
-        case .Success:
+        case .success:
           if let value = afResponse.result.value {
-            response(success: true, data: value)
+            response(true, value as AnyObject)
           }
-        case .Failure:
-          response(success: false, data: NSNull())
+        case .failure:
+          response(false, nil)
           break
         }
     }
@@ -102,20 +105,19 @@ class Network {
   }
   
   
-  
-  
-  
+
   /**
    Inner class to store constant values about backend urls.
    */
   class NetworkingDetails {
+    
     //"http://192.168.1.112"
-    private static let baseAddress = "http://192.168.1.78"
-    private static let port = "3000"
+    fileprivate static let baseAddress = "http://192.168.1.78"
+    fileprivate static let port = "3000"
     
     // Base end point
-    private static let baseEndPointDev = NetworkingDetails.baseAddress + ":" + NetworkingDetails.port
-    private static let baseEndPointProduction = "" // TODO: to be decided.
+    fileprivate static let baseEndPointDev = NetworkingDetails.baseAddress + ":" + NetworkingDetails.port
+    fileprivate static let baseEndPointProduction = "" // TODO: to be decided.
     
     /**
      * The base end point for all network requests.
@@ -132,8 +134,8 @@ class Network {
     
     
     // Create user end point
-    private static let createUserEndPointDev = NetworkingDetails.baseEndPointDev + "/user"
-    private static let createUserEndPointProduction = "" // TODO: tbd.
+    fileprivate static let createUserEndPointDev = NetworkingDetails.baseEndPointDev + "/user"
+    fileprivate static let createUserEndPointProduction = "" // TODO: tbd.
     
     /**
      * The base end point for creating users requests.
@@ -146,8 +148,8 @@ class Network {
     
     
     // Authenticate EndPoint
-    private static let authenticateEndPointDev = NetworkingDetails.baseEndPointDev + "/authenticate"
-    private static let authenticateEndPointProduction = "" // TODO: tbd.
+    fileprivate static let authenticateEndPointDev = NetworkingDetails.baseEndPointDev + "/authenticate"
+    fileprivate static let authenticateEndPointProduction = "" // TODO: tbd.
     
     /**
      The base end point for autheticating.
@@ -159,8 +161,8 @@ class Network {
     }
     
     // User end point
-    private static let userEndPointDev = NetworkingDetails.baseEndPointDev + "/user/id"
-    private static let userEndPointProduction = "" // TODO: to be decided.
+    fileprivate static let userEndPointDev = NetworkingDetails.baseEndPointDev + "/user/id"
+    fileprivate static let userEndPointProduction = "" // TODO: to be decided.
     
     /**
      * The base end point for all user requests.
@@ -172,8 +174,8 @@ class Network {
     }
     
     
-    private static let businessEndPointDev = NetworkingDetails.baseEndPointDev + "/business/all"
-    private static let businessEndPointProduction = "" // TODO: to be decided
+    fileprivate static let businessEndPointDev = NetworkingDetails.baseEndPointDev + "/business/all"
+    fileprivate static let businessEndPointProduction = "" // TODO: to be decided
     
     /**
      The base end point for all businesses
@@ -186,30 +188,30 @@ class Network {
     
     
     // All products for business endpoint
-    private static let businessProductEndPointDev = NetworkingDetails.baseEndPointDev + "/business"
-    private static let businessProductEndPointProduction = "" // TODO: to be decided.
+    fileprivate static let businessProductEndPointDev = NetworkingDetails.baseEndPointDev + "/business"
+    fileprivate static let businessProductEndPointProduction = "" // TODO: to be decided.
     
     /**
      Creates a string url for business products.*/
-    static func createBusinessProductEndPoint(productID: String) -> String {
+    static func createBusinessProductEndPoint(_ productID: String) -> String {
       let resource = "/\(productID)/products"
       return (AppDelegate.devEnvironment ? businessProductEndPointDev: businessProductEndPointProduction) + resource
     }
     
     
-    private static let productEndPointDev = NetworkingDetails.baseEndPointDev + "/product"
-    private static let productEndPointProduction = "" // TODO: to be decided
+    fileprivate static let productEndPointDev = NetworkingDetails.baseEndPointDev + "/product"
+    fileprivate static let productEndPointProduction = "" // TODO: to be decided
     
     /**
      Creates a string url for products with the product id.
      */
-    static func createProductEndPoint(productID: String) -> String {
+    static func createProductEndPoint(_ productID: String) -> String {
       return (AppDelegate.devEnvironment ? productEndPointDev: productEndPointProduction) + "/\(productID))"
     }
     
     
-    private static let purchaseEndPointDev = NetworkingDetails.baseEndPointDev + "/purchase"
-    private static let purchaseEndPointProduction = "" // TODO: to be decided.
+    fileprivate static let purchaseEndPointDev = NetworkingDetails.baseEndPointDev + "/purchase"
+    fileprivate static let purchaseEndPointProduction = "" // TODO: to be decided.
     
     /**
      String url for purchases.
@@ -221,3 +223,5 @@ class Network {
     }
   }
 }
+
+
