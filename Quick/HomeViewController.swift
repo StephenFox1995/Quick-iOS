@@ -44,8 +44,6 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   @IBAction func signOut(_ sender: AnyObject) {
     let sessionManager = SessionManager.sharedInstance
     if sessionManager.removeSession() {
-      // FIXME: Dafuq is this
-      sessionManager.removeSession()
     }
   }
 }

@@ -47,7 +47,7 @@ SignUpViewControllerDelegate {
       imageView.centerX == superView.centerX
       imageView.width == superView.width * 0.3
       imageView.height == superView.width * 0.3
-      imageView.top == superView.top + 40
+      imageView.top == superView.top + 60
     }
   }
   

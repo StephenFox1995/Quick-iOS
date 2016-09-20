@@ -40,7 +40,7 @@ class JSONEncoder {
       }
    }
  */
-  static func jsonifyUserForAuthentication(_ user: User) -> [String: String]{
+  static func jsonifyUserForAuthentication(_ user: User) -> [String: String] {
     return ["email": user.email!,
             "password": user.password!]
   }

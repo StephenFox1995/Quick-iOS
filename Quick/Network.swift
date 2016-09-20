@@ -19,7 +19,8 @@ class Network {
    - parameter response: A callback containing a success flag
                          and the JSON.
    */
-  func requestJSON(_ urlString: String, response: @escaping (_ success: Bool, _ data: AnyObject) -> Void) {
+  func requestJSON(_ urlString: String,
+                   response: @escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
     Alamofire.request(urlString,
                       method: .get)
       .validate()
@@ -31,7 +32,7 @@ class Network {
         }
         break
       case .failure:
-        response(false, NSNull())
+        response(false, nil)
         break
       }
     }
@@ -46,9 +47,9 @@ class Network {
                                 as the body of the request.
    - parameter response:        A callback containing the reponse.
    */
-  func postJSON(_ urlString: String,
+  func postJSON(urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
-                response: @escaping (_ success: Bool, _ data: AnyObject) -> Void) {
+                response: @escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
     Alamofire.request(urlString,
                       method: .post,
                       parameters: jsonParameters)
@@ -61,7 +62,7 @@ class Network {
             response(true, value as AnyObject)
         }
       case .failure:
-        response(false, NSNull())
+        response(false, nil)
         break
       }
     }
@@ -70,7 +71,7 @@ class Network {
   
   func postJSONAuthenticated(_ urlString: String,
                              jsonParameters: [String: AnyObject],
-                             response:@escaping (_ success: Bool, _ data: AnyObject) -> Void) {
+                             response:@escaping (_ success: Bool, _ data: AnyObject?) -> Void) {
     let headers = self.httpHeaders()
     Alamofire.request(urlString,
                       method: .post,
@@ -84,7 +85,7 @@ class Network {
             response(true, value as AnyObject)
           }
         case .failure:
-          response(false, NSNull())
+          response(false, nil)
           break
         }
     }

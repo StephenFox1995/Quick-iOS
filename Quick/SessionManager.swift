@@ -21,14 +21,13 @@ class SessionManager {
   /**
    Checks to see if there is an active session available on the device.
    - returns: True if an active session has been found in keychain.
-              False if not active session was found.
+              False if no active session was found.
    */
   func activeSessionAvailable() -> Bool {
     if let session = self.sessionStore.storedSession() {
       // Now check if the token is still valid.
       if session.isExpired {
-        self.removeExpiredSession() // Remove that session as it has expired.
-        return false // Session is has expired.
+        return !self.removeExpiredSession() // Remove that session as it has expired.
       } else {
         self.activeSession = session
         return true
@@ -99,7 +98,8 @@ class SessionManager {
    - returns: True - Succesful removal of session.
               False - Could not remove session, or could not find session.
    */
-  
+  // MARK: TODO: By default assume session was removed, and declare a
+  //             throws, and raise exception if there was an error.
   func removeSession() -> Bool {
     return self.sessionStore.removeSession()
   }
