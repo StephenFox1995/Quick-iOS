@@ -26,7 +26,7 @@ class SignUpManager {
     let userJSON = JSONEncoder.encodeUser(user)
     let userJSONObject = JSONEncoder.createUserJSONObject(userJSON);
     
-    network.postJSON(urlString: Network.NetworkingDetails.createUserEndPoint,
+    network.postJSON(urlString: NetworkingDetails.createUserEndPoint,
                      jsonParameters: userJSONObject) { (success, data) in
       if success {
         // Pass control to network reponse to handle and parse the response.

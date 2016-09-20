@@ -25,7 +25,7 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
   
   
   override func fetchData(_ url: String, completetionHandler: @escaping (Bool) -> Void) {
-    let businessEndPoint = Network.NetworkingDetails.businessEndPoint
+    let businessEndPoint = NetworkingDetails.businessEndPoint
     self.network.requestJSON(businessEndPoint) { (success, data) in
       if (success) {
         let json = JSON(data)

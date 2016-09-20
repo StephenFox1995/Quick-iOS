@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1806F4B51D91E5CC0014D7B1 /* NetworkingDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1806F4B41D91E5CC0014D7B1 /* NetworkingDetails.swift */; };
 		180DBC181D6CD7FC001AD560 /* NetworkResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DBC171D6CD7FB001AD560 /* NetworkResponseTests.swift */; };
 		180DBC1A1D6CE7EA001AD560 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DBC191D6CE7EA001AD560 /* SessionTests.swift */; };
 		181D744F1D2473910007DAFD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D744E1D2473910007DAFD /* Product.swift */; };
@@ -87,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		0BCF0E5FF1B47D6EE89027A7 /* Pods-QuickAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickAppTests/Pods-QuickAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1806F4B41D91E5CC0014D7B1 /* NetworkingDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingDetails.swift; sourceTree = "<group>"; };
 		180DBC171D6CD7FB001AD560 /* NetworkResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponseTests.swift; sourceTree = "<group>"; };
 		180DBC191D6CE7EA001AD560 /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 		181D744E1D2473910007DAFD /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				1835D0A11D22F73900C9554C /* Network.swift */,
 				18F6313E1D63C6AB0008103C /* NetworkResponse.swift */,
+				1806F4B41D91E5CC0014D7B1 /* NetworkingDetails.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1806F4B51D91E5CC0014D7B1 /* NetworkingDetails.swift in Sources */,
 				183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */,
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
 				1835D0921D22F64900C9554C /* HomeViewController.swift in Sources */,
