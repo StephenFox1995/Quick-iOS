@@ -16,7 +16,7 @@ DEPENDENCIES:
   - Locksmith
   - Nimble (~> 4.0.0)
   - Quick
-  - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON`)
+  - SwiftyJSON
 
 EXTERNAL SOURCES:
   Cartography:
@@ -24,8 +24,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/robb/Cartography
   FontAwesome.swift:
     :git: https://github.com/thii/FontAwesome.swift
-  SwiftyJSON:
-    :git: https://github.com/IBM-Swift/SwiftyJSON
 
 CHECKOUT OPTIONS:
   Cartography:
@@ -34,9 +32,6 @@ CHECKOUT OPTIONS:
   FontAwesome.swift:
     :commit: fd641b95728e566e5b4f2d37ed94486162ea5a65
     :git: https://github.com/thii/FontAwesome.swift
-  SwiftyJSON:
-    :commit: 73b523a107b798021ca9af74b5f7c20e435c8809
-    :git: https://github.com/IBM-Swift/SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
@@ -48,6 +43,6 @@ SPEC CHECKSUMS:
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 46d7873a49e95eb3d41913543e8b97304a15b50e
+PODFILE CHECKSUM: b3c193a126b5b6e3461df7b2f577a512a4b245ad
 
 COCOAPODS: 1.0.1
