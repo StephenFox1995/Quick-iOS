@@ -12,6 +12,15 @@ import SwiftyJSON
 
 class Network {
   
+  fileprivate var afSessionManager = Alamofire.SessionManager()
+  
+  init() {
+//    if let accessToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
+//      self.afSessionManager.adapter = AccessTokenAdapter(accessToken: accessToken)
+//    }
+  }
+  
+  
   typealias NetworkPOSTResponse = (_ success: Bool, _ data: AnyObject?) -> Void
   typealias NetworkGETResponse = (_ success: Bool, _ data: AnyObject?) -> Void
   /**
@@ -24,8 +33,9 @@ class Network {
   func requestJSON(_ urlString: String,
                    response: @escaping NetworkGETResponse) {
     
-    Alamofire.request(urlString,
-                      method: .get)
+    self.afSessionManager
+      .request(urlString,
+               method: .get)
       .validate()
       .responseJSON { afResponse in
       switch afResponse.result {
@@ -53,7 +63,7 @@ class Network {
   func postJSON(urlString: String,
                 jsonParameters: Dictionary<String, AnyObject>,
                 response: @escaping NetworkPOSTResponse) {
-    Alamofire.request(urlString,
+    self.afSessionManager.request(urlString,
                       method: .post,
                       parameters: jsonParameters,
                       encoding: JSONEncoding.default)
@@ -71,44 +81,24 @@ class Network {
       }
     }
   }
-  
-  func postJSONAuthenticated(_ urlString: String,
-                             jsonParameters: [String: AnyObject],
-                             response: @escaping NetworkPOSTResponse) {
-    let headers = self.authHeaders()
-    Alamofire.request(urlString,
-                      method: .post,
-                      parameters: jsonParameters,
-                      encoding: JSONEncoding.default,
-                      headers: headers)
-      .validate()
-      .responseJSON { (afResponse) in
-        switch afResponse.result {
-        case .success:
-          if let value = afResponse.result.value {
-            response(true, value as AnyObject)
-          }
-        case .failure:
-          response(false, nil)
-          break
-        }
-    }
-  }
-  
+    
   
   private func jsonContentTypeHTTPHeaders() -> [String: String] {
     return [ "Content-Type": "application/json" ]
   }
+}
+
+class AccessTokenAdapter: RequestAdapter {
+  private let accessToken: String
   
-  private func authHeaders() -> [String: String] {
-    if let sessionToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
-      return [
-        "Authorization": "Bearer \(sessionToken)",
-        "Content-Type": "application/json"
-      ]
-    } else {
-      return [ "Content-Type": "application/json" ]
-    }
+  init(accessToken: String) {
+    self.accessToken = accessToken
+  }
+  
+  func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+    var urlRequest = urlRequest
+    urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+    return urlRequest
   }
 }
 

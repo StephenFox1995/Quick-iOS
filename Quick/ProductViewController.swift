@@ -84,7 +84,7 @@ class ProductViewController: QuickViewController {
     let jsonParameters = JSONEncoder.jsonifyPurchase(productID: pID, businessID: bID)
     
     let purchaseEndPoint = NetworkingDetails.purchaseEndPoint
-    network.postJSONAuthenticated(purchaseEndPoint, jsonParameters: jsonParameters as [String : AnyObject]) {
+    network.postJSON(urlString: purchaseEndPoint, jsonParameters: jsonParameters as [String : AnyObject]) {
       (success, data) in
       if (success) {
         let json = JSON(data)

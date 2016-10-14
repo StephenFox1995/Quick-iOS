@@ -91,7 +91,7 @@ class SessionManager {
                       session was not inactive.
    */
   fileprivate func removeExpiredSession() -> Bool {
-    return self.sessionStore.removeExpiredSession()
+    return self.sessionStore.removeSession()
   }
   
   /**

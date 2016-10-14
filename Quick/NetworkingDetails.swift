@@ -90,13 +90,13 @@ class NetworkingDetails {
   
   
   // All products for business endpoint
-  fileprivate static let businessProductEndPointDev = NetworkingDetails.baseEndPointDev + "/business"
+  fileprivate static let businessProductEndPointDev = NetworkingDetails.baseEndPointDev + "/product"
   fileprivate static let businessProductEndPointProduction = "" // TODO: to be decided.
   
   /**
    Creates a string url for business products.*/
-  static func createBusinessProductEndPoint(_ productID: String) -> String {
-    let resource = "/\(productID)/products"
+  static func createBusinessProductEndPoint(_ businessID: String) -> String {
+    let resource = "/?businessID=\(businessID)"
     return (AppDelegate.devEnvironment ? businessProductEndPointDev: businessProductEndPointProduction) + resource
   }
   
