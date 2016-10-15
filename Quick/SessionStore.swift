@@ -55,7 +55,6 @@ class SessionStore {
   }
   
  
-
   /**
    Removes any session that is currently stored on the device,
    regardless of whether it has expired or not.

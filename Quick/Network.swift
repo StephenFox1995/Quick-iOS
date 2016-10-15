@@ -15,9 +15,12 @@ class Network {
   fileprivate var afSessionManager = Alamofire.SessionManager()
   
   init() {
-//    if let accessToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
-//      self.afSessionManager.adapter = AccessTokenAdapter(accessToken: accessToken)
-//    }
+    // Set access token, if available for AccessTokenAdapter.
+    if (SessionManager.sharedInstance.activeSessionAvailable()) {
+      if let accessToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
+        self.afSessionManager.adapter = AccessTokenAdapter(accessToken: accessToken)
+      }
+    }
   }
   
   
@@ -75,16 +78,12 @@ class Network {
         if let value = afResponse.result.value {
             response(true, value as AnyObject)
         }
+        break
       case .failure:
         response(false, nil)
         break
       }
     }
-  }
-    
-  
-  private func jsonContentTypeHTTPHeaders() -> [String: String] {
-    return [ "Content-Type": "application/json" ]
   }
 }
 
