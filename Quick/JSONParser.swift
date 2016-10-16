@@ -41,10 +41,39 @@ class JSONParser {
         product.name =        productJSON["name"].stringValue
         product.price =       productJSON["price"].stringValue
         product.description = productJSON["description"].stringValue
+        product.options = JSONParser.parseProductOptions(json: productJSON)
         productArray.append(product)
       }
     }
     return productArray
+  }
+  
+  
+  static func parseProductOptions(json: JSON) -> [ProductOption]? {
+    var productOptions = [ProductOption]()
+    if let options = json["options"].array {
+      for option in options {
+        let productOption = ProductOption()
+        productOption.name = option["name"].stringValue
+        productOption.values = JSONParser.parseProductOptionValues(json: option)
+        productOptions.append(productOption)
+      }
+    }
+    return productOptions
+  }
+  
+  
+  static func parseProductOptionValues(json: JSON) -> [ProductOptionValue] {
+    var productOptionValues = [ProductOptionValue]()
+    if let values = json["values"].array {
+      for value in values {
+        let productOptionValue = ProductOptionValue()
+        productOptionValue.priceDelta = value["priceDelta"].floatValue
+        productOptionValue.name = value["name"].stringValue
+        productOptionValues.append(productOptionValue)
+      }
+    }
+    return productOptionValues
   }
   
   

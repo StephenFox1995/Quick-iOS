@@ -12,7 +12,7 @@ import SwiftyJSON
 class Product: QuickBusinessObject {
   
   var businessID: String?
-  
+  var options: [ProductOption]?
   
   init(id: String, name: String, price: String, description: String, businessID: String) {
     super.init()
@@ -24,10 +24,6 @@ class Product: QuickBusinessObject {
   }
   
   override init() {
-    
+    super.init()
   }
-  
-  
-//  static func initWithJSON(jsonString: AnyObject) -> Product {
-//  }
 }

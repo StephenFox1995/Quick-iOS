@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1806F4B51D91E5CC0014D7B1 /* NetworkingDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1806F4B41D91E5CC0014D7B1 /* NetworkingDetails.swift */; };
+		1807C0AA1DB41F2D00CE6CB4 /* ProductOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807C0A91DB41F2D00CE6CB4 /* ProductOptionsViewController.swift */; };
+		1807C0AC1DB4230500CE6CB4 /* ProductOptionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807C0AB1DB4230500CE6CB4 /* ProductOptionsTableView.swift */; };
+		1807C0AE1DB424C000CE6CB4 /* ProductOptionsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807C0AD1DB424C000CE6CB4 /* ProductOptionsTableViewDataSource.swift */; };
+		1807C0B21DB424F400CE6CB4 /* ProductOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807C0B11DB424F400CE6CB4 /* ProductOption.swift */; };
+		1807C0B41DB4254600CE6CB4 /* ProductOptionValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807C0B31DB4254600CE6CB4 /* ProductOptionValue.swift */; };
+		1807C0B61DB4274600CE6CB4 /* ProductOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807C0B51DB4274600CE6CB4 /* ProductOptionTableViewCell.swift */; };
 		180DBC181D6CD7FC001AD560 /* NetworkResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DBC171D6CD7FB001AD560 /* NetworkResponseTests.swift */; };
 		180DBC1A1D6CE7EA001AD560 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DBC191D6CE7EA001AD560 /* SessionTests.swift */; };
 		181D744F1D2473910007DAFD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D744E1D2473910007DAFD /* Product.swift */; };
@@ -89,6 +95,12 @@
 /* Begin PBXFileReference section */
 		0BCF0E5FF1B47D6EE89027A7 /* Pods-QuickAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickAppTests/Pods-QuickAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1806F4B41D91E5CC0014D7B1 /* NetworkingDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingDetails.swift; sourceTree = "<group>"; };
+		1807C0A91DB41F2D00CE6CB4 /* ProductOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionsViewController.swift; sourceTree = "<group>"; };
+		1807C0AB1DB4230500CE6CB4 /* ProductOptionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionsTableView.swift; sourceTree = "<group>"; };
+		1807C0AD1DB424C000CE6CB4 /* ProductOptionsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionsTableViewDataSource.swift; sourceTree = "<group>"; };
+		1807C0B11DB424F400CE6CB4 /* ProductOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOption.swift; sourceTree = "<group>"; };
+		1807C0B31DB4254600CE6CB4 /* ProductOptionValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionValue.swift; sourceTree = "<group>"; };
+		1807C0B51DB4274600CE6CB4 /* ProductOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionTableViewCell.swift; sourceTree = "<group>"; };
 		180DBC171D6CD7FB001AD560 /* NetworkResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponseTests.swift; sourceTree = "<group>"; };
 		180DBC191D6CE7EA001AD560 /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 		181D744E1D2473910007DAFD /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -187,11 +199,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1807C0AF1DB424CB00CE6CB4 /* ProductOptions */ = {
+			isa = PBXGroup;
+			children = (
+				1807C0AB1DB4230500CE6CB4 /* ProductOptionsTableView.swift */,
+				1807C0AD1DB424C000CE6CB4 /* ProductOptionsTableViewDataSource.swift */,
+				1807C0B51DB4274600CE6CB4 /* ProductOptionTableViewCell.swift */,
+			);
+			name = ProductOptions;
+			sourceTree = "<group>";
+		};
+		1807C0B01DB424E300CE6CB4 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				181D744E1D2473910007DAFD /* Product.swift */,
+				1807C0B11DB424F400CE6CB4 /* ProductOption.swift */,
+				1807C0B31DB4254600CE6CB4 /* ProductOptionValue.swift */,
+			);
+			name = Product;
+			sourceTree = "<group>";
+		};
 		181D74501D25A5EF0007DAFD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1807C0B01DB424E300CE6CB4 /* Product */,
 				181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */,
-				181D744E1D2473910007DAFD /* Product.swift */,
 				181D74541D25AAAE0007DAFD /* Business.swift */,
 				182E68591D624434006D43D9 /* User.swift */,
 				18F6313A1D6250340008103C /* Account.swift */,
@@ -321,6 +353,8 @@
 				18D3E29F1D84B48E0089EEF5 /* ProductImage.swift */,
 				1835D0A91D232B9200C9554C /* ProductTableView */,
 				18D3E2A31D84D3F30089EEF5 /* PriceView.swift */,
+				1807C0A91DB41F2D00CE6CB4 /* ProductOptionsViewController.swift */,
+				1807C0AF1DB424CB00CE6CB4 /* ProductOptions */,
 			);
 			name = ProductUI;
 			sourceTree = "<group>";
@@ -674,6 +708,7 @@
 				1854EED01D82E00C00BF6277 /* BusinessImageView.swift in Sources */,
 				1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */,
 				18D3E29E1D84B4130089EEF5 /* UIButtonExtensions.swift in Sources */,
+				1807C0AA1DB41F2D00CE6CB4 /* ProductOptionsViewController.swift in Sources */,
 				18D3E29C1D84B3BE0089EEF5 /* UILabelExtensions.swift in Sources */,
 				18F631411D6655540008103C /* SessionStore.swift in Sources */,
 				18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */,
@@ -687,6 +722,9 @@
 				1854EECF1D82E00C00BF6277 /* BusinessViewImageLabel.swift in Sources */,
 				187717AE1D805B0400750E10 /* QButton.swift in Sources */,
 				18477C371D844E7B0055CC79 /* ProductsTableViewController.swift in Sources */,
+				1807C0AC1DB4230500CE6CB4 /* ProductOptionsTableView.swift in Sources */,
+				1807C0AE1DB424C000CE6CB4 /* ProductOptionsTableViewDataSource.swift in Sources */,
+				1807C0B21DB424F400CE6CB4 /* ProductOption.swift in Sources */,
 				18F6313B1D6250340008103C /* Account.swift in Sources */,
 				181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */,
 				183D977B1D8473F20087C353 /* StripView.swift in Sources */,
@@ -700,7 +738,9 @@
 				18F3D40A1D2C6B8600CDE296 /* JSONEncoder.swift in Sources */,
 				183389E41D2D27F1006C83AF /* FXPrint.swift in Sources */,
 				187717AF1D805B0400750E10 /* QTextField.swift in Sources */,
+				1807C0B41DB4254600CE6CB4 /* ProductOptionValue.swift in Sources */,
 				18F631391D624F920008103C /* Session.swift in Sources */,
+				1807C0B61DB4274600CE6CB4 /* ProductOptionTableViewCell.swift in Sources */,
 				181D745F1D25B69D0007DAFD /* BusinessTableViewDataSource.swift in Sources */,
 				182E685A1D624434006D43D9 /* User.swift in Sources */,
 				181D745B1D25B3A90007DAFD /* QuickTableView.swift in Sources */,

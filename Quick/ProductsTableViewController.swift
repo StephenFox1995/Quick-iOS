@@ -35,8 +35,6 @@ class ProductsTableViewController: QuickViewController, UITableViewDelegate {
       self.productTableView = ProductTableView(frame: rect, style: .plain)
       self.productTableView.delegate = self
       self.view.addSubview(self.productTableView)
-    }
-    if self.productTableViewDataSource == nil {
       self.productTableViewDataSource = ProductTableViewDataSource(tableView: self.productTableView)
     }
     guard let business = self.business else {
