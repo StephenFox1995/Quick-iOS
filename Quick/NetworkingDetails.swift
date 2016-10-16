@@ -112,15 +112,17 @@ class NetworkingDetails {
   }
   
   
+  fileprivate static let orderEndPointDev = NetworkingDetails.baseEndPointDev + "/order"
+  fileprivate static let orderEndPointProduction = "" // TODO: to be decided.
   fileprivate static let purchaseEndPointDev = NetworkingDetails.baseEndPointDev + "/purchase"
-  fileprivate static let purchaseEndPointProduction = "" // TODO: to be decided.
+  fileprivate static let purchaseEndPointProduction = ""
   
   /**
    String url for purchases.
    */
-  static var purchaseEndPoint: String {
+  static var orderEndPoint: String {
     get {
-      return AppDelegate.devEnvironment ? purchaseEndPointDev: purchaseEndPointProduction
+      return AppDelegate.devEnvironment ? orderEndPointDev: orderEndPointProduction
     }
   }
 }

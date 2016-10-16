@@ -12,20 +12,10 @@ import SwiftyJSON
 
 class Network {
   
-  fileprivate var afSessionManager = Alamofire.SessionManager()
-  
-  init() {
-    // Set access token, if available for AccessTokenAdapter.
-    if (SessionManager.sharedInstance.activeSessionAvailable()) {
-      if let accessToken = SessionManager.sharedInstance.activeSession!.token?.tokenString {
-        self.afSessionManager.adapter = AccessTokenAdapter(accessToken: accessToken)
-      }
-    }
-  }
-  
-  
   typealias NetworkPOSTResponse = (_ success: Bool, _ data: AnyObject?) -> Void
   typealias NetworkGETResponse = (_ success: Bool, _ data: AnyObject?) -> Void
+  
+  
   /**
    Sends a http GET request to a url.
    
@@ -35,10 +25,11 @@ class Network {
    */
   func requestJSON(_ urlString: String,
                    response: @escaping NetworkGETResponse) {
-    
-    self.afSessionManager
+    let authHeaders = self.authHeaders()
+    Alamofire
       .request(urlString,
-               method: .get)
+               method: .get,
+               headers: authHeaders)
       .validate()
       .responseJSON { afResponse in
       switch afResponse.result {
@@ -63,13 +54,16 @@ class Network {
                                 as the body of the request.
    - parameter response:        A callback containing the reponse.
    */
-  func postJSON(urlString: String,
-                jsonParameters: Dictionary<String, AnyObject>,
+  func postJSON(_ urlString: String,
+                jsonParameters: Dictionary<String, AnyObject>?,
                 response: @escaping NetworkPOSTResponse) {
-    self.afSessionManager.request(urlString,
-                      method: .post,
-                      parameters: jsonParameters,
-                      encoding: JSONEncoding.default)
+    let authHeaders = self.authHeaders()
+    Alamofire
+      .request(urlString,
+               method: .post,
+               parameters: jsonParameters,
+               encoding: JSONEncoding.default,
+               headers: authHeaders)
       .validate()
       .responseJSON {
         (afResponse) in
@@ -85,20 +79,17 @@ class Network {
       }
     }
   }
-}
-
-class AccessTokenAdapter: RequestAdapter {
-  private let accessToken: String
   
-  init(accessToken: String) {
-    self.accessToken = accessToken
-  }
   
-  func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-    var urlRequest = urlRequest
-    urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
-    return urlRequest
+  func authHeaders() -> [String: String]? {
+    // Set access token, if available for AccessTokenAdapter.
+    if (SessionManager.sharedInstance.activeSessionAvailable()) {
+      if let accessToken = SessionManager.sharedInstance.getTokenString() {
+        let tokenString = "Bearer " + accessToken
+        return ["Authorization": tokenString]
+      }
+    }
+    return nil
   }
 }
-
 

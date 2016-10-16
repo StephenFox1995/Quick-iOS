@@ -20,7 +20,7 @@ class LoginManager {
     let userJSON = JSONEncoder.jsonifyUserForAuthentication(user)
     let loginJSON = JSONEncoder.jsonifyUserObjectForAuthentication(userJSON)
     
-    network.postJSON(urlString: NetworkingDetails.authenticateEndPoint, jsonParameters: loginJSON) {
+    network.postJSON(NetworkingDetails.authenticateEndPoint, jsonParameters: loginJSON) {
       (success, data) in
       if success {
         NetworkResponse.UserAuthenticateResponse.handleResponse(data!, completion: {

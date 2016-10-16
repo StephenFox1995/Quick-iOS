@@ -75,22 +75,21 @@ class ProductViewController: QuickViewController {
   @objc fileprivate func beginPurchase() {
     let network = Network()
     // Check product
-    guard let p = self.product else { return purchaseError() }
-    guard let pID = p.id else { return purchaseError() }
+    guard let p = self.product else { return orderError() }
+    guard let pID = p.id else { return orderError() }
     // Check business
-    guard let b = self.business else { return purchaseError() }
-    guard let bID = b.id else { return purchaseError() }
+    guard let b = self.business else { return orderError() }
+    guard let bID = b.id else { return orderError() }
     
     let jsonParameters = JSONEncoder.jsonifyPurchase(productID: pID, businessID: bID)
     
-    let purchaseEndPoint = NetworkingDetails.purchaseEndPoint
-    network.postJSON(urlString: purchaseEndPoint, jsonParameters: jsonParameters as [String : AnyObject]) {
+    let orderEndPoint = NetworkingDetails.orderEndPoint
+    network.postJSON(orderEndPoint, jsonParameters: nil) {
       (success, data) in
       if (success) {
         let json = JSON(data)
-        let purchaseID = JSONParser.parsePurchaseID(json)
-        self.displayPurchaseDetails(purchaseID)
-        
+        let orderID = JSONParser.parsePurchaseID(json)
+        self.displayOrderDetails(orderID)
       } else {
         super.displayMessage(title: StringConstants.networkErrorTitleString,
                              message: StringConstants.networkErrorMessageString)
@@ -99,13 +98,13 @@ class ProductViewController: QuickViewController {
   }
   
   // Purchase error alert.
-  fileprivate func purchaseError() {
-    self.displayMessage(title: StringConstants.purchaseErrorTitleString ,
-                        message: StringConstants.purchaseErrorMessageString)
+  fileprivate func orderError() {
+    self.displayMessage(title: StringConstants.orderErrorTitleString,
+                        message: StringConstants.orderErrorMessageString)
   }
   
   // Display the details of a successful purchase.
-  fileprivate func displayPurchaseDetails(_ purchaseID: String) {
+  fileprivate func displayOrderDetails(_ purchaseID: String) {
     super.displayQRCodeDetailView(title: StringConstants.successfulPurchaseTitleString,
                                   message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!, purchaseID: purchaseID),
                                   qrCodeSeed: purchaseID)

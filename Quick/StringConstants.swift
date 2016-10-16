@@ -17,8 +17,8 @@ class StringConstants: NSObject {
     return "Your purchase of " + productName + " was succesful. Your purchase code is: " + purchaseID
   }
   
-  static let purchaseErrorTitleString = "Purchase Error"
-  static let purchaseErrorMessageString = "Purchase unavailable at this time, please try again later."
+  static let orderErrorTitleString = "Order Error"
+  static let orderErrorMessageString = "Order unavailable at this time, please try again later."
   
   static let unfoundJWTClaim = "Unable to find claim: "
   

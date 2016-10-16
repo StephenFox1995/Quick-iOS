@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (4.0.0)
+  - Alamofire (4.0.1)
   - Cartography (0.5.0)
   - FontAwesome.swift (0.11.1)
   - JWTDecode (2.0.0)
   - Locksmith (3.0.0)
   - Nimble (4.0.1)
-  - Quick (0.9.3)
-  - SwiftyJSON (2.3.2)
+  - Quick (0.10.0)
+  - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -30,19 +30,17 @@ CHECKOUT OPTIONS:
     :commit: 037b966331d883d39eb1d1da5b518c84fac7dda4
     :git: https://github.com/robb/Cartography
   FontAwesome.swift:
-    :commit: fd641b95728e566e5b4f2d37ed94486162ea5a65
+    :commit: b03d71746f277690d1ff7df0c539641c4ba57d4d
     :git: https://github.com/thii/FontAwesome.swift
 
 SPEC CHECKSUMS:
-  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Cartography: de3e85d2fc2d7288a2e7c89e1ac6cad08599d75e
   FontAwesome.swift: 9879cd6a1462bf160662d519f7b7474d73bdd1c3
   JWTDecode: 178e47e5d28d3abcff778bacced8342858cd6cb5
   Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Quick: 5d290df1c69d5ee2f0729956dcf0fd9a30447eaa
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: b3c193a126b5b6e3461df7b2f577a512a4b245ad
-
-COCOAPODS: 1.0.1
+COCOAPODS: 0.39.0

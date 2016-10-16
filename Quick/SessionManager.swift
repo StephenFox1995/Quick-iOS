@@ -38,6 +38,14 @@ class SessionManager {
   }
   
   
+  func getTokenString() -> String? {
+    if let tokenString = SessionManager.sharedInstance.activeSession!.token?.tokenString {
+      return tokenString
+    }
+    return nil
+  }
+  
+  
   /**
    Attempts to register a session from a `NetworkResponse.UserSignUpResponse`.
    - parameter signUpResponse: A sign up response.
@@ -66,7 +74,7 @@ class SessionManager {
    This is the equivalent of logging a user in to the app.
    */
   func begin() throws {
-    guard pendingSession != nil else {
+    guard self.pendingSession != nil else {
       return
     }
     // Attempt to store the pending session.
