@@ -11,7 +11,7 @@ import Cartography
 import SwiftyJSON
 
 /**
- Class that display info about a Product and allows a user to purchase the Product
+ Class that display info about a Product and allows a user to order the Product
  */
 class ProductViewController: QuickViewController {
   
@@ -21,7 +21,7 @@ class ProductViewController: QuickViewController {
   
   fileprivate var productImage: ProductImage!
   fileprivate var productPricingStripView: ProductPricingStripView!
-  fileprivate var purchaseButton = QButton()
+  fileprivate var orderButton = QButton()
   fileprivate var network = Network()
   
   override func viewDidLoad() {
@@ -46,14 +46,14 @@ class ProductViewController: QuickViewController {
     self.productPricingStripView = ProductPricingStripView(product: self.product!)
     self.view.addSubview(self.productPricingStripView)
     
-    self.purchaseButton.setTitle("PURCHASE", for: UIControlState())
-    self.purchaseButton.titleLabel?.setKernAmount(2.0)
-    self.purchaseButton.addTarget(self, action: #selector(ProductViewController.beginPurchase), for: .touchUpInside)
-    self.purchaseButton.layer.cornerRadius = 0
-    self.view.addSubview(self.purchaseButton)
+    self.orderButton.setTitle("ORDER", for: UIControlState())
+    self.orderButton.titleLabel?.setKernAmount(2.0)
+    self.orderButton.addTarget(self, action: #selector(ProductViewController.beginOrder), for: .touchUpInside)
+    self.orderButton.layer.cornerRadius = 0
+    self.view.addSubview(self.orderButton)
     
-    constrain(self.view, self.productImage, self.productPricingStripView, self.purchaseButton) {
-      (superView, productImage, pricingView, purchaseButton) in
+    constrain(self.view, self.productImage, self.productPricingStripView, self.orderButton) {
+      (superView, productImage, pricingView, orderButton) in
       productImage.width == superView.width
       productImage.centerX == superView.centerX
       productImage.height == superView.height * 0.4
@@ -63,16 +63,16 @@ class ProductViewController: QuickViewController {
       pricingView.top == productImage.bottom
       pricingView.height == superView.height * 0.2
       
-      purchaseButton.bottom == superView.bottom
-      purchaseButton.leading == superView.leading
-      purchaseButton.trailing == superView.trailing
-      purchaseButton.height == superView.height * 0.1
+      orderButton.bottom == superView.bottom
+      orderButton.leading == superView.leading
+      orderButton.trailing == superView.trailing
+      orderButton.height == superView.height * 0.1
     }
   }
   
   
-  // Attempts to make a purchase.
-  @objc fileprivate func beginPurchase() {
+  // Attempts to make a order.
+  @objc fileprivate func beginOrder() {
     let network = Network()
     // Check product
     guard let p = self.product else { return orderError() }
@@ -81,14 +81,15 @@ class ProductViewController: QuickViewController {
     guard let b = self.business else { return orderError() }
     guard let bID = b.id else { return orderError() }
     
-    let jsonParameters = JSONEncoder.jsonifyPurchase(productID: pID, businessID: bID)
+    let jsonParameters = JSONEncoder.jsonifyOrder(productID: pID,
+                                                  businessID: bID) as [String: AnyObject]
     
     let orderEndPoint = NetworkingDetails.orderEndPoint
-    network.postJSON(orderEndPoint, jsonParameters: nil) {
+    network.postJSON(orderEndPoint, jsonParameters: jsonParameters) {
       (success, data) in
       if (success) {
         let json = JSON(data)
-        let orderID = JSONParser.parsePurchaseID(json)
+        let orderID = JSONParser.parseOrderID(json)
         self.displayOrderDetails(orderID)
       } else {
         super.displayMessage(title: StringConstants.networkErrorTitleString,
@@ -97,16 +98,16 @@ class ProductViewController: QuickViewController {
     }
   }
   
-  // Purchase error alert.
+  // Order error alert.
   fileprivate func orderError() {
     self.displayMessage(title: StringConstants.orderErrorTitleString,
                         message: StringConstants.orderErrorMessageString)
   }
   
-  // Display the details of a successful purchase.
-  fileprivate func displayOrderDetails(_ purchaseID: String) {
-    super.displayQRCodeDetailView(title: StringConstants.successfulPurchaseTitleString,
-                                  message: StringConstants.createSuccessfulPurchaseMessageString(self.product!.name!, purchaseID: purchaseID),
-                                  qrCodeSeed: purchaseID)
+  // Display the details of a successful order.
+  fileprivate func displayOrderDetails(_ orderID: String) {
+    super.displayQRCodeDetailView(title: StringConstants.successfulOrderTitleString,
+                                  message: StringConstants.createSuccessfulOrderMessageString(self.product!.name!, orderID: orderID),
+                                  qrCodeSeed: orderID)
   }
 }

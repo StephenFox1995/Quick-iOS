@@ -55,7 +55,7 @@ class Network {
    - parameter response:        A callback containing the reponse.
    */
   func postJSON(_ urlString: String,
-                jsonParameters: Dictionary<String, AnyObject>?,
+                jsonParameters: [String: AnyObject]?,
                 response: @escaping NetworkPOSTResponse) {
     let authHeaders = self.authHeaders()
     Alamofire

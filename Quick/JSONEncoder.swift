@@ -11,9 +11,9 @@ import SwiftyJSON
 
 class JSONEncoder {
   
-  static func jsonifyPurchase(productID: String,
-                              businessID: String) -> [String: [String: String]]{
-    return ["purchase": [ "productID": productID, "businessID": businessID ]]
+  static func jsonifyOrder(productID: String,
+                           businessID: String) -> [String: [String: String]] {
+    return ["order": [ "productID": productID, "businessID": businessID ]]
   }
   
   

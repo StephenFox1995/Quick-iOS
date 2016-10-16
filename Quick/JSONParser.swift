@@ -61,8 +61,8 @@ class JSONParser {
   }
   
   
-  static func parsePurchaseID(_ json: JSON) -> String {
-    return json.dictionaryValue["purchaseID"]!.stringValue
+  static func parseOrderID(_ json: JSON) -> String {
+    return json["order"]["id"].stringValue
   }
   
   

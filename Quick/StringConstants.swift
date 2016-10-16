@@ -12,9 +12,9 @@ class StringConstants: NSObject {
   static let networkErrorTitleString = "Network Error"
   static let networkErrorMessageString = "A network error occurred, please try again."
   
-  static let successfulPurchaseTitleString = "Success!"
-  static func createSuccessfulPurchaseMessageString(_ productName: String, purchaseID: String) -> String {
-    return "Your purchase of " + productName + " was succesful. Your purchase code is: " + purchaseID
+  static let successfulOrderTitleString = "Success!"
+  static func createSuccessfulOrderMessageString(_ productName: String, orderID: String) -> String {
+    return "Your order of " + productName + " was succesful. Your order code is: " + orderID
   }
   
   static let orderErrorTitleString = "Order Error"
