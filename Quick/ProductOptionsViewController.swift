@@ -84,10 +84,18 @@ extension ProductOptionsViewController {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
   }
   
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+  @objc(pickerView:viewForRow:forComponent:reusingView:) func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
     let indexPath = IndexPath(row: row, section: component)
     let optionValue = self.productOptionPickerViewDataSource.itemForRowIndex(indexPath) as! ProductOptionValue
     let withPriceDelta = " €" + String(optionValue.priceDelta)
-    return optionValue.name + withPriceDelta
+    let labelText = optionValue.name + withPriceDelta
+    
+    let pickerRowLabel = UILabel()
+    pickerRowLabel.text = labelText
+    pickerRowLabel.setKernAmount(1.0)
+    pickerRowLabel.font = UIFont.qFontRegular(18)
+    pickerRowLabel.textColor = UIColor.black
+    return pickerRowLabel
   }
+
 }
