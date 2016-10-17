@@ -10,13 +10,11 @@ import UIKit
 
 class ProductOptionValue {
   
-  var name: String?
-  var priceDelta: Float?
+  var name: String!
+  var priceDelta: Float!
   
   init(name: String, priceDelta: Float) {
     self.name = name
     self.priceDelta = priceDelta
   }
-  
-  init() {}
 }

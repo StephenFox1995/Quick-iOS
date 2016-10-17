@@ -25,6 +25,7 @@ class ProductOptionsViewController: QuickViewController,
     super.viewDidLoad()
     self.fillTableView()
     self.setupViews()
+    self.hideNavigationBar = false
   }
   
   
@@ -84,8 +85,9 @@ extension ProductOptionsViewController {
   }
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    let indexPath = IndexPath(row: row, section: 0)
+    let indexPath = IndexPath(row: row, section: component)
     let optionValue = self.productOptionPickerViewDataSource.itemForRowIndex(indexPath) as! ProductOptionValue
-    return optionValue.name
+    let withPriceDelta = " €" + String(optionValue.priceDelta)
+    return optionValue.name + withPriceDelta
   }
 }

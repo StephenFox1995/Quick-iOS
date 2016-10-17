@@ -67,9 +67,9 @@ class JSONParser {
     var productOptionValues = [ProductOptionValue]()
     if let values = json["values"].array {
       for value in values {
-        let productOptionValue = ProductOptionValue()
-        productOptionValue.priceDelta = value["priceDelta"].floatValue
-        productOptionValue.name = value["name"].stringValue
+        let priceDelta = value["priceDelta"].floatValue
+        let name = value["name"].stringValue
+        let productOptionValue = ProductOptionValue(name: name, priceDelta: priceDelta)
         productOptionValues.append(productOptionValue)
       }
     }

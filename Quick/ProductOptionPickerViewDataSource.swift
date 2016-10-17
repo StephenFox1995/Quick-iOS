@@ -24,7 +24,7 @@ class ProductOptionPickerViewDataSource: QuickDataSource, UIPickerViewDataSource
     self.pickerView.dataSource = self
   }
   
-  
+    
   /**
    Sets the product option to display its values.
    - parameter option: ProductOption to use for datasourcing.
