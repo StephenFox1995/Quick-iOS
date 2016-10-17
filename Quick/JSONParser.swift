@@ -53,9 +53,9 @@ class JSONParser {
     var productOptions = [ProductOption]()
     if let options = json["options"].array {
       for option in options {
-        let productOption = ProductOption()
-        productOption.name = option["name"].stringValue
-        productOption.values = JSONParser.parseProductOptionValues(json: option)
+        let name = option["name"].stringValue
+        let values = JSONParser.parseProductOptionValues(json: option)
+        let productOption = ProductOption(name: name, values: values)
         productOptions.append(productOption)
       }
     }

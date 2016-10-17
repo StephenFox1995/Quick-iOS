@@ -16,6 +16,4 @@ class ProductOption {
     self.name = name
     self.values = values
   }
-  
-  init() { }
 }

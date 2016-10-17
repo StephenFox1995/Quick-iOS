@@ -66,6 +66,8 @@
 		18D3E2A01D84B48E0089EEF5 /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E29F1D84B48E0089EEF5 /* ProductImage.swift */; };
 		18D3E2A21D84CDF40089EEF5 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E2A11D84CDF40089EEF5 /* UIFontExtensions.swift */; };
 		18D3E2A41D84D3F30089EEF5 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E2A31D84D3F30089EEF5 /* PriceView.swift */; };
+		18D493A51DB5700E0023724D /* ProductOptionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D493A41DB5700E0023724D /* ProductOptionPickerView.swift */; };
+		18D493A71DB570500023724D /* ProductOptionPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D493A61DB570500023724D /* ProductOptionPickerViewDataSource.swift */; };
 		18E884DA1D6214DB00BBD573 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E884D91D6214DB00BBD573 /* LoginManager.swift */; };
 		18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4001D2819C800CDE296 /* QuickViewController.swift */; };
 		18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */; };
@@ -155,6 +157,8 @@
 		18D3E29F1D84B48E0089EEF5 /* ProductImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
 		18D3E2A11D84CDF40089EEF5 /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
 		18D3E2A31D84D3F30089EEF5 /* PriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
+		18D493A41DB5700E0023724D /* ProductOptionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionPickerView.swift; sourceTree = "<group>"; };
+		18D493A61DB570500023724D /* ProductOptionPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionPickerViewDataSource.swift; sourceTree = "<group>"; };
 		18E884D91D6214DB00BBD573 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		18F3D4001D2819C800CDE296 /* QuickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickViewController.swift; sourceTree = "<group>"; };
 		18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				1807C0AB1DB4230500CE6CB4 /* ProductOptionsTableView.swift */,
 				1807C0AD1DB424C000CE6CB4 /* ProductOptionsTableViewDataSource.swift */,
 				1807C0B51DB4274600CE6CB4 /* ProductOptionTableViewCell.swift */,
+				18D493A81DB570750023724D /* ProductOptionPickerView */,
 			);
 			name = ProductOptions;
 			sourceTree = "<group>";
@@ -372,6 +377,15 @@
 				18477C351D8375F20055CC79 /* Extensions */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		18D493A81DB570750023724D /* ProductOptionPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				18D493A61DB570500023724D /* ProductOptionPickerViewDataSource.swift */,
+				18D493A41DB5700E0023724D /* ProductOptionPickerView.swift */,
+			);
+			name = ProductOptionPickerView;
 			sourceTree = "<group>";
 		};
 		18F3D40B1D2C6B8D00CDE296 /* Util */ = {
@@ -688,6 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D493A71DB570500023724D /* ProductOptionPickerViewDataSource.swift in Sources */,
 				1806F4B51D91E5CC0014D7B1 /* NetworkingDetails.swift in Sources */,
 				183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */,
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
@@ -721,6 +736,7 @@
 				18D3E2A01D84B48E0089EEF5 /* ProductImage.swift in Sources */,
 				1854EECF1D82E00C00BF6277 /* BusinessViewImageLabel.swift in Sources */,
 				187717AE1D805B0400750E10 /* QButton.swift in Sources */,
+				18D493A51DB5700E0023724D /* ProductOptionPickerView.swift in Sources */,
 				18477C371D844E7B0055CC79 /* ProductsTableViewController.swift in Sources */,
 				1807C0AC1DB4230500CE6CB4 /* ProductOptionsTableView.swift in Sources */,
 				1807C0AE1DB424C000CE6CB4 /* ProductOptionsTableViewDataSource.swift in Sources */,

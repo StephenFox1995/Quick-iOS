@@ -59,7 +59,4 @@ class ProductOptionsTableViewDataSource: QuickDataSource, UITableViewDataSource 
     pOptionCell.textLabel?.text = pOption.name
     return pOptionCell
   }
-  
-  
-
 }

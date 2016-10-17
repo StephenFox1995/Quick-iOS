@@ -14,7 +14,7 @@ import UIKit
 class NetworkingDetails {
   
   //"http://192.168.1.112"
-  fileprivate static let baseAddress = "http://192.168.1.78"
+  fileprivate static let baseAddress = "http://Stephens-MacBook-Pro-4.local"
   fileprivate static let port = "3000"
   
   // Base end point
