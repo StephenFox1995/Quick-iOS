@@ -11,15 +11,17 @@ import Cartography
 
 class ProductOptionsViewController: QuickViewController,
   UITableViewDelegate,
-  UIPickerViewDelegate {
+  ProductOptionValuesViewContainerDelegate {
   
   var product: Product!
+  
   // ProductOptionsTableView and datasource
   fileprivate var productOptionsTableView: ProductOptionsTableView!
   fileprivate var productOptionsDataSource: ProductOptionsTableViewDataSource!
-  // ProductOption and datasource
-  fileprivate var productOptionPickerView: ProductOptionPickerView!
-  fileprivate var productOptionPickerViewDataSource: ProductOptionPickerViewDataSource!
+  
+  // `ProductOptionValuesViewContainer`
+  fileprivate var productOptionValuesContainer: ProductOptionValuesViewContainer!
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,13 +49,11 @@ class ProductOptionsViewController: QuickViewController,
   fileprivate func setupViews() {
     // Setup pickerView
     let rect = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height / 2)
-    self.productOptionPickerView = ProductOptionPickerView(frame: rect)
-    self.productOptionPickerView.delegate = self
-    self.productOptionPickerViewDataSource =
-      ProductOptionPickerViewDataSource(withPickerView: self.productOptionPickerView)
-    self.view.addSubview(self.productOptionPickerView)
+    self.productOptionValuesContainer = ProductOptionValuesViewContainer(frame: rect)
+    self.productOptionValuesContainer.delegate = self
+    self.view.addSubview(self.productOptionValuesContainer)
     
-    constrain(self.view, self.productOptionPickerView) {
+    constrain(self.view, self.productOptionValuesContainer) {
       (superView, pickerView) in
       pickerView.width == superView.width
       pickerView.bottom == superView.bottom
@@ -74,28 +74,33 @@ extension ProductOptionsViewController {
     // Firstly get the productOption from the datasource
     let productOption = self.productOptionsDataSource.itemForRowIndex(indexPath) as! ProductOption
     // Then give productOption to pickerView
-    self.productOptionPickerViewDataSource.setProductOption(option: productOption)
+    self.productOptionValuesContainer.set(productOption: productOption)
   }
 }
 
-
-// MARK: UIPickerViewDelegate
+// MARK: ProductOptionPickerViewContainerDelegate
 extension ProductOptionsViewController {
-  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+  func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
+                                 productOption: ProductOption,
+                                 didSelectNewValue value: ProductOptionValue) {
+    // Now that the user has selected an option.
+    // Record the option selected.
+    
+    if let options = self.product.options {
+      let filteredOptions = options.filter { $0 === productOption }
+      if filteredOptions.count > 0 {
+        print("yeah found it")
+        // do something to add the
+      }
+    }
   }
   
-  @objc(pickerView:viewForRow:forComponent:reusingView:) func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-    let indexPath = IndexPath(row: row, section: component)
-    let optionValue = self.productOptionPickerViewDataSource.itemForRowIndex(indexPath) as! ProductOptionValue
-    let withPriceDelta = " €" + String(optionValue.priceDelta)
-    let labelText = optionValue.name + withPriceDelta
+  func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
+                                 didFinishWith values: [ProductOptionValue]?) {
     
-    let pickerRowLabel = UILabel()
-    pickerRowLabel.text = labelText
-    pickerRowLabel.setKernAmount(1.0)
-    pickerRowLabel.font = UIFont.qFontRegular(18)
-    pickerRowLabel.textColor = UIColor.black
-    return pickerRowLabel
   }
-
+  
 }
+
+
+

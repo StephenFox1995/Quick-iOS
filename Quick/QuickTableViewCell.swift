@@ -9,7 +9,5 @@
 import UIKit
 
 class QuickTableViewCell: UITableViewCell {
-  
-  
   func setTextElements(_ businessObject: QuickBusinessObject) { }
 }

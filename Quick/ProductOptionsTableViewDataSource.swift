@@ -55,7 +55,7 @@ class ProductOptionsTableViewDataSource: QuickDataSource, UITableViewDataSource 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let pOptionCell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as! ProductOptionTableViewCell
-    let pOption = self.productOptions![(indexPath as NSIndexPath).row]
+    let pOption = self.itemForRowIndex(indexPath) as! ProductOption
     pOptionCell.textLabel?.text = pOption.name
     return pOptionCell
   }
