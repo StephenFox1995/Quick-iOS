@@ -12,10 +12,6 @@ import Cartography
 protocol ProductOptionValuesViewContainerDelegate: NSObjectProtocol {
   func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
                                  didFinishWith values: [ProductOptionValue]?)
-  
-  func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
-                                 productOption: ProductOption,
-                                 didSelectNewValue value: ProductOptionValue)
 }
 
 
@@ -61,6 +57,8 @@ UITableViewDelegate {
     self.tableView = ProductOptionValuesTableView(frame: rect, style: .plain)
     self.tableView.delegate = self
     self.tableView.dataSource = self.datasource
+    // TODO: Make sure to check if the product offers multiple selections.
+    self.tableView.allowsMultipleSelection = true
     self.addSubview(self.tableView)
     self.datasource = ProductOptionValuesTableViewDataSource(withTableView: self.tableView)
     
@@ -84,8 +82,20 @@ UITableViewDelegate {
   }
   
   @objc fileprivate func handleDoneButtonPress() {
-    // Message delegate.
+    // Message delegate that user has finished selected options.
     if let lDelegate = self.delegate {
+      // Get all selected values from tableView.
+      let selectedRows: [IndexPath]? = self.tableView.indexPathsForSelectedRows
+      
+      
+      // Build array with all the values, if there are any.
+      if let rows = selectedRows {
+        var productOptionValues = [ProductOptionValue]()
+        for row in rows {
+          productOptionValues.append(self.datasource.itemForRowIndex(row) as! ProductOptionValue)
+        }
+        return lDelegate.optionValuesViewContainer(container: self, didFinishWith: productOptionValues)
+      }
       lDelegate.optionValuesViewContainer(container: self, didFinishWith: nil)
     }
   }
@@ -94,15 +104,11 @@ UITableViewDelegate {
 // MARK: UITableViewDelegate
 extension ProductOptionValuesViewContainer {
   @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // Message delegate
-    if let lDelegate = self.delegate  {
-      // Get the value
-      let optionValue = self.datasource.itemForRowIndex(indexPath) as! ProductOptionValue
-      // Get the productOption.
-      lDelegate.optionValuesViewContainer(container: self,
-                                          productOption: self.currentProductOptionDisplayed,
-                                          didSelectNewValue: optionValue)
-    }
+    self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+  }
+  
+  @objc(tableView:didDeselectRowAtIndexPath:) func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    self.tableView.cellForRow(at: indexPath)?.accessoryType = .none
   }
 }
 

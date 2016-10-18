@@ -60,11 +60,6 @@ class ProductOptionsViewController: QuickViewController,
       pickerView.height == superView.height * 0.3
     }
   }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
 }
 
 // MARK: UITableViewDelegate
@@ -81,25 +76,9 @@ extension ProductOptionsViewController {
 // MARK: ProductOptionPickerViewContainerDelegate
 extension ProductOptionsViewController {
   func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
-                                 productOption: ProductOption,
-                                 didSelectNewValue value: ProductOptionValue) {
-    // Now that the user has selected an option.
-    // Record the option selected.
-    
-    if let options = self.product.options {
-      let filteredOptions = options.filter { $0 === productOption }
-      if filteredOptions.count > 0 {
-        print("yeah found it")
-        // do something to add the
-      }
-    }
-  }
-  
-  func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
                                  didFinishWith values: [ProductOptionValue]?) {
-    
+    print(values)
   }
-  
 }
 
 

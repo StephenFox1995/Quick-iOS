@@ -11,9 +11,9 @@ import UIKit
 class ProductOptionValue {
   
   var name: String!
-  var priceDelta: Float!
+  var priceDelta: Double!
   
-  init(name: String, priceDelta: Float) {
+  init(name: String, priceDelta: Double) {
     self.name = name
     self.priceDelta = priceDelta
   }
