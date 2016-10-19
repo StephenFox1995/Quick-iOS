@@ -24,6 +24,7 @@ SignUpViewControllerDelegate {
     self.setupViews()
     self.view.backgroundColor = UIColor.white
     self.navigationController?.isNavigationBarHidden = true
+    self.tabBarController?.tabBar.isHidden = true
     self.dataSource = self
     
     let initialViewController = self.viewControllerAtIndex(0)

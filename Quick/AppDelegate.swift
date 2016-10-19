@@ -25,16 +25,18 @@ AuthenticateViewControllerDelegate {
      * If there's no session ask the user to login/ signup.
      */
     if (!sessionManager.activeSessionAvailable()) {
-      let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-      let navigationController: UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-      let rootViewController = AuthenticateViewController(transitionStyle: .scroll,
+      
+      let authenticateViewController = AuthenticateViewController(transitionStyle: .scroll,
                                                           navigationOrientation: .horizontal, options: nil)
-      rootViewController.authDelegate = self
-      navigationController.viewControllers = [rootViewController]
+      authenticateViewController.authDelegate = self
+      let navigationController = UINavigationController(rootViewController: authenticateViewController)
       self.window?.rootViewController = navigationController
       return true
+    } else {
+      self.displayHomeViewController()
+      return true
     }
-    return true
+    
   }
   
   func applicationWillResignActive(_ application: UIApplication) {
@@ -97,11 +99,13 @@ extension AppDelegate {
 
 extension AppDelegate {
   fileprivate func displayHomeViewController() {
-    let sb = UIStoryboard(name: "Main", bundle: nil)
-    let rootViewController = self.window?.rootViewController as! UINavigationController
-    let homeViewController = sb.instantiateViewController(withIdentifier: StringConstants.homeViewController)
-    rootViewController.pushViewController(homeViewController, animated: false)
+    let tabBarController = UITabBarController()
+    let homeViewController = HomeViewController()
+    let navigationController = UINavigationController(rootViewController: homeViewController)
+    tabBarController.viewControllers = [navigationController]
+    self.window?.rootViewController = tabBarController
   }
+  
   
   fileprivate func displayMessage(title: String, message: String) {
     let alertController = UIAlertController(title: title,

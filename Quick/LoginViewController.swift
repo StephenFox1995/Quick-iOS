@@ -63,7 +63,6 @@ class LoginViewController: QuickViewController {
       signInButton.top == superView.top + 350
       signInButton.width == 300
       signInButton.height == 50
-      
     }
   }
   

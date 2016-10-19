@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cartography
 
 class HomeViewController: QuickViewController, UITableViewDelegate {
   
@@ -20,17 +21,18 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupBusinessTableView()
+    // This is temporary until proper signout page is made
+    let signOut = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(HomeViewController.signOut))
+    navigationItem.rightBarButtonItems = [signOut]
   }
   
   // Set up tableview to display products.
   fileprivate func setupBusinessTableView() {
     if self.businessTableView == nil {
-      self.businessTableView = BusinessTableView(frame: CGRect(
-        x: 0, y: 0, width: Screen.width, height: Screen.height), style: .plain)
+      self.businessTableView = BusinessTableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .plain)
       self.businessTableView.delegate = self
       self.businessTableViewDataSource = BusinessTableViewDataSource(tableView: self.businessTableView)
-      self.businessTableViewDataSource.fetchData("", completetionHandler: {
-        (success) in
+      self.businessTableViewDataSource.fetchData("", completetionHandler: { (success) in
         if !success {
           super.displayMessage(title: StringConstants.networkErrorTitleString,
             message: StringConstants.networkErrorMessageString)
@@ -38,10 +40,19 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
       })
     }
     self.view.addSubview(self.businessTableView)
+    
+    constrain(self.view, self.businessTableView) {
+      (superView, businessTableView) in
+      businessTableView.width == superView.width
+      businessTableView.height == superView.height
+      businessTableView.top == superView.topMargin
+      
+    }
+    
+    
   }
   
-  
-  @IBAction func signOut(_ sender: AnyObject) {
+  @objc fileprivate func signOut() {
     let sessionManager = SessionManager.sharedInstance
     if sessionManager.removeSession() {
     }
