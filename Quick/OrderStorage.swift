@@ -34,13 +34,13 @@ class OrderStorage {
    */
   func add(option: ProductOption, forProduct product: Product) {
     if self.has(product: product) {
-      // Get the reference held by the storage.
+      // Get the reference to product held by the storage.
       let product = self.get(product: product)!
       
       // Check if the option already exists for the product.
       if let loption = product.getOption(name: option.name) {
         // Loop through all option values and append if they don't exist.
-        for value in loption.values {
+        for value in option.values {
           if !loption.has(value: value) {
             loption.values.append(value)
           }

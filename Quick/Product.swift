@@ -33,7 +33,10 @@ class Product: QuickBusinessObject {
    */
   func getOption(name: String) -> ProductOption? {
     if let options = self.options {
-      return options.filter{ $0.name == name }[0]
+      let o = options.filter { return $0.name == name }
+      if o.count > 0 {
+        return o[0]
+      }
     }
     return nil
   }
