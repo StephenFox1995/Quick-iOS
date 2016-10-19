@@ -27,6 +27,7 @@ class Product: QuickBusinessObject {
     super.init()
   }
   
+  
   /** Get a product option from the collection of options
       stored with the product.
    - parameter: name The name of the ProductOpion.
@@ -65,6 +66,8 @@ class Product: QuickBusinessObject {
                    businessID: self.businessID!)
     
   }
+  
+  
   
   
 }

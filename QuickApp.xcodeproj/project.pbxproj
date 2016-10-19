@@ -29,6 +29,7 @@
 		181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D746A1D25D3560007DAFD /* QuickDataSource.swift */; };
 		182E68581D62433D006D43D9 /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68571D62433D006D43D9 /* SignUpManager.swift */; };
 		182E685A1D624434006D43D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E68591D624434006D43D9 /* User.swift */; };
+		183089581DB8239C00D6DD71 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183089571DB8239B00D6DD71 /* Order.swift */; };
 		183389E41D2D27F1006C83AF /* FXPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183389E31D2D27F1006C83AF /* FXPrint.swift */; };
 		183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183389E51D2D5BBE006C83AF /* StringConstants.swift */; };
 		1835D0901D22F64900C9554C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D08F1D22F64900C9554C /* AppDelegate.swift */; };
@@ -121,6 +122,7 @@
 		181D746A1D25D3560007DAFD /* QuickDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDataSource.swift; sourceTree = "<group>"; };
 		182E68571D62433D006D43D9 /* SignUpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
 		182E68591D624434006D43D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		183089571DB8239B00D6DD71 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		183389E31D2D27F1006C83AF /* FXPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXPrint.swift; sourceTree = "<group>"; };
 		183389E51D2D5BBE006C83AF /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		1835D08C1D22F64900C9554C /* QuickApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 				181D74541D25AAAE0007DAFD /* Business.swift */,
 				182E68591D624434006D43D9 /* User.swift */,
 				18F6313A1D6250340008103C /* Account.swift */,
+				183089571DB8239B00D6DD71 /* Order.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
 				1835D0921D22F64900C9554C /* HomeViewController.swift in Sources */,
 				18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */,
+				183089581DB8239C00D6DD71 /* Order.swift in Sources */,
 				18477C341D8375E10055CC79 /* UIPageControlExtensions.swift in Sources */,
 				181D744F1D2473910007DAFD /* Product.swift in Sources */,
 				18F631371D624F410008103C /* SessionManager.swift in Sources */,

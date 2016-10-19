@@ -13,9 +13,12 @@ import UIKit
  */
 class OrderStorage {
   static let sharedInstance = OrderStorage()
-  
-  fileprivate var products = [Product]()
+  /// The order currently being made by the user.
+  /// There can only ever be one order being made within the application at a time.
+  fileprivate(set) var order = Order()
   fileprivate init() {}
+  
+  
   
   /**
    Adds a `ProductOption` to a `Product`
@@ -33,9 +36,9 @@ class OrderStorage {
    - parameter product: The Product to add to the storage along with the options.
    */
   func add(option: ProductOption, forProduct product: Product) {
-    if self.has(product: product) {
-      // Get the reference to product held by the storage.
-      let product = self.get(product: product)!
+    if self.order.has(product: product) {
+      // Get the reference to product held by the order.
+      let product = self.order.get(product: product)!
       
       // Check if the option already exists for the product.
       if let loption = product.getOption(name: option.name) {
@@ -50,22 +53,7 @@ class OrderStorage {
       }
     } else {
       product.addOption(option: option)
-      self.products.append(product)
-    }
-  }
-  
-  /// Checks to see if a product has already been added to the order
-  /// by comparing the id of the product.
-  func has(product: Product) -> Bool {
-    return self.products.filter { return $0.id! == product.id! }.count > 0
-  }
-  
-  func get(product: Product) -> Product? {
-    let x = self.products.filter{ return $0.id! == product.id! }
-    if x.count > 0 {
-      return x[0]
-    } else {
-      return nil
+      self.order.add(product: product)
     }
   }
 }
