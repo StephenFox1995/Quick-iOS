@@ -19,6 +19,7 @@ class ProductOptionValuesTableViewCell: QuickTableViewCell {
     self.textLabel?.textAlignment = .center
     self.textLabel?.textColor = UIColor.black
     self.textLabel?.adjustsFontSizeToFitWidth = true
+    self.textLabel?.textAlignment = .center
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

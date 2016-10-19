@@ -41,6 +41,7 @@ class JSONParser {
         product.name =        productJSON["name"].stringValue
         product.price =       productJSON["price"].stringValue
         product.description = productJSON["description"].stringValue
+        product.businessID  = productJSON["businessID"].stringValue
         product.options = JSONParser.parseProductOptions(json: productJSON)
         productArray.append(product)
       }

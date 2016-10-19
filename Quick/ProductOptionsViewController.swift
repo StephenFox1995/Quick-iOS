@@ -31,7 +31,6 @@ class ProductOptionsViewController: QuickViewController,
   }
   
   
-  
   fileprivate func fillTableView() {
     if self.productOptionsDataSource == nil {
       // Setup tableview.
@@ -51,13 +50,14 @@ class ProductOptionsViewController: QuickViewController,
     let rect = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height / 2)
     self.productOptionValuesContainer = ProductOptionValuesViewContainer(frame: rect)
     self.productOptionValuesContainer.delegate = self
+    self.productOptionValuesContainer.isHidden = true // Hide initially.
     self.view.addSubview(self.productOptionValuesContainer)
     
     constrain(self.view, self.productOptionValuesContainer) {
       (superView, pickerView) in
       pickerView.width == superView.width
       pickerView.bottom == superView.bottom
-      pickerView.height == superView.height * 0.3
+      pickerView.height == superView.height * 0.5
     }
   }
 }
@@ -70,16 +70,29 @@ extension ProductOptionsViewController {
     let productOption = self.productOptionsDataSource.itemForRowIndex(indexPath) as! ProductOption
     // Then give productOption to pickerView
     self.productOptionValuesContainer.set(productOption: productOption)
+    self.productOptionValuesContainer.isHidden = false
   }
 }
 
 // MARK: ProductOptionPickerViewContainerDelegate
 extension ProductOptionsViewController {
+  
   func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
+                                 productOption: ProductOption,
                                  didFinishWith values: [ProductOptionValue]?) {
-    print(values)
+    guard values != nil else {
+      return
+    }
+    
+    // Add product and new options
+    let productCopy = self.product.copyWithoutOptions()
+    productCopy.options = [ProductOption]()
+    let option = ProductOption(name: productOption.name, values: values!)
+    
+    let orderStorage = OrderStorage.sharedInstance
+    orderStorage.add(option: option, forProduct: productCopy)
+    
+    
+    self.productOptionValuesContainer.isHidden = true
   }
 }
-
-
-

@@ -20,7 +20,7 @@ class BusinessSeeProductsButton: UIButton {
     self.clipsToBounds = false
     self.layer.shadowOffset = CGSize(width: 0, height: 2);
     self.layer.shadowRadius = 1;
-    self.layer.shadowColor = UIColor.businessSeeProductsShadowColor().cgColor
+    self.layer.shadowColor = UIColor.shadowColor().cgColor
     self.layer.shadowOpacity = 0.5;
     self.titleLabel?.font = UIFont.qFontDemiBold(25)
     self.setTitle("SEE PRODUCTS", for: UIControlState())

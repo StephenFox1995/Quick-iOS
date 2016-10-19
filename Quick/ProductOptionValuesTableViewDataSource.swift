@@ -55,8 +55,6 @@ UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as!ProductOptionValuesTableViewCell
-    
-    
     let optionValue = self.itemForRowIndex(indexPath) as! ProductOptionValue
     cell.set(productOptionValue: optionValue.detailsWithCurrency(currency: "€"))
     return cell

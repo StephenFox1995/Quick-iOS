@@ -16,4 +16,8 @@ class ProductOption {
     self.name = name
     self.values = values
   }
+  
+  func has(value: ProductOptionValue) -> Bool {
+    return self.values.filter{$0.name == value.name }.count > 0
+  }
 }

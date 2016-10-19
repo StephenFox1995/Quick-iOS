@@ -11,6 +11,7 @@ import Cartography
 
 protocol ProductOptionValuesViewContainerDelegate: NSObjectProtocol {
   func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
+                                 productOption: ProductOption,
                                  didFinishWith values: [ProductOptionValue]?)
 }
 
@@ -51,7 +52,12 @@ UITableViewDelegate {
   
 
   func setupViews() {
-    self.backgroundColor = UIColor.white
+    self.clipsToBounds = false
+    self.layer.shadowOffset = CGSize(width: 0, height: 10);
+    self.layer.shadowRadius = 1;
+    self.layer.shadowColor = UIColor.shadowColor().cgColor
+    self.layer.shadowOpacity = 0.5;
+    self.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
     
     let rect = CGRect(x: 0, y: 0, width: 0, height: 0)
     self.tableView = ProductOptionValuesTableView(frame: rect, style: .plain)
@@ -71,11 +77,11 @@ UITableViewDelegate {
     constrain(self, self.tableView, self.doneButton) {
       (superView, tableView, doneButton) in
       doneButton.width == superView.width * 0.3
-      doneButton.height == superView.height * 0.1
+      doneButton.height == superView.height * 0.2
       doneButton.top == superView.top
       
       tableView.width == superView.width
-      tableView.height == superView.height * 0.9
+      tableView.height == superView.height * 0.8
       tableView.top == doneButton.bottom
       tableView.bottom == superView.bottom
     }
@@ -94,9 +100,13 @@ UITableViewDelegate {
         for row in rows {
           productOptionValues.append(self.datasource.itemForRowIndex(row) as! ProductOptionValue)
         }
-        return lDelegate.optionValuesViewContainer(container: self, didFinishWith: productOptionValues)
+        return lDelegate.optionValuesViewContainer(container: self,
+                                                   productOption: self.currentProductOptionDisplayed,
+                                                   didFinishWith: productOptionValues)
       }
-      lDelegate.optionValuesViewContainer(container: self, didFinishWith: nil)
+      lDelegate.optionValuesViewContainer(container: self,
+                                          productOption: self.currentProductOptionDisplayed,
+                                          didFinishWith: nil)
     }
   }
 }

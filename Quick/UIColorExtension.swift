@@ -46,11 +46,15 @@ extension UIColor {
     return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
   }
 }
-/// BusinessSeeProductsButton
+/// Shadow 
 extension UIColor {
-  static func businessSeeProductsShadowColor() -> UIColor {
+  static func shadowColor() -> UIColor {
     return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 0.50)
   }
+}
+/// BusinessSeeProductsButton
+extension UIColor {
+  
   static func businessSeeProductsTitleNormalColor() -> UIColor {
     return UIColor(red: 0.44, green: 0.44, blue: 0.44, alpha: 1.00)
   }
