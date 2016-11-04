@@ -23,7 +23,7 @@ ProductOptionsViewControllerDelegate {
   
   fileprivate var productImage: ProductImage!
   fileprivate var productPricingStripView: ProductPricingStripView!
-  fileprivate var orderButton = QButton()
+  fileprivate var addToOrderButton = QButton()
   fileprivate var network = Network()
   fileprivate var productOptionsStripView: StripView!
   
@@ -60,13 +60,13 @@ ProductOptionsViewControllerDelegate {
     self.view.addSubview(self.productOptionsStripView)
     
     
-    self.orderButton.setTitle("ADD TO ORDER", for: UIControlState())
-    self.orderButton.titleLabel?.setKernAmount(2.0)
-    self.orderButton.addTarget(self, action: #selector(ProductViewController.addProductToOrder), for: .touchUpInside)
-    self.orderButton.layer.cornerRadius = 0
-    self.view.addSubview(self.orderButton)
+    self.addToOrderButton.setTitle("ADD TO ORDER", for: UIControlState())
+    self.addToOrderButton.titleLabel?.setKernAmount(2.0)
+    self.addToOrderButton.addTarget(self, action: #selector(ProductViewController.addProductToOrder), for: .touchUpInside)
+    self.addToOrderButton.layer.cornerRadius = 0
+    self.view.addSubview(self.addToOrderButton)
     
-    constrain(self.view, self.productImage, self.productPricingStripView, self.productOptionsStripView, self.orderButton) {
+    constrain(self.view, self.productImage, self.productPricingStripView, self.productOptionsStripView, self.addToOrderButton) {
       (superView, productImage, pricingView, optionsStripView, orderButton) in
       productImage.width == superView.width
       productImage.centerX == superView.centerX
@@ -107,20 +107,15 @@ ProductOptionsViewControllerDelegate {
       product.options = options
     }
     OrderManager.sharedInstance.order.add(product: product)
+    self.orderAddedMessage()
   }
   
   // Order error alert.
-  fileprivate func orderError() {
-    self.displayMessage(title: StringConstants.orderErrorTitleString,
-                        message: StringConstants.orderErrorMessageString)
+  fileprivate func orderAddedMessage() {
+    self.displayMessage(title: StringConstants.orderAddedTitleString,
+                        message: StringConstants.orderAddedMessageString)
   }
-  
-  // Display the details of a successful order.
-  fileprivate func displayOrderDetails(_ orderID: String) {
-    super.displayQRCodeDetailView(title: StringConstants.successfulOrderTitleString,
-                                  message: StringConstants.createSuccessfulOrderMessageString(self.product!.name!, orderID: orderID),
-                                  qrCodeSeed: orderID)
-  }
+
 }
 
 /// ProductOptionsViewControllerDelegate

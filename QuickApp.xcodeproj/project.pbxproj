@@ -245,8 +245,8 @@
 		181509361DCD16A70063117C /* OrderIU */ = {
 			isa = PBXGroup;
 			children = (
-				1815093B1DCD19230063117C /* OrderTableView */,
 				181509341DCD16890063117C /* OrderViewController.swift */,
+				1815093B1DCD19230063117C /* OrderTableView */,
 			);
 			name = OrderIU;
 			sourceTree = "<group>";

@@ -20,6 +20,9 @@ class StringConstants: NSObject {
   static let orderErrorTitleString = "Order Error"
   static let orderErrorMessageString = "Order unavailable at this time, please try again later."
   
+  static let orderAddedTitleString = "Notice"
+  static let orderAddedMessageString = "Order has been added, view 'Order' tab to see current orders."
+  
   static let unfoundJWTClaim = "Unable to find claim: "
   
   static let error = "Error"
