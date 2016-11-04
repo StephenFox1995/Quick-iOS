@@ -100,9 +100,12 @@ extension AppDelegate {
   fileprivate func displayHomeViewController() {
     let tabBarController = QuickTabBarController()
     let homeViewController = HomeViewController()
+    let exploreNavigationController = UINavigationController(rootViewController: homeViewController)
+    
     let orderViewController = OrderViewController()
-    let navigationController = UINavigationController(rootViewController: homeViewController)
-    tabBarController.viewControllers = [navigationController, orderViewController]
+    let orderNavigationController = UINavigationController(rootViewController: orderViewController)
+    
+    tabBarController.viewControllers = [exploreNavigationController, orderNavigationController]
     tabBarController.tabBar.items?[0].title = "Explore"
     tabBarController.tabBar.items?[1].title = "Order"
     self.window?.rootViewController = tabBarController
