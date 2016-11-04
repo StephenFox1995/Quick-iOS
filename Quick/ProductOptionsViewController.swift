@@ -9,11 +9,17 @@
 import UIKit
 import Cartography
 
+protocol ProductOptionsViewControllerDelegate: NSObjectProtocol {
+  func productOptionsViewControllerDidFinishWith(options: [ProductOption]?)
+}
+
 class ProductOptionsViewController: QuickViewController,
   UITableViewDelegate,
   ProductOptionValuesViewContainerDelegate {
   
   var product: Product!
+  weak var delegate: ProductOptionsViewControllerDelegate?
+  fileprivate var optionsChosen = [ProductOption]()
   
   // ProductOptionsTableView and datasource
   fileprivate var productOptionsTableView: ProductOptionsTableView!
@@ -30,6 +36,12 @@ class ProductOptionsViewController: QuickViewController,
     self.hideNavigationBar = false
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    // Message delegate when finished selecting options.
+    if let d = self.delegate {
+      d.productOptionsViewControllerDidFinishWith(options: optionsChosen)
+    }
+  }
   
   fileprivate func fillTableView() {
     if self.productOptionsDataSource == nil {
@@ -85,14 +97,8 @@ extension ProductOptionsViewController {
     }
     
     // Add product and new options
-    let productCopy = self.product.copyWithoutOptions()
-    productCopy.options = [ProductOption]()
     let option = ProductOption(name: productOption.name, values: values!)
-    
-    let orderStorage = OrderStorage.sharedInstance
-    orderStorage.add(option: option, forProduct: productCopy)
-    
-    
+    optionsChosen.append(option)
     self.productOptionValuesContainer.isHidden = true
   }
 }

@@ -13,11 +13,13 @@ import SwiftyJSON
 /**
  Class that display info about a Product and allows a user to order the Product
  */
-class ProductViewController: QuickViewController {
+class ProductViewController: QuickViewController,
+ProductOptionsViewControllerDelegate {
   
   /// Product property, this needs to be set for the view to load product info
   var product: Product!
   var business: Business?
+  var optionsChosen: [ProductOption]?
   
   fileprivate var productImage: ProductImage!
   fileprivate var productPricingStripView: ProductPricingStripView!
@@ -58,9 +60,9 @@ class ProductViewController: QuickViewController {
     self.view.addSubview(self.productOptionsStripView)
     
     
-    self.orderButton.setTitle("ORDER", for: UIControlState())
+    self.orderButton.setTitle("ADD TO ORDER", for: UIControlState())
     self.orderButton.titleLabel?.setKernAmount(2.0)
-    self.orderButton.addTarget(self, action: #selector(ProductViewController.beginOrder), for: .touchUpInside)
+    self.orderButton.addTarget(self, action: #selector(ProductViewController.addProductToOrder), for: .touchUpInside)
     self.orderButton.layer.cornerRadius = 0
     self.view.addSubview(self.orderButton)
     
@@ -92,36 +94,19 @@ class ProductViewController: QuickViewController {
       self.product.options!.count > 0 {
       let productOptionsViewController = ProductOptionsViewController()
       productOptionsViewController.product = self.product
+      productOptionsViewController.delegate = self
       self.navigationController?.pushViewController(productOptionsViewController, animated: true)
     }
   }
   
   
-  // Attempts to make a order.
-  @objc fileprivate func beginOrder() {
-    let network = Network()
-    // Check product
-    guard let p = self.product else { return orderError() }
-    guard let pID = p.id else { return orderError() }
-    // Check business
-    guard let b = self.business else { return orderError() }
-    guard let bID = b.id else { return orderError() }
-    
-    let jsonParameters = JSONEncoder.jsonifyOrder(productID: pID,
-                                                  businessID: bID) as [String: AnyObject]
-    
-    let orderEndPoint = NetworkingDetails.orderEndPoint
-    network.postJSON(orderEndPoint, jsonParameters: jsonParameters) {
-      (success, data) in
-      if (success) {
-        let json = JSON(data)
-        let orderID = JSONParser.parseOrderID(json)
-        self.displayOrderDetails(orderID)
-      } else {
-        super.displayMessage(title: StringConstants.networkErrorTitleString,
-                             message: StringConstants.networkErrorMessageString)
-      }
+  // Addds product to global order storage.
+  @objc fileprivate func addProductToOrder() {
+    let product = self.product.copyWithoutOptions()
+    if let options = self.optionsChosen {
+      product.options = options
     }
+    OrderManager.sharedInstance.order.add(product: product)
   }
   
   // Order error alert.
@@ -135,5 +120,12 @@ class ProductViewController: QuickViewController {
     super.displayQRCodeDetailView(title: StringConstants.successfulOrderTitleString,
                                   message: StringConstants.createSuccessfulOrderMessageString(self.product!.name!, orderID: orderID),
                                   qrCodeSeed: orderID)
+  }
+}
+
+/// ProductOptionsViewControllerDelegate
+extension ProductViewController {
+  func productOptionsViewControllerDidFinishWith(options: [ProductOption]?) {
+    self.optionsChosen = options
   }
 }

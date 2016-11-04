@@ -32,6 +32,15 @@ class QuickViewController: UIViewController {
     self.view.backgroundColor = UIColor.white
   }
   
+  fileprivate func setupViews() {
+    //Ensures that views are not underneath the tab bar
+    if tabBarController?.tabBar.isHidden == false {
+      let viewBounds = self.view.bounds;
+      let bottomBarOffset = self.bottomLayoutGuide.length;
+      self.view.frame = CGRect(x: 0, y: 0, width: viewBounds.width, height: viewBounds.height - bottomBarOffset)
+    }
+  }
+  
   
   /**
    Displays an alert to the user.

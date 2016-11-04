@@ -31,8 +31,13 @@ class BusinessViewController: QuickViewController {
     self.hideNavigationBar = false
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    self.hideNavigationBar = true
+  }
+  
   // Sets up the UI
   fileprivate func setupViews() {
+    
     // TODO: Make sure image can be still retrieved even if business was nil
     var businessImageView: BusinessImageView!
     if let business = self.business {

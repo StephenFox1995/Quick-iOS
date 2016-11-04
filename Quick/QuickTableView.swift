@@ -12,7 +12,24 @@ import UIKit
  Abstract class for table views.
  */
 class QuickTableView: UITableView {
-
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    self.setup()
+  }
+  override init(frame: CGRect, style: UITableViewStyle) {
+    super.init(frame: frame, style: style)
+    self.setup()
+  }
+  
+  
+  fileprivate func setup() {
+    self.clipsToBounds = true
+//    self.edgesForExtendedLayout = .none;
+//    self.extendedLayoutIncludesOpaqueBars = false;
+//    self.automaticallyAdjustsScrollViewInsets = false;
+  }
+  
   /**
    Register all Nibs/ classes that are needed to
    display ui elements of the table view.
@@ -23,5 +40,6 @@ class QuickTableView: UITableView {
   }
   
   
-  func registerClass() { }
+  func register(class: AnyClass) {
+  }
 }

@@ -9,7 +9,8 @@
 import UIKit
 
 /**
- An order can contain products.*/
+ An order can contain products.
+ */
 class Order: QuickBusinessObject {
   fileprivate(set) var products: [Product] = []
   

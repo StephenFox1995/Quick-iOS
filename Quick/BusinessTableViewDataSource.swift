@@ -80,7 +80,7 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let businessCell =
       tableView.dequeueReusableCell(withIdentifier: BusinessTableView.cellReuseIdentifier) as! BusinessTableViewCell
-    let business = self.businesses![(indexPath as NSIndexPath).row]
+    let business = itemForRowIndex(indexPath) as! Business
     businessCell.setTextElements(business)
     return businessCell
   }

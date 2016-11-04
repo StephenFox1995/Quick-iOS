@@ -40,16 +40,15 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
       })
     }
     self.view.addSubview(self.businessTableView)
+//    self.businessTableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
     
     constrain(self.view, self.businessTableView) {
       (superView, businessTableView) in
       businessTableView.width == superView.width
-      businessTableView.height == superView.height
-      businessTableView.top == superView.topMargin
-      
+      businessTableView.top == superView.top
+      businessTableView.bottom == superView.bottom
+      businessTableView.leading == superView.leading
     }
-    
-    
   }
   
   @objc fileprivate func signOut() {
