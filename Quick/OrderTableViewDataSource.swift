@@ -19,7 +19,7 @@ class OrderTableViewDataSource: QuickDataSource, UITableViewDataSource {
     self.cellReuseIdentifier = cellReuseIdentifier
     self.tableView?.dataSource = self
     self.tableView?.register(OrderTableViewCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
-    self.order = OrderManager.sharedInstance.order
+    self.order = OrderManager.sharedInstance.getOrder()
   }
   
   

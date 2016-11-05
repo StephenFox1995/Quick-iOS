@@ -14,6 +14,12 @@ import UIKit
 class Order: QuickBusinessObject {
   fileprivate(set) var products: [Product] = []
   
+  var currentPrice: Double {
+    get {
+      return products.reduce(0.0) { return $0 + $1.orderPrice }
+    }
+  }
+  
   // MARK: Object Life Cycle
   init(withProducts products: [Product]) {
     super.init()
@@ -35,6 +41,8 @@ class Order: QuickBusinessObject {
   func add(product: Product) {
     self.products.append(product)
   }
+  
+  
   
   /// Checks to see if a product has already been added to the order
   /// by comparing the id of the product.

@@ -13,6 +13,9 @@ class Product: QuickBusinessObject {
   
   var businessID: String?
   var options: [ProductOption]?
+  /// The price of the Product when it has been prepared for ordering.
+  /// Assumes all attached `ProductOption` are part of theorder  price.
+  fileprivate(set) var orderPrice: Double = 0
   
   init(id: String, name: String, price: String, description: String, businessID: String) {
     super.init()
@@ -21,6 +24,7 @@ class Product: QuickBusinessObject {
     self.description = description
     self.businessID = businessID
     self.price = price
+    self.orderPrice = Double(price)! // Order price is the base price initialy.
   }
   
   override init() {
@@ -41,19 +45,23 @@ class Product: QuickBusinessObject {
     }
     return nil
   }
-
   
-  
-  /// Adds an option to the products array of options.
-  func addOption(option: ProductOption) {
-    if self.options != nil {
-      self.options!.append(option)
-    }
-    else {
-      self.options = [ProductOption]()
-      self.options!.append(option)
+  /// Updates the current order price with the new option.
+  func updateOrderPrice(option: ProductOption) {
+    // Go through all the options and update the order price.
+    for value in option.values {
+      self.orderPrice = self.orderPrice + value.priceDelta
     }
   }
+  
+  /// Updates the current order price with an array of options
+  func updateOrderPrice(options: [ProductOption]) {
+    for option in options {
+      self.updateOrderPrice(option: option)
+    }
+  }
+  
+  
   
   /**
    Returns a copy of the instance without the options set.
@@ -66,8 +74,4 @@ class Product: QuickBusinessObject {
                    businessID: self.businessID!)
     
   }
-  
-  
-  
-  
 }

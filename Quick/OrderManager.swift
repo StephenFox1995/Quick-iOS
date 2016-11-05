@@ -10,14 +10,36 @@ import UIKit
 import SwiftyJSON
 
 /**
+ Protocol for recieving updates from the order manager.
+ */
+protocol OrderManagerUpdates: NSObjectProtocol {
+  func orderManager(orderManager: OrderManager, newProductForOrder: Product)
+  func orderManager(orderManager: OrderManager, orderPriceIncrease: Double)
+  func orderManager(orderManager: OrderManager, orderPriceDecrease: Double)
+}
+
+/**
  Class that manages storing objects for ordering.
  */
 class OrderManager {
   static let sharedInstance = OrderManager()
   /// The order currently being made by the user.
   /// There can only ever be one order being made within the application at a time.
-  fileprivate(set) var order = Order()
+  fileprivate var order = Order()
   fileprivate init() {}
+  fileprivate weak var updates: OrderManagerUpdates?
+  
+  
+  func getOrder() -> Order {
+    return self.order
+  }
+  
+  func addToOrder(product: Product) {
+    self.order.add(product: product)
+    self.updates?.orderManager(orderManager: self, newProductForOrder: product)
+    print("Price has increased by: \(product.orderPrice)")
+    self.updates?.orderManager(orderManager: self, orderPriceIncrease: product.orderPrice)
+  }
   
   
   func beginOrder() {
@@ -34,4 +56,5 @@ class OrderManager {
     catch {
     }
   }
+  
 }

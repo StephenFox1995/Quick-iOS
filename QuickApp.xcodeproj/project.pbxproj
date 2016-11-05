@@ -64,6 +64,7 @@
 		187717AF1D805B0400750E10 /* QTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187717AA1D805B0400750E10 /* QTextField.swift */; };
 		187717B01D805B0400750E10 /* AuthenticateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187717AB1D805B0400750E10 /* AuthenticateViewController.swift */; };
 		187717B11D805B0400750E10 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187717AC1D805B0400750E10 /* SignUpViewController.swift */; };
+		187F262C1DCE37100036C59A /* QuickNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F262B1DCE37100036C59A /* QuickNavigationController.swift */; };
 		188D27761D3BEE4200A3F77B /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D27751D3BEE4200A3F77B /* QRCode.swift */; };
 		189EE1221D8325E8007389B3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189EE1211D8325E8007389B3 /* UIColorExtension.swift */; };
 		18D3E2981D84A2F50089EEF5 /* ProductPricingStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E2971D84A2F50089EEF5 /* ProductPricingStripView.swift */; };
@@ -164,6 +165,7 @@
 		187717AA1D805B0400750E10 /* QTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTextField.swift; sourceTree = "<group>"; };
 		187717AB1D805B0400750E10 /* AuthenticateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateViewController.swift; sourceTree = "<group>"; };
 		187717AC1D805B0400750E10 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		187F262B1DCE37100036C59A /* QuickNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickNavigationController.swift; sourceTree = "<group>"; };
 		188D27751D3BEE4200A3F77B /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		189EE1211D8325E8007389B3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		18D3E2971D84A2F50089EEF5 /* ProductPricingStripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPricingStripView.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		181D74501D25A5EF0007DAFD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				18DF061B1DB67483003CA1AA /* OrderManager.swift */,
 				1807C0B01DB424E300CE6CB4 /* Product */,
 				181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */,
 				181D74541D25AAAE0007DAFD /* Business.swift */,
@@ -343,7 +346,6 @@
 				18F631461D67BCD00008103C /* Helpers */,
 				1835D09B1D22F64900C9554C /* Info.plist */,
 				1835D0961D22F64900C9554C /* Assets.xcassets */,
-				18DF061B1DB67483003CA1AA /* OrderManager.swift */,
 			);
 			name = QuickApp;
 			path = Quick;
@@ -416,6 +418,7 @@
 				183D977A1D8473F20087C353 /* StripView.swift */,
 				187717AA1D805B0400750E10 /* QTextField.swift */,
 				18477C351D8375F20055CC79 /* Extensions */,
+				187F262B1DCE37100036C59A /* QuickNavigationController.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				1807C0B21DB424F400CE6CB4 /* ProductOption.swift in Sources */,
 				18F6313B1D6250340008103C /* Account.swift in Sources */,
 				181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */,
+				187F262C1DCE37100036C59A /* QuickNavigationController.swift in Sources */,
 				181509381DCD16DB0063117C /* OrderTableView.swift in Sources */,
 				183D977B1D8473F20087C353 /* StripView.swift in Sources */,
 				181D745D1D25B67B0007DAFD /* BusinessTableViewCell.swift in Sources */,

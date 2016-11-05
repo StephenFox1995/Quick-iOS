@@ -72,6 +72,7 @@ UITableViewDelegate {
       optionsTableView.top == pricingView.bottom + 10
       optionsTableView.bottom == addToOrderButton.top - 10
       optionsTableView.width == superView.width
+      optionsTableView.trailing == superView.trailing
       
       addToOrderButton.bottom == superView.bottom
       addToOrderButton.leading == superView.leading
@@ -79,7 +80,7 @@ UITableViewDelegate {
       addToOrderButton.height == superView.height * 0.1
       
       optionValuesContainer.bottom == superView.bottom
-      optionValuesContainer.leading == superView.leading
+      optionValuesContainer.left == superView.left
       optionValuesContainer.width == superView.width
       optionValuesContainer.height == superView.height * 0.5
     }
@@ -91,8 +92,11 @@ UITableViewDelegate {
     let product = self.product.copyWithoutOptions()
     if let options = self.optionsChosen {
       product.options = options
+      // Update the order price with the new options chosen.
+      product.updateOrderPrice(options: options)
     }
-    OrderManager.sharedInstance.order.add(product: product)
+    
+    OrderManager.sharedInstance.addToOrder(product: product)
     self.orderAddedMessage()
   }
   
@@ -101,7 +105,6 @@ UITableViewDelegate {
     self.displayMessage(title: StringConstants.orderAddedTitleString,
                         message: StringConstants.orderAddedMessageString)
   }
-
 }
 
 
@@ -109,16 +112,19 @@ UITableViewDelegate {
 // MARK: UITableViewDelegate
 extension ProductViewController {
   @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // When option is selected show pickerView with all the possible values for that option.
+    // When option is selected show view with all the possible values for that option.
     // Firstly get the productOption from the datasource
     let productOption = self.productOptionsDataSource.itemForRowIndex(indexPath) as! ProductOption
-    // Then give productOption to pickerView
+    // Then give productOption to view
     self.productOptionValuesContainer.set(productOption: productOption)
     self.productOptionValuesContainer.isHidden = false
+    self.view.bringSubview(toFront: self.productOptionValuesContainer)
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let header = UILabel()
+    
+    let header = UILabel(frame: CGRect(x: 0, y: 10, width: 55, height: 55))
+    header.textColor = UIColor.black
     header.font = UIFont.qFontDemiBold(14)
     header.setKernAmount(2.0)
     header.text = "OPTIONS"
