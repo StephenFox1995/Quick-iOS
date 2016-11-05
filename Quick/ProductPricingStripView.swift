@@ -43,7 +43,7 @@ class ProductPricingStripView: StripView {
       productNameLabel.leading == superView.leading
       productNameLabel.top == superView.top
       
-      productPriceView.trailing == superView.trailing - 5
+      productPriceView.centerX == superView.centerX
       productPriceView.width == superView.width * 0.3
       productPriceView.top == productNameLabel.bottom
       productPriceView.bottom == superView.bottom

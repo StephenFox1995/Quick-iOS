@@ -33,7 +33,5 @@ class OrderManager {
     }
     catch {
     }
-    
-    
   }
 }

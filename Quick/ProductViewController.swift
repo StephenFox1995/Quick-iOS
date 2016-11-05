@@ -14,51 +14,45 @@ import SwiftyJSON
  Class that display info about a Product and allows a user to order the Product
  */
 class ProductViewController: QuickViewController,
-ProductOptionsViewControllerDelegate {
+ProductOptionValuesViewContainerDelegate,
+UITableViewDelegate {
   
   /// Product property, this needs to be set for the view to load product info
   var product: Product!
   var business: Business?
-  var optionsChosen: [ProductOption]?
+  var optionsChosen : [ProductOption]?
   
-  fileprivate var productImage: ProductImage!
   fileprivate var productPricingStripView: ProductPricingStripView!
   fileprivate var addToOrderButton = QButton()
   fileprivate var network = Network()
-  fileprivate var productOptionsStripView: StripView!
+  fileprivate var productOptionsTableView: ProductOptionsTableView!
+  fileprivate var productOptionsDataSource: ProductOptionsTableViewDataSource!
+  fileprivate var productOptionValuesContainer: ProductOptionValuesViewContainer!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.navigationBar.isTranslucent = false
     self.view.backgroundColor = UIColor.viewControllerBackgroundGray()
     self.setupViews()
   }
   
   fileprivate func setupViews() {
-    
-    self.productImage = ProductImage()
-    self.view.addSubview(self.productImage)
-    DispatchQueue.global().async {
-      let url = URL(string: "http://blog.stridekick.com/wp-content/uploads/2015/10/starbucks-cup-of-coffee-to-go.png")
-      let nsdata = try? Data.init(contentsOf: url!)
-      DispatchQueue.main.async(execute: {
-        let uiImage = UIImage(data: nsdata!)
-        self.productImage.imageView.image = uiImage
-      })
-    }
-    
-    
     self.productPricingStripView = ProductPricingStripView(product: self.product!)
     self.view.addSubview(self.productPricingStripView)
     
-    let optionsButton = QButton()
-    optionsButton.setTitle("OPTIONS", for: UIControlState())
-    optionsButton.titleLabel?.setKernAmount(2.0)
-    optionsButton.backgroundColor = UIColor.quickGray()
-    optionsButton.addTarget(self, action: #selector(ProductViewController.seeProductOptions), for: .touchUpInside)
-    optionsButton.layer.cornerRadius = 0
-    self.productOptionsStripView = StripView(withButton: optionsButton)
-    self.view.addSubview(self.productOptionsStripView)
-    
+    // If the product has options to choose from display the tableview.
+    if let options = self.product.options {
+      self.productOptionsTableView = ProductOptionsTableView()
+      self.productOptionsTableView.delegate = self
+      self.productOptionsDataSource = ProductOptionsTableViewDataSource(tableView: self.productOptionsTableView)
+      self.productOptionsDataSource.setProductOptions(productOptions: options)
+      self.view.addSubview(self.productOptionsTableView)
+      
+      self.productOptionValuesContainer = ProductOptionValuesViewContainer()
+      self.productOptionValuesContainer.delegate = self
+      self.productOptionValuesContainer.isHidden = true
+      self.view.addSubview(self.productOptionValuesContainer)
+    }
     
     self.addToOrderButton.setTitle("ADD TO ORDER", for: UIControlState())
     self.addToOrderButton.titleLabel?.setKernAmount(2.0)
@@ -66,36 +60,28 @@ ProductOptionsViewControllerDelegate {
     self.addToOrderButton.layer.cornerRadius = 0
     self.view.addSubview(self.addToOrderButton)
     
-    constrain(self.view, self.productImage, self.productPricingStripView, self.productOptionsStripView, self.addToOrderButton) {
-      (superView, productImage, pricingView, optionsStripView, orderButton) in
-      productImage.width == superView.width
-      productImage.centerX == superView.centerX
-      productImage.height == superView.height * 0.2
-      productImage.top == superView.top
-      
+    
+    constrain(self.view, self.productPricingStripView, self.productOptionsTableView, self.addToOrderButton, self.productOptionValuesContainer) {
+      (superView, pricingView, optionsTableView, addToOrderButton, optionValuesContainer) in
+      pricingView.leading == superView.leading
       pricingView.width == superView.width
-      pricingView.top == productImage.bottom
+      pricingView.top == superView.top
       pricingView.height == superView.height * 0.2
       
-      optionsStripView.width == superView.width
-      optionsStripView.top == pricingView.bottom + 20
-      optionsStripView.height == superView.height * 0.1
+      optionsTableView.leading == superView.leading
+      optionsTableView.top == pricingView.bottom + 10
+      optionsTableView.bottom == addToOrderButton.top - 10
+      optionsTableView.width == superView.width
       
-      orderButton.bottom == superView.bottom
-      orderButton.leading == superView.leading
-      orderButton.trailing == superView.trailing
-      orderButton.height == superView.height * 0.1
-    }
-  }
-  
-  // Show all the options available for this product, if there are any.
-  @objc fileprivate func seeProductOptions() {
-    if self.product.options != nil &&
-      self.product.options!.count > 0 {
-      let productOptionsViewController = ProductOptionsViewController()
-      productOptionsViewController.product = self.product
-      productOptionsViewController.delegate = self
-      self.navigationController?.pushViewController(productOptionsViewController, animated: true)
+      addToOrderButton.bottom == superView.bottom
+      addToOrderButton.leading == superView.leading
+      addToOrderButton.trailing == superView.trailing
+      addToOrderButton.height == superView.height * 0.1
+      
+      optionValuesContainer.bottom == superView.bottom
+      optionValuesContainer.leading == superView.leading
+      optionValuesContainer.width == superView.width
+      optionValuesContainer.height == superView.height * 0.5
     }
   }
   
@@ -118,9 +104,48 @@ ProductOptionsViewControllerDelegate {
 
 }
 
-/// ProductOptionsViewControllerDelegate
+
+
+// MARK: UITableViewDelegate
 extension ProductViewController {
-  func productOptionsViewControllerDidFinishWith(options: [ProductOption]?) {
-    self.optionsChosen = options
+  @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // When option is selected show pickerView with all the possible values for that option.
+    // Firstly get the productOption from the datasource
+    let productOption = self.productOptionsDataSource.itemForRowIndex(indexPath) as! ProductOption
+    // Then give productOption to pickerView
+    self.productOptionValuesContainer.set(productOption: productOption)
+    self.productOptionValuesContainer.isHidden = false
+  }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let header = UILabel()
+    header.font = UIFont.qFontDemiBold(14)
+    header.setKernAmount(2.0)
+    header.text = "OPTIONS"
+    return header
+  }
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 55.0
   }
 }
+
+// MARK: ProductOptionPickerViewContainerDelegate
+extension ProductViewController {
+  func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
+                                 productOption: ProductOption,
+                                 didFinishWith values: [ProductOptionValue]?) {
+    guard values != nil else {
+      return
+    }
+    
+    // Add product and new options
+    let option = ProductOption(name: productOption.name, values: values!)
+    if self.optionsChosen == nil {
+      self.optionsChosen = []
+    }
+    self.optionsChosen!.append(option)
+    self.productOptionValuesContainer.isHidden = true
+  }
+}
+

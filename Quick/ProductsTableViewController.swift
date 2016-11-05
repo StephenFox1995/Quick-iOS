@@ -25,7 +25,6 @@ class ProductsTableViewController: QuickViewController, UITableViewDelegate {
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    self.hideNavigationBar = true
   }
   
   
