@@ -22,21 +22,27 @@ UITableViewDelegate {
   var business: Business?
   var optionsChosen : [ProductOption]?
   
+  
   fileprivate var productPricingStripView: ProductPricingStripView!
   fileprivate var addToOrderButton = QButton()
   fileprivate var network = Network()
   fileprivate var productOptionsTableView: ProductOptionsTableView!
   fileprivate var productOptionsDataSource: ProductOptionsTableViewDataSource!
   fileprivate var productOptionValuesContainer: ProductOptionValuesViewContainer!
-  
+  fileprivate var shadowDropBack: ShadowDropBack!
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationController?.navigationBar.isTranslucent = false
     self.view.backgroundColor = UIColor.viewControllerBackgroundGray()
+    
     self.setupViews()
   }
   
   fileprivate func setupViews() {
+    self.shadowDropBack = ShadowDropBack(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
+    self.view.addSubview(self.shadowDropBack)
+    self.shadowDropBack.isHidden = true
+    
     self.productPricingStripView = ProductPricingStripView(product: self.product!)
     self.view.addSubview(self.productPricingStripView)
     
@@ -118,11 +124,12 @@ extension ProductViewController {
     // Then give productOption to view
     self.productOptionValuesContainer.set(productOption: productOption)
     self.productOptionValuesContainer.isHidden = false
+    self.shadowDropBack.isHidden = false
+    self.view.bringSubview(toFront: self.shadowDropBack)
     self.view.bringSubview(toFront: self.productOptionValuesContainer)
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    
     let header = UILabel(frame: CGRect(x: 0, y: 10, width: 55, height: 55))
     header.textColor = UIColor.black
     header.font = UIFont.qFontDemiBold(14)
@@ -141,6 +148,8 @@ extension ProductViewController {
   func optionValuesViewContainer(container: ProductOptionValuesViewContainer,
                                  productOption: ProductOption,
                                  didFinishWith values: [ProductOptionValue]?) {
+    self.productOptionValuesContainer.isHidden = true
+    self.shadowDropBack.isHidden = true
     guard values != nil else {
       return
     }
@@ -151,7 +160,7 @@ extension ProductViewController {
       self.optionsChosen = []
     }
     self.optionsChosen!.append(option)
-    self.productOptionValuesContainer.isHidden = true
+    
   }
 }
 

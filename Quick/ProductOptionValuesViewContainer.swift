@@ -24,7 +24,7 @@ class ProductOptionValuesViewContainer: UIView,
 UITableViewDelegate {
   
   fileprivate var tableView: ProductOptionValuesTableView!
-  fileprivate var doneButton: UIButton!
+  fileprivate var doneButton: QButton!
   fileprivate var currentProductOptionDisplayed: ProductOption!
   
   weak var delegate: ProductOptionValuesViewContainerDelegate?
@@ -68,7 +68,7 @@ UITableViewDelegate {
     self.addSubview(self.tableView)
     self.datasource = ProductOptionValuesTableViewDataSource(withTableView: self.tableView)
     
-    self.doneButton = UIButton()
+    self.doneButton = QButton()
     self.doneButton.addTarget(self, action: #selector(ProductOptionValuesViewContainer.handleDoneButtonPress), for: .touchUpInside)
     self.doneButton.setTitle("Done", for: .normal)
     self.doneButton.setTitleColor(UIColor.quickBlue(), for: .normal)
