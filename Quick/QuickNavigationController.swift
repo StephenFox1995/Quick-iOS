@@ -18,3 +18,5 @@ class QuickNavigationController: UINavigationController {
         super.didReceiveMemoryWarning()
     }
 }
+
+

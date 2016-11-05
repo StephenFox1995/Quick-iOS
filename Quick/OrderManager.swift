@@ -14,8 +14,7 @@ import SwiftyJSON
  */
 protocol OrderManagerUpdates: NSObjectProtocol {
   func orderManager(orderManager: OrderManager, newProductForOrder: Product)
-  func orderManager(orderManager: OrderManager, orderPriceIncrease: Double)
-  func orderManager(orderManager: OrderManager, orderPriceDecrease: Double)
+  func orderManager(orderManager: OrderManager, newOrderPrice: Double)
 }
 
 /**
@@ -27,7 +26,7 @@ class OrderManager {
   /// There can only ever be one order being made within the application at a time.
   fileprivate var order = Order()
   fileprivate init() {}
-  fileprivate weak var updates: OrderManagerUpdates?
+  weak var updates: OrderManagerUpdates?
   
   
   func getOrder() -> Order {
@@ -37,8 +36,7 @@ class OrderManager {
   func addToOrder(product: Product) {
     self.order.add(product: product)
     self.updates?.orderManager(orderManager: self, newProductForOrder: product)
-    print("Price has increased by: \(product.orderPrice)")
-    self.updates?.orderManager(orderManager: self, orderPriceIncrease: product.orderPrice)
+    self.updates?.orderManager(orderManager: self, newOrderPrice: self.order.currentPrice)
   }
   
   

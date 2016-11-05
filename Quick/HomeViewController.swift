@@ -22,8 +22,8 @@ class HomeViewController: QuickViewController, UITableViewDelegate {
     super.viewDidLoad()
     self.setupBusinessTableView()
     // This is temporary until proper signout page is made
-    let signOut = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(HomeViewController.signOut))
-    navigationItem.rightBarButtonItems = [signOut]
+//    let signOut = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(HomeViewController.signOut))
+//    navigationItem.rightBarButtonItems = [signOut]
   }
   
   // Set up tableview to display products.
