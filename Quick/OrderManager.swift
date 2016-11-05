@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 /**
  Class that manages storing objects for ordering.
@@ -17,4 +18,22 @@ class OrderManager {
   /// There can only ever be one order being made within the application at a time.
   fileprivate(set) var order = Order()
   fileprivate init() {}
+  
+  
+  func beginOrder() {
+    if self.order.products.count <= 0 {
+      // TODO: Callback saying no order made.
+    }
+    
+    let network = Network()
+    
+    do {
+      let json = try JSON.OrderEncoder.jsonifyOrder(order: self.order)
+      network.postJSON(NetworkingDetails.orderEndPoint, jsonParameters: json) { (sucess, response) in }
+    }
+    catch {
+    }
+    
+    
+  }
 }

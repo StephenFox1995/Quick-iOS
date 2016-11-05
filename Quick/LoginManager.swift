@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginManager {
   
@@ -17,8 +18,8 @@ class LoginManager {
   typealias AuthenticationCompletion = (_ success: Bool, _ session: Session?) -> Void
   
   func login(user: User, completion: @escaping AuthenticationCompletion) {
-    let userJSON = JSONEncoder.jsonifyUserForAuthentication(user)
-    let loginJSON = JSONEncoder.jsonifyUserObjectForAuthentication(userJSON)
+    let userJSON = JSON.UserEncoder.jsonifyUserForAuthentication(user)
+    let loginJSON = JSON.UserEncoder.jsonifyUserObjectForAuthentication(userJSON)
     
     network.postJSON(NetworkingDetails.authenticateEndPoint, jsonParameters: loginJSON) {
       (success, data) in

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SignUpManager {
   
@@ -23,8 +24,8 @@ class SignUpManager {
    */
   func createUserAccount(user: User,
                          completion: @escaping SignUpCompletion) {
-    let userJSON = JSONEncoder.encodeUser(user)
-    let userJSONObject = JSONEncoder.createUserJSONObject(userJSON);
+    let userJSON = JSON.UserEncoder.encodeUser(user)
+    let userJSONObject = JSON.UserEncoder.createUserJSONObject(userJSON);
     
     network.postJSON(NetworkingDetails.createUserEndPoint,
                      jsonParameters: userJSONObject) { (success, data) in

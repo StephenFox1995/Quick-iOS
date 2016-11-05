@@ -34,7 +34,7 @@ class OrderViewController: QuickViewController {
     self.orderButton = QButton()
     self.orderButton.setTitle("ORDER", for: UIControlState())
     self.orderButton.titleLabel?.setKernAmount(2.0)
-//    self.orderButton.addTarget(self, action: #selector(ProductViewController.addProductToOrder), for: .touchUpInside)
+    self.orderButton.addTarget(self, action: #selector(OrderViewController.order), for: .touchUpInside)
     self.orderButton.layer.cornerRadius = 0
     self.view.addSubview(self.orderButton)
     
@@ -50,5 +50,10 @@ class OrderViewController: QuickViewController {
       orderButton.leading == superView.leading
       orderButton.height == superView.height * 0.1
     }
+  }
+  
+  
+  @objc func order() {
+    OrderManager.sharedInstance.beginOrder()
   }
 }

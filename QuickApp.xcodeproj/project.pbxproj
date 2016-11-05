@@ -81,7 +81,7 @@
 		18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4001D2819C800CDE296 /* QuickViewController.swift */; };
 		18F3D4041D281E5C00CDE296 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */; };
 		18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4071D2B071E00CDE296 /* JSONParser.swift */; };
-		18F3D40A1D2C6B8600CDE296 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4091D2C6B8600CDE296 /* JSONEncoder.swift */; };
+		18F3D40A1D2C6B8600CDE296 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3D4091D2C6B8600CDE296 /* JSON.swift */; };
 		18F631371D624F410008103C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631361D624F410008103C /* SessionManager.swift */; };
 		18F631391D624F920008103C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F631381D624F920008103C /* Session.swift */; };
 		18F6313B1D6250340008103C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6313A1D6250340008103C /* Account.swift */; };
@@ -181,7 +181,7 @@
 		18F3D4001D2819C800CDE296 /* QuickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickViewController.swift; sourceTree = "<group>"; };
 		18F3D4031D281E5C00CDE296 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		18F3D4071D2B071E00CDE296 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
-		18F3D4091D2C6B8600CDE296 /* JSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
+		18F3D4091D2C6B8600CDE296 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		18F631361D624F410008103C /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		18F631381D624F920008103C /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		18F6313A1D6250340008103C /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				18F3D4071D2B071E00CDE296 /* JSONParser.swift */,
-				18F3D4091D2C6B8600CDE296 /* JSONEncoder.swift */,
+				18F3D4091D2C6B8600CDE296 /* JSON.swift */,
 				188D27751D3BEE4200A3F77B /* QRCode.swift */,
 			);
 			name = Util;
@@ -801,7 +801,7 @@
 				18D3E29A1D84A4340089EEF5 /* ProductViewController.swift in Sources */,
 				187717B11D805B0400750E10 /* SignUpViewController.swift in Sources */,
 				1854EED41D82E00C00BF6277 /* FavouriteButton.swift in Sources */,
-				18F3D40A1D2C6B8600CDE296 /* JSONEncoder.swift in Sources */,
+				18F3D40A1D2C6B8600CDE296 /* JSON.swift in Sources */,
 				183389E41D2D27F1006C83AF /* FXPrint.swift in Sources */,
 				187717AF1D805B0400750E10 /* QTextField.swift in Sources */,
 				1815093A1DCD17DE0063117C /* OrderTableViewDataSource.swift in Sources */,
