@@ -23,17 +23,8 @@ class BusinessViewController: QuickViewController {
     super.viewDidLoad()
     self.view.backgroundColor = UIColor.viewControllerBackgroundGray()
     self.setupViews()
-    self.hideNavigationBar = true
   }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    self.hideNavigationBar = false
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    self.hideNavigationBar = true
-  }
+
   
   // Sets up the UI
   fileprivate func setupViews() {
@@ -67,7 +58,7 @@ class BusinessViewController: QuickViewController {
       
       businessImageView.leading == superView.leading
       businessImageView.trailing == superView.trailing
-      businessImageView.top == superView.topMargin
+      businessImageView.top == superView.top
       businessImageView.height == superView.height * 0.4
       
       stripView.width == superView.width

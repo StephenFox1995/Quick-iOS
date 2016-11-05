@@ -17,14 +17,14 @@ class Product: QuickBusinessObject {
   /// Assumes all attached `ProductOption` are part of theorder  price.
   fileprivate(set) var orderPrice: Double = 0
   
-  init(id: String, name: String, price: String, description: String, businessID: String) {
+  init(id: String, name: String, price: Double, description: String, businessID: String) {
     super.init()
     self.id = id
     self.name = name
     self.description = description
     self.businessID = businessID
     self.price = price
-    self.orderPrice = Double(price)! // Order price is the base price initialy.
+    self.orderPrice = price // Order price is the base price initialy.
   }
   
   override init() {

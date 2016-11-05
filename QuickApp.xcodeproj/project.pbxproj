@@ -27,7 +27,6 @@
 		181D745B1D25B3A90007DAFD /* QuickTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D745A1D25B3A90007DAFD /* QuickTableView.swift */; };
 		181D745D1D25B67B0007DAFD /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D745C1D25B67B0007DAFD /* BusinessTableViewCell.swift */; };
 		181D745F1D25B69D0007DAFD /* BusinessTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D745E1D25B69D0007DAFD /* BusinessTableViewDataSource.swift */; };
-		181D74611D25BBA00007DAFD /* BusinessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */; };
 		181D74631D25C1FE0007DAFD /* QuickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */; };
 		181D74651D25C23A0007DAFD /* QuickBusinessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */; };
 		181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D746A1D25D3560007DAFD /* QuickDataSource.swift */; };
@@ -44,7 +43,6 @@
 		1835D09A1D22F64900C9554C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1835D0981D22F64900C9554C /* LaunchScreen.storyboard */; };
 		1835D0A21D22F73900C9554C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0A11D22F73900C9554C /* Network.swift */; };
 		1835D0A41D2328E700C9554C /* ProductTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0A31D2328E700C9554C /* ProductTableView.swift */; };
-		1835D0A61D2329CD00C9554C /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1835D0A51D2329CD00C9554C /* ProductTableViewCell.xib */; };
 		1835D0A81D2329F000C9554C /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */; };
 		1835D0AB1D2465BC00C9554C /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AA1D2465BC00C9554C /* Screen.swift */; };
 		1835D0AD1D24664700C9554C /* ProductTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */; };
@@ -66,6 +64,7 @@
 		187717B11D805B0400750E10 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187717AC1D805B0400750E10 /* SignUpViewController.swift */; };
 		187F262C1DCE37100036C59A /* QuickNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F262B1DCE37100036C59A /* QuickNavigationController.swift */; };
 		187F262E1DCE46820036C59A /* OrderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F262D1DCE46820036C59A /* OrderNavigationController.swift */; };
+		187F26301DCE693C0036C59A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F262F1DCE693C0036C59A /* StringExtensions.swift */; };
 		188D27761D3BEE4200A3F77B /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D27751D3BEE4200A3F77B /* QRCode.swift */; };
 		189EE1221D8325E8007389B3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189EE1211D8325E8007389B3 /* UIColorExtension.swift */; };
 		18D3E2981D84A2F50089EEF5 /* ProductPricingStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E2971D84A2F50089EEF5 /* ProductPricingStripView.swift */; };
@@ -127,7 +126,6 @@
 		181D745A1D25B3A90007DAFD /* QuickTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickTableView.swift; sourceTree = "<group>"; };
 		181D745C1D25B67B0007DAFD /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 		181D745E1D25B69D0007DAFD /* BusinessTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTableViewDataSource.swift; sourceTree = "<group>"; };
-		181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessTableViewCell.xib; sourceTree = "<group>"; };
 		181D74621D25C1FE0007DAFD /* QuickTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickTableViewCell.swift; sourceTree = "<group>"; };
 		181D74641D25C23A0007DAFD /* QuickBusinessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickBusinessObject.swift; sourceTree = "<group>"; };
 		181D746A1D25D3560007DAFD /* QuickDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDataSource.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 		1835D09B1D22F64900C9554C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1835D0A11D22F73900C9554C /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1835D0A31D2328E700C9554C /* ProductTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableView.swift; sourceTree = "<group>"; };
-		1835D0A51D2329CD00C9554C /* ProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		1835D0AA1D2465BC00C9554C /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -168,6 +165,7 @@
 		187717AC1D805B0400750E10 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		187F262B1DCE37100036C59A /* QuickNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickNavigationController.swift; sourceTree = "<group>"; };
 		187F262D1DCE46820036C59A /* OrderNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderNavigationController.swift; sourceTree = "<group>"; };
+		187F262F1DCE693C0036C59A /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		188D27751D3BEE4200A3F77B /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		189EE1211D8325E8007389B3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		18D3E2971D84A2F50089EEF5 /* ProductPricingStripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPricingStripView.swift; sourceTree = "<group>"; };
@@ -311,7 +309,6 @@
 				181D74571D25B24E0007DAFD /* BusinessTableView.swift */,
 				181D745C1D25B67B0007DAFD /* BusinessTableViewCell.swift */,
 				181D745E1D25B69D0007DAFD /* BusinessTableViewDataSource.swift */,
-				181D74601D25BBA00007DAFD /* BusinessTableViewCell.xib */,
 			);
 			name = BusinessTableView;
 			sourceTree = "<group>";
@@ -357,7 +354,6 @@
 			isa = PBXGroup;
 			children = (
 				1835D0A31D2328E700C9554C /* ProductTableView.swift */,
-				1835D0A51D2329CD00C9554C /* ProductTableViewCell.xib */,
 				1835D0A71D2329F000C9554C /* ProductTableViewCell.swift */,
 				1835D0AC1D24664700C9554C /* ProductTableViewDataSource.swift */,
 			);
@@ -373,6 +369,7 @@
 				18D3E29B1D84B3BE0089EEF5 /* UILabelExtensions.swift */,
 				18D3E29D1D84B4130089EEF5 /* UIButtonExtensions.swift */,
 				18D3E2A11D84CDF40089EEF5 /* UIFontExtensions.swift */,
+				187F262F1DCE693C0036C59A /* StringExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -420,8 +417,8 @@
 				187717A91D805B0400750E10 /* QButton.swift */,
 				183D977A1D8473F20087C353 /* StripView.swift */,
 				187717AA1D805B0400750E10 /* QTextField.swift */,
-				18477C351D8375F20055CC79 /* Extensions */,
 				187F262D1DCE46820036C59A /* OrderNavigationController.swift */,
+				18477C351D8375F20055CC79 /* Extensions */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -607,8 +604,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1835D09A1D22F64900C9554C /* LaunchScreen.storyboard in Resources */,
-				1835D0A61D2329CD00C9554C /* ProductTableViewCell.xib in Resources */,
-				181D74611D25BBA00007DAFD /* BusinessTableViewCell.xib in Resources */,
 				1835D0971D22F64900C9554C /* Assets.xcassets in Resources */,
 				1835D0951D22F64900C9554C /* Main.storyboard in Resources */,
 			);
@@ -807,6 +802,7 @@
 				1835D0A21D22F73900C9554C /* Network.swift in Sources */,
 				181D746B1D25D3560007DAFD /* QuickDataSource.swift in Sources */,
 				18D3E29A1D84A4340089EEF5 /* ProductViewController.swift in Sources */,
+				187F26301DCE693C0036C59A /* StringExtensions.swift in Sources */,
 				187717B11D805B0400750E10 /* SignUpViewController.swift in Sources */,
 				1854EED41D82E00C00BF6277 /* FavouriteButton.swift in Sources */,
 				18F3D40A1D2C6B8600CDE296 /* JSON.swift in Sources */,

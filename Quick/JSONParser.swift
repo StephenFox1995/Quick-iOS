@@ -25,7 +25,7 @@ class JSONParser {
     if let pJSON = json.dictionary {
       product.id =          pJSON["id"]?.stringValue
       product.name =        pJSON["name"]?.stringValue
-      product.price =       pJSON["price"]?.stringValue
+      product.price =       pJSON["price"]?.doubleValue
       product.description = pJSON["description"]?.stringValue
       product.businessID =  pJSON["business_id"]?.stringValue
     }
@@ -39,7 +39,7 @@ class JSONParser {
         let product = Product()
         product.id =          productJSON["id"].stringValue
         product.name =        productJSON["name"].stringValue
-        product.price =       productJSON["price"].stringValue
+        product.price =       productJSON["price"].doubleValue
         product.description = productJSON["description"].stringValue
         product.businessID  = productJSON["businessID"].stringValue
         product.options = JSONParser.parseProductOptions(json: productJSON)

@@ -68,16 +68,16 @@ UITableViewDelegate {
       pricingView.top == superView.top
       pricingView.height == superView.height * 0.2
       
+      addToOrderButton.bottom == superView.bottom
+      addToOrderButton.leading == superView.leading
+      addToOrderButton.trailing == superView.trailing
+      addToOrderButton.height == superView.height * 0.1
+      
       optionsTableView.leading == superView.leading
       optionsTableView.top == pricingView.bottom + 10
       optionsTableView.bottom == addToOrderButton.top - 10
       optionsTableView.width == superView.width
       optionsTableView.trailing == superView.trailing
-      
-      addToOrderButton.bottom == superView.bottom
-      addToOrderButton.leading == superView.leading
-      addToOrderButton.trailing == superView.trailing
-      addToOrderButton.height == superView.height * 0.1
       
       optionValuesContainer.bottom == superView.bottom
       optionValuesContainer.left == superView.left

@@ -31,7 +31,7 @@ class ProductPricingStripView: StripView {
     
     // TODO: Fix this, if the price is actually nil
     if let price = self.product.price {
-      self.productPriceView = PriceView(price: price)
+      self.productPriceView = PriceView(price: String.currencyFormat(amount: price))
       self.addSubview(self.productPriceView)
     }
     

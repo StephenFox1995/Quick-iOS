@@ -28,7 +28,7 @@ OrderManagerUpdates {
   }
   
   fileprivate func updateOrderAmountText(amount: Double) {
-    let amountString = String(format: "%0.2f", amount)
+    let amountString = String.currencyFormat(amount: amount)
     self.orderAmountLabel.text = "ORDER: €" + amountString
   }
 }

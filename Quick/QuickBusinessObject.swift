@@ -18,6 +18,5 @@ class QuickBusinessObject {
   var contactNumber: String?
   var email: String?
   var description: String?
-  var price: String?
-  
+  var price: Double?
 }

@@ -20,7 +20,6 @@ class ProductTableView: QuickTableView {
   static let cellReuseIdentifier = "productCell"
   
   // NIB name for cells.
-  fileprivate let cellNibName = "ProductTableViewCell"
   
   override init(frame: CGRect, style: UITableViewStyle) {
     super.init(frame: frame, style: style)
@@ -33,10 +32,7 @@ class ProductTableView: QuickTableView {
   }
   
   
-  /**
-   Register all classes/ nibs for the UI of the tableview.
-   */
   fileprivate func register() {
-    self.registerNib(cellNibName, bundle: nil, reuseIdentifier:ProductTableView.cellReuseIdentifier)
+    self.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableView.cellReuseIdentifier)
   }
 }

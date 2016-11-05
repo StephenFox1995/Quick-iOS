@@ -10,8 +10,6 @@ import UIKit
 
 class BusinessTableViewCell: QuickTableViewCell {
   
-  @IBOutlet weak var businessName: UILabel!
-  
   override func awakeFromNib() {
     super.awakeFromNib()
   }
@@ -21,6 +19,6 @@ class BusinessTableViewCell: QuickTableViewCell {
   }
   
   override func setTextElements(_ businessObject: QuickBusinessObject) {
-    self.businessName.text = businessObject.name
+    self.textLabel?.text = businessObject.name
   }
 }

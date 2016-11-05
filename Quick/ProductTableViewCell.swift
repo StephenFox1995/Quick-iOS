@@ -10,8 +10,6 @@ import UIKit
 
 class ProductTableViewCell: QuickTableViewCell {
   
-  @IBOutlet weak var productPrice: UILabel!
-  @IBOutlet weak var productName: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -22,7 +20,7 @@ class ProductTableViewCell: QuickTableViewCell {
   }
   
   override func setTextElements(_ businessObject: QuickBusinessObject) {
-    self.productName.text = businessObject.name
-    self.productPrice.text = businessObject.price
+    self.textLabel?.text = businessObject.name! + " €" + String.currencyFormat(amount: businessObject.price!)
+
   }
 }

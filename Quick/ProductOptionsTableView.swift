@@ -29,7 +29,6 @@ class ProductOptionsTableView: QuickTableView {
   }
   init() {
     super.init(frame: CGRect.zero, style: .plain)
-    
   }
   
 

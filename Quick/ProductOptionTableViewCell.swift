@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductOptionTableViewCell: UITableViewCell {
+class ProductOptionTableViewCell: QuickTableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()

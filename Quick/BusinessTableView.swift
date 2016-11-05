@@ -19,8 +19,6 @@ class BusinessTableView: QuickTableView {
    */
   static let cellReuseIdentifier = "businessCell"
   
-  fileprivate let cellNibName = "BusinessTableViewCell"
-  
   override init(frame: CGRect, style: UITableViewStyle) {
     super.init(frame: frame, style: style)
     self.register()
@@ -33,6 +31,6 @@ class BusinessTableView: QuickTableView {
   
   
   func register() {
-    self.registerNib(cellNibName, bundle: nil, reuseIdentifier: BusinessTableView.cellReuseIdentifier)
+    self.register(BusinessTableViewCell.self, forCellReuseIdentifier: BusinessTableView.cellReuseIdentifier)
   }
 }

@@ -108,6 +108,7 @@ extension AppDelegate {
     tabBarController.viewControllers = [exploreNavigationController, orderNavigationController]
     tabBarController.tabBar.items?[0].title = "Explore"
     tabBarController.tabBar.items?[1].title = "Order"
+    
     self.window?.rootViewController = tabBarController
   }
   
