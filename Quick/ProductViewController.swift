@@ -30,6 +30,8 @@ UITableViewDelegate {
   fileprivate var productOptionsDataSource: ProductOptionsTableViewDataSource!
   fileprivate var productOptionValuesContainer: ProductOptionValuesViewContainer!
   fileprivate var shadowDropBack: ShadowDropBack!
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationController?.navigationBar.isTranslucent = false
@@ -37,9 +39,16 @@ UITableViewDelegate {
     
     self.setupViews()
   }
+  override func viewWillLayoutSubviews() {
+    // Make table view fit size of its content
+    DispatchQueue.main.async {
+      var frame = self.productOptionsTableView.frame
+      frame.size.height = self.productOptionsTableView.contentSize.height
+      self.productOptionsTableView.frame = frame
+    }
+  }
   
   fileprivate func setupViews() {
-//    self.edgesForExtendedLayout = UIRectEdge;
     self.shadowDropBack = ShadowDropBack(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
     self.view.addSubview(self.shadowDropBack)
     self.shadowDropBack.isHidden = true

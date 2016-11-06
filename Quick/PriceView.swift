@@ -43,6 +43,7 @@ class PriceView: UIView {
     
     constrain(self, self.amountLabel, self.priceTextLabel) {
       (superView, amountLabel, priceTextLabel) in
+
       amountLabel.leading == superView.leading
       amountLabel.bottom == priceTextLabel.top
       amountLabel.width == superView.width

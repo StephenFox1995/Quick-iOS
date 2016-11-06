@@ -66,6 +66,7 @@
 		187F262E1DCE46820036C59A /* OrderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F262D1DCE46820036C59A /* OrderNavigationController.swift */; };
 		187F26301DCE693C0036C59A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F262F1DCE693C0036C59A /* StringExtensions.swift */; };
 		18877D451DCE74E200D80FC9 /* ShadowDropBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18877D441DCE74E200D80FC9 /* ShadowDropBack.swift */; };
+		18877D491DCFEB9F00D80FC9 /* UIViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18877D481DCFEB9F00D80FC9 /* UIViewShadow.swift */; };
 		188D27761D3BEE4200A3F77B /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D27751D3BEE4200A3F77B /* QRCode.swift */; };
 		189EE1221D8325E8007389B3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189EE1211D8325E8007389B3 /* UIColorExtension.swift */; };
 		18D3E2981D84A2F50089EEF5 /* ProductPricingStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E2971D84A2F50089EEF5 /* ProductPricingStripView.swift */; };
@@ -168,6 +169,7 @@
 		187F262D1DCE46820036C59A /* OrderNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderNavigationController.swift; sourceTree = "<group>"; };
 		187F262F1DCE693C0036C59A /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		18877D441DCE74E200D80FC9 /* ShadowDropBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowDropBack.swift; sourceTree = "<group>"; };
+		18877D481DCFEB9F00D80FC9 /* UIViewShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewShadow.swift; sourceTree = "<group>"; };
 		188D27751D3BEE4200A3F77B /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		189EE1211D8325E8007389B3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		18D3E2971D84A2F50089EEF5 /* ProductPricingStripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPricingStripView.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				187717AA1D805B0400750E10 /* QTextField.swift */,
 				187F262D1DCE46820036C59A /* OrderNavigationController.swift */,
 				18877D441DCE74E200D80FC9 /* ShadowDropBack.swift */,
+				18877D481DCFEB9F00D80FC9 /* UIViewShadow.swift */,
 				18477C351D8375F20055CC79 /* Extensions */,
 			);
 			name = Core;
@@ -751,6 +754,7 @@
 			files = (
 				18D493A71DB570500023724D /* ProductOptionValuesTableViewDataSource.swift in Sources */,
 				1806F4B51D91E5CC0014D7B1 /* NetworkingDetails.swift in Sources */,
+				18877D491DCFEB9F00D80FC9 /* UIViewShadow.swift in Sources */,
 				183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */,
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
 				1835D0921D22F64900C9554C /* HomeViewController.swift in Sources */,

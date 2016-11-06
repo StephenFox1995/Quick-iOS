@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class StripView: UIView {
+class StripView: UIView, UIViewShadow {
   
   var button: UIButton?
   
@@ -42,11 +42,8 @@ class StripView: UIView {
   
   fileprivate func setup() {
     self.backgroundColor = UIColor.white
+    self.addShadow()
     self.clipsToBounds = false
-    self.layer.shadowOffset = CGSize(width: 0, height: 2)
-    self.layer.shadowRadius = 1;
-    self.layer.shadowColor = UIColor.stripViewShadowColor().cgColor
-    self.layer.shadowOpacity = 0.5
     
     // Set Layout constraints for buttons.
     if let button = self.button {

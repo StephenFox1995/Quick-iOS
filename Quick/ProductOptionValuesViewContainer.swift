@@ -21,7 +21,8 @@ protocol ProductOptionValuesViewContainerDelegate: NSObjectProtocol {
  interact with the view.
  */
 class ProductOptionValuesViewContainer: UIView,
-UITableViewDelegate {
+UITableViewDelegate,
+UIViewShadow {
   
   fileprivate var tableView: ProductOptionValuesTableView!
   fileprivate var doneButton: QButton!
@@ -74,12 +75,8 @@ UITableViewDelegate {
   }
 
   fileprivate func setupViews() {
-    self.clipsToBounds = false
-    self.layer.shadowOffset = CGSize(width: 0, height: 10);
-    self.layer.shadowRadius = 1;
-    self.layer.shadowColor = UIColor.shadowColor().cgColor
-    self.layer.shadowOpacity = 0.5;
-    self.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
+    self.addShadow()
+    self.backgroundColor = UIColor.quickGray()
     
     let rect = CGRect(x: 0, y: 0, width: 0, height: 0)
     self.tableView = ProductOptionValuesTableView(frame: rect, style: .plain)
