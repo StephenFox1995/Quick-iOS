@@ -19,6 +19,6 @@ class ProductOptionValue {
   }
   
   func detailsWithCurrency(currency: String) -> String {
-    return self.name + " " + currency + String(self.priceDelta)
+    return self.name + " " + currency + String.currencyFormat(amount: self.priceDelta)
   }
 }

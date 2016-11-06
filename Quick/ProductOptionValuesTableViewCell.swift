@@ -28,7 +28,7 @@ class ProductOptionValuesTableViewCell: QuickTableViewCell {
     // Configure the view for the selected state
   }
   
-  /// Set the name of the option.
+  /// Set the name of the optio value
   func set(productOptionValue: String) {
     self.textLabel?.text = productOptionValue
   }

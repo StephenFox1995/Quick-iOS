@@ -39,6 +39,7 @@ UITableViewDelegate {
   }
   
   fileprivate func setupViews() {
+//    self.edgesForExtendedLayout = UIRectEdge;
     self.shadowDropBack = ShadowDropBack(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
     self.view.addSubview(self.shadowDropBack)
     self.shadowDropBack.isHidden = true
@@ -125,6 +126,7 @@ extension ProductViewController {
     self.productOptionValuesContainer.set(productOption: productOption)
     self.productOptionValuesContainer.isHidden = false
     self.shadowDropBack.isHidden = false
+    
     self.view.bringSubview(toFront: self.shadowDropBack)
     self.view.bringSubview(toFront: self.productOptionValuesContainer)
   }
@@ -160,7 +162,6 @@ extension ProductViewController {
       self.optionsChosen = []
     }
     self.optionsChosen!.append(option)
-    
   }
 }
 

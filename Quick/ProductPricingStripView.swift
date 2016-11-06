@@ -14,7 +14,7 @@ class ProductPricingStripView: StripView {
   
   fileprivate var product: Product!
   fileprivate var productNameLabel = UILabel()
-  fileprivate var productPriceView: PriceView!
+  var productPriceView: PriceView!
   
   init(product: Product) {
     super.init(frame: CGRect.zero)
@@ -31,7 +31,7 @@ class ProductPricingStripView: StripView {
     
     // TODO: Fix this, if the price is actually nil
     if let price = self.product.price {
-      self.productPriceView = PriceView(price: String.currencyFormat(amount: price))
+      self.productPriceView = PriceView(price: price)
       self.addSubview(self.productPriceView)
     }
     

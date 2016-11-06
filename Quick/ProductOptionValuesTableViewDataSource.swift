@@ -14,6 +14,7 @@ UITableViewDataSource {
   weak var tableView: UITableView!
   fileprivate var productOption: ProductOption?
   fileprivate var reuseIdentifier: String!
+  var selectedRows: [IndexPath]?
   
   /**
    Initialize a new instance with a `ProductOptionValueTableView`
@@ -45,6 +46,7 @@ UITableViewDataSource {
     return nil
   }
   
+  
   // MARK: UITableViewDatasource
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let values = self.productOption?.values {
@@ -54,9 +56,20 @@ UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = self.tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as!ProductOptionValuesTableViewCell
     let optionValue = self.itemForRowIndex(indexPath) as! ProductOptionValue
     cell.set(productOptionValue: optionValue.detailsWithCurrency(currency: "€"))
+    
+    // Check to see if the cell should have 'tick'
+    if let selectedRows = self.selectedRows {
+      if selectedRows.contains(indexPath) {
+        cell.accessoryType = .checkmark
+        self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+      }
+    } else {
+      cell.accessoryType = .none
+    }
     return cell
   }
 }

@@ -15,10 +15,15 @@ class PriceView: UIView {
   fileprivate var amountLabel = UILabel()
   fileprivate var priceTextLabel = UILabel()
   
-  init(price: String) {
+  init(price: Double) {
     super.init(frame: CGRect.zero)
-    self.price = price
+    self.price = String.currencyFormat(amount: price)
     self.setupViews()
+  }
+  
+  /// Updates the price currently shown by the view.
+  func updatePrice(price: Double) {
+    self.amountLabel.text = String.currencyFormat(amount: price)
   }
   
   fileprivate func setupViews() {

@@ -22,6 +22,7 @@ class QuickTableViewCell: UITableViewCell {
   
   fileprivate func setupViews() {
     self.textLabel?.font = UIFont.qFontRegular(15.0)
+    self.clipsToBounds = false
   }
   func setTextElements(_ businessObject: QuickBusinessObject) { }
 }

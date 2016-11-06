@@ -24,10 +24,7 @@ class QuickTableView: UITableView {
   
   
   fileprivate func setup() {
-    self.clipsToBounds = true
-//    self.edgesForExtendedLayout = .none;
-//    self.extendedLayoutIncludesOpaqueBars = false;
-//    self.automaticallyAdjustsScrollViewInsets = false;
+
   }
   
   /**
