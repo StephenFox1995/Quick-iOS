@@ -66,9 +66,13 @@ UITableViewDataSource {
       if selectedRows.contains(indexPath) {
         cell.accessoryType = .checkmark
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+      } else {
+        cell.accessoryType = .none
+        self.tableView.deselectRow(at: indexPath, animated: true)
       }
     } else {
       cell.accessoryType = .none
+      self.tableView.deselectRow(at: indexPath, animated: true)
     }
     return cell
   }
