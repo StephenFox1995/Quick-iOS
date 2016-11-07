@@ -10,8 +10,7 @@ import UIKit
 import Cartography
 
 class ProductPricingStripView: StripView {
-  
-  
+
   fileprivate var product: Product!
   fileprivate var productNameLabel = UILabel()
   var productPriceView: PriceView!

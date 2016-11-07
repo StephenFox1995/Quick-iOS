@@ -47,7 +47,20 @@ class OrderTableViewDataSource: QuickDataSource, UITableViewDataSource {
     let orderCell =
       tableView.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! OrderTableViewCell
     let product = self.itemForRowIndex(indexPath) as! Product
-    orderCell.textLabel?.text = product.name
+    orderCell.textLabel?.numberOfLines = 0
+    orderCell.textLabel?.lineBreakMode = .byWordWrapping;
+    
+    var productDetails = product.name! + "\n"
+    if let options = product.options {
+      for option in options {
+        productDetails.append(option.name + "\n")
+        for value in option.values {
+          productDetails.append(value.name + " €" + String(value.priceDelta) + "\n")
+        }
+      }
+    }
+    orderCell.textLabel?.text = productDetails
     return orderCell
   }
+
 }

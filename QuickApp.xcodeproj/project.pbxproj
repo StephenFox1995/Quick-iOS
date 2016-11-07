@@ -248,13 +248,13 @@
 			name = Product;
 			sourceTree = "<group>";
 		};
-		181509361DCD16A70063117C /* OrderIU */ = {
+		181509361DCD16A70063117C /* OrderUI */ = {
 			isa = PBXGroup;
 			children = (
 				181509341DCD16890063117C /* OrderViewController.swift */,
 				1815093B1DCD19230063117C /* OrderTableView */,
 			);
-			name = OrderIU;
+			name = OrderUI;
 			sourceTree = "<group>";
 		};
 		1815093B1DCD19230063117C /* OrderTableView */ = {
@@ -295,7 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				18477C3A1D84541D0055CC79 /* Core */,
-				181509361DCD16A70063117C /* OrderIU */,
+				181509361DCD16A70063117C /* OrderUI */,
 				18477C391D8454060055CC79 /* ProductUI */,
 				18477C381D8453B60055CC79 /* BusinessUI */,
 				18F7CF741D8059A70042CF38 /* SignUpLoginViewController */,

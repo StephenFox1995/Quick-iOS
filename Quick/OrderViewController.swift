@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class OrderViewController: QuickViewController {
+class OrderViewController: QuickViewController, UITableViewDelegate {
   
   fileprivate var orderTableView: OrderTableView!
   fileprivate var orderTableViewDataSource: OrderTableViewDataSource!
@@ -23,12 +23,12 @@ class OrderViewController: QuickViewController {
     super.viewDidLoad()
     self.title = "Current Order"
     self.setupViews()
-    
   }
   
   private func setupViews() {
     self.orderTableView = OrderTableView()
     self.orderTableViewDataSource = OrderTableViewDataSource(tableView: self.orderTableView, cellReuseIdentifier: OrderTableView.cellReuseIdentifier)
+    self.orderTableView.delegate = self
     self.view.addSubview(self.orderTableView)
     
     self.orderButton = QButton()
@@ -55,5 +55,30 @@ class OrderViewController: QuickViewController {
   
   @objc func order() {
     OrderManager.sharedInstance.beginOrder()
+  }
+}
+
+
+extension OrderViewController {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    // Get the product to show for this row.
+    // Calculate the height based on the amount of product option values.
+    let product = self.orderTableViewDataSource.itemForRowIndex(indexPath) as! Product
+    
+    var optionsAmount: CGFloat = 0
+    var valuesAmount: CGFloat = 0
+    if let options = product.options {
+      optionsAmount = CGFloat(options.count)
+      for option in options {
+        valuesAmount = valuesAmount + CGFloat(option.values.count)
+      }
+    }
+    
+    let height = (optionsAmount + valuesAmount) * 30
+    if height == 0 {
+      return 20
+    } else {
+      return height
+    }
   }
 }
