@@ -57,6 +57,8 @@
 		1854EED31D82E00C00BF6277 /* BusinessWaitingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EECB1D82E00C00BF6277 /* BusinessWaitingTimeView.swift */; };
 		1854EED41D82E00C00BF6277 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EECC1D82E00C00BF6277 /* FavouriteButton.swift */; };
 		1854EED51D82E00C00BF6277 /* BusinessSeeProductsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854EECD1D82E00C00BF6277 /* BusinessSeeProductsButton.swift */; };
+		185883311DEA201C00813719 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185883301DEA201C00813719 /* LocationManager.swift */; };
+		185883331DEA269F00813719 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185883321DEA269F00813719 /* CoreLocation.framework */; };
 		187717AD1D805B0400750E10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187717A81D805B0400750E10 /* LoginViewController.swift */; };
 		187717AE1D805B0400750E10 /* QButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187717A91D805B0400750E10 /* QButton.swift */; };
 		187717AF1D805B0400750E10 /* QTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187717AA1D805B0400750E10 /* QTextField.swift */; };
@@ -160,6 +162,8 @@
 		1854EECB1D82E00C00BF6277 /* BusinessWaitingTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessWaitingTimeView.swift; sourceTree = "<group>"; };
 		1854EECC1D82E00C00BF6277 /* FavouriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		1854EECD1D82E00C00BF6277 /* BusinessSeeProductsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessSeeProductsButton.swift; sourceTree = "<group>"; };
+		185883301DEA201C00813719 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		185883321DEA269F00813719 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		187717A81D805B0400750E10 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		187717A91D805B0400750E10 /* QButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QButton.swift; sourceTree = "<group>"; };
 		187717AA1D805B0400750E10 /* QTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTextField.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185883331DEA269F00813719 /* CoreLocation.framework in Frameworks */,
 				522AE8F9B1BF6F5BF4C9C097 /* Pods_QuickApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +345,7 @@
 		1835D08E1D22F64900C9554C /* QuickApp */ = {
 			isa = PBXGroup;
 			children = (
+				1858832F1DEA1FB000813719 /* Location */,
 				1835D08F1D22F64900C9554C /* AppDelegate.swift */,
 				181D74521D25A61A0007DAFD /* UI */,
 				181D74511D25A5FC0007DAFD /* Network */,
@@ -429,6 +435,14 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		1858832F1DEA1FB000813719 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				185883301DEA201C00813719 /* LocationManager.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
 		18D493A81DB570750023724D /* ProductOptionValuesTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +510,7 @@
 		84143C46AE58A31F6AE293CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				185883321DEA269F00813719 /* CoreLocation.framework */,
 				A3046EE7FA120C65328D837C /* Pods_Quick.framework */,
 				9E860B54F40CCBF07FDE7744 /* Pods_QuickApp.framework */,
 				44D4B9BD789B4EE296042D30 /* Pods_QuickAppTests.framework */,
@@ -757,6 +772,7 @@
 				18877D491DCFEB9F00D80FC9 /* UIViewShadow.swift in Sources */,
 				183389E61D2D5BBE006C83AF /* StringConstants.swift in Sources */,
 				18F3D4011D2819C800CDE296 /* QuickViewController.swift in Sources */,
+				185883311DEA201C00813719 /* LocationManager.swift in Sources */,
 				1835D0921D22F64900C9554C /* HomeViewController.swift in Sources */,
 				18F3D4081D2B071E00CDE296 /* JSONParser.swift in Sources */,
 				183089581DB8239C00D6DD71 /* Order.swift in Sources */,

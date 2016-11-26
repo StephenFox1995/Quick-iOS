@@ -34,7 +34,6 @@ UITableViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationController?.navigationBar.isTranslucent = false
     self.view.backgroundColor = UIColor.viewControllerBackgroundGray()
     
     self.setupViews()

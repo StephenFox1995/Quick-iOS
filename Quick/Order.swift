@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
 /**
  An order can contain products.
  */
 class Order: QuickBusinessObject {
   fileprivate(set) var products: [Product] = []
+  var location: CLLocationCoordinate2D?
   
   var currentPrice: Double {
     get {

@@ -13,7 +13,7 @@ class QuickViewController: UIViewController {
   
   var index: NSInteger?
   
-  /// Sets the navigationController's navigation bar to completely translucent
+  /// Sets the navigationController's navigation bar to completely hidden
   internal var hideNavigationBar: Bool {
     get {
       return self.navigationController!.navigationBar.isHidden
@@ -30,6 +30,7 @@ class QuickViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = UIColor.white
+    self.edgesForExtendedLayout = []
   }
   
   fileprivate func setupViews() {

@@ -9,14 +9,28 @@
 import UIKit
 
 class QuickNavigationController: UINavigationController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    self.setupViews()
+  }
+  override init(rootViewController: UIViewController) {
+    super.init(rootViewController: rootViewController)
+    self.setupViews()
+  }
+  override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
+    super.init(navigationBarClass: navigationBarClass, toolbarClass: toolbarClass)
+    self.setupViews()
+  }
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    self.setupViews()
+  }
+  
+  fileprivate func setupViews() {
+    self.navigationBar.barTintColor = UIColor.white
+    self.navigationBar.isTranslucent = false
+  }
 }
 
 

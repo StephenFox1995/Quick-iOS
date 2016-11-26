@@ -17,7 +17,18 @@ extension JSON {
   
   struct OrderEncoder {
     static func jsonifyOrder(order: Order) throws -> [String: AnyObject] {
-      var json = ["order": ["products": []]]
+      let totalPrice = order.currentPrice // Get total price of order
+      
+      if order.location == nil { // Get location of user
+        throw JSONError.MissingValue
+      }
+      var json = ["order":
+        ["products": [],
+         "totalPrice": totalPrice,
+         "location": ["latitude": order.location!.latitude,
+                      "longitude": order.location!.longitude]
+        ]
+      ]
       
       var productsJSON = [Any]()
       
@@ -35,6 +46,9 @@ extension JSON {
   
   struct ProductEncoder {
     static func jsonifyProduct(product: Product) throws -> [String: AnyObject] {
+      guard product.id != nil else {
+        throw JSONError.MissingValue
+      }
       guard product.businessID != nil else {
         throw JSONError.MissingValue
       }
@@ -57,7 +71,9 @@ extension JSON {
         }
       }
       
-      let json = ["product" : ["businessID": product.businessID!,
+      let json = ["product" : [
+                               "id": product.id!,
+                               "businessID": product.businessID!,
                                "name": product.name!,
                                "price": product.price!,
                                "description": product.description!,

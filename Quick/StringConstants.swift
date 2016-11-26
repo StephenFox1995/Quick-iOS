@@ -30,6 +30,8 @@ class StringConstants: NSObject {
   static let invalidCredential = "Ivalid Credentials."
   static let accountTaken = "Email already taken."
   
+  
+  static let locationPermissionsError = "Cannot access location because of permissions."
   /// ViewController Identifiers
   static let homeViewController = "HomeViewController"
   static let authenticateViewController = "AuthenticateViewController"

@@ -17,6 +17,7 @@ OrderManagerUpdates {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     OrderManager.sharedInstance.updates = self
     orderAmountLabel = UILabel(frame: CGRect(x: self.navigationBar.frame.width - 110,
                                              y: 0,
@@ -25,6 +26,7 @@ OrderManagerUpdates {
     self.updateOrderAmountText(amount: 0.0)
     orderAmountLabel.font = UIFont.qFontDemiBold(12)
     self.navigationBar.addSubview(orderAmountLabel)
+    
   }
   
   fileprivate func updateOrderAmountText(amount: Double) {

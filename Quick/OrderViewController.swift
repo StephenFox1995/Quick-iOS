@@ -11,9 +11,11 @@ import Cartography
 
 class OrderViewController: QuickViewController, UITableViewDelegate {
   
+  fileprivate var priceView: PriceView!
   fileprivate var orderTableView: OrderTableView!
   fileprivate var orderTableViewDataSource: OrderTableViewDataSource!
   fileprivate var orderButton: QButton!
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.orderTableView.reloadData()
@@ -25,7 +27,15 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
     self.setupViews()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.priceView.updatePrice(price: OrderManager.sharedInstance.getOrder().currentPrice)
+  }
+  
   private func setupViews() {
+    self.priceView = PriceView(price: OrderManager.sharedInstance.getOrder().currentPrice)
+    self.view.addSubview(self.priceView)
+    
     self.orderTableView = OrderTableView()
     self.orderTableViewDataSource = OrderTableViewDataSource(tableView: self.orderTableView, cellReuseIdentifier: OrderTableView.cellReuseIdentifier)
     self.orderTableView.delegate = self
@@ -38,23 +48,35 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
     self.orderButton.layer.cornerRadius = 0
     self.view.addSubview(self.orderButton)
     
-    constrain(self.view, self.orderTableView, self.orderButton) {
-      (superView, orderTableView, orderButton) in
-      orderTableView.leading == superView.leading
-      orderTableView.top == superView.top
-      orderTableView.width == superView.width
-      orderTableView.bottom == superView.bottom
+    constrain(self.view, self.orderTableView, self.orderButton, self.priceView) {
+      (superView, orderTableView, orderButton, priceView) in
+
+      
+      priceView.top == superView.top
+      priceView.trailing == superView.trailing
+      priceView.leading == superView.leading
+      priceView.width == superView.width
+      priceView.height == superView.height * 0.1
+      priceView.centerX == superView.centerX
       
       orderButton.bottom == superView.bottom
       orderButton.width == superView.width
       orderButton.leading == superView.leading
       orderButton.height == superView.height * 0.1
+      
+      orderTableView.leading == superView.leading
+      orderTableView.top == priceView.bottom
+      orderTableView.width == superView.width
+      orderTableView.bottom == orderButton.top
+      
     }
   }
   
   
   @objc func order() {
-    OrderManager.sharedInstance.beginOrder()
+    OrderManager.sharedInstance.beginOrder { (error) in
+      if (error == nil) {}
+    }
   }
 }
 
@@ -76,7 +98,7 @@ extension OrderViewController {
     
     let height = (optionsAmount + valuesAmount) * 30
     if height == 0 {
-      return 20
+      return 40
     } else {
       return height
     }

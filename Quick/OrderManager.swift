@@ -21,13 +21,22 @@ protocol OrderManagerUpdates: NSObjectProtocol {
  Class that manages storing objects for ordering.
  */
 class OrderManager {
+  typealias OrderCompletion = ((_ error: Error?) -> Void)
+  
   static let sharedInstance = OrderManager()
   /// The order currently being made by the user.
   /// There can only ever be one order being made within the application at a time.
   fileprivate var order = Order()
   fileprivate init() {}
+  fileprivate var location: Location?
+  fileprivate var network: Network?
   weak var updates: OrderManagerUpdates?
   
+  
+  
+  enum OrderError: Error {
+    case EmptyOrder
+  }
   
   func getOrder() -> Order {
     return self.order
@@ -40,18 +49,29 @@ class OrderManager {
   }
   
   
-  func beginOrder() {
+  func beginOrder(completion: @escaping OrderCompletion) {
     if self.order.products.count <= 0 {
-      // TODO: Callback saying no order made.
+      return completion(OrderError.EmptyOrder)
     }
     
-    let network = Network()
-    
-    do {
-      let json = try JSON.OrderEncoder.jsonifyOrder(order: self.order)
-      network.postJSON(NetworkingDetails.orderEndPoint, jsonParameters: json) { (sucess, response) in }
-    }
-    catch {
+    // Get the user's current location coordinates.
+    self.location = self.location ?? Location()
+    self.location!.getCurrentLocation { (coordinates, error) in
+      if (error != nil) {
+        completion(error)
+      }
+      self.getOrder().location = coordinates // Attach coordinates to order.
+      
+      self.network = self.network ?? Network()
+      do {
+        let json = try JSON.OrderEncoder.jsonifyOrder(order: self.order)
+        self.network!.postJSON(NetworkingDetails.orderEndPoint, jsonParameters: json) {
+          (sucess, response) in
+        }
+      }
+      catch {
+        completion(JSON.JSONError.MissingValue)
+      }
     }
   }
   
