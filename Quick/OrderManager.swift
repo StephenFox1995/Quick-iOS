@@ -21,7 +21,16 @@ protocol OrderManagerUpdates: NSObjectProtocol {
  Class that manages storing objects for ordering.
  */
 class OrderManager {
-  typealias OrderCompletion = ((_ error: Error?) -> Void)
+  /// Closure for order completion handling
+  typealias OrderCompletion = ((_ error: OrderError?) -> Void)
+  
+  enum OrderError: Error {
+    case LocationPermissionError
+    case JSONError
+    case NetworkError
+    case EmptyOrder
+  }
+  
   
   static let sharedInstance = OrderManager()
   /// The order currently being made by the user.
@@ -31,12 +40,7 @@ class OrderManager {
   fileprivate var location: Location?
   fileprivate var network: Network?
   weak var updates: OrderManagerUpdates?
-  
-  
-  
-  enum OrderError: Error {
-    case EmptyOrder
-  }
+
   
   func getOrder() -> Order {
     return self.order
@@ -48,7 +52,10 @@ class OrderManager {
     self.updates?.orderManager(orderManager: self, newOrderPrice: self.order.currentPrice)
   }
   
-  
+  /**
+   Begins the ordering process with the current order managed by this class.
+   - parameter completion: Completion handler
+   */
   func beginOrder(completion: @escaping OrderCompletion) {
     if self.order.products.count <= 0 {
       return completion(OrderError.EmptyOrder)
@@ -58,19 +65,26 @@ class OrderManager {
     self.location = self.location ?? Location()
     self.location!.getCurrentLocation { (coordinates, error) in
       if (error != nil) {
-        completion(error)
+        return completion(OrderError.LocationPermissionError)
       }
       self.getOrder().location = coordinates // Attach coordinates to order.
       
       self.network = self.network ?? Network()
       do {
+        // Jsonify the order before sending to server.
         let json = try JSON.OrderEncoder.jsonifyOrder(order: self.order)
+        // Send order json to server.
         self.network!.postJSON(NetworkingDetails.orderEndPoint, jsonParameters: json) {
           (sucess, response) in
+          if (sucess) {
+            completion(nil)
+          } else {
+            completion(OrderError.NetworkError)
+          }
         }
       }
       catch {
-        completion(JSON.JSONError.MissingValue)
+        completion(OrderError.JSONError)
       }
     }
   }

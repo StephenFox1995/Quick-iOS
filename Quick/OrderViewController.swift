@@ -75,7 +75,21 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
   
   @objc func order() {
     OrderManager.sharedInstance.beginOrder { (error) in
-      if (error == nil) {}
+      if let err = error {
+        switch err {
+        case .LocationPermissionError:
+          super.displayMessage(title: StringConstants.locationPermissionPleaTitle, message: StringConstants.locationPermissionPlea)
+        case OrderManager.OrderError.EmptyOrder: // Empty order can be ignore
+          return
+        case .JSONError:
+          super.displayMessage(title: StringConstants.orderErrorTitleString, message: StringConstants.orderErrorMessageString)
+        case .NetworkError:
+          super.displayMessage(title: StringConstants.networkErrorTitleString, message: StringConstants.networkErrorMessageString)
+        }
+      }
+      else {
+        super.displayMessage(title: StringConstants.successfulOrderTitleString, message: StringConstants.successfulOrderMessageString)
+      }
     }
   }
 }
