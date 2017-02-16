@@ -12,7 +12,9 @@ class StringConstants: NSObject {
   static let networkErrorTitleString = "Network Error"
   static let networkErrorMessageString = "A network error occurred, please try again."
   
-  
+  /// Generic
+  static let genericErrorTitle = "Error"
+  static let genericErrorMessage = "An error occurred."
   
   
   /// Order Strings
@@ -22,7 +24,10 @@ class StringConstants: NSObject {
   static let orderAddedMessageString = "Order has been added, view 'Order' tab to see current orders."
   static let successfulOrderTitleString = "Success!"
   static let successfulOrderMessageString = ""
-  
+  static let multipleBusinessForOrderErrorTitle = "Warning"
+  static func multipleBusinessForOrderErrorMessage(originalBusiness: String)  -> String {
+    return "You already have an order for \(originalBusiness), please remove this order if you wish to make an order from another business."
+  }
   /// JWT Strings
   static let unfoundJWTClaim = "Unable to find claim: "
   /// TextField Strings

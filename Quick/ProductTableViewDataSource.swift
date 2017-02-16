@@ -35,8 +35,8 @@ class ProductTableViewDataSource: QuickDataSource, UITableViewDataSource {
   
   override func fetchData(_ url: String, completetionHandler: @escaping (_ success: Bool) -> Void) {
     self.network.requestJSON(url) { (success, data) in
-      if (success) {
-        let json = JSON(data)
+      if (success && data != nil) {
+        let json = JSON(data!)
         self.products = self.createProductArray(json)
         self.tableView.reloadData()
         completetionHandler(true)

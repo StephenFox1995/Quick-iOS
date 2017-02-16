@@ -13,14 +13,16 @@ class Product: QuickBusinessObject {
   
   var businessID: String?
   var options: [ProductOption]?
+  var processing: Int!
   /// The price of the Product when it has been prepared for ordering.
   /// Assumes all attached `ProductOption` are part of theorder  price.
   fileprivate(set) var orderPrice: Double = 0
   
-  init(id: String, name: String, price: Double, description: String, businessID: String) {
+  init(id: String, name: String, price: Double, processing: Int, description: String, businessID: String) {
     super.init()
     self.id = id
     self.name = name
+    self.processing = processing
     self.description = description
     self.businessID = businessID
     self.price = price
@@ -70,6 +72,7 @@ class Product: QuickBusinessObject {
     return Product(id: self.id!,
                    name: self.name!,
                    price: self.price!,
+                   processing: self.processing,
                    description: self.description!,
                    businessID: self.businessID!)
     

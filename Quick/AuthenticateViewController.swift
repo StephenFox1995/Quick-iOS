@@ -41,15 +41,15 @@ SignUpViewControllerDelegate {
     UIPageControl.changePageIndicator(UIColor.pageControlGrayColor(),
                                       indicatorCurrentPage: UIColor.pageControlCurrentPageGrayColor())
     
-    let imageView = UIImageView(image: UIImage(named: "QuickLogo"))
-    self.view.addSubview(imageView)
-    constrain(self.view, imageView) {
-      (superView, imageView) in
-      imageView.centerX == superView.centerX
-      imageView.width == superView.width * 0.3
-      imageView.height == superView.width * 0.3
-      imageView.top == superView.top + 60
-    }
+//    let imageView = UIImageView(image: UIImage(named: "QuickLogo"))
+//    self.view.addSubview(imageView)
+//    constrain(self.view, imageView) {
+//      (superView, imageView) in
+//      imageView.centerX == superView.centerX
+//      imageView.width == superView.width * 0.3
+//      imageView.height == superView.width * 0.3
+//      imageView.top == superView.top + 60
+//    }
   }
   
   /// Determines the view controller to show based on its index.

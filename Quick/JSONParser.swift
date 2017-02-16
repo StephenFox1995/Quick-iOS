@@ -27,7 +27,8 @@ class JSONParser {
       product.name =        pJSON["name"]?.stringValue
       product.price =       pJSON["price"]?.doubleValue
       product.description = pJSON["description"]?.stringValue
-      product.businessID =  pJSON["business_id"]?.stringValue
+      product.businessID =  pJSON["businessID"]?.stringValue
+      product.processing =  pJSON["processing"]?.intValue
     }
     return product
   }
@@ -36,12 +37,7 @@ class JSONParser {
     var productArray = [Product]()
     if let products = json["products"].array {
       for productJSON in products {
-        let product = Product()
-        product.id =          productJSON["id"].stringValue
-        product.name =        productJSON["name"].stringValue
-        product.price =       productJSON["price"].doubleValue
-        product.description = productJSON["description"].stringValue
-        product.businessID  = productJSON["businessID"].stringValue
+        let product = self.parseProduct(productJSON)
         product.options = JSONParser.parseProductOptions(json: productJSON)
         productArray.append(product)
       }
@@ -85,7 +81,7 @@ class JSONParser {
       business.id =             bJSON["id"]?.stringValue
       business.name =           bJSON["name"]?.stringValue
       business.address =        bJSON["address"]?.stringValue
-      business.contactNumber =  bJSON["contact_number"]?.stringValue
+      business.contactNumber =  bJSON["contactNumber"]?.stringValue
     }
     return business
   }

@@ -29,11 +29,19 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.priceView.updatePrice(price: OrderManager.sharedInstance.getOrder().currentPrice)
+    if let order = OrderManager.sharedInstance.getOrder() {
+      self.priceView.updatePrice(price: order.currentPrice)
+    }
   }
   
-  private func setupViews() {
-    self.priceView = PriceView(price: OrderManager.sharedInstance.getOrder().currentPrice)
+  
+  fileprivate func setupViews() {
+    if let order = OrderManager.sharedInstance.getOrder() {
+      self.priceView = PriceView(price: order.currentPrice)
+    } else {
+      self.priceView = PriceView(price: 0.00)
+    }
+    
     self.view.addSubview(self.priceView)
     
     self.orderTableView = OrderTableView()
@@ -51,7 +59,6 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
     constrain(self.view, self.orderTableView, self.orderButton, self.priceView) {
       (superView, orderTableView, orderButton, priceView) in
 
-      
       priceView.top == superView.top
       priceView.trailing == superView.trailing
       priceView.leading == superView.leading
@@ -73,22 +80,50 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
   }
   
   
+  fileprivate func askTravelMode(completion: @escaping (TravelMode) -> ()) {
+    let travelModeController =
+      UIAlertController(title: "Travel Mode", message: "How are you travelling?", preferredStyle: .alert)
+    let walkingMode = UIAlertAction(title: "walking", style: .default) {
+      (UIAlertAction) in
+      completion(.Walking)
+    }
+    let cyclingMode = UIAlertAction(title: "cycling", style: .default) {
+      (UIAlertAction) in
+      completion(.Bicycling)
+    }
+    let drivingMode = UIAlertAction(title: "driving", style: .default) {
+      (UIAlertAction) in
+      completion(.Driving)
+    }
+    travelModeController.addAction(walkingMode)
+    travelModeController.addAction(cyclingMode)
+    travelModeController.addAction(drivingMode)
+    self.present(travelModeController, animated: true, completion: nil)
+  }
+  
+  
   @objc func order() {
-    OrderManager.sharedInstance.beginOrder { (error) in
-      if let err = error {
-        switch err {
-        case .LocationPermissionError:
-          super.displayMessage(title: StringConstants.locationPermissionPleaTitle, message: StringConstants.locationPermissionPlea)
-        case OrderManager.OrderError.EmptyOrder: // Empty order can be ignore
-          return
-        case .JSONError:
-          super.displayMessage(title: StringConstants.orderErrorTitleString, message: StringConstants.orderErrorMessageString)
-        case .NetworkError:
-          super.displayMessage(title: StringConstants.networkErrorTitleString, message: StringConstants.networkErrorMessageString)
+    self.askTravelMode {
+      travelMode in
+      if let order = OrderManager.sharedInstance.getOrder() {
+        order.travelMode = travelMode
+        OrderManager.sharedInstance.beginOrder { (error) in
+          if let err = error {
+            switch err {
+            case .LocationPermissionError:
+              super.displayMessage(title: StringConstants.locationPermissionPleaTitle, message: StringConstants.locationPermissionPlea)
+            case OrderManager.OrderError.EmptyOrder: // Empty order can be ignored
+              return
+            case .JSONError:
+              super.displayMessage(title: StringConstants.orderErrorTitleString, message: StringConstants.orderErrorMessageString)
+            case .NetworkError:
+              super.displayMessage(title: StringConstants.networkErrorTitleString, message: StringConstants.networkErrorMessageString)
+            }
+          }
+          else {
+            super.displayMessage(title: StringConstants.successfulOrderTitleString, message: StringConstants.successfulOrderMessageString)
+          }
         }
-      }
-      else {
-        super.displayMessage(title: StringConstants.successfulOrderTitleString, message: StringConstants.successfulOrderMessageString)
       }
     }
   }

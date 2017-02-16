@@ -27,8 +27,8 @@ class BusinessTableViewDataSource: QuickDataSource, UITableViewDataSource {
   override func fetchData(_ url: String, completetionHandler: @escaping (Bool) -> Void) {
     let businessEndPoint = NetworkingDetails.businessEndPoint
     self.network.requestJSON(businessEndPoint) { (success, data) in
-      if (success) {
-        let json = JSON(data)
+      if (success && data != nil) {
+        let json = JSON(data!)
         self.businesses = self.createBusinessArray(json)
         self.tableView.reloadData()
         completetionHandler(true)

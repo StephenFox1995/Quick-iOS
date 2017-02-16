@@ -70,7 +70,6 @@ extension HomeViewController {
     businessViewController.business = b
     self.navigationController?.pushViewController(businessViewController, animated: true);
   }
-  
 }
 
 

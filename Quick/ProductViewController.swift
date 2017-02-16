@@ -111,8 +111,22 @@ UITableViewDelegate {
       product.updateOrderPrice(options: options)
     }
     
-    OrderManager.sharedInstance.addToOrder(product: product)
-    self.orderAddedMessage()
+    do {
+      // Make sure there is an order, if not create a new order.
+      if OrderManager.sharedInstance.getOrder() == nil {
+        OrderManager.sharedInstance.newOrder(withBusiness: self.business!)
+      }
+      try OrderManager.sharedInstance.addToOrder(product: product)
+      self.orderAddedMessage()
+      
+    } catch Order.OrderError.ExistingOrderError {
+      let business = OrderManager.sharedInstance.getOrder()!.business!
+      super.displayMessage(title: StringConstants.multipleBusinessForOrderErrorTitle,
+                           message: StringConstants.multipleBusinessForOrderErrorMessage(originalBusiness: business.name!))
+    } catch {
+      super.displayMessage(title: StringConstants.genericErrorTitle,
+                           message: StringConstants.genericErrorMessage)
+    }
   }
   
   // Order error alert.

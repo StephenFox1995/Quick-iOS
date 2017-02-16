@@ -19,14 +19,26 @@ extension JSON {
     static func jsonifyOrder(order: Order) throws -> [String: AnyObject] {
       let totalPrice = order.currentPrice // Get total price of order
       
-      if order.location == nil { // Get location of user
+      guard order.business?.id != nil else { // Make sure there is business id for order.
         throw JSONError.MissingValue
       }
-      var json = ["order":
-        ["products": [],
-         "totalPrice": totalPrice,
-         "location": ["latitude": order.location!.latitude,
-                      "longitude": order.location!.longitude]
+      
+      guard order.location != nil else { // Get location of user
+        throw JSONError.MissingValue
+      }
+      
+      // JSON for request body.
+      var json = [
+        "order": [
+          "products": [],
+          "businessID": order.business!.id!,
+          "cost": totalPrice,
+          "processing": order.processingTime,
+          "coordinates": [
+            "lat": order.location!.latitude,
+            "lng": order.location!.longitude
+          ],
+          "travelMode": order.travelMode!.rawValue
         ]
       ]
       
@@ -71,13 +83,16 @@ extension JSON {
         }
       }
       
-      let json = ["product" : [
-                               "id": product.id!,
-                               "businessID": product.businessID!,
-                               "name": product.name!,
-                               "price": product.price!,
-                               "description": product.description!,
-                               "options": optionsArray]]
+      let json = [
+        "product" : [
+          "id": product.id!,
+          "businessID": product.businessID!,
+          "name": product.name!,
+          "price": product.price!,
+          "description": product.description!,
+          "options": optionsArray
+        ]
+      ]
       return json as [String : AnyObject]
     }
     
@@ -128,10 +143,12 @@ extension JSON {
   
   struct UserEncoder {
     static func encodeUser(_ user: User) -> [String: String] {
-      return ["firstname": user.firstname!,
-              "lastname": user.lastname!,
-              "email": user.email!,
-              "password": user.password!]
+      return [
+        "firstname": user.firstname!,
+        "lastname": user.lastname!,
+        "email": user.email!,
+        "password": user.password!
+      ]
     }
     /**
      {
