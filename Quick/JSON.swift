@@ -118,21 +118,19 @@ extension JSON {
     
     /**
      Encodes the array of `ProductOptionValue` in the following format:
-    {"values":[
-        {
+        [{
           "name": "small",
           "priceDelta": 0
         },
         {
           "name": "Medium",
           "priceDelta": 1.0
-        }
-     ]}
+        }]
      */
-    static func jsonifyProductOptionValues(values: [ProductOptionValue]) -> [String: Array<Any>] {
-      var localValues = ["values": []]
+    static func jsonifyProductOptionValues(values: [ProductOptionValue]) -> [Dictionary<String, Any>] {
+      var localValues = [Dictionary<String, Any>]()
       for value in values {
-        localValues["values"]?.append(["name": value.name, "priceDelta": value.priceDelta])
+        localValues.append(["name": value.name, "priceDelta": value.priceDelta])
       }
       return localValues
     }
