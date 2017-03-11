@@ -22,11 +22,12 @@ protocol OrderManagerUpdates: NSObjectProtocol {
  */
 class OrderManager {
   /// Closure for order completion handling
-  typealias OrderCompletion = ((_ error: OrderError?) -> Void)
+  typealias OrderCompletion = ((_ id: String?, _ collectionTime: String?, _ error: OrderError?) -> Void)
   
   enum OrderError: Error {
     case LocationPermissionError
     case JSONError
+    
     case NetworkError
     case EmptyOrder
   }
@@ -38,8 +39,7 @@ class OrderManager {
   fileprivate var location: Location?
   fileprivate var network: Network?
   weak var updates: OrderManagerUpdates?
-  
-  
+  fileprivate var timer: Timer!
   fileprivate init() {}
 
   /**
@@ -66,14 +66,14 @@ class OrderManager {
    */
   func beginOrder(completion: @escaping OrderCompletion) {
     if self.order!.products.count <= 0 {
-      return completion(OrderError.EmptyOrder)
+      return completion(nil, nil, OrderError.EmptyOrder)
     }
     
     // Get the user's current location coordinates.
     self.location = self.location ?? Location()
     self.location!.getCurrentLocation { (coordinates, error) in
       if (error != nil) {
-        return completion(OrderError.LocationPermissionError)
+        return completion(nil, nil, OrderError.LocationPermissionError)
       }
       self.getOrder()!.location = coordinates // Attach coordinates to order.
       
@@ -86,15 +86,42 @@ class OrderManager {
         self.network!.postJSON(NetworkingDetails.orderEndPoint, jsonParameters: json) {
           (sucess, response) in
           if (sucess) {
-            completion(nil)
+            let orderID = JSON(response!)["order"]["id"].stringValue
+            self.pollForCollectionTime(orderID: orderID, businessID: self.order!.business.id!, callback: {
+              (collectionTime) in
+              completion(orderID, collectionTime, nil)
+              self.timer.invalidate()
+            })
           } else {
-            completion(OrderError.NetworkError)
+            completion(nil, nil, OrderError.NetworkError)
           }
         }
       }
       catch {
-        completion(OrderError.JSONError)
+        completion(nil, nil, OrderError.JSONError)
       }
+    }
+  }
+  
+  // Once an order has been made, poll for the collection time.
+  func pollForCollectionTime(orderID: String, businessID: String, callback: @escaping (_ collectionTime: String?) -> ()) {
+    var tryCount = 0
+    let url = NetworkingDetails.createOrderCollectionEndpoint(orderID: orderID, businessID: businessID)
+    if #available(iOS 10.0, *) {
+       self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (x) in
+        tryCount = tryCount + 1
+        if (tryCount == 10) {
+          return callback(nil)
+        }
+        self.network?.requestJSON(url, response: { (success, response) in
+          if (success) {
+            let collectionTime = JSON(response!)["collection"].stringValue
+            callback(collectionTime)
+          }
+        })
+      }
+    } else {
+      // Fallback on earlier versions
     }
   }
   

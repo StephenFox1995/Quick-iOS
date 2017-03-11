@@ -107,7 +107,7 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
       travelMode in
       if let order = OrderManager.sharedInstance.getOrder() {
         order.travelMode = travelMode
-        OrderManager.sharedInstance.beginOrder { (error) in
+        OrderManager.sharedInstance.beginOrder { (orderId, collectionTime, error) in
           if let err = error {
             switch err {
             case .LocationPermissionError:
@@ -121,7 +121,26 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
             }
           }
           else {
-            super.displayMessage(title: StringConstants.successfulOrderTitleString, message: StringConstants.successfulOrderMessageString)
+            
+            if let id = orderId {
+              if let coll = collectionTime {
+                //            if let coll = collectionTime {
+                //              if #available(iOS 10.0, *) {
+                ////                let isoFormatter = ISO8601DateFormatter()
+                ////                let date = isoFormatter.date(from: coll)
+                ////                let dateFormatter = DateFormatter()
+                ////                dateFormatter.dateStyle = .short
+                ////                let collectionDateString = dateFormatter.string(from: date!)
+                //                
+                //              }
+                var message = "Your order number is: \(id)\n"
+                message.append("Please collect at \(coll)")
+                super.displayMessage(title: StringConstants.successfulOrderTitleString, message: message)
+                return
+              }
+            } else {
+              super.displayMessage(title: StringConstants.successfulOrderTitleString, message: StringConstants.successfulOrderMessageString)
+            }
           }
         }
       }

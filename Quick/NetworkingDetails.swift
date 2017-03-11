@@ -125,5 +125,10 @@ class NetworkingDetails {
       return AppDelegate.devEnvironment ? orderEndPointDev: orderEndPointProduction
     }
   }
+  
+  static func createOrderCollectionEndpoint(orderID: String, businessID: String) -> String {
+    let resource = "/collection/\(businessID)/\(orderID)"
+    return self.orderEndPoint + resource
+  }
 }
 
