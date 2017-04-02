@@ -113,7 +113,7 @@ UITableViewDelegate {
     
     do {
       // Make sure there is an order, if not create a new order.
-      if OrderManager.sharedInstance.getOrder() == nil {
+      if OrderManager.sharedInstance.getOrder() == nil || OrderManager.sharedInstance.getOrder()!.business == nil{
         OrderManager.sharedInstance.newOrder(withBusiness: self.business!)
       }
       try OrderManager.sharedInstance.addToOrder(product: product)

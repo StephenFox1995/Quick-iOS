@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import SwiftyJSON
 
 /**
  This class presents info for a Business.
@@ -17,7 +18,7 @@ class BusinessViewController: QuickViewController {
   var business: Business?
   // Shows products for the business.
   fileprivate var productsTableViewController: ProductsTableViewController!
-  
+  fileprivate var businessInfoStripView: BusinessInfoStripView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,7 +26,10 @@ class BusinessViewController: QuickViewController {
     self.setupViews()
   }
 
-  
+  fileprivate func setStatus(status: String) {
+    self.businessInfoStripView.businessStatusView.setStatus(status: status)
+  }
+
   // Sets up the UI
   fileprivate func setupViews() {
     
@@ -35,25 +39,33 @@ class BusinessViewController: QuickViewController {
       businessImageView = BusinessImageView(businessName: business.name!,
                                                 businessLocation: business.address!)
       self.view.addSubview(businessImageView)
-      
       DispatchQueue.global().async {
-        let url = URL(string: "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/85/db/front-door.jpg")
+        let url = URL(string: "https://static1.squarespace.com/static/552bda39e4b022585607fe5e/56c54427a3360c5bdf0e43d5/56c54438a3360c5bdf0e4458/1455768664429/CAFE+LULA-1039.jpg?format=1500w")
         let nsdata = try? Data.init(contentsOf: url!)
         DispatchQueue.main.async(execute: {
           let uiImage = UIImage(data: nsdata!)
           businessImageView.image = uiImage
         })
       }
+      
+      let network = Network()
+      let url = NetworkingDetails.createBusinessStatusEndpoint(id: self.business!.id!)
+      network.requestJSON(url, response: { (success, response) in
+        if (success) {
+          let status = JSON(response as Any)["status"].stringValue
+          self.setStatus(status: status)
+        }
+      })
     }
     
-    let stripView = BusinessInfoStripView()
-    self.view.addSubview(stripView)
+    self.businessInfoStripView = BusinessInfoStripView()
+    self.view.addSubview(businessInfoStripView)
     
     let seeProductsButton = BusinessSeeProductsButton()
     seeProductsButton.addTarget(self, action: #selector(showProductsViewController), for: .touchUpInside)
     self.view.addSubview(seeProductsButton)
     
-    constrain(self.view, stripView, businessImageView, seeProductsButton) {
+    constrain(self.view, self.businessInfoStripView, businessImageView, seeProductsButton) {
       (superView, stripView, businessImageView, seeProductsView) in
       
       businessImageView.leading == superView.leading

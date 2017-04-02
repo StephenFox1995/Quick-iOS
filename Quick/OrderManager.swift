@@ -60,6 +60,10 @@ class OrderManager {
     self.updates?.orderManager(orderManager: self, newOrderPrice: self.order!.currentPrice)
   }
   
+  func clearOrder() {
+    self.order?.clear()
+  }
+  
   /**
    Begins the ordering process with the current order managed by this instance.
    - parameter completion: Completion handler

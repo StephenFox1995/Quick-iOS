@@ -90,7 +90,6 @@ UIViewShadow {
     self.doneButton = QButton()
     self.doneButton.addTarget(self, action: #selector(ProductOptionValuesViewContainer.handleDoneButtonPress), for: .touchUpInside)
     self.doneButton.setTitle("Done", for: .normal)
-    self.doneButton.setTitleColor(UIColor.quickBlue(), for: .normal)
     self.addSubview(self.doneButton)
     
     constrain(self, self.tableView, self.doneButton) {

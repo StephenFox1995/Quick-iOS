@@ -12,7 +12,7 @@ import Cartography
 class BusinessInfoStripView: StripView {
   
   fileprivate var businessHoursView: BusinessHoursView!
-  fileprivate var businessWaitingTimeView: BusinessWaitingTimeView!
+  var businessStatusView: BusinessStatusView!
   fileprivate var favouriteButton: FavouriteButton!
   
   
@@ -21,13 +21,13 @@ class BusinessInfoStripView: StripView {
     self.addSeparators()
     
     self.businessHoursView = BusinessHoursView(availability: .open)
-    self.businessWaitingTimeView = BusinessWaitingTimeView(minutes: 10)
+    self.businessStatusView = BusinessStatusView(status: "...")
     self.favouriteButton = FavouriteButton()
     self.addSubview(self.businessHoursView)
-    self.addSubview(self.businessWaitingTimeView)
+    self.addSubview(self.businessStatusView)
     self.addSubview(self.favouriteButton)
     
-    constrain(self, self.businessHoursView, self.businessWaitingTimeView, self.favouriteButton) {
+    constrain(self, self.businessHoursView, self.businessStatusView, self.favouriteButton) {
       (superView, businessHoursView, businessWaitingTimeView, favouriteButton) in
       businessHoursView.width == superView.width * 0.15
       businessHoursView.height == superView.height * 0.8

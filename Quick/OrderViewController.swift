@@ -24,13 +24,24 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Current Order"
+    let signOut = UIBarButtonItem(title: "Clear Order", style: .plain, target: self, action: #selector(OrderViewController.clearOrder))
+        navigationItem.rightBarButtonItems = [signOut]
     self.setupViews()
+    
+  }
+  
+  @objc fileprivate func clearOrder() {
+    OrderManager.sharedInstance.clearOrder()
+    self.priceView.updatePrice(price: 0.0)
+    self.orderTableView.reloadData()
+    
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     if let order = OrderManager.sharedInstance.getOrder() {
       self.priceView.updatePrice(price: order.currentPrice)
+      self.orderTableView.reloadData()
     }
   }
   

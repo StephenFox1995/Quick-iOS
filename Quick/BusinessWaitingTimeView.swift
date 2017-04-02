@@ -10,35 +10,40 @@ import UIKit
 import FontAwesome_swift
 import Cartography
 
-class BusinessWaitingTimeView: UIView {
-  fileprivate var timeLabel: UILabel!
+class BusinessStatusView: UIView {
+  fileprivate var statusLabel: UILabel!
   fileprivate var averageTimeLabel = UILabel()
   fileprivate var timeIcon = UILabel()
-  fileprivate var time: Int!
+  fileprivate var status: String!
   
-  init(minutes: Int) {
+  init(status: String) {
     super.init(frame: CGRect.zero)
-    self.time = minutes
+    self.status = status
     self.setupViews()
   }
   
   
+  func setStatus(status: String) {
+    self.statusLabel.text = status
+  }
+  
+  
   fileprivate func setupViews() {
-    self.timeLabel = UILabel()
-    self.timeLabel.font = UIFont.qFontDemiBold(25)
-    self.timeLabel.textColor = UIColor.businessWaitingTimeViewGrayColor()
-    self.timeLabel.minimumScaleFactor = 0.5
-    self.timeLabel.numberOfLines = 1
-    self.timeLabel.adjustsFontSizeToFitWidth = true
-    self.timeLabel.text = String(self.time)
-    self.addSubview(self.timeLabel)
+    self.statusLabel = UILabel()
+    self.statusLabel.font = UIFont.qFontDemiBold(13)
+    self.statusLabel.textColor = UIColor.businessWaitingTimeViewGrayColor()
+    self.statusLabel.minimumScaleFactor = 0.5
+    self.statusLabel.numberOfLines = 1
+    self.statusLabel.adjustsFontSizeToFitWidth = true
+    self.statusLabel.text = self.status
+    self.addSubview(self.statusLabel)
     
     self.timeIcon.font = UIFont.fontAwesomeOfSize(18)
     self.timeIcon.text = String.fontAwesomeIconWithCode("fa-clock-o")
     self.timeIcon.textColor = UIColor.businessWaitingTimeViewGrayColor()
     self.addSubview(self.timeIcon)
     
-    self.averageTimeLabel.text = "AVERAGE TIME (MINS)"
+    self.averageTimeLabel.text = "Status"
     self.averageTimeLabel.font = UIFont.qFontRegular(13)
     self.averageTimeLabel.textColor = UIColor.businessWaitingTimeViewGrayColor()
     self.averageTimeLabel.minimumScaleFactor = 0.5
@@ -46,15 +51,15 @@ class BusinessWaitingTimeView: UIView {
     self.averageTimeLabel.adjustsFontSizeToFitWidth = true
     self.addSubview(self.averageTimeLabel)
     
-    constrain(self, self.timeLabel, self.timeIcon, self.averageTimeLabel) {
-      (superView, timeLabel, timeIcon, averageTimeLabel) in
-      timeIcon.trailing == timeLabel.leading - 3
+    constrain(self, self.statusLabel, self.timeIcon, self.averageTimeLabel) {
+      (superView, statusLabel, timeIcon, averageTimeLabel) in
+      timeIcon.trailing == statusLabel.leading - 3
       timeIcon.top == superView.top
       timeIcon.bottom == averageTimeLabel.top
       
-      timeLabel.centerX == superView.centerX
-      timeLabel.bottom == averageTimeLabel.top
-      timeLabel.top == superView.top
+      statusLabel.centerX == superView.centerX
+      statusLabel.bottom == averageTimeLabel.top
+      statusLabel.top == superView.top
       
       averageTimeLabel.bottom == superView.bottom
       averageTimeLabel.centerX == superView.centerX

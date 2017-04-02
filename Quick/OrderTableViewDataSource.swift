@@ -11,7 +11,11 @@ import UIKit
 class OrderTableViewDataSource: QuickDataSource, UITableViewDataSource {
   fileprivate weak var tableView : OrderTableView?
   fileprivate var cellReuseIdentifier: String!
-  fileprivate var order: Order?
+  fileprivate var order: Order? {
+    get {
+      return OrderManager.sharedInstance.getOrder()
+    }
+  }
   
   init(tableView: OrderTableView, cellReuseIdentifier: String) {
     super.init()
@@ -19,9 +23,7 @@ class OrderTableViewDataSource: QuickDataSource, UITableViewDataSource {
     self.cellReuseIdentifier = cellReuseIdentifier
     self.tableView?.dataSource = self
     self.tableView?.register(OrderTableViewCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
-    self.order = OrderManager.sharedInstance.getOrder()
   }
-  
   
   override func itemForRowIndex(_ indexPath: IndexPath) -> AnyObject? {
     if let o = self.order {
@@ -50,16 +52,16 @@ class OrderTableViewDataSource: QuickDataSource, UITableViewDataSource {
     orderCell.textLabel?.numberOfLines = 0
     orderCell.textLabel?.lineBreakMode = .byWordWrapping;
     
-    var productDetails = product.name! + "\n"
-    if let options = product.options {
-      for option in options {
-        productDetails.append(option.name + "\n")
-        for value in option.values {
-          productDetails.append(value.name + " €" + String(value.priceDelta) + "\n")
-        }
-      }
-    }
-    orderCell.textLabel?.text = productDetails
+//    var productDetails = product.name! + "\n"
+//    if let options = product.options {
+//      for option in options {
+//        productDetails.append(option.name + "\n")
+//        for value in option.values {
+//          productDetails.append(value.name + " €" + String(value.priceDelta) + "\n")
+//        }
+//      }
+//    }
+    orderCell.textLabel?.text = product.name
     return orderCell
   }
 

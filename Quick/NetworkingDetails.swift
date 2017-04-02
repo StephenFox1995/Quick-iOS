@@ -130,5 +130,11 @@ class NetworkingDetails {
     let resource = "/collection/\(businessID)/\(orderID)"
     return self.orderEndPoint + resource
   }
+  
+  static func createBusinessStatusEndpoint(id: String) -> String {
+    let resource = "/business/status/\(id)"
+    return self.baseEndPointDev + resource
+  }
+  
 }
 

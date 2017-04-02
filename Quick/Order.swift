@@ -76,6 +76,10 @@ class Order: QuickBusinessObject {
     self.business = business
   }
   
+  func clear() {
+    self.business = nil
+    self.products = []
+  }
   func getProducts() -> [Product] {
     return self.products
   }
