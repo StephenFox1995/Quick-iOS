@@ -135,20 +135,17 @@ class OrderViewController: QuickViewController, UITableViewDelegate {
             
             if let id = orderId {
               if let coll = collectionTime {
-                //            if let coll = collectionTime {
-                //              if #available(iOS 10.0, *) {
-                ////                let isoFormatter = ISO8601DateFormatter()
-                ////                let date = isoFormatter.date(from: coll)
-                ////                let dateFormatter = DateFormatter()
-                ////                dateFormatter.dateStyle = .short
-                ////                let collectionDateString = dateFormatter.string(from: date!)
-                //                
-                //              }
-                var message = "Your order number is: \(id)\n"
-                message.append("Please collect at \(coll)")
-                super.displayMessage(title: StringConstants.successfulOrderTitleString, message: message)
-                return
-              }
+                if #available(iOS 10.0, *) {
+                  let isoFormatter = ISO8601DateFormatter()
+                  isoFormatter.formatOptions = .withTimeZone
+                  let date = isoFormatter.date(from: coll)
+//                  let collectionDateString = dateFormatter.string(from: date!)
+                  var message = "Your order number is: \(id)\n"
+                  message.append("Please collect at \(coll)")
+                  super.displayMessage(title: StringConstants.successfulOrderTitleString, message: message)
+                }
+              } else {}
+              return
             } else {
               super.displayMessage(title: StringConstants.successfulOrderTitleString, message: StringConstants.successfulOrderMessageString)
             }
@@ -181,5 +178,16 @@ extension OrderViewController {
     } else {
       return height
     }
+  }
+}
+
+extension Date {
+  public static func dateFromISOString(string: String) -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+    dateFormatter.timeZone = NSTimeZone.local
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    
+    return dateFormatter.date(from: string)!
   }
 }
